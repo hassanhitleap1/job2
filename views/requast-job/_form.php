@@ -26,8 +26,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'governorate')->textInput() ?>
 
-    <?= $form->field($model, 'area')->textInput() ?>
-
     <?= $form->field($model, 'expected_salary')->textInput() ?>
 
     <?= $form->field($model, 'note')->textarea(['rows' => 6]) ?>
