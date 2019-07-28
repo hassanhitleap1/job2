@@ -22,6 +22,7 @@ class RequatJobController extends \yii\web\Controller
                   $data['certificates']=$model->certificates;
                   $data['experience']=$model->experience;
                   $data['governorate']=$model->governorate;
+                  $data['area']=$model->area;
                   $data['expected_salary']=$model->expected_salary;
                   Yii::$app->session->setFlash('success', 'send aplication sucessfuly');
                 Yii::$app->db

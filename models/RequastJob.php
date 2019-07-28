@@ -16,6 +16,7 @@ use Yii;
  * @property string $experience
  * @property int $governorate
  * @property int $expected_salary
+ * @property string $area
  * @property string $note
  */
 class RequastJob extends \yii\db\ActiveRecord
@@ -35,7 +36,7 @@ class RequastJob extends \yii\db\ActiveRecord
     {
         return [
             [['agree', 'phone', 'nationality', 'governorate', 'expected_salary'], 'integer'],
-            [['certificates', 'experience', 'note'], 'string'],
+            [['certificates', 'experience', 'area','note'], 'string'],
             [['name'], 'string', 'max' => 255],
         ];
     }
@@ -55,6 +56,7 @@ class RequastJob extends \yii\db\ActiveRecord
             'experience' => Yii::t('app', 'Experience'),
             'governorate' => Yii::t('app', 'Governorate'),
             'expected_salary' => Yii::t('app', 'Expected Salary'),
+            'area'=> Yii::t('app', 'Area'),
             'note' => Yii::t('app', 'Note'),
         ];
     }

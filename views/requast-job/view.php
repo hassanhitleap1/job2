@@ -37,6 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'certificates:ntext',
             'experience:ntext',
             'governorate',
+            'area',
             'expected_salary',
             'note:ntext',
         ],

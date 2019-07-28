@@ -18,7 +18,7 @@ class RequastJobSearch extends RequastJob
     {
         return [
             [['id', 'agree', 'phone', 'nationality', 'governorate', 'expected_salary'], 'integer'],
-            [['name', 'certificates', 'experience', 'note'], 'safe'],
+            [['name', 'certificates', 'experience', 'area','note'], 'safe'],
         ];
     }
 
@@ -63,12 +63,14 @@ class RequastJobSearch extends RequastJob
             'phone' => $this->phone,
             'nationality' => $this->nationality,
             'governorate' => $this->governorate,
+            'area'=>$this->area,
             'expected_salary' => $this->expected_salary,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'certificates', $this->certificates])
             ->andFilterWhere(['like', 'experience', $this->experience])
+            ->andFilterWhere(['like', 'area', $this->area])
             ->andFilterWhere(['like', 'note', $this->note]);
 
         return $dataProvider;

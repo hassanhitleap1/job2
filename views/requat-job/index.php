@@ -36,9 +36,11 @@ use app\models\Governorate;
                                                         'items'=>ArrayHelper::map(Governorate::find()->all(), 'id', 'name_ar')
                                                     ]
                                                 );?>
-                        
+                          <?= $form->field($model, 'area')->textInput() ?>
 
 <?= $form->field($model, 'expected_salary')->textInput() ?>
+
+
                     </div>
                     <div class="col-md-6">
                     <?= $form->field($model, 'certificates')->textarea(['rows' => 6]) ?>

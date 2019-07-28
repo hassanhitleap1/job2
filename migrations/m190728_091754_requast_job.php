@@ -24,6 +24,7 @@ class m190728_091754_requast_job extends Migration
             'certificates'=>$this->text(),
             'experience'=>$this->text(),
             'governorate'=>$this->integer(),
+            'area'=>$this->string(),
             'expected_salary'=>$this->integer(),
             'note'=>$this->text(),
 

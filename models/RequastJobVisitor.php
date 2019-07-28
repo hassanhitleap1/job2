@@ -29,6 +29,7 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
     public $experience;
     public $governorate;
     public $expected_salary;
+    public $area;
     public $note;
 
     public static function tableName()
@@ -40,9 +41,9 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name','agree', 'phone', 'nationality', 'governorate'], 'required'],
+            [['name','agree', 'phone', 'nationality','area' ,'governorate'], 'required'],
             [['agree', 'phone', 'nationality', 'governorate', 'expected_salary'], 'integer'],
-            [['certificates', 'experience', 'note'], 'string'],
+            [['certificates', 'experience','area' ,'note'], 'string'],
             [['name'], 'string', 'max' => 255],
         ];
     }
@@ -61,6 +62,7 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
             'experience' => Yii::t('app', 'Experience'),
             'governorate' => Yii::t('app', 'Governorate'),
             'expected_salary' => Yii::t('app', 'Expected Salary'),
+            'area'=> Yii::t('app', 'Area'),
             'note' => Yii::t('app', 'Note'),
         ];
     }

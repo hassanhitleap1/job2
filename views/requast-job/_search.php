@@ -28,15 +28,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nationality') ?>
 
-    <?php // echo $form->field($model, 'certificates') ?>
+    <?php  echo $form->field($model, 'certificates') ?>
 
-    <?php // echo $form->field($model, 'experience') ?>
+    <?php echo $form->field($model, 'experience') ?>
 
-    <?php // echo $form->field($model, 'governorate') ?>
+    <?php  echo $form->field($model, 'governorate') ?>
 
-    <?php // echo $form->field($model, 'expected_salary') ?>
+    <?php  echo $form->field($model, 'area') ?>
 
-    <?php // echo $form->field($model, 'note') ?>
+    <?php  echo $form->field($model, 'expected_salary') ?>
+
+    <?php  echo $form->field($model, 'note') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
