@@ -31,9 +31,16 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
     public $expected_salary;
     public $note;
 
+    public static function tableName()
+    {
+        return "requast_job";
+    }
+    
+    
     public function rules()
     {
         return [
+            [['name','agree', 'phone', 'nationality', 'governorate'], 'required'],
             [['agree', 'phone', 'nationality', 'governorate', 'expected_salary'], 'integer'],
             [['certificates', 'experience', 'note'], 'string'],
             [['name'], 'string', 'max' => 255],

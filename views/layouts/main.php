@@ -56,8 +56,8 @@ AppAsset::register($this);
        
     }
 
-    $menuItems[] = ['label' => 'About', 'url' => ['/site/about']];
-    $menuItems[] =  ['label' => 'Contact', 'url' => ['/site/contact']];
+    // $menuItems[] = ['label' => 'About', 'url' => ['/site/about']];
+    // $menuItems[] =  ['label' => 'Contact', 'url' => ['/site/contact']];
     
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
