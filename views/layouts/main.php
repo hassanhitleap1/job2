@@ -37,14 +37,14 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'requast job', 'url' => ['/requat-job/index']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+       
     ];
     if (Yii::$app->user->isGuest) {
+        $menuItems[] = ['label' => 'requast job', 'url' => ['/requat-job/index']];
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
+        $menuItems[]=['label' => 'Requast Job', 'url' => ['/requast-job/index']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
@@ -53,7 +53,12 @@ AppAsset::register($this);
             )
             . Html::endForm()
             . '</li>';
+       
     }
+
+    $menuItems[] = ['label' => 'About', 'url' => ['/site/about']];
+    $menuItems[] =  ['label' => 'Contact', 'url' => ['/site/contact']];
+    
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
