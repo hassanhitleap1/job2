@@ -2,6 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use conquer\select2\Select2Widget;
+use yii\helpers\ArrayHelper;
+use app\models\Nationality;
+use app\models\Governorate;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\RequastJob */
@@ -19,8 +23,20 @@ use yii\widgets\ActiveForm;
                       <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
                       <?= $form->field($model, 'agree')->textInput() ?>
                       <?= $form->field($model, 'phone')->textInput() ?>
-                        <?= $form->field($model, 'nationality')->textInput() ?>
-                        <?= $form->field($model, 'governorate')->textInput() ?>
+                        <?=  $form->field($model, 'nationality')->widget(
+                                Select2Widget::className(),
+                                    [
+                                        'items'=>ArrayHelper::map(Nationality::find()->all(), 'id', 'name_ar')
+                                    ]
+                                );?>
+
+                <?=  $form->field($model, 'governorate')->widget(
+                                                Select2Widget::className(),
+                                                    [
+                                                        'items'=>ArrayHelper::map(Governorate::find()->all(), 'id', 'name_ar')
+                                                    ]
+                                                );?>
+                        
 
 <?= $form->field($model, 'expected_salary')->textInput() ?>
                     </div>
