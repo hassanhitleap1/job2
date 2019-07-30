@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'phone',
             'avg_agree',
             'job_title',
+            'nationality',
             'desc_job:ntext',
             'governorate',
             'area',

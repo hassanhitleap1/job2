@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use conquer\select2\Select2Widget;
+use yii\helpers\ArrayHelper;
+use app\models\Area;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\RequestMerchant */
@@ -22,10 +25,27 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'job_title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'desc_job')->textarea(['rows' => 6]) ?>
+    
 
-    <?= $form->field($model, 'governorate')->textInput() ?>
+    <?= $form->field($model, 'nationality')->widget(
+                        Select2Widget::className(),
+                        [
+                            'items' => ArrayHelper::map(Area::find()->all(), 'id', 'name_ar')
+                        ]
+                    ); ?>
+    <?= $form->field($model, 'governorate')->widget(
+                        Select2Widget::className(),
+                        [
+                            'items' => ArrayHelper::map(Area::find()->all(), 'id', 'name_ar')
+                        ]
+                    ); ?>
 
-    <?= $form->field($model, 'area')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'area')->widget(
+                        Select2Widget::className(),
+                        [
+                            'items' => ArrayHelper::map(Area::find()->all(), 'name_ar', 'name_ar')
+                        ]
+                    ); ?>
 
     <?= $form->field($model, 'avg_salary')->textInput() ?>
 

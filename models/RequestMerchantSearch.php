@@ -17,7 +17,7 @@ class RequestMerchantSearch extends RequestMerchant
     public function rules()
     {
         return [
-            [['id', 'phone', 'avg_agree', 'governorate', 'avg_salary', 'number_of_houer', 'note'], 'integer'],
+            [['id', 'phone', 'avg_agree', 'governorate', 'avg_salary', 'number_of_houer', 'nationality','note'], 'integer'],
             [['name', 'name_company', 'job_title', 'desc_job', 'area'], 'safe'],
         ];
     }
@@ -64,6 +64,7 @@ class RequestMerchantSearch extends RequestMerchant
             'governorate' => $this->governorate,
             'avg_salary' => $this->avg_salary,
             'number_of_houer' => $this->number_of_houer,
+            'nationality'=>$this->nationality,
             'note' => $this->note,
         ]);
 
@@ -71,7 +72,8 @@ class RequestMerchantSearch extends RequestMerchant
             ->andFilterWhere(['like', 'name_company', $this->name_company])
             ->andFilterWhere(['like', 'job_title', $this->job_title])
             ->andFilterWhere(['like', 'desc_job', $this->desc_job])
-            ->andFilterWhere(['like', 'area', $this->area]);
+            ->andFilterWhere(['like', 'area', $this->area])
+            ->andFilterWhere(['like', 'nationality', $this->nationality]);;
 
         return $dataProvider;
     }

@@ -25,8 +25,10 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name_company') ?>
 
     <?= $form->field($model, 'phone') ?>
-
+    
     <?= $form->field($model, 'avg_agree') ?>
+
+    <?= $form->field($model, 'nationality') ?>
 
     <?php  echo $form->field($model, 'job_title') ?>
 

@@ -16,6 +16,7 @@ use Yii;
  * @property string $desc_job
  * @property int $governorate
  * @property string $area
+ * @property int $nationality
  * @property int $avg_salary
  * @property int $number_of_houer
  * @property int $note
@@ -36,7 +37,7 @@ class RequestMerchant extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['phone', 'avg_agree', 'governorate', 'avg_salary', 'number_of_houer', 'note'], 'integer'],
+            [['phone', 'avg_agree', 'governorate', 'avg_salary', 'number_of_houer', 'nationality','note'], 'integer'],
             [['desc_job'], 'string'],
             [['name', 'name_company', 'job_title', 'area'], 'string', 'max' => 255],
         ];
@@ -56,6 +57,7 @@ class RequestMerchant extends \yii\db\ActiveRecord
             'job_title' => Yii::t('app', 'Job Title'),
             'desc_job' => Yii::t('app', 'Desc Job'),
             'governorate' => Yii::t('app', 'Governorate'),
+            'nationality'=> Yii::t('app', 'nationality'),
             'area' => Yii::t('app', 'Area'),
             'avg_salary' => Yii::t('app', 'Avg Salary'),
             'number_of_houer' => Yii::t('app', 'Number Of Houer'),

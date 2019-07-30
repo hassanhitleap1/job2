@@ -26,6 +26,7 @@ class m190730_121714_request_merchant extends Migration
             'area'=>$this->string(),
             'avg_salary'=>$this->integer(),
             'number_of_houer'=>$this->integer(),
+            'nationality'=>$this->integer(),
             'note'=>$this->integer(),
         ], $tableOptions);
     }
