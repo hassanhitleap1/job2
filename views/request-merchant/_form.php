@@ -5,6 +5,8 @@ use yii\widgets\ActiveForm;
 use conquer\select2\Select2Widget;
 use yii\helpers\ArrayHelper;
 use app\models\Area;
+use app\models\Nationality;
+use app\models\Governorate;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\RequestMerchant */
@@ -30,13 +32,13 @@ use app\models\Area;
     <?= $form->field($model, 'nationality')->widget(
                         Select2Widget::className(),
                         [
-                            'items' => ArrayHelper::map(Area::find()->all(), 'id', 'name_ar')
+                            'items' => ArrayHelper::map(Nationality::find()->all(), 'id', 'name_ar')
                         ]
                     ); ?>
     <?= $form->field($model, 'governorate')->widget(
                         Select2Widget::className(),
                         [
-                            'items' => ArrayHelper::map(Area::find()->all(), 'id', 'name_ar')
+                            'items' => ArrayHelper::map(Governorate::find()->all(), 'id', 'name_ar')
                         ]
                     ); ?>
 
