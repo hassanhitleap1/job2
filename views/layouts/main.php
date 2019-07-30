@@ -47,6 +47,8 @@ AppAsset::register($this);
         $menuItems[]=['label' => 'Requast Job', 'url' => ['/requast-job/index']];
         $menuItems[] = ['label' => 'governorate', 'url' => ['/governorate/index']];
         $menuItems[] = ['label' => 'nationality', 'url' => ['/nationality/index']];
+        $menuItems[] = ['label' => 'Request Merchant', 'url' => ['/request-merchant/index']];
+        
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
