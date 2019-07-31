@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Governorate */
 
-$this->title = Yii::t('app', 'Create Governorate');
+$this->title = Yii::t('app', 'Create_Governorate');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Governorates'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

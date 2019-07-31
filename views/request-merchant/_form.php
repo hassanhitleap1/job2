@@ -13,7 +13,7 @@ use app\models\Governorate;
 /* @var $form yii\widgets\ActiveForm */
 ?>
         <div class="panel panel-default">
-        <div class="panel-heading">sssss</div>
+        <div class="panel-heading"><?= Yii::t('app','Create_Requast_Job')?></div>
         <div class="panel-body">
         <?php $form = ActiveForm::begin(); ?>
             <div class="row">

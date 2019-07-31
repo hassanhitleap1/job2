@@ -12,7 +12,7 @@ use app\models\Area;
 <div class="requast-job-form">
 
     <div class="panel panel-default">
-        <div class="panel-heading">sssss</div>
+        <div class="panel-heading"><?= Yii::t('app','Create_Requast_Job') ?></div>
         <div class="panel-body">
             <?php $form = ActiveForm::begin(); ?>
             <div class="row">

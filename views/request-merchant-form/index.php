@@ -12,7 +12,7 @@ use app\models\Area;
 <div class="requast-job-form">
 
     <div class="panel panel-default">
-        <div class="panel-heading">Reqast form</div>
+        <div class="panel-heading"><?= Yii::t('app','Create_Request_Merchant')?></div>
         <div class="panel-body">
             <?php $form = ActiveForm::begin(); ?>
             <div class="row">

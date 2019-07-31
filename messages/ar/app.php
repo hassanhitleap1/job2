@@ -24,6 +24,22 @@ return [
     'Avg_Salary'=>'معدل الرواتب',
     'Number_Of_Houer'=>'عدد ساعات العمل',
     'Save'=>'حفظ',
-  
+    'Search'=>'بحث',
+    'Reset'=>'ريست',
+    'Create_Area'=>'انشاء مطقة',
+    'Areas'=>'المناطق',
+    'Governorates'=>'المحافظات',
+    'Create_Governorate'=>'انشاء محافظة',
+    'Nationalities'=>'الجنسيات',
+    'Create_Nationality'=>'انشاء جنسية',
+    'Update'=>'تحديث',
+    'Delete'=>'حذف',
+    'Create_Requast_Job'=>'انشاء طلب وظيفة',
+    'Requast_Jobs'=>'طلب وظيفة',
+    'Create_Request_Merchant'=>'انشاء طلب صاح عمل ',
+    'Request_Merchants'=>'طلبات صاحب عمل',
+
+
+
 
 ];
