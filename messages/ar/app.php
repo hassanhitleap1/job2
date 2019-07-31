@@ -38,6 +38,7 @@ return [
     'Requast_Jobs'=>'طلب وظيفة',
     'Create_Request_Merchant'=>'انشاء طلب صاح عمل ',
     'Request_Merchants'=>'طلبات صاحب عمل',
+    'email'
 
 
 
