@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\RequastJob */
+/* @var $model app\models\RequestMerchant */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Requast_Jobs'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Request Merchants'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="container">
+<div class="request-merchant-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -31,14 +31,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             // 'id',
             'name',
-            'agree',
+            'name_company',
             'phone',
-            'nationality',
-            'certificates:ntext',
-            'experience:ntext',
+            'avg_agree',
+            'job_title',
+            'desc_job:ntext',
             'governorate',
-            'expected_salary',
-            'note:ntext',
+            'area',
+            'avg_salary',
+            'nationality',
+            'number_of_houer',
+            'note',
         ],
     ]) ?>
 

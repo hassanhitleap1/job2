@@ -29,36 +29,39 @@ AppAsset::register($this);
 <body>
     <?php $this->beginBody() ?>
 
-    <div class="wrap">
-        <?php
-        NavBar::begin([
-            'brandLabel' => Yii::$app->name,
-            'brandUrl' => Yii::$app->homeUrl,
-            'options' => [
-                'class' => 'navbar-inverse navbar-fixed-top',
-            ],
-        ]);
-        $menuItems = [
-            ['label' => 'Home', 'url' => ['/site/index']],
-
-        ];
-        if (Yii::$app->user->isGuest) {
-            $menuItems[] = ['label' => 'requast job', 'url' => ['/requat-job/index']];
-            $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-            $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-        } else {
-            $menuItems[] = ['label' => 'Requast Job', 'url' => ['/requast-job/index']];
-            $menuItems[] = ['label' => 'governorate', 'url' => ['/governorate/index']];
-            $menuItems[] = ['label' => 'nationality', 'url' => ['/nationality/index']];
-            $menuItems[] = '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>';
-        }
+<div class="wrap">
+    <?php
+    NavBar::begin([
+        'brandLabel' => Yii::$app->name,
+        'brandUrl' => Yii::$app->homeUrl,
+        'options' => [
+            'class' => 'navbar-inverse navbar-fixed-top',
+        ],
+    ]);
+    $menuItems = [
+        ['label' => Yii::t('app', 'Home'), 'url' => ['/site/index']],
+       
+    ];
+    if (Yii::$app->user->isGuest) {
+        $menuItems[] = ['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requat-job/index']];
+        $menuItems[] = ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/signup']];
+        $menuItems[] = ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
+    } else {
+        $menuItems[]=['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requast-job/index']];
+        $menuItems[] = ['label' => Yii::t('app', 'Governorate'), 'url' => ['/governorate/index']];
+        $menuItems[] = ['label' => Yii::t('app', 'Nationality') , 'url' => ['/nationality/index']];
+        $menuItems[] = ['label' =>Yii::t('app', 'Request_Merchant') , 'url' => ['/request-merchant/index']];
+        
+        $menuItems[] = '<li>'
+            . Html::beginForm(['/site/logout'], 'post')
+            . Html::submitButton(
+                '( '.Yii::t('app', 'Logout'). ' ' . Yii::$app->user->identity->username . ')',
+                ['class' => 'btn btn-link logout']
+            )
+            . Html::endForm()
+            . '</li>';
+       
+    }
 
         // $menuItems[] = ['label' => 'About', 'url' => ['/site/about']];
         // $menuItems[] =  ['label' => 'Contact', 'url' => ['/site/contact']];
@@ -71,9 +74,10 @@ AppAsset::register($this);
         ?>
 
         <?= Alert::widget() ?>
-        <?=  Wrapper::widget([
-            'layerClass' => 'lo\modules\noty\layers\Growl',
-        ]);?>
+        <?= $content ?>        
+    </div>
+
+</div>
 
         <?= $content ?>
 

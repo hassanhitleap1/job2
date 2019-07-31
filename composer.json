@@ -19,7 +19,11 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "conquer/select2": "^1.4",
+<<<<<<< HEAD
         "loveorigami/yii2-notification-wrapper": "*"
+=======
+        "airani/yii2-bootstrap-rtl": "^1.2"
+>>>>>>> 6f6aa685dfee6dcce11d32d84b1d3d2ff34bf0e6
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
