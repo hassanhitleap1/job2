@@ -36,23 +36,23 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => Yii::t('app', 'Home'), 'url' => ['/site/index']],
        
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'requast job', 'url' => ['/requat-job/index']];
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requat-job/index']];
+        $menuItems[] = ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/signup']];
+        $menuItems[] = ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
     } else {
-        $menuItems[]=['label' => 'Requast Job', 'url' => ['/requast-job/index']];
-        $menuItems[] = ['label' => 'governorate', 'url' => ['/governorate/index']];
-        $menuItems[] = ['label' => 'nationality', 'url' => ['/nationality/index']];
-        $menuItems[] = ['label' => 'Request Merchant', 'url' => ['/request-merchant/index']];
+        $menuItems[]=['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requast-job/index']];
+        $menuItems[] = ['label' => Yii::t('app', 'Governorate'), 'url' => ['/governorate/index']];
+        $menuItems[] = ['label' => Yii::t('app', 'Nationality') , 'url' => ['/nationality/index']];
+        $menuItems[] = ['label' =>Yii::t('app', 'Request_Merchant') , 'url' => ['/request-merchant/index']];
         
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
+                '( '.Yii::t('app', 'Logout'). ' ' . Yii::$app->user->identity->username . ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
