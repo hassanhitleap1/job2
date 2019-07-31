@@ -60,16 +60,16 @@ class RequestMerchantForm extends Model{
     {
         return [
             'name' => Yii::t('app', 'Name'),
-            'name_company' => Yii::t('app', 'Name Company'),
+            'name_company' => Yii::t('app', 'Name_Company'),
             'phone' => Yii::t('app', 'Phone'),
-            'avg_agree' => Yii::t('app', 'Avg Agree'),
-            'job_title' => Yii::t('app', 'Job Title'),
-            'desc_job' => Yii::t('app', 'Desc Job'),
+            'avg_agree' => Yii::t('app', 'Avg_Agree'),
+            'job_title' => Yii::t('app', 'Job_Title'),
+            'desc_job' => Yii::t('app', 'Desc_Job'),
             'governorate' => Yii::t('app', 'Governorate'),
-            'nationality'=> Yii::t('app', 'nationality'),
+            'nationality'=> Yii::t('app', 'Nationality'),
             'area' => Yii::t('app', 'Area'),
-            'avg_salary' => Yii::t('app', 'Avg Salary'),
-            'number_of_houer' => Yii::t('app', 'Number Of Houer'),
+            'avg_salary' => Yii::t('app', 'Avg_Salary'),
+            'number_of_houer' => Yii::t('app', 'Number_Of_Houer'),
         ];
     }
 

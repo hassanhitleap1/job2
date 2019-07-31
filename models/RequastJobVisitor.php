@@ -61,7 +61,7 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
             'certificates' => Yii::t('app', 'Certificates'),
             'experience' => Yii::t('app', 'Experience'),
             'governorate' => Yii::t('app', 'Governorate'),
-            'expected_salary' => Yii::t('app', 'Expected Salary'),
+            'expected_salary' => Yii::t('app', 'Expected_Salary'),
             'area'=> Yii::t('app', 'Area'),
             'note' => Yii::t('app', 'Note'),
         ];

@@ -37,7 +37,7 @@ class Nationality extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'name_ar' => Yii::t('app', 'Name Ar'),
+            'name_ar' => Yii::t('app', 'Name_Ar'),
         ];
     }
 
