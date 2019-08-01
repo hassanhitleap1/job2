@@ -4,12 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "hash": "17607b32cc66b3390e42e68c9d0cc225",
-    "content-hash": "25c428dd4ccc03a867d9a8f39dc5dec8",
-=======
     "content-hash": "3e103b6d347ebbfd34d93b61cd831067",
->>>>>>> 6f6aa685dfee6dcce11d32d84b1d3d2ff34bf0e6
     "packages": [
         {
             "name": "airani/yii2-bootstrap-rtl",
