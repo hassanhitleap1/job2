@@ -8,11 +8,9 @@ use app\models\Nationality;
 use app\models\Governorate;
 use app\models\Area;
 ?>
-
-<div class="requast-job-form">
-
+<div class="container">
     <div class="panel panel-default">
-        <div class="panel-heading"><?= Yii::t('app','Create_Requast_Job') ?></div>
+        <div class="panel-heading"><?= Yii::t('app', 'Create_Requast_Job') ?></div>
         <div class="panel-body">
             <?php $form = ActiveForm::begin(); ?>
             <div class="row">
@@ -20,12 +18,7 @@ use app\models\Area;
                     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
                     <?= $form->field($model, 'agree')->textInput() ?>
                     <?= $form->field($model, 'phone')->textInput() ?>
-                    <?= $form->field($model, 'nationality')->widget(
-                        Select2Widget::className(),
-                        [
-                            'items' => ArrayHelper::map(Nationality::find()->all(), 'id', 'name_ar')
-                        ]
-                    ); ?>
+
 
                     <?= $form->field($model, 'governorate')->widget(
                         Select2Widget::className(),
@@ -40,13 +33,16 @@ use app\models\Area;
                             'items' => ArrayHelper::map(Area::find()->all(), 'name_ar', 'name_ar')
                         ]
                     ); ?>
-                   
-
-                    <?= $form->field($model, 'expected_salary')->textInput() ?>
-
-
+                    <?= $form->field($model, 'nationality')->widget(
+                        Select2Widget::className(),
+                        [
+                            'items' => ArrayHelper::map(Nationality::find()->all(), 'id', 'name_ar')
+                        ]
+                    ); ?>
                 </div>
                 <div class="col-md-6">
+
+                    <?= $form->field($model, 'expected_salary')->textInput() ?>
                     <?= $form->field($model, 'certificates')->textarea(['rows' => 6]) ?>
 
                     <?= $form->field($model, 'experience')->textarea(['rows' => 6]) ?>
@@ -55,9 +51,14 @@ use app\models\Area;
                 </div>
             </div>
             <div class="row">
-                <div class="form-group">
-                    <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <div class="form-group">
+                        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-primary btn-lg btn-block']) ?>
+                    </div>
                 </div>
+
+
             </div>
             <?php ActiveForm::end(); ?>
         </div>

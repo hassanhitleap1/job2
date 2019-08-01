@@ -38,7 +38,10 @@ return [
     'Requast_Jobs'=>'طلب وظيفة',
     'Create_Request_Merchant'=>'انشاء طلب صاح عمل ',
     'Request_Merchants'=>'طلبات صاحب عمل',
-    'email'
+    'email'=>'البريد الاليكتروني',
+    'Username'=>'اسم المستخدم',
+    'Password'=>'كلمة السر',
+    'Remember_Me'=>'تذكرني',
 
 
 

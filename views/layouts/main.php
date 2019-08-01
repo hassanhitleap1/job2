@@ -27,61 +27,51 @@ AppAsset::register($this);
 </head>
 
 <body>
-    <?php $this->beginBody() ?>
-
+<?php $this->beginBody() ?>
 <div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => Yii::t('app', 'Home'), 'url' => ['/site/index']],
-       
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requat-job/index']];
-        $menuItems[] = ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
-    } else {
-        $menuItems[]=['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requast-job/index']];
-        $menuItems[] = ['label' => Yii::t('app', 'Governorate'), 'url' => ['/governorate/index']];
-        $menuItems[] = ['label' => Yii::t('app', 'Nationality') , 'url' => ['/nationality/index']];
-        $menuItems[] = ['label' =>Yii::t('app', 'Request_Merchant') , 'url' => ['/request-merchant/index']];
-        
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                '( '.Yii::t('app', 'Logout'). ' ' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-       
-    }
-
-        // $menuItems[] = ['label' => 'About', 'url' => ['/site/about']];
-        // $menuItems[] =  ['label' => 'Contact', 'url' => ['/site/contact']];
-
-        echo Nav::widget([
-            'options' => ['class' => 'navbar-nav navbar-right'],
-            'items' => $menuItems,
+        <?php
+        NavBar::begin([
+            'brandLabel' => Yii::$app->name,
+            'brandUrl' => Yii::$app->homeUrl,
+            'options' => [
+                'class' => 'navbar-inverse navbar-fixed-top',
+            ],
         ]);
-        NavBar::end();
-        ?>
+        $menuItems = [
+            ['label' => Yii::t('app', 'Home'), 'url' => ['/site/index']],
+        
+        ];
+        if (Yii::$app->user->isGuest) {
+            $menuItems[] = ['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requat-job/index']];
+            $menuItems[] = ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/signup']];
+            $menuItems[] = ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
+        } else {
+            $menuItems[]=['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requast-job/index']];
+            $menuItems[] = ['label' => Yii::t('app', 'Governorate'), 'url' => ['/governorate/index']];
+            $menuItems[] = ['label' => Yii::t('app', 'Nationality') , 'url' => ['/nationality/index']];
+            $menuItems[] = ['label' =>Yii::t('app', 'Request_Merchant') , 'url' => ['/request-merchant/index']];
+            
+            $menuItems[] = '<li>'
+                . Html::beginForm(['/site/logout'], 'post')
+                . Html::submitButton(
+                    '( '.Yii::t('app', 'Logout'). ' ' . Yii::$app->user->identity->username . ')',
+                    ['class' => 'btn btn-link logout']
+                )
+                . Html::endForm()
+                . '</li>';
+        
+        }
+        echo Nav::widget([
+                'options' => ['class' => 'navbar-nav navbar-right'],
+                'items' => $menuItems,
+            ]);
+            NavBar::end();
+            ?>
 
-        <?= Alert::widget() ?>
-        <?= $content ?>        
+            <?= Alert::widget() ?>
+            <?= $content ?>        
     </div>
 
-</div>
-
-        <?= $content ?>
-
-    </div>
 
     <footer class="footer">
         <div class="container">

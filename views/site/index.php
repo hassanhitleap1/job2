@@ -1,10 +1,15 @@
 <?php
 
 /* @var $this yii\web\View */
+
 use yii\helpers\Html;
+
 $this->title = 'home';
 ?>
- <div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div class="container">
+
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -15,15 +20,15 @@ $this->title = 'home';
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-        <?= Html::img('images/1.jpg');?>
+        <?= Html::img('images/1.jpg'); ?>
       </div>
 
       <div class="item">
-          <?= Html::img('images/2.jpg');?>
+        <?= Html::img('images/2.jpg'); ?>
       </div>
-    
+
       <div class="item">
-        <?= Html::img('images/3.jpg');?>
+        <?= Html::img('images/3.jpg'); ?>
       </div>
     </div>
 
@@ -37,3 +42,5 @@ $this->title = 'home';
       <span class="sr-only">Next</span>
     </a>
   </div>
+
+</div>
