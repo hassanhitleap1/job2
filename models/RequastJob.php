@@ -38,6 +38,7 @@ class RequastJob extends \yii\db\ActiveRecord
             [['agree', 'phone', 'nationality', 'governorate', 'expected_salary'], 'integer'],
             [['certificates', 'experience', 'area','note'], 'string'],
             [['name'], 'string', 'max' => 255],
+            [['name','phone', 'nationality','agree', 'governorate'], 'required']
         ];
     }
 

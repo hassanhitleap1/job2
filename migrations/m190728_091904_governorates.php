@@ -8,8 +8,8 @@ use yii\db\Migration;
 class m190728_091904_governorates extends Migration
 {
     public $data = [
-        ['name_ar' => 'جرش'],
         ['name_ar' => 'عمان'],
+        ['name_ar' => 'جرش'],
         ['name_ar' => 'عجلون'],
         ['name_ar' => 'الزرقاء'],
         ['name_ar' => 'البلقاء'],
