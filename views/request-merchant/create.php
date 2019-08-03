@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Request_Merchants'),
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-
+<div class="container">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
@@ -18,3 +18,4 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 
+</div>

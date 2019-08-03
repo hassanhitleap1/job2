@@ -10,7 +10,7 @@ use yii\widgets\Pjax;
 $this->title = Yii::t('app', 'Request_Merchants');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="request-merchant-index">
+<div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -33,9 +33,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'phone',
             'avg_agree',
             'job_title',
-            'nationality',
+            [
+                'attribute' => 'nationality',
+                'value' => 'nationality0.name_ar',
+
+            ],
             'desc_job:ntext',
-            'governorate',
+            [
+                'attribute' => 'governorate',
+                'value' => 'governorate0.name_ar',
+
+            ],
             'area',
             'avg_salary',
             'number_of_houer',

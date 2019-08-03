@@ -7,11 +7,11 @@ use yii\widgets\DetailView;
 /* @var $model app\models\RequestMerchant */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Request Merchants'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Request_Merchants'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="request-merchant-view">
+<div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -24,6 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a(Yii::t('app', 'Request_Merchants'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Back'), ['index'], ['class' => 'btn btn-info']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -36,10 +38,22 @@ $this->params['breadcrumbs'][] = $this->title;
             'avg_agree',
             'job_title',
             'desc_job:ntext',
-            'governorate',
             'area',
             'avg_salary',
-            'nationality',
+            [
+                'format' => 'raw',
+                'name' => 'governorate',
+                'attribute' => 'governorate',
+                'value' => $model->governorate0->name_ar,
+
+            ],
+            [
+                'format' => 'raw',
+                'name' => 'nationality',
+                'attribute' => 'nationality',
+                'value' => $model->nationality0->name_ar,
+
+            ],
             'number_of_houer',
             'note',
         ],

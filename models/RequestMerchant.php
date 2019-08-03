@@ -37,9 +37,10 @@ class RequestMerchant extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['phone', 'avg_agree', 'governorate', 'avg_salary', 'number_of_houer', 'nationality','note'], 'integer'],
+            [['phone', 'avg_agree', 'governorate', 'avg_salary', 'number_of_houer', 'nationality'], 'integer'],
             [['desc_job'], 'string'],
             [['name', 'name_company', 'job_title', 'area'], 'string', 'max' => 255],
+            [['avg_agree', 'phone', 'nationality', 'job_title'], 'required']
         ];
     }
 
@@ -63,6 +64,22 @@ class RequestMerchant extends \yii\db\ActiveRecord
             'number_of_houer' => Yii::t('app', 'Number_Of_Houer'),
             'note' => Yii::t('app', 'Note'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getGovernorate0()
+    {
+        return $this->hasOne(Governorate::className(), ['id' => 'governorate']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getNationality0()
+    {
+        return $this->hasOne(Nationality::className(), ['id' => 'nationality']);
     }
 
     /**

@@ -17,8 +17,8 @@ class RequestMerchantSearch extends RequestMerchant
     public function rules()
     {
         return [
-            [['id', 'phone', 'avg_agree', 'governorate', 'avg_salary', 'number_of_houer', 'nationality','note'], 'integer'],
-            [['name', 'name_company', 'job_title', 'desc_job', 'area'], 'safe'],
+            [['id', 'phone', 'avg_agree', 'avg_salary', 'number_of_houer','note'], 'integer'],
+            [['name', 'name_company', 'job_title', 'governorate', 'nationality','desc_job', 'area'], 'safe'],
         ];
     }
 
@@ -56,15 +56,18 @@ class RequestMerchantSearch extends RequestMerchant
             return $dataProvider;
         }
 
+        $query->joinWith('nationality0');
+        $query->joinWith('governorate0');  
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'phone' => $this->phone,
             'avg_agree' => $this->avg_agree,
-            'governorate' => $this->governorate,
+            // 'governorate' => $this->governorate,
             'avg_salary' => $this->avg_salary,
             'number_of_houer' => $this->number_of_houer,
-            'nationality'=>$this->nationality,
+            // 'nationality'=>$this->nationality,
             'note' => $this->note,
         ]);
 
@@ -73,7 +76,8 @@ class RequestMerchantSearch extends RequestMerchant
             ->andFilterWhere(['like', 'job_title', $this->job_title])
             ->andFilterWhere(['like', 'desc_job', $this->desc_job])
             ->andFilterWhere(['like', 'area', $this->area])
-            ->andFilterWhere(['like', 'nationality', $this->nationality]);;
+            ->andFilterWhere(['like', 'nationality.name_ar', $this->nationality])
+            ->andFilterWhere(['like', 'governorate.name_ar', $this->governorate]);
 
         return $dataProvider;
     }

@@ -55,7 +55,7 @@ class RequastJobSearch extends RequastJob
             // $query->where('0=1');
             return $dataProvider;
         }
-
+        $query->where(['type' => User::NORMAL_USER]);
         $query->joinWith('nationality0');
         $query->joinWith('governorate0');  
 

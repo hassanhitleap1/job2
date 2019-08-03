@@ -1,6 +1,7 @@
 <?php
 
 use yii\db\Migration;
+use app\models\User;
 
 /**
  * Class m190803_180403_user_table
@@ -25,48 +26,48 @@ class m190803_180403_user_table extends Migration
             'status' => $this->smallInteger()->defaultValue(10),
             'agree' => $this->integer(),
             'phone' => $this->integer(),
-            'nationality' => $this->integer(),
+            'nationality' => $this->integer()->defaultValue(-1),
             'certificates' => $this->text(),
             'experience' => $this->text(),
-            'governorate' => $this->integer()->notNull(),
+            'governorate' => $this->integer()->defaultValue(-1),
             'area' => $this->string(),
             'expected_salary' => $this->integer(),
             'note' => $this->text(),
-            //'verification_token', $this->string()->defaultValue(null),
+            'type'=>$this->smallInteger()->defaultValue(User::NORMAL_USER),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
 
-        $this->addForeignKey(
-            'fk-nationality-nationality',
-            'user',
-            'nationality',
-            'nationality',
-            'id',
-            'CASCADE'
-        );
+        // $this->addForeignKey(
+        //     'fk-nationality-nationality',
+        //     'user',
+        //     'nationality',
+        //     'nationality',
+        //     'id',
+        //     'CASCADE'
+        // );
     
-        $this->addForeignKey(
-            'fk-governorate-governorate',
-            'user',
-            'governorate',
-            'governorate',
-            'id',
-            'CASCADE'
-        );
+        // $this->addForeignKey(
+        //     'fk-governorate-governorate',
+        //     'user',
+        //     'governorate',
+        //     'governorate',
+        //     'id',
+        //     'CASCADE'
+        // );
 
     }
     public function down()
     {
-        $this->dropForeignKey(
-            'fk-governorate-governorate',
-            'user'
-        );
+        // $this->dropForeignKey(
+        //     'fk-governorate-governorate',
+        //     'user'
+        // );
         
-        $this->dropForeignKey(
-            'fk-nationality-nationality',
-            'user'
-        );
+        // $this->dropForeignKey(
+        //     'fk-nationality-nationality',
+        //     'user'
+        // );
         
         $this->dropTable('{{%user}}');
     }
