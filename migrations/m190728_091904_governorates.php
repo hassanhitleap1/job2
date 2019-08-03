@@ -7,6 +7,20 @@ use yii\db\Migration;
  */
 class m190728_091904_governorates extends Migration
 {
+    public $data = [
+        ['name_ar' => 'جرش'],
+        ['name_ar' => 'عمان'],
+        ['name_ar' => 'عجلون'],
+        ['name_ar' => 'الزرقاء'],
+        ['name_ar' => 'البلقاء'],
+        ['name_ar' => 'اربد'],
+        ['name_ar' => 'الكرك'],
+        ['name_ar' => 'معان'],
+        ['name_ar' => 'العقبة'],
+        ['name_ar' => 'الطفيلة'],
+        ['name_ar' => 'المفرق'],
+        ['name_ar' => 'مادبا']
+    ];
     public function up()
     {
         $tableOptions = null;
@@ -18,6 +32,11 @@ class m190728_091904_governorates extends Migration
             'id' => $this->primaryKey(),
             'name_ar' => $this->string()
         ], $tableOptions);
+        
+        Yii::$app->db
+            ->createCommand()
+            ->batchInsert('governorate', ['name_ar'], $this->data)
+            ->execute();
     }
     public function down()
     {

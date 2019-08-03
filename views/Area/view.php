@@ -6,12 +6,12 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Area */
 
-$this->title = $model->id;
+$this->title = $model->name_ar;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Areas'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="area-view">
+<div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -24,6 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a(Yii::t('app', 'Create_Area'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Back'), ['index'], ['class' => 'btn btn-info']) ?>
     </p>
 
     <?= DetailView::widget([
