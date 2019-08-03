@@ -27,6 +27,7 @@ class Nationality extends \yii\db\ActiveRecord
     {
         return [
             [['name_ar'], 'string', 'max' => 255],
+            ['name_ar', 'required'],
         ];
     }
 

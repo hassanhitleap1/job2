@@ -45,6 +45,7 @@ return [
     'Conf_Password'=>'تاكيد كلمة السر',
     'Pass_Dont_match'=>'تاكيد كلمة السر ليست ككلمة السر',
     'Back'=>'الرجوع',
+    'Update_Nationality'=>'تحديث الجنسية',
 
 
 

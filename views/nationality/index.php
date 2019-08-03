@@ -10,7 +10,7 @@ use yii\widgets\Pjax;
 $this->title = Yii::t('app', 'Nationalities');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="nationality-index">
+<div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a(Yii::t('app', 'Create_Nationality'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php Pjax::begin(); ?>
+    <?php //Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
@@ -27,13 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            // 'id',
             'name_ar',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 
-    <?php Pjax::end(); ?>
+    <?php //Pjax::end(); ?>
 
 </div>
