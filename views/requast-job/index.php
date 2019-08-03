@@ -31,10 +31,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'agree',
             'phone',
-            'nationality',
+            [
+                'attribute' => 'nationality',
+                'value' => 'nationality0.name_ar',
+
+            ],
             'certificates:ntext',
             'experience:ntext',
-            'governorate',
+            [
+                'attribute' => 'governorate',
+                'value' => 'governorate0.name_ar',
+
+            ],
             'expected_salary',
             'note:ntext',
 

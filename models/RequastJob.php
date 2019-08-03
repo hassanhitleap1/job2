@@ -26,7 +26,7 @@ class RequastJob extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%requast_job}}';
+        return '{{%user}}';
     }
 
     /**
@@ -48,7 +48,6 @@ class RequastJob extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
             'agree' => Yii::t('app', 'Agree'),
             'phone' => Yii::t('app', 'Phone'),
@@ -62,6 +61,23 @@ class RequastJob extends \yii\db\ActiveRecord
         ];
     }
 
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getGovernorate0()
+    {
+        return $this->hasOne(Governorate::className(), ['id' => 'governorate']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getNationality0()
+    {
+        return $this->hasOne(Nationality::className(), ['id' => 'nationality']);
+    }
+    
     /**
      * {@inheritdoc}
      * @return RequastJobQuery the active query used by this AR class.

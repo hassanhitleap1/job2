@@ -185,4 +185,21 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getGovernorate0()
+    {
+        return $this->hasOne(Governorate::className(), ['id' => 'governorate']);
+    }
+
+    /**
+     * {@inheritdoc}
+     * @return UserQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new UserQuery(get_called_class());
+    }
 }

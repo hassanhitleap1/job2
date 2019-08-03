@@ -17,8 +17,8 @@ class RequastJobSearch extends RequastJob
     public function rules()
     {
         return [
-            [['id', 'agree', 'phone', 'nationality', 'governorate', 'expected_salary'], 'integer'],
-            [['name', 'certificates', 'experience', 'note'], 'safe'],
+            [['id', 'agree', 'phone',  'expected_salary'], 'integer'],
+            [['name', 'certificates', 'experience', 'nationality', 'governorate','note'], 'safe'],
         ];
     }
 
@@ -56,19 +56,24 @@ class RequastJobSearch extends RequastJob
             return $dataProvider;
         }
 
+        $query->joinWith('nationality0');
+        $query->joinWith('governorate0');  
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'agree' => $this->agree,
             'phone' => $this->phone,
-            'nationality' => $this->nationality,
-            'governorate' => $this->governorate,
+            // 'nationality' => $this->nationality,
+            // 'governorate' => $this->governorate,
             'expected_salary' => $this->expected_salary,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'certificates', $this->certificates])
             ->andFilterWhere(['like', 'experience', $this->experience])
+            ->andFilterWhere(['like', 'nationality.name_ar', $this->nationality])
+            ->andFilterWhere(['like', 'governorate.name_ar', $this->governorate])
             ->andFilterWhere(['like', 'note', $this->note]);
 
         return $dataProvider;
