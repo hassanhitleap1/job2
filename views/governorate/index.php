@@ -10,7 +10,7 @@ use yii\widgets\Pjax;
 $this->title = Yii::t('app', 'Governorates');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="governorate-index">
+<div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            // 'id',
             'name_ar',
 
             ['class' => 'yii\grid\ActionColumn'],
