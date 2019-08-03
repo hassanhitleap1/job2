@@ -12,8 +12,6 @@ use yii\helpers\ArrayHelper;
 /* @var $model app\models\RequastJob */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
-<div class="requast-job-form">
     <div class="container">
         <?php $form = ActiveForm::begin(); ?>
         <div class="row">
