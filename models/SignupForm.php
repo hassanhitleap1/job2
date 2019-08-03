@@ -14,6 +14,7 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $conf_password;
     /**
      * {@inheritdoc}
      */
@@ -31,6 +32,7 @@ class SignupForm extends Model
             ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This email address has already been taken.'],
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+            ['conf_password', 'compare', 'compareAttribute' => 'password', 'message' => Yii::t('app','Pass_Dont_match')],
         ];
     }
     /**

@@ -42,7 +42,8 @@ return [
     'Username'=>'اسم المستخدم',
     'Password'=>'كلمة السر',
     'Remember_Me'=>'تذكرني',
-
+    'Conf_Password'=>'تاكيد كلمة السر',
+    'Pass_Dont_match'=>'تاكيد كلمة السر ليست ككلمة السر',
 
 
 
