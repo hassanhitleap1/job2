@@ -46,6 +46,11 @@ return [
     'Pass_Dont_match'=>'تاكيد كلمة السر ليست ككلمة السر',
     'Back'=>'الرجوع',
     'Update_Nationality'=>'تحديث الجنسية',
+    'Name_Marchant'=>'اسم صاحب العمل',
+    'Agree_To'=>'العمر الى',
+    'Agree_From'=>'العمر من',
+    'Salary_To'=>'الراتب من',
+    'Salary_From'=>'الراتب الى',
 
 
 

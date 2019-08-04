@@ -16,18 +16,18 @@ class m190730_121714_request_merchant extends Migration
         }
         $this->createTable('{{%request_merchant}}', [
             'id' => $this->primaryKey(),
-            'name' => $this->string(),
-            'name_company' => $this->string(),
-            'phone' => $this->integer(),
-            'avg_agree' => $this->integer(),
             'job_title' => $this->string(),
             'desc_job' => $this->text(),
+            'salary_from'=>$this->integer(),
+            'salary_to'=>$this->integer(),
+            'agree_from' => $this->integer(),
+            'agree_to' => $this->integer(),
             'governorate'=>$this->integer(),
             'area'=>$this->string(),
-            'avg_salary'=>$this->integer(),
             'number_of_houer'=>$this->integer(),
             'nationality'=>$this->integer(),
             'note'=>$this->text(),
+            'user_id'=>$this->integer(),
         ], $tableOptions);
     }
     public function down()

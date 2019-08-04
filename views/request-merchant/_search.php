@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="container">
+<div class="request-merchant-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -20,29 +20,29 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'name') ?>
+    <?= $form->field($model, 'job_title') ?>
 
-    <?= $form->field($model, 'name_company') ?>
+    <?= $form->field($model, 'desc_job') ?>
 
-    <?= $form->field($model, 'phone') ?>
-    
-    <?= $form->field($model, 'avg_agree') ?>
+    <?= $form->field($model, 'salary_from') ?>
 
-    <?= $form->field($model, 'nationality') ?>
+    <?= $form->field($model, 'salary_to') ?>
 
-    <?php  echo $form->field($model, 'job_title') ?>
+    <?php // echo $form->field($model, 'agree_from') ?>
 
-    <?php  echo $form->field($model, 'desc_job') ?>
+    <?php // echo $form->field($model, 'agree_to') ?>
 
-    <?php  echo $form->field($model, 'governorate') ?>
+    <?php // echo $form->field($model, 'governorate') ?>
 
-    <?php  echo $form->field($model, 'area') ?>
+    <?php // echo $form->field($model, 'area') ?>
 
-    <?php  echo $form->field($model, 'avg_salary') ?>
+    <?php // echo $form->field($model, 'number_of_houer') ?>
 
-    <?php  echo $form->field($model, 'number_of_houer') ?>
+    <?php // echo $form->field($model, 'nationality') ?>
 
-    <?php  echo $form->field($model, 'note') ?>
+    <?php // echo $form->field($model, 'note') ?>
+
+    <?php // echo $form->field($model, 'user_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

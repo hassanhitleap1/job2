@@ -27,27 +27,31 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            // 'id',
-            'name',
-            'name_company',
-            'phone',
-            'avg_agree',
+            //'id',
             'job_title',
-            [
-                'attribute' => 'nationality',
-                'value' => 'nationality0.name_ar',
-
-            ],
             'desc_job:ntext',
+            'salary_from',
+            'salary_to',
+            'agree_from',
+            'agree_to',
             [
                 'attribute' => 'governorate',
                 'value' => 'governorate0.name_ar',
 
             ],
             'area',
-            'avg_salary',
             'number_of_houer',
-            'note',
+            [
+                'attribute' => 'nationality',
+                'value' => 'nationality0.name_ar',
+
+            ],
+            'note:ntext',
+            [
+                'attribute' => 'user_id',
+                'value' => 'user0.name',
+
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

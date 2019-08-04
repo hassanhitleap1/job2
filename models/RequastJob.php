@@ -78,6 +78,7 @@ class RequastJob extends \yii\db\ActiveRecord
         return $this->hasOne(Nationality::className(), ['id' => 'nationality']);
     }
     
+
     /**
      * {@inheritdoc}
      * @return RequastJobQuery the active query used by this AR class.
