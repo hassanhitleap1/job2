@@ -5,9 +5,11 @@ namespace app\controllers;
 use Yii;
 use app\models\Merchant;
 use app\models\MerchantSearch;
+use app\models\RequestMerchant;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+
 
 /**
  * MerchantController implements the CRUD actions for Merchant model.
@@ -64,7 +66,9 @@ class MerchantController extends Controller
      */
     public function actionCreate()
     {
+        
         $model = new Merchant();
+        $modelsRequestMerchant= [new RequestMerchant];
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,6 +76,7 @@ class MerchantController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'modelsRequestMerchant' => (empty($modelsRequestMerchant)) ? [new RequestMerchant] : $modelsRequestMerchant
         ]);
     }
 
