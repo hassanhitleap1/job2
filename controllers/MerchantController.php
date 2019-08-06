@@ -9,6 +9,7 @@ use app\models\RequestMerchant;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\base\Model;
 
 
 /**
@@ -70,30 +71,24 @@ class MerchantController extends Controller
         $model = new Merchant();
         $modelsRequestMerchant= [new RequestMerchant];
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        $model = new Merchant();
-        $modelsRequestMerchant = [new RequestMerchant];
-
         if ($model->load(Yii::$app->request->post())) {
-
+            
             $modelsRequestMerchant = Model::createMultiple(RequestMerchant::classname());
             Model::loadMultiple($modelsRequestMerchant, Yii::$app->request->post());
 
             // validate all models
             $valid = $model->validate();
             $valid = Model::validateMultiple($modelsRequestMerchant) && $valid;
-
+            die($valid);
+            exit;
             if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
 
                 try {
                     if ($flag = $modelsRequestMerchant->save(false)) {
-                        foreach ($modelsRequestMerchant as $modelsRequestMerchant) {
-                            $modelsRequestMerchant->user_id = $model->id;
-                            if (!($flag = $modelsRequestMerchant->save(false))) {
+                        foreach ($modelsRequestMerchant as $modelRequestMerchant) {
+                            $modelRequestMerchant->user_id = $model->id;
+                            if (!($flag = $modelRequestMerchant->save(false))) {
                                 $transaction->rollBack();
                                 break;
                             }
@@ -126,14 +121,50 @@ class MerchantController extends Controller
      */
     public function actionUpdate($id)
     {
+     
         $model = $this->findModel($id);
+        $modelsRequestMerchant = $model->requasts;
+        
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+
+            $oldIDs = ArrayHelper::map($modelsRequestMerchant, 'id', 'id');
+            $modelsRequestMerchant = Model::createMultiple(Address::classname(), $modelsRequestMerchant);
+            Model::loadMultiple($modelsRequestMerchant, Yii::$app->request->post());
+            $deletedIDs = array_diff($oldIDs, array_filter(ArrayHelper::map($modelsRequestMerchant, 'id', 'id')));
+
+            // validate all models
+            $valid = $modelsRequestMerchant->validate();
+            $valid = Model::validateMultiple($modelsRequestMerchant) && $valid;
+
+            if ($valid) {
+                $transaction = \Yii::$app->db->beginTransaction();
+                try {
+                    if ($flag = $modelsRequestMerchant->save(false)) {
+                        if (!empty($deletedIDs)) {
+                            Address::deleteAll(['id' => $deletedIDs]);
+                        }
+                        foreach ($modelsRequestMerchant as $modelAddress) {
+                            $modelAddress->user_id = $modelsRequestMerchant->id;
+                            if (!($flag = $modelsRequestMerchant->save(false))) {
+                                $transaction->rollBack();
+                                break;
+                            }
+                        }
+                    }
+                    if ($flag) {
+                        $transaction->commit();
+                        return $this->redirect(['view', 'id' => $model->id]);
+                    }
+                } catch (Exception $e) {
+                    $transaction->rollBack();
+                }
+            }
         }
 
         return $this->render('update', [
             'model' => $model,
+            'modelsRequestMerchant' => (empty($modelsRequestMerchant)) ? [new RequestMerchant] : $modelsRequestMerchant
         ]);
     }
 

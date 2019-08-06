@@ -77,7 +77,14 @@ class Merchant extends \yii\db\ActiveRecord
         return $this->hasOne(Governorate::className(), ['id' => 'governorate']);
     }
 
-
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRequasts()
+    {
+        return $this->hasMany(RequestMerchant::className(), ['user_id' => 'id']);
+    }
+    
 
 
 }
