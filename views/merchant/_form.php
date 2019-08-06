@@ -61,98 +61,105 @@ $this->registerJs($js);
         </div>
     </div>
     <div class="row">
-        <?php DynamicFormWidget::begin([
-            'widgetContainer' => 'dynamicform_wrapper', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
-            'widgetBody' => '.container-items', // required: css class selector
-            'widgetItem' => '.item', // required: css class
-            'limit' => 4, // the maximum times, an element can be cloned (default 999)
-            'min' => 0, // 0 or 1 (default 1)
-            'insertButton' => '.add-item', // css class
-            'deleteButton' => '.remove-item', // css class
-            'model' => $modelsRequestMerchant[0],
-            'formId' => 'dynamic-form',
-            'formFields' => [
-                'job_title',
-                'desc_job',
-                'salary_from',
-                'salary_to',
-                'agree_from',
-                'agree_to',
-                'governorate',
-                'area',
-                'number_of_houer',
-                'nationality',
-                'note',
-
-            ],
-        ]); ?>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-envelope"></i> requast marchent
-                <button type="button" class="pull-right add-item btn btn-success btn-xs"><i class="fa fa-plus"></i> Add address</button>
-                <div class="clearfix"></div>
+                <h4><i class="glyphicon glyphicon-envelope"></i> Requastes</h4>
             </div>
-            <div class="panel-body container-items">
-                <!-- widgetContainer -->
-                <?php foreach ($modelsRequestMerchant as $index => $modelsRequestMerchant) : ?>
-                    <div class="item panel panel-default">
-                        <!-- widgetBody -->
-                        <div class="panel-heading">
-                            <span class="panel-title-address">Address: <?= ($index + 1) ?></span>
-                            <button type="button" class="pull-right remove-item btn btn-danger btn-xs"><i class="fa fa-minus"></i></button>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="panel-body">
-                            <?php
-                            // necessary for update action.
-                            if (!$modelsRequestMerchant->isNewRecord) {
-                                echo Html::activeHiddenInput($modelsRequestMerchant, "[{$index}]id");
-                            }
-                            ?>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <?= $form->field($modelsRequestMerchant, "[{$index}]job_title")->textInput(['maxlength' => true]) ?>
+            <div class="panel-body">
+                <?php DynamicFormWidget::begin([
+                    'widgetContainer' => 'dynamicform_wrapper', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
+                    'widgetBody' => '.container-items', // required: css class selector
+                    'widgetItem' => '.item', // required: css class
+                    'limit' => 4, // the maximum times, an element can be cloned (default 999)
+                    'min' => 1, // 0 or 1 (default 1)
+                    'insertButton' => '.add-item', // css class
+                    'deleteButton' => '.remove-item', // css class
+                    'model' => $modelsRequestMerchant[0],
+                    'formId' => 'dynamic-form',
+                    'formFields' => [
+                        'job_title',
+                        'salary_from',
+                        'salary_to', 
+                        'agree_to',
+                        'agree_from', 
+                        'nationality',
+                        'governorate',
+                        'area',
+                        'number_of_houer',
+                        'desc_job',
+                        'note',
+                    ],
+                ]); ?>
 
-                                    <?= $form->field($modelsRequestMerchant, "[{$index}]salary_from")->textInput() ?>
 
-                                    <?= $form->field($modelsRequestMerchant, "[{$index}]salary_to")->textInput() ?>
-
-                                    <?= $form->field($modelsRequestMerchant, "[{$index}]agree_from")->textInput() ?>
-
-                                    <?= $form->field($modelsRequestMerchant, "[{$index}]agree_to")->textInput() ?>
-                                    <?= $form->field($modelsRequestMerchant, "[{$index}]nationality")->widget(
-                                        Select2Widget::className(),
-                                        [
-                                            'items' => ArrayHelper::map(Nationality::find()->all(), 'id', 'name_ar')
-                                        ]
-                                    ); ?>
-
-                                    <?= $form->field($modelsRequestMerchant, "[{$index}]governorate")->widget(
-                                        Select2Widget::className(),
-                                        [
-                                            'items' => ArrayHelper::map(Governorate::find()->all(), 'id', 'name_ar')
-                                        ]
-                                    ); ?>
-                                    <?= $form->field($modelsRequestMerchant, "[{$index}]area")->widget(
-                                        Select2Widget::className(),
-                                        [
-                                            'items' => ArrayHelper::map(Area::find()->all(), 'name_ar', 'name_ar')
-                                        ]
-                                    ); ?>
-
+                <div class="container-items">
+                    <!-- widgetContainer -->
+                    <?php foreach ($modelsRequestMerchant as $index => $modelRequestMerchant) : ?>
+                        <div class="item panel panel-default">
+                            <!-- widgetBody -->
+                            <div class="panel-heading">
+                                <h3 class="panel-title pull-left">Rquast marchent</h3>
+                                <div class="pull-right">
+                                    <button type="button" class="add-item btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i></button>
+                                    <button type="button" class="remove-item btn btn-danger btn-xs"><i class="glyphicon glyphicon-minus"></i></button>
                                 </div>
-                                <div class="col-md-6">
-                                    <?= $form->field($modelsRequestMerchant, "[{$index}]number_of_houer")->textInput() ?>
-                                    <?= $form->field($modelsRequestMerchant, "[{$index}]desc_job")->textarea(['rows' => 6]) ?>
-                                    <?= $form->field($modelsRequestMerchant, "[{$index}]note")->textarea(['rows' => 6]) ?>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="panel-body">
+                                <?php
+                                // necessary for update action.
+                                if (!$modelRequestMerchant->isNewRecord) {
+                                    echo Html::activeHiddenInput($modelRequestMerchant, "[{$index}]id");
+                                }
+                                ?>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <?= $form->field($modelRequestMerchant, "[{$index}]job_title")->textInput(['maxlength' => true]) ?>
+
+                                        <?= $form->field($modelRequestMerchant, "[{$index}]salary_from")->textInput() ?>
+
+                                        <?= $form->field($modelRequestMerchant, "[{$index}]salary_to")->textInput() ?>
+
+                                        <?= $form->field($modelRequestMerchant, "[{$index}]agree_from")->textInput() ?>
+
+                                        <?= $form->field($modelRequestMerchant, "[{$index}]agree_to")->textInput() ?>
+                                        <?= $form->field($modelRequestMerchant, "[{$index}]nationality")->widget(
+                                            Select2Widget::className(),
+                                            [
+                                                'items' => ArrayHelper::map(Nationality::find()->all(), 'id', 'name_ar')
+                                            ]
+                                        );  ?>
+
+                                        <?= $form->field($modelRequestMerchant, "[{$index}]governorate")->widget(
+                                            Select2Widget::className(),
+                                            [
+                                                'items' => ArrayHelper::map(Governorate::find()->all(), 'id', 'name_ar')
+                                            ]
+                                        ); ?>
+                                        <?=  $form->field($modelRequestMerchant, "[{$index}]area")->widget(
+                                            Select2Widget::className(),
+                                            [
+                                                'items' => ArrayHelper::map(Area::find()->all(), 'name_ar', 'name_ar')
+                                            ]
+                                        ); ?>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <?= $form->field($modelRequestMerchant, "[{$index}]number_of_houer")->textInput() ?>
+                                        <?= $form->field($modelRequestMerchant, "[{$index}]desc_job")->textarea(['rows' => 6]) ?>
+                                        <?= $form->field($modelRequestMerchant, "[{$index}]note")->textarea(['rows' => 6]) ?>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
+                <?php DynamicFormWidget::end(); ?>
             </div>
         </div>
-        <?php DynamicFormWidget::end(); ?>
+
 
 
     </div>

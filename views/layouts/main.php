@@ -47,6 +47,7 @@ AppAsset::register($this);
             $menuItems[] = ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/signup']];
             $menuItems[] = ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
 
+            $menuItems[] = ['label' => Yii::t('app', 'Merchants'), 'url' => ['/merchant/index']];
             $menuItems[] = ['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requast-job/index']];
             $menuItems[] = ['label' => Yii::t('app', 'Governorate'), 'url' => ['/governorate/index']];
             $menuItems[] = ['label' => Yii::t('app', 'Nationality'), 'url' => ['/nationality/index']];
