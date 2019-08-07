@@ -11,7 +11,7 @@ use yii\filters\VerbFilter;
 /**
  * RequastJobController implements the CRUD actions for RequastJob model.
  */
-class RequastJobController extends Controller
+class RequastJobController extends BaseController
 {
     /**
      * {@inheritdoc}
