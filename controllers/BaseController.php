@@ -15,5 +15,6 @@ class BaseController extends Controller
         if (Yii::$app->user->isGuest) {
             return $this->redirect(['site/login']);
         }
+        return $action;
     }
 }
