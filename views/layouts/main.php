@@ -43,6 +43,9 @@ AppAsset::register($this);
         
         ];
         if (Yii::$app->user->isGuest) {
+    
+    $menuItems[] = ['label' => Yii::t('app', 'SendJob'), 'url' => ['/send-job/index']];
+    $menuItems[] = ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories/index']];
             $menuItems[] = ['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requat-job/index']];
             $menuItems[] = ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/signup']];
             $menuItems[] = ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
