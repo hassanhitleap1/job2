@@ -8,10 +8,9 @@ use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
 use app\base\Model;
-use app\base\Controller;
 use app\models\RequestMerchantSearch;
 
-class RequestMerchantFormController extends \yii\web\Controller
+class RequestMerchantFormController extends BaseController
 {
      /**
      * Lists all RequestMerchant models.

@@ -5,14 +5,13 @@ namespace app\controllers;
 use Yii;
 use app\models\SendJob;
 use app\models\SendJobSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * SendJobController implements the CRUD actions for SendJob model.
  */
-class SendJobController extends Controller
+class SendJobController extends BaseController
 {
     /**
      * {@inheritdoc}

@@ -5,14 +5,13 @@ namespace app\controllers;
 use Yii;
 use app\models\Nationality;
 use app\models\NationalitySearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * NationalityController implements the CRUD actions for Nationality model.
  */
-class NationalityController extends Controller
+class NationalityController extends BaseController
 {
     /**
      * {@inheritdoc}

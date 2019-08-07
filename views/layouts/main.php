@@ -38,30 +38,22 @@ AppAsset::register($this);
                 'class' => 'navbar-inverse navbar-fixed-top',
             ],
         ]);
-        $menuItems = [
-            ['label' => Yii::t('app', 'Home'), 'url' => ['/site/index']],
-        
-        ];
+
         if (Yii::$app->user->isGuest) {
-    
-    $menuItems[] = ['label' => Yii::t('app', 'SendJob'), 'url' => ['/send-job/index']];
-    $menuItems[] = ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories/index']];
-            $menuItems[] = ['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requat-job/index']];
+          $menuItems[] =['label' => Yii::t('app', 'Home'), 'url' => ['/site/index']];
             $menuItems[] = ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/signup']];
             $menuItems[] = ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
-
+            $menuItems[] = ['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requat-job/index']];
+          
+        } else {
+            $menuItems[] = ['label' => Yii::t('app', 'SendJob'), 'url' => ['/send-job/index']];
+            $menuItems[] = ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories/index']];
             $menuItems[] = ['label' => Yii::t('app', 'Merchants'), 'url' => ['/merchant/index']];
-            $menuItems[] = ['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requast-job/index']];
             $menuItems[] = ['label' => Yii::t('app', 'Governorate'), 'url' => ['/governorate/index']];
             $menuItems[] = ['label' => Yii::t('app', 'Nationality'), 'url' => ['/nationality/index']];
-            $menuItems[] = ['label' => Yii::t('app', 'Request_Merchant'), 'url' => ['/request-merchant/index']];
-
-        } else {
-            // $menuItems[]=['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requast-job/index']];
-            // $menuItems[] = ['label' => Yii::t('app', 'Governorate'), 'url' => ['/governorate/index']];
-            // $menuItems[] = ['label' => Yii::t('app', 'Nationality') , 'url' => ['/nationality/index']];
-            // $menuItems[] = ['label' =>Yii::t('app', 'Request_Merchant') , 'url' => ['/request-merchant/index']];
-            
+            $menuItems[] = ['label' => Yii::t('app', 'Area'), 'url' => ['/area/index']];
+            $menuItems[] = ['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requast-job/index']];
+            $menuItems[] = ['label' => Yii::t('app', 'Request_Merchant'), 'url' => ['/request-merchant/index']];            
             $menuItems[] = '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(

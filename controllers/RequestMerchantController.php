@@ -5,14 +5,13 @@ namespace app\controllers;
 use Yii;
 use app\models\RequestMerchant;
 use app\models\RequestMerchantSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * RequestMerchantController implements the CRUD actions for RequestMerchant model.
  */
-class RequestMerchantController extends Controller
+class RequestMerchantController extends BaseController
 {
     /**
      * {@inheritdoc}

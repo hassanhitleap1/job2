@@ -5,14 +5,13 @@ namespace app\controllers;
 use Yii;
 use app\models\Governorate;
 use app\models\GovernorateSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * GovernorateController implements the CRUD actions for Governorate model.
  */
-class GovernorateController extends Controller
+class GovernorateController extends BaseController
 {
     /**
      * {@inheritdoc}

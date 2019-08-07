@@ -5,14 +5,13 @@ namespace app\controllers;
 use Yii;
 use app\models\Area;
 use app\models\AreaSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * AreaController implements the CRUD actions for Area model.
  */
-class AreaController extends Controller
+class AreaController extends BaseController
 {
     /**
      * {@inheritdoc}
