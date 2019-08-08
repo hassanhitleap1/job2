@@ -35,7 +35,8 @@ class Merchant extends \yii\db\ActiveRecord
         return [
             [[ 'phone',  'governorate'], 'integer'],
             [['name_company', 'name', 'note'], 'string'],
-            [['name_company', 'name'], 'required'],   
+            [['name','name_company','phone'], 'required'],   
+            [['phone'], 'match', 'pattern' => '/^(079|078|077)[0-9]/'],
         ];
     }
 

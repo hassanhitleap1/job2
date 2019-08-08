@@ -8,7 +8,7 @@ use app\models\MerchantSearch;
 use app\models\RequestMerchant;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\base\Model;
+use app\base\Model;
 
 
 /**
@@ -72,14 +72,13 @@ class MerchantController extends BaseController
 
         if ($model->load(Yii::$app->request->post())) {
             
-            $modelsRequestMerchant = Model::createMultiple(RequestMerchant::classname());
+            $modelsRequestMerchant = Model::createMultiple(RequestMerchant::classname(),$modelsRequestMerchant  );
             Model::loadMultiple($modelsRequestMerchant, Yii::$app->request->post());
 
             // validate all models
             $valid = $model->validate();
             $valid = Model::validateMultiple($modelsRequestMerchant) && $valid;
-            die($valid);
-            exit;
+           
             if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
 
