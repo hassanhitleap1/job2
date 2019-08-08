@@ -38,7 +38,8 @@ class RequastJob extends \yii\db\ActiveRecord
             [['agree', 'phone', 'nationality', 'governorate', 'expected_salary'], 'integer'],
             [['certificates', 'experience', 'area','note'], 'string'],
             [['name'], 'string', 'max' => 255],
-            [['name','phone', 'nationality','agree', 'governorate'], 'required']
+            [['name','phone', 'nationality','agree', 'governorate'], 'required'],
+            [['phone'], 'match', 'pattern' => '/^(079|078|077)[0-9]/'],
         ];
     }
 

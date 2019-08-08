@@ -36,7 +36,7 @@ return [
     'Delete'=>'حذف',
     'Create_Requast_Job'=>'انشاء طلب وظيفة',
     'Requast_Jobs'=>'طلب وظيفة',
-    'Create_Request_Merchant'=>'انشاء طلب صاح عمل ',
+    'Create_Request_Merchant'=>'انشاء طلب صاحب عمل ',
     'Request_Merchants'=>'طلبات صاحب عمل',
     'email'=>'البريد الاليكتروني',
     'Username'=>'اسم المستخدم',
@@ -63,5 +63,6 @@ return [
     'Request_Merchant'=>'طلب صاحب العمل',
     'Create_Merchant_with_Request'=>'انشاء صحاحب عمل مع طلباته',
     'Create_Merchant'=>'انشاء صحاحب عمل',
+    'Category'=>'الصنف',
 
 ];

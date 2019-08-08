@@ -8,6 +8,7 @@ use app\models\Area;
 use app\models\Nationality;
 use app\models\Governorate;
 use wbraganca\dynamicform\DynamicFormWidget;
+use app\models\Categories;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Merchant */
@@ -87,6 +88,7 @@ $this->registerJs($js);
                         'salary_from',
                         'salary_to', 
                         'agree_to',
+                        'category_id',
                         'agree_from', 
                         'nationality',
                         'governorate',
@@ -131,12 +133,13 @@ $this->registerJs($js);
                                         );  ?>
                                     </div>
                                     <div class="col-md-3">
-                                        <?= $form->field($modelRequestMerchant, "[{$index}]governorate")->widget(
+                                    <?=  $form->field($modelRequestMerchant, "[{$index}]category_id")->widget(
                                             Select2Widget::className(),
                                             [
-                                                'items' => ArrayHelper::map(Governorate::find()->all(), 'id', 'name_ar')
+                                                'items' => ArrayHelper::map(Categories::find()->all(), 'id', 'name_ar')
                                             ]
                                         ); ?>
+                                      
                                         
                                         
                                     </div>
@@ -146,7 +149,15 @@ $this->registerJs($js);
                                     </div>
                                 </div> 
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
+                                    <?= $form->field($modelRequestMerchant, "[{$index}]governorate")->widget(
+                                            Select2Widget::className(),
+                                            [
+                                                'items' => ArrayHelper::map(Governorate::find()->all(), 'id', 'name_ar')
+                                            ]
+                                        ); ?>
+                                    </div>
+                                    <div class="col-md-2">
                                         <?=  $form->field($modelRequestMerchant, "[{$index}]area")->widget(
                                             Select2Widget::className(),
                                             [

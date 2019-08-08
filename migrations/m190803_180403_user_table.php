@@ -25,7 +25,7 @@ class m190803_180403_user_table extends Migration
             'email' => $this->string()->unique(),
             'status' => $this->smallInteger()->defaultValue(10),
             'agree' => $this->integer(),
-            'phone' => $this->integer(),
+            'phone' => $this->string(),
             'nationality' => $this->integer()->defaultValue(-1),
             'certificates' => $this->text(),
             'experience' => $this->text(),

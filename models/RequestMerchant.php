@@ -40,7 +40,7 @@ class RequestMerchant extends \yii\db\ActiveRecord
             [['desc_job', 'note'], 'string'],
             [['salary_from', 'salary_to', 'agree_from', 'agree_to', 'governorate', 'number_of_houer', 'nationality', 'user_id'], 'integer'],
             [['job_title', 'area'], 'string', 'max' => 255],
-            [['number_of_houer', 'governorate','nationality','user_id'], 'required']
+            [['user_id','job_title','number_of_houer', 'nationality','governorate','agree_from','agree_to','salary_from','salary_to'], 'required']
         ];
     }
 
@@ -62,6 +62,7 @@ class RequestMerchant extends \yii\db\ActiveRecord
             'number_of_houer' => Yii::t('app', 'Number_Of_Houer'),
             'nationality' => Yii::t('app', 'Nationality'),
             'note' => Yii::t('app', 'Note'),
+            'category_id'=>Yii::t('app', 'Category'),
             'user_id' => Yii::t('app', 'Name_Marchant'),
         ];
     }
