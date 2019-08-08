@@ -60,5 +60,8 @@ return [
     'Send_Save'=>'ارسال وحفظ',
     'Create_Send_Job'=>'انشاء وارسال والوظيفة',
     'Create_Category'=>'انشاء صنف',
+    'Request_Merchant'=>'طلب صاحب العمل',
+    'Create_Merchant_with_Request'=>'انشاء صحاحب عمل مع طلباته',
+    'Create_Merchant'=>'انشاء صحاحب عمل',
 
 ];

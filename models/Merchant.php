@@ -6,29 +6,16 @@ use Yii;
 
 /**
  * This is the model class for table "{{%user}}".
- *
  * @property int $id
- * @property string $username
  * @property string $name
- * @property string $auth_key
- * @property string $password_hash
- * @property string $password_reset_token
- * @property string $email
- * @property int $status
- * @property int $agree
  * @property int $phone
  * @property int $nationality
- * @property string $certificates
- * @property string $experience
  * @property int $governorate
  * @property string $area
- * @property int $expected_salary
  * @property string $note
  * @property int $type
  * @property string $name_company
- * @property int $created_at
- * @property int $updated_at
- * @property string $verification_token
+
  */
 class Merchant extends \yii\db\ActiveRecord
 {

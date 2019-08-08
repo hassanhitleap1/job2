@@ -34,36 +34,42 @@ $this->registerJs($js);
 <div class="container">
     <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-2">
             <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
+        
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'name_company')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-3">
             <?= $form->field($model, 'phone')->textInput() ?>
-
+        </div>
+        <div class="col-md-2">
             <?= $form->field($model, 'governorate')->widget(
                 Select2Widget::className(),
                 [
                     'items' => ArrayHelper::map(Governorate::find()->all(), 'id', 'name_ar')
                 ]
             ); ?>
-            <?= $form->field($model, 'area')->widget(
+        </div>
+        <div class="col-md-2">
+        <?= $form->field($model, 'area')->widget(
                 Select2Widget::className(),
                 [
                     'items' => ArrayHelper::map(Area::find()->all(), 'name_ar', 'name_ar')
                 ]
             ); ?>
-
-
         </div>
-        <div class="col-md-6">
-            <?= $form->field($model, 'name_company')->textInput(['maxlength' => true]) ?>
-
+    </div>   
+    <div class="row">
+        <div class="col-md-12">
             <?= $form->field($model, 'note')->textarea(['rows' => 6]) ?>
         </div>
-    </div>
+    </div>   
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4><i class="glyphicon glyphicon-envelope"></i> Requastes</h4>
+                <h4><i class="glyphicon glyphicon-envelope"></i><?=Yii::t('app','Create_Request_Merchant')?> </h4>
             </div>
             <div class="panel-body">
                 <?php DynamicFormWidget::begin([
@@ -98,7 +104,7 @@ $this->registerJs($js);
                         <div class="item panel panel-default">
                             <!-- widgetBody -->
                             <div class="panel-heading">
-                                <h3 class="panel-title pull-left">Rquast marchent</h3>
+                                <h3 class="panel-title pull-left"><?=Yii::t('app','Request_Merchant') ." {" .($index + 1)."}" ?> </h3>
                                 <div class="pull-right">
                                     <button type="button" class="add-item btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i></button>
                                     <button type="button" class="remove-item btn btn-danger btn-xs"><i class="glyphicon glyphicon-minus"></i></button>
@@ -112,42 +118,60 @@ $this->registerJs($js);
                                     echo Html::activeHiddenInput($modelRequestMerchant, "[{$index}]id");
                                 }
                                 ?>
-                                
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <?= $form->field($modelRequestMerchant, "[{$index}]job_title")->textInput(['maxlength' => true]) ?>
-
-                                        <?= $form->field($modelRequestMerchant, "[{$index}]salary_from")->textInput() ?>
-
-                                        <?= $form->field($modelRequestMerchant, "[{$index}]salary_to")->textInput() ?>
-
-                                        <?= $form->field($modelRequestMerchant, "[{$index}]agree_from")->textInput() ?>
-
-                                        <?= $form->field($modelRequestMerchant, "[{$index}]agree_to")->textInput() ?>
+                                    <div class="col-md-3">
+                                    <?= $form->field($modelRequestMerchant, "[{$index}]job_title")->textInput(['maxlength' => true]) ?>
+                                    </div>
+                                    <div class="col-md-3">
                                         <?= $form->field($modelRequestMerchant, "[{$index}]nationality")->widget(
                                             Select2Widget::className(),
                                             [
                                                 'items' => ArrayHelper::map(Nationality::find()->all(), 'id', 'name_ar')
                                             ]
                                         );  ?>
-
+                                    </div>
+                                    <div class="col-md-3">
                                         <?= $form->field($modelRequestMerchant, "[{$index}]governorate")->widget(
                                             Select2Widget::className(),
                                             [
                                                 'items' => ArrayHelper::map(Governorate::find()->all(), 'id', 'name_ar')
                                             ]
                                         ); ?>
+                                        
+                                        
+                                    </div>
+                                    <div class="col-md-3">
+                                        <?= $form->field($modelRequestMerchant, "[{$index}]number_of_houer")->textInput() ?>
+                                        
+                                    </div>
+                                </div> 
+                                <div class="row">
+                                    <div class="col-md-3">
                                         <?=  $form->field($modelRequestMerchant, "[{$index}]area")->widget(
                                             Select2Widget::className(),
                                             [
                                                 'items' => ArrayHelper::map(Area::find()->all(), 'name_ar', 'name_ar')
                                             ]
                                         ); ?>
-
+                                    </div>
+                                    <div class="col-md-2">
+                                        <?= $form->field($modelRequestMerchant, "[{$index}]agree_from")->textInput() ?>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <?= $form->field($modelRequestMerchant, "[{$index}]agree_to")->textInput() ?>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <?= $form->field($modelRequestMerchant, "[{$index}]salary_from")->textInput() ?> 
+                                    </div>
+                                    <div class="col-md-2">
+                                        <?= $form->field($modelRequestMerchant, "[{$index}]salary_to")->textInput() ?>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <?= $form->field($modelRequestMerchant, "[{$index}]desc_job")->textarea(['rows' => 6]) ?>
                                     </div>
                                     <div class="col-md-6">
-                                        <?= $form->field($modelRequestMerchant, "[{$index}]number_of_houer")->textInput() ?>
-                                        <?= $form->field($modelRequestMerchant, "[{$index}]desc_job")->textarea(['rows' => 6]) ?>
                                         <?= $form->field($modelRequestMerchant, "[{$index}]note")->textarea(['rows' => 6]) ?>
                                     </div>
                                 </div>
