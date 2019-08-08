@@ -51,7 +51,14 @@ return [
     'Agree_From'=>'العمر من',
     'Salary_To'=>'الراتب من',
     'Salary_From'=>'الراتب الى',
-
-
+    'Send_Job'=>'ارسال وظيفة',
+    'Categories'=>'الاصناف',
+    'Merchants'=>'اصحاب العمل',
+    'Send_Jobs'=>'الوظائف المرسلة',
+    'Title'=>'العنوان',
+    'Body'=>'الوصف',
+    'Send_Save'=>'ارسال وحفظ',
+    'Create_Send_Job'=>'انشاء وارسال والوظيفة',
+    'Create_Category'=>'انشاء صنف',
 
 ];

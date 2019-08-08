@@ -27,7 +27,7 @@ use yii\widgets\ActiveForm;
         <div class="row">
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                 <div class="form-group">
-                    <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-primary btn-lg btn-block']) ?>
+                    <?= Html::submitButton(Yii::t('app', 'Send_Save'), ['class' => 'btn btn-primary btn-lg btn-block']) ?>
                 </div>
             </div>
         </div>

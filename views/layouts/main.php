@@ -46,7 +46,7 @@ AppAsset::register($this);
             $menuItems[] = ['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requat-job/index']];
           
         } else {
-            $menuItems[] = ['label' => Yii::t('app', 'SendJob'), 'url' => ['/send-job/index']];
+            $menuItems[] = ['label' => Yii::t('app', 'Send_Job'), 'url' => ['/send-job/index']];
             $menuItems[] = ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories/index']];
             $menuItems[] = ['label' => Yii::t('app', 'Merchants'), 'url' => ['/merchant/index']];
             $menuItems[] = ['label' => Yii::t('app', 'Governorate'), 'url' => ['/governorate/index']];
