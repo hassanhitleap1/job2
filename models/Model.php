@@ -1,8 +1,9 @@
 <?php
 
-namespace app\base;
+namespace app\models;
 
 use Yii;
+
 use yii\helpers\ArrayHelper;
 
 class Model extends \yii\base\Model
@@ -25,7 +26,7 @@ class Model extends \yii\base\Model
             $keys = array_keys(ArrayHelper::map($multipleModels, 'id', 'id'));
             $multipleModels = array_combine($keys, $multipleModels);
         }
-
+       
         if ($post && is_array($post)) {
             foreach ($post as $i => $item) {
                 if (isset($item['id']) && !empty($item['id']) && isset($multipleModels[$item['id']])) {
@@ -35,9 +36,10 @@ class Model extends \yii\base\Model
                 }
             }
         }
+        
 
         unset($model, $formName, $post);
-
+        
         return $models;
     }
 }

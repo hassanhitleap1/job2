@@ -8,7 +8,7 @@ use app\models\MerchantSearch;
 use app\models\RequestMerchant;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use app\base\Model;
+use app\models\Model;
 
 
 /**
@@ -71,21 +71,22 @@ class MerchantController extends BaseController
         $modelsRequestMerchant= [new RequestMerchant];
 
         if ($model->load(Yii::$app->request->post())) {
-            
+
+            //$modelsRequestMerchant = new RequestMerchant;
             $modelsRequestMerchant = Model::createMultiple(RequestMerchant::classname(),$modelsRequestMerchant  );
             Model::loadMultiple($modelsRequestMerchant, Yii::$app->request->post());
-
+           // $modelsRequestMerchant->scenario = RequestMerchant::SCENARIO_MERCHANT;
             // validate all models
             $valid = $model->validate();
             $valid = Model::validateMultiple($modelsRequestMerchant) && $valid;
            
             if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
-
                 try {
-                    if ($flag = $modelsRequestMerchant->save(false)) {
+                    if ($flag = $model->save()) {
                         foreach ($modelsRequestMerchant as $modelRequestMerchant) {
                             $modelRequestMerchant->user_id = $model->id;
+                          
                             if (!($flag = $modelRequestMerchant->save(false))) {
                                 $transaction->rollBack();
                                 break;
@@ -95,7 +96,7 @@ class MerchantController extends BaseController
 
                     if ($flag) {
                         $transaction->commit();
-                        return $this->redirect(['view', 'id' => $modelsRequestMerchant->id]);
+                        return $this->redirect(['view', 'id' => $model->id]);
                     }
                 } catch (Exception $e) {
                     $transaction->rollBack();

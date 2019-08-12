@@ -23,12 +23,21 @@ use Yii;
  */
 class RequestMerchant extends \yii\db\ActiveRecord
 {
+    const SCENARIO_MERCHANT= 'merchant';
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
         return '{{%request_merchant}}';
+    }
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_MERCHANT] = ['job_title', 'number_of_houer', 'nationality', 'governorate', 'agree_from', 'agree_to', 'salary_from', 'salary_to'];
+
+        return $scenarios;
     }
 
     /**
@@ -40,7 +49,8 @@ class RequestMerchant extends \yii\db\ActiveRecord
             [['desc_job', 'note'], 'string'],
             [['salary_from', 'salary_to', 'agree_from', 'agree_to', 'governorate', 'number_of_houer', 'nationality', 'user_id'], 'integer'],
             [['job_title', 'area'], 'string', 'max' => 255],
-            [['user_id','job_title','number_of_houer', 'nationality','governorate','agree_from','agree_to','salary_from','salary_to'], 'required']
+            [['job_title','number_of_houer', 'nationality','governorate','agree_from','agree_to','salary_from','salary_to'], 'required'],
+            //[['job_title','number_of_houer', 'nationality','governorate','agree_from','agree_to','salary_from','salary_to'], 'required', 'on' => self::SCENARIO_MERCHANT],
         ];
     }
 
