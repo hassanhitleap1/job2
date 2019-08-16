@@ -9,7 +9,8 @@ use app\models\RequestMerchant;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Model;
-
+use app\models\User;
+use yii\helpers\ArrayHelper;
 
 /**
  * MerchantController implements the CRUD actions for Merchant model.
@@ -71,17 +72,14 @@ class MerchantController extends BaseController
         $modelsRequestMerchant= [new RequestMerchant];
 
         if ($model->load(Yii::$app->request->post())) {
-
-            //$modelsRequestMerchant = new RequestMerchant;
             $modelsRequestMerchant = Model::createMultiple(RequestMerchant::classname(),$modelsRequestMerchant  );
             Model::loadMultiple($modelsRequestMerchant, Yii::$app->request->post());
-           // $modelsRequestMerchant->scenario = RequestMerchant::SCENARIO_MERCHANT;
             // validate all models
             $valid = $model->validate();
             $valid = Model::validateMultiple($modelsRequestMerchant) && $valid;
-           
             if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
+                $model->type = User::MERCHANT_USER;
                 try {
                     if ($flag = $model->save()) {
                         foreach ($modelsRequestMerchant as $modelRequestMerchant) {
@@ -123,34 +121,30 @@ class MerchantController extends BaseController
      
         $model = $this->findModel($id);
         $modelsRequestMerchant = $model->requasts;
-        
 
         if ($model->load(Yii::$app->request->post())) {
-
             $oldIDs = ArrayHelper::map($modelsRequestMerchant, 'id', 'id');
-            $modelsRequestMerchant = Model::createMultiple(Address::classname(), $modelsRequestMerchant);
+            $modelsRequestMerchant = Model::createMultiple(RequestMerchant::classname(), $modelsRequestMerchant);
             Model::loadMultiple($modelsRequestMerchant, Yii::$app->request->post());
             $deletedIDs = array_diff($oldIDs, array_filter(ArrayHelper::map($modelsRequestMerchant, 'id', 'id')));
-
             // validate all models
-            $valid = $modelsRequestMerchant->validate();
+            $valid = $model->validate();
             $valid = Model::validateMultiple($modelsRequestMerchant) && $valid;
-
             if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
+                $model->type = User::MERCHANT_USER;
                 try {
-                    if ($flag = $modelsRequestMerchant->save(false)) {
-                        if (!empty($deletedIDs)) {
-                            Address::deleteAll(['id' => $deletedIDs]);
-                        }
-                        foreach ($modelsRequestMerchant as $modelAddress) {
-                            $modelAddress->user_id = $modelsRequestMerchant->id;
-                            if (!($flag = $modelsRequestMerchant->save(false))) {
+                    if ($flag = $model->save()) {
+                        foreach ($modelsRequestMerchant as $modelRequestMerchant) {
+                            $modelRequestMerchant->user_id = $model->id;
+
+                            if (!($flag = $modelRequestMerchant->save(false))) {
                                 $transaction->rollBack();
                                 break;
                             }
                         }
                     }
+
                     if ($flag) {
                         $transaction->commit();
                         return $this->redirect(['view', 'id' => $model->id]);
@@ -161,9 +155,49 @@ class MerchantController extends BaseController
             }
         }
 
-        return $this->render('update', [
+        return $this->render('create', [
             'model' => $model,
             'modelsRequestMerchant' => (empty($modelsRequestMerchant)) ? [new RequestMerchant] : $modelsRequestMerchant
+        ]);
+
+
+      
+        // if ($model->load(Yii::$app->request->post())) {
+        //     $oldIDs = ArrayHelper::map($modelsRequestMerchant, 'id', 'id');
+        //     $modelsRequestMerchant = Model::createMultiple(RequestMerchant::classname(), $modelsRequestMerchant);
+        //     Model::loadMultiple($modelsRequestMerchant, Yii::$app->request->post());
+        //     $deletedIDs = array_diff($oldIDs, array_filter(ArrayHelper::map($modelsRequestMerchant, 'id', 'id')));
+ 
+        //     // validate all models
+        //     $valid = $modelsRequestMerchant->validate();
+
+        //     $valid = Model::validateMultiple($modelsRequestMerchant) && $valid;
+        //     $transaction = \Yii::$app->db->beginTransaction();
+          
+        //     try {
+        //         if ($flag = $model->save()) {
+        //             foreach ($modelsRequestMerchant as $modelRequestMerchant) {
+        //                 $modelRequestMerchant->user_id = $model->id;
+
+        //                 if (!($flag = $modelRequestMerchant->save(false))) {
+        //                     $transaction->rollBack();
+        //                     break;
+        //                 }
+        //             }
+        //         }
+
+        //         if ($flag) {
+        //             $transaction->commit();
+        //             return $this->redirect(['view', 'id' => $model->id]);
+        //         }
+        //     } catch (Exception $e) {
+        //         $transaction->rollBack();
+        //     }
+        // }
+       
+        return $this->render('update', [
+            'model' => $model,
+            'modelsRequestMerchant' => $modelsRequestMerchant
         ]);
     }
 

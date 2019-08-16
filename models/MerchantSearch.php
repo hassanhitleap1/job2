@@ -47,7 +47,7 @@ class MerchantSearch extends Merchant
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-
+        
         $this->load($params);
 
         if (!$this->validate()) {
@@ -55,6 +55,10 @@ class MerchantSearch extends Merchant
             // $query->where('0=1');
             return $dataProvider;
         }
+
+        $query->andFilterWhere([
+            'type' => User::MERCHANT_USER,
+        ]);
 
         // grid filtering conditions
         $query->andFilterWhere([
