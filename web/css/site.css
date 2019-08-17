@@ -129,3 +129,32 @@ a.desc:after {
     display: -webkit-box;
     position: relative;
 }
+
+.name-cv{
+ margin: auto;
+ float: none;
+}
+.image-profile-cv{
+    width: 167px;
+    height: 193px;
+    float: left;
+}
+
+@media print {
+  #btn-print-cv {
+    display: none !important;
+  }
+  .image-profile-cv{
+      left:10px;
+      right: 10px;
+     width: 100px;
+     height: 100px;
+     float: left; 
+  }
+  .info-profile{
+     float: right;  
+  }
+  .info-profile dl{
+      display: inline;
+  }
+}

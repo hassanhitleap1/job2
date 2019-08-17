@@ -108,6 +108,21 @@ class RequastJobController extends BaseController
         return $this->redirect(['index']);
     }
 
+
+    /**
+     * Displays a single RequastJob model.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionCv($id)
+    {
+        $this->layout = "cv-layout";
+        return $this->render('cv', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
     /**
      * Finds the RequastJob model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

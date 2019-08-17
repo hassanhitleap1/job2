@@ -45,8 +45,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'expected_salary',
             'note:ntext',
-
-            ['class' => 'yii\grid\ActionColumn'],
+        [
+            'class' => 'yii\grid\ActionColumn',
+            'template' => '{view} {update} {delete} {Cv}',  // the default buttons + your custom button
+            'buttons' => [
+                'Cv' => function($url, $model, $key) {     // render your custom button
+                    return  Html::a('CV', ['requast-job/cv', 'id' => $model->id],['class' => 'glyphicon glyphicon-th', 'data-pjax' => 0]);
+                }
+            ]
+            ],
+           
         ],
     ]); ?>
 
