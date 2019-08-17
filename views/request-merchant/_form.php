@@ -19,7 +19,7 @@ use app\models\User;
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
         <div class="col-md-3">
-             <?=  $form->field($model, "user_id")->widget(
+            <?= $form->field($model, "user_id")->widget(
                 Select2Widget::className(),
                 [
                     'items' => ArrayHelper::map(User::find()->where(['type' => User::MERCHANT_USER])->all(), 'id', 'name')
@@ -31,7 +31,7 @@ use app\models\User;
             <?= $form->field($model, "job_title")->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-2">
-            <?=  $form->field($model, "category_id")->widget(
+            <?= $form->field($model, "category_id")->widget(
                 Select2Widget::className(),
                 [
                     'items' => ArrayHelper::map(Categories::find()->all(), 'id', 'name_ar')
@@ -62,7 +62,7 @@ use app\models\User;
             ); ?>
         </div>
         <div class="col-md-2">
-            <?=  $form->field($model, "area")->widget(
+            <?= $form->field($model, "area")->widget(
                 Select2Widget::className(),
                 [
                     'items' => ArrayHelper::map(Area::find()->all(), 'name_ar', 'name_ar')

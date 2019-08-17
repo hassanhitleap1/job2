@@ -6,11 +6,11 @@ use wbraganca\dynamicform\DynamicFormWidget;
 
 ?>
 
-<div class="person-form">
+<div class="container">
 
     <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
 
-     <div class="row">
+    <div class="row">
         <div class="col-sm-6">
             <?= $form->field($modelPerson, 'first_name')->textInput(['maxlength' => true]) ?>
         </div>
@@ -48,33 +48,33 @@ use wbraganca\dynamicform\DynamicFormWidget;
             </tr>
         </thead>
         <tbody class="container-items">
-        <?php foreach ($modelsHouse as $indexHouse => $modelHouse): ?>
+            <?php foreach ($modelsHouse as $indexHouse => $modelHouse) : ?>
             <tr class="house-item">
                 <td class="vcenter">
                     <?php
                         // necessary for update action.
-                        if (! $modelHouse->isNewRecord) {
+                        if (!$modelHouse->isNewRecord) {
                             echo Html::activeHiddenInput($modelHouse, "[{$indexHouse}]id");
                         }
-                    ?>
+                        ?>
                     <?= $form->field($modelHouse, "[{$indexHouse}]description")->label(false)->textInput(['maxlength' => true]) ?>
                 </td>
                 <td>
                     <?= $this->render('_form-rooms', [
-                        'form' => $form,
-                        'indexHouse' => $indexHouse,
-                        'modelsRoom' => $modelsRoom[$indexHouse],
-                    ]) ?>
+                            'form' => $form,
+                            'indexHouse' => $indexHouse,
+                            'modelsRoom' => $modelsRoom[$indexHouse],
+                        ]) ?>
                 </td>
                 <td class="text-center vcenter" style="width: 90px; verti">
                     <button type="button" class="remove-house btn btn-danger btn-xs"><span class="fa fa-minus"></span></button>
                 </td>
             </tr>
-         <?php endforeach; ?>
+            <?php endforeach; ?>
         </tbody>
     </table>
     <?php DynamicFormWidget::end(); ?>
-    
+
     <div class="form-group">
         <?= Html::submitButton($modelPerson->isNewRecord ? 'Create' : 'Update', ['class' => 'btn btn-primary']) ?>
     </div>
