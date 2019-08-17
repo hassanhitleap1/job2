@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Categories;
 use Yii;
 use app\models\SendJob;
 use app\models\SendJobSearch;
@@ -64,13 +65,25 @@ class SendJobController extends BaseController
     public function actionCreate()
     {
         $model = new SendJob();
+        $catgories=Categories::find()->all();
+        if ($model->load(Yii::$app->request->post())  ) {
+            var_dump($model);
+            exit; 
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if($model->validate()){
+                
+               
+                if ($model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            }
+           
+           
         }
 
         return $this->render('create', [
             'model' => $model,
+            'catgories'=> $catgories
         ]);
     }
 
@@ -85,8 +98,18 @@ class SendJobController extends BaseController
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) ) {
+
+            var_dump($model->category[]);
+            exit;
+
+            if ($model->validate()) {
+
+
+                if ($model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            }
         }
 
         return $this->render('update', [

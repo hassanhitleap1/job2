@@ -13,12 +13,17 @@ use Yii;
  */
 class SendJob extends \yii\db\ActiveRecord
 {
+    public $category=[];
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
         return '{{%send_job}}';
+    }
+
+    public function  __construct(){
+       $this->category=["ss","ss"]; 
     }
 
     /**

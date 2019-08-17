@@ -9,6 +9,7 @@ class m190806_111421_create_categories_table extends Migration
 {
     
     public $data = [
+        ['name_ar' => 'الكل'],
         ['name_ar' => ' فندقة مطاعم'],
         ['name_ar' => ' فنيين وحرفين'],
         ['name_ar' => ' صحه وجمال'],
