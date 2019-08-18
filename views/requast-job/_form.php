@@ -6,6 +6,7 @@ use conquer\select2\Select2Widget;
 use app\models\Nationality;
 use app\models\Governorate;
 use app\models\Area;
+use app\models\Categories;
 use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
@@ -34,7 +35,7 @@ use yii\helpers\ArrayHelper;
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <?= $form->field($model, 'governorate')->widget(
                 Select2Widget::className(),
                 [
@@ -42,7 +43,7 @@ use yii\helpers\ArrayHelper;
                 ]
             ); ?>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <?= $form->field($model, 'area')->widget(
                 Select2Widget::className(),
                 [
@@ -50,7 +51,15 @@ use yii\helpers\ArrayHelper;
                 ]
             ); ?>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
+            <?= $form->field($model, 'category_id')->widget(
+                Select2Widget::className(),
+                [
+                    'items' => ArrayHelper::map(Categories::find()->all(), 'name_ar', 'name_ar')
+                ]
+            ); ?>
+        </div>
+        <div class="col-md-3">
             <?= $form->field($model, 'expected_salary')->textInput() ?>
         </div>
     </div>

@@ -13,7 +13,7 @@ use Yii;
  */
 class SendJob extends \yii\db\ActiveRecord
 {
-    public $category=[];
+    public $category;
     /**
      * {@inheritdoc}
      */
@@ -22,9 +22,6 @@ class SendJob extends \yii\db\ActiveRecord
         return '{{%send_job}}';
     }
 
-    public function  __construct(){
-       $this->category=["ss","ss"]; 
-    }
 
     /**
      * {@inheritdoc}
@@ -46,6 +43,8 @@ class SendJob extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'title' => Yii::t('app', 'Title'),
             'body' => Yii::t('app', 'Body'),
+            'category' => Yii::t('app', 'Categories'),
+         
         ];
     }
 

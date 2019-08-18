@@ -6,8 +6,10 @@ use app\models\Categories;
 use Yii;
 use app\models\SendJob;
 use app\models\SendJobSearch;
+use app\models\User;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * SendJobController implements the CRUD actions for SendJob model.
@@ -67,18 +69,26 @@ class SendJobController extends BaseController
         $model = new SendJob();
         $catgories=Categories::find()->all();
         if ($model->load(Yii::$app->request->post())  ) {
-            var_dump($model);
-            exit; 
+            $catgotiesSelected=$_POST["SendJob"]["category"];
+            $users=(new \yii\db\Query())
+                ->select(['phone'])
+                ->from('user')
+                ->where(['in', 'category_id', $catgotiesSelected])
+                ->where(['user.type'=>User::NORMAL_USER])
+                ->all();
 
-            if($model->validate()){
+                $phones = ArrayHelper::getColumn($users, function ($element) {
+                    return $element['phone'];
+                });
                 
-               
+                var_dump($phones);
+                exit;
+            if($model->validate()){
                 if ($model->save()) {
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
             }
-           
-           
+             
         }
 
         return $this->render('create', [

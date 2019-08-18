@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\RequastJobSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Requast Jobs');
+$this->title = Yii::t('app', 'Requast_Jobs');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container">
@@ -43,9 +43,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => 'governorate0.name_ar',
 
             ],
+            [
+                'attribute' => 'category_id',
+                'value' => 'category0.name_ar',
+
+            ],
+            
             'expected_salary',
             'note:ntext',
-        [
+             [
             'class' => 'yii\grid\ActionColumn',
             'template' => '{view} {update} {delete} {Cv}',  // the default buttons + your custom button
             'buttons' => [

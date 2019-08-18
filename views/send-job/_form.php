@@ -19,7 +19,7 @@ $arrayCatgories = ArrayHelper::map(Categories::find()->all(), 'id', 'name_ar');
             <?= Html::encode($this->title) ?>
         </div>
         <div class="panel-body">
-            <?php $form = ActiveForm::begin(['id' => 'area-form']); ?>
+            <?php $form = ActiveForm::begin(['id' => 'send-job-form']); ?>
             <div class="row">
                 <div class="col-lg-6">
                     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
@@ -30,6 +30,12 @@ $arrayCatgories = ArrayHelper::map(Categories::find()->all(), 'id', 'name_ar');
             </div>
         </div>
         <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="form-group">
+                <label for="all-catigories"><?= Yii::t('app','All')?>:</label>
+                <input type="checkbox" class="form-check-input" id="all-catigories">
+            </div>
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <?= $form->field($model, 'category[]')
                     ->checkboxList($arrayCatgories, ['class' => 'checkbox']) ?>

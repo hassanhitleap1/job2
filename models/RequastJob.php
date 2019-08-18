@@ -57,8 +57,10 @@ class RequastJob extends \yii\db\ActiveRecord
             'experience' => Yii::t('app', 'Experience'),
             'governorate' => Yii::t('app', 'Governorate'),
             'expected_salary' => Yii::t('app', 'Expected_Salary'),
+            'category_id'=>Yii::t('app', 'Category'),
             'area'=> Yii::t('app', 'Area'),
             'note' => Yii::t('app', 'Note'),
+            
         ];
     }
 
@@ -79,7 +81,14 @@ class RequastJob extends \yii\db\ActiveRecord
         return $this->hasOne(Nationality::className(), ['id' => 'nationality']);
     }
     
-
+        /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategory0()
+    {
+        return $this->hasOne(Categories::className(), ['id' => 'nationality']);
+    }
+    
     /**
      * {@inheritdoc}
      * @return RequastJobQuery the active query used by this AR class.

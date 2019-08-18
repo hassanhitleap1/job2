@@ -64,5 +64,5 @@ return [
     'Create_Merchant_with_Request'=>'انشاء صحاحب عمل مع طلباته',
     'Create_Merchant'=>'انشاء صحاحب عمل',
     'Category'=>'الصنف',
-
+    'All'=>'الكل',
 ];
