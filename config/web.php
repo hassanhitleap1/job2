@@ -19,6 +19,9 @@ $config = [
         ],
     ],
     'components' => [
+        'smscomponent' => [
+            'class' => 'app\components\SMSCompnent',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'sK6nnFHeJk6ihvEcs__g8aH_gGNQP6Fi',
