@@ -101,9 +101,14 @@ class RequastJobController extends BaseController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) ) {
+            $model->file = UploadedFile::getInstances($model, 'file');
+            print_r($model->file->extension);
+            exit;
+
             if($model->validate()){
-                if(!empty($model->file)){
-                    $path='images/avatar/' . md5(uniqid(rand(), true)) . '.' . $model->file->extension;
+               
+                if($model->file){
+                    $path='images/avatar/' . md5(uniqid(rand(), true)) . '.' . $model->file->extension;      
                     $model->file->saveAs($path);
                     $model->avatar=$path;
                 }

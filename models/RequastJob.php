@@ -38,15 +38,14 @@ class RequastJob extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            //[['file'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg '],
             [['agree', 'phone', 'nationality', 'governorate', 'expected_salary'], 'integer'],
             [['certificates', 'experience', 'area','note'], 'string'],
             [['name'], 'string', 'max' => 255],
             [['subscribe_date'], 'date', 'format' => 'yyyy-mm-dd'],
             [['name','phone', 'nationality','agree', 'governorate','category_id'], 'required'],
             [['phone'], 'match', 'pattern' => '/^(079|078|077)[0-9]/'],
-            [['file'], 'image', 
-            //'skipOnEmpty' => false, 'extensions' => 'png, jpg,jpeg'
-            ]
+     
            
         ];
     }
