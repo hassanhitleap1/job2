@@ -36,7 +36,8 @@ class m190803_180403_user_table extends Migration
             'type'=>$this->smallInteger()->defaultValue(User::NORMAL_USER),
             'name_company' => $this->string(),
             'auth_token'=> $this->string()->defaultValue(null),
-            'subscribe_date'=>$this->dateTime()->defaultValue(null),
+            'subscribe_date'=>$this->date()->defaultValue(null),
+            'avatar'=>$this->string()->defaultValue(null),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);

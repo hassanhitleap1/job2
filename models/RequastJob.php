@@ -22,6 +22,8 @@ use Yii;
  */
 class RequastJob extends \yii\db\ActiveRecord
 {
+    public $file;
+
     /**
      * {@inheritdoc}
      */
@@ -42,6 +44,7 @@ class RequastJob extends \yii\db\ActiveRecord
             [['subscribe_date'], 'date', 'format' => 'yyyy-mm-dd'],
             [['name','phone', 'nationality','agree', 'governorate','category_id'], 'required'],
             [['phone'], 'match', 'pattern' => '/^(079|078|077)[0-9]/'],
+            [['file'], 'file', 'skipOnEmpty' => false, 'extensions' =>'png, jpg,jpeg']
         ];
     }
 
@@ -63,7 +66,8 @@ class RequastJob extends \yii\db\ActiveRecord
             'area'=> Yii::t('app', 'Area'),
             'note' => Yii::t('app', 'Note'),
             'subscribe_date'=>Yii::t('app', 'Subscribe_Date'),
-            
+            'avatar'=>Yii::t('app', 'Avatar'),
+            'file'=>Yii::t('app', 'Avatar'),
         ];
     }
 

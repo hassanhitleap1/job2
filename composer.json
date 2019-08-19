@@ -26,7 +26,8 @@
         "nexmo/client": "^1.8",
         "twilio/sdk": "^5.34",
         "nesbot/carbon": "^2.23",
-        "kartik-v/yii2-widget-datepicker": "dev-master"
+        "kartik-v/yii2-widget-datepicker": "dev-master",
+        "kartik-v/yii2-widget-fileinput": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

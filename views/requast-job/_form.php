@@ -10,14 +10,14 @@ use app\models\Categories;
 use kartik\date\DatePicker;
 use yii\helpers\ArrayHelper;
 use Carbon\Carbon;
-
+use kartik\file\FileInput;
 /* @var $this yii\web\View */
 /* @var $model app\models\RequastJob */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <div class="container">
 
-    <?php $form = ActiveForm::begin(); ?>
+<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
     <div class="row">
         <div class="col-md-3">
             <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
@@ -93,7 +93,15 @@ use Carbon\Carbon;
         </div>
     </div>
     <div class="row">
-        <?= $form->field($model, 'note')->textarea(['rows' => 6]) ?>
+        <div class="col-md-8">
+            <?= $form->field($model, 'note')->textarea(['rows' => 6]) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'file')->widget(FileInput::classname(), [
+                    'options' => ['accept' => 'image/*'],
+                ]);
+            ?>
+        </div>       
     </div>
     <div class="row">
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">

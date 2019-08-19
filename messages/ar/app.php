@@ -67,4 +67,5 @@ return [
     'All'=>'الكل',
     'Subscribe_Date'=>'تاريخ الاشتراك',
     'Enter_date'=>'ادخل التاريخ',
+    'Avatar'=>'صوره شخصية',
 ];
