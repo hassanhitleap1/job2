@@ -37,8 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => 'nationality0.name_ar',
 
             ],
-            'certificates:ntext',
-            'experience:ntext',
+            // 'certificates:ntext',
+            // 'experience:ntext',
             [
                 'attribute' => 'governorate',
                 'value' => 'governorate0.name_ar',
@@ -54,17 +54,20 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'subscribe_date',
                 'value' => 'subscribe_date',
-                'filter' => DatePicker::widget([
-                    'name' => 'subscribe_date',
-                    'type' => DatePicker::TYPE_COMPONENT_PREPEND,
-                    'pluginOptions' => [
-                        'autoclose'=>true,
-                        'format' => 'yyyy-mm-dd',
-                    ]
-                ]),
+                // 'filter' =>
+                //     DatePicker::widget([
+                //         'name' => 'subscribe_date',
+
+                //         'pluginOptions' => [
+                //             'autoclose'=>true,
+                //             'format' => 'yyyy-mm-dd',
+                            
+                //         ]
+                //     ]),
+
                 'format' => 'html',
             ],
-            'note:ntext',
+            // 'note:ntext',
              [
             'class' => 'yii\grid\ActionColumn',
             'template' => '{view} {update} {delete} {Cv}',  // the default buttons + your custom button
