@@ -37,6 +37,8 @@ class SendJobController extends BaseController
      */
     public function actionIndex()
     {
+        Yii::$app->smscomponent->sendsmsusingtwiz();
+
         $searchModel = new SendJobSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
