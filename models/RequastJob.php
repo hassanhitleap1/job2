@@ -44,7 +44,10 @@ class RequastJob extends \yii\db\ActiveRecord
             [['subscribe_date'], 'date', 'format' => 'yyyy-mm-dd'],
             [['name','phone', 'nationality','agree', 'governorate','category_id'], 'required'],
             [['phone'], 'match', 'pattern' => '/^(079|078|077)[0-9]/'],
-            [['file'], 'file', 'skipOnEmpty' => false, 'extensions' =>'png, jpg,jpeg']
+            [['file'], 'image', 
+            //'skipOnEmpty' => false, 'extensions' => 'png, jpg,jpeg'
+            ]
+           
         ];
     }
 

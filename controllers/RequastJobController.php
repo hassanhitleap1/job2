@@ -7,6 +7,7 @@ use app\models\RequastJob;
 use app\models\RequastJobSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * RequastJobController implements the CRUD actions for RequastJob model.
@@ -65,8 +66,22 @@ class RequastJobController extends BaseController
     {
         $model = new RequastJob();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+           
+            $model->file = UploadedFile::getInstances($model, 'file');
+            
+            if($model->validate()){
+                if(!empty($model->file)){
+                    $path='images/avatar/' . md5(uniqid(rand(), true)) . '.' . $model->file->extension;
+                    $model->file->saveAs($path);
+                    $model->avatar=$path;
+                }
+               
+               if($model->save()){
+                    return $this->redirect(['view', 'id' => $model->id]);
+               }
+
+            }  
         }
 
         return $this->render('create', [
@@ -85,8 +100,19 @@ class RequastJobController extends BaseController
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) ) {
+            if($model->validate()){
+                if(!empty($model->file)){
+                    $path='images/avatar/' . md5(uniqid(rand(), true)) . '.' . $model->file->extension;
+                    $model->file->saveAs($path);
+                    $model->avatar=$path;
+                }
+               
+               if($model->save()){
+                    return $this->redirect(['view', 'id' => $model->id]);
+               }
+
+            }  
         }
 
         return $this->render('update', [
