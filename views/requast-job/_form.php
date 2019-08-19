@@ -7,13 +7,16 @@ use app\models\Nationality;
 use app\models\Governorate;
 use app\models\Area;
 use app\models\Categories;
+use kartik\date\DatePicker;
 use yii\helpers\ArrayHelper;
+use Carbon\Carbon;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\RequastJob */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <div class="container">
+
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
         <div class="col-md-3">
@@ -43,7 +46,7 @@ use yii\helpers\ArrayHelper;
                 ]
             ); ?>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <?= $form->field($model, 'area')->widget(
                 Select2Widget::className(),
                 [
@@ -51,7 +54,7 @@ use yii\helpers\ArrayHelper;
                 ]
             ); ?>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <?= $form->field($model, 'category_id')->widget(
                 Select2Widget::className(),
                 [
@@ -59,8 +62,26 @@ use yii\helpers\ArrayHelper;
                 ]
             ); ?>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <?= $form->field($model, 'expected_salary')->textInput() ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'subscribe_date')->widget(DatePicker::classname(), [
+                    'options' => ['placeholder' => Yii::t('app','Enter_date')],
+                    'value' => Carbon::now('Asia/Amman')->toDateString(),
+                    'type' => DatePicker::TYPE_COMPONENT_APPEND,
+                    // 'value'=>Carbon::now('Asia/Amman')->toDateString(),
+                    // 'pickerIcon' => '<i class=" text-primary"></i>',
+                    // 'removeIcon' => '<i class="fas fa-trash text-danger"></i>',
+                    'pluginOptions' => [
+                        'todayHighlight' => true,
+                        'todayBtn' => true,
+                        'autoclose'=>false,
+                        'format' => 'yyyy-mm-dd',
+                        
+                    ]
+            ]);?>
+
         </div>
     </div>
     <div class="row">

@@ -18,7 +18,7 @@ class RequastJobSearch extends RequastJob
     {
         return [
             [['id', 'agree', 'phone',  'expected_salary'], 'integer'],
-            [['name', 'certificates', 'experience', 'nationality', 'governorate','note'], 'safe'],
+            [['name', 'certificates', 'experience', 'nationality', 'governorate','category_id','subscribe_date','note'], 'safe'],
         ];
     }
 
@@ -58,6 +58,7 @@ class RequastJobSearch extends RequastJob
         $query->where(['type' => User::NORMAL_USER]);
         $query->joinWith('nationality0');
         $query->joinWith('governorate0');  
+        $query->joinWith('category0');  
 
         // grid filtering conditions
         $query->andFilterWhere([
@@ -74,6 +75,8 @@ class RequastJobSearch extends RequastJob
             ->andFilterWhere(['like', 'experience', $this->experience])
             ->andFilterWhere(['like', 'nationality.name_ar', $this->nationality])
             ->andFilterWhere(['like', 'governorate.name_ar', $this->governorate])
+            ->andFilterWhere(['like', 'categories.name_ar', $this->category_id])
+            ->andFilterWhere(['>=', 'subscribe_date', $this->subscribe_date])
             ->andFilterWhere(['like', 'note', $this->note]);
 
         return $dataProvider;

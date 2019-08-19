@@ -53,6 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'experience:ntext',
             'governorate0.name_ar',
             'expected_salary',
+            'subscribe_date',
             'note:ntext',
         ],
     ]) ?>

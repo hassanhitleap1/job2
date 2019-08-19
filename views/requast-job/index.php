@@ -1,5 +1,6 @@
 <?php
 
+use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -50,6 +51,19 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             
             'expected_salary',
+            [
+                'attribute' => 'subscribe_date',
+                'value' => 'subscribe_date',
+                'filter' => DatePicker::widget([
+                    'name' => 'subscribe_date',
+                    'type' => DatePicker::TYPE_COMPONENT_PREPEND,
+                    'pluginOptions' => [
+                        'autoclose'=>true,
+                        'format' => 'yyyy-mm-dd',
+                    ]
+                ]),
+                'format' => 'html',
+            ],
             'note:ntext',
              [
             'class' => 'yii\grid\ActionColumn',

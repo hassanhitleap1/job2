@@ -65,4 +65,6 @@ return [
     'Create_Merchant'=>'انشاء صحاحب عمل',
     'Category'=>'الصنف',
     'All'=>'الكل',
+    'Subscribe_Date'=>'تاريخ الاشتراك',
+    'Enter_date'=>'ادخل التاريخ',
 ];

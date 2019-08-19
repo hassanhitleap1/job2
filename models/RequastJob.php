@@ -18,6 +18,7 @@ use Yii;
  * @property int $expected_salary
  * @property string $area
  * @property string $note
+ * @property date $subscribe_date
  */
 class RequastJob extends \yii\db\ActiveRecord
 {
@@ -38,7 +39,8 @@ class RequastJob extends \yii\db\ActiveRecord
             [['agree', 'phone', 'nationality', 'governorate', 'expected_salary'], 'integer'],
             [['certificates', 'experience', 'area','note'], 'string'],
             [['name'], 'string', 'max' => 255],
-            [['name','phone', 'nationality','agree', 'governorate'], 'required'],
+            [['subscribe_date'], 'date', 'format' => 'yyyy-mm-dd'],
+            [['name','phone', 'nationality','agree', 'governorate','category_id'], 'required'],
             [['phone'], 'match', 'pattern' => '/^(079|078|077)[0-9]/'],
         ];
     }
@@ -60,6 +62,7 @@ class RequastJob extends \yii\db\ActiveRecord
             'category_id'=>Yii::t('app', 'Category'),
             'area'=> Yii::t('app', 'Area'),
             'note' => Yii::t('app', 'Note'),
+            'subscribe_date'=>Yii::t('app', 'Subscribe_Date'),
             
         ];
     }
