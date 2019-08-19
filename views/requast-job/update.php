@@ -13,8 +13,12 @@ $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
 <div class="container">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row ">
+        <div class="col-md-12">
+            <?= Html::a(Yii::t('app', 'Back'), ['index'], ['class' => 'btn btn-info btn-lg btn-left']) ?>
+            <h1><?= Html::encode($this->title) ?></h1>
+        </div>
+    </div>
 
     <?= $this->render('_form', [
         'model' => $model,

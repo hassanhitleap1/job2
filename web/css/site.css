@@ -158,3 +158,6 @@ a.desc:after {
       display: inline;
   }
 }
+.btn-left{
+ float: left;
+}
