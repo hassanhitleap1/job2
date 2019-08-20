@@ -68,13 +68,12 @@ class RequastJobController extends BaseController
 
         if ($model->load(Yii::$app->request->post())) {
            
-            $model->file = UploadedFile::getInstances($model, 'file');
-            
+            $model->file = UploadedFile::getInstance($model, 'file');
             if($model->validate()){
-                if(!empty($model->file)){
-                    $path='images/avatar/' . md5(uniqid(rand(), true)) . '.' . $model->file->extension;
-                    $model->file->saveAs($path);
-                    $model->avatar=$path;
+                if($model->file){
+                    $imagename='images/avatar/' . md5(uniqid(rand(), true)). '.' . $model->file->extension;
+                    $model->file->saveAs($imagename);
+                    $model->avatar=$imagename;
                 }
                
                if($model->save()){
@@ -101,16 +100,12 @@ class RequastJobController extends BaseController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) ) {
-            $model->file = UploadedFile::getInstances($model, 'file');
-            print_r($model->file->extension);
-            exit;
-
+            $model->file = UploadedFile::getInstance($model, 'file');
             if($model->validate()){
-               
                 if($model->file){
-                    $path='images/avatar/' . md5(uniqid(rand(), true)) . '.' . $model->file->extension;      
-                    $model->file->saveAs($path);
-                    $model->avatar=$path;
+                    $imagename='images/avatar/' . md5(uniqid(rand(), true)). '.' . $model->file->extension;
+                    $model->file->saveAs($imagename);
+                    $model->avatar=$imagename;
                 }
                
                if($model->save()){
