@@ -14,6 +14,7 @@ use Yii;
 class SendJob extends \yii\db\ActiveRecord
 {
     public $category;
+    public $all;
     /**
      * {@inheritdoc}
      */
@@ -44,7 +45,7 @@ class SendJob extends \yii\db\ActiveRecord
             'title' => Yii::t('app', 'Title'),
             'body' => Yii::t('app', 'Body'),
             'category' => Yii::t('app', 'Categories'),
-         
+            'all'=> Yii::t('app','All'),
         ];
     }
 

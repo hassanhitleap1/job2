@@ -4,7 +4,7 @@ $(document).ready(function () {
         window.print();
 
     });    
-    $("#all-catigories").click( function(e){
+    $("#sendjob-all").click( function(e){
         if( $(this).is(':checked') ){
             $('input:checkbox').prop('checked',true);   
         }else{

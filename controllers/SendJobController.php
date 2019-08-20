@@ -37,8 +37,6 @@ class SendJobController extends BaseController
      */
     public function actionIndex()
     {
-        Yii::$app->smscomponent->sendsmsusingtwiz();
-
         $searchModel = new SendJobSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -71,20 +69,26 @@ class SendJobController extends BaseController
         $model = new SendJob();
         $catgories=Categories::find()->all();
         if ($model->load(Yii::$app->request->post())  ) {
-            $catgotiesSelected=$_POST["SendJob"]["category"];
             $users=(new \yii\db\Query())
                 ->select(['phone'])
-                ->from('user')
-                ->where(['in', 'category_id', $catgotiesSelected])
-                ->where(['user.type'=>User::NORMAL_USER])
-                ->all();
-
+                ->from('user');
+                
+            if($_POST["SendJob"]["all"]){
+                $users->where(['user.type'=>User::NORMAL_USER]);
+            }else{
+                $catgotiesSelected=$_POST["SendJob"]["category"];
+                $users->where(['in', 'category_id', $catgotiesSelected])
+                ->where(['user.type'=>User::NORMAL_USER]);
+            }
+        
+            $users=$users
+            ->all();
+                var_dump($users);
+                exit;
                 $phones = ArrayHelper::getColumn($users, function ($element) {
                     return $element['phone'];
                 });
-                
-                var_dump($phones);
-                exit;
+                Yii::$app->smscomponent->sendsmsusingtwiz($phones);
             if($model->validate()){
                 if ($model->save()) {
                     return $this->redirect(['view', 'id' => $model->id]);

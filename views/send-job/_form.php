@@ -32,8 +32,8 @@ $arrayCatgories = ArrayHelper::map(Categories::find()->all(), 'id', 'name_ar');
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="form-group">
-                <label for="all-catigories"><?= Yii::t('app','All')?>:</label>
-                <input type="checkbox" class="form-check-input" id="all-catigories">
+                <?= $form->field($model, 'all')
+                    ->checkbox($arrayCatgories, ['class' => 'form-check-input',"id"=>"all-catigories"]) ?>
             </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

@@ -28,7 +28,9 @@ class SMSCompnent extends Component
       ]);
     }
 
-    public function sendsmsusingtwiz(){
+    public function sendsmsusingtwiz($phone){
+      var_dump($phone);
+      exit;
       $account_sid = 'AC242fd0d0bd4691793316d207aba7bfbc';
       $auth_token = '147eb946c4fa8f6db42a31c2d34b41d8';
 
