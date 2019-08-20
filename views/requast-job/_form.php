@@ -14,6 +14,22 @@ use kartik\file\FileInput;
 /* @var $this yii\web\View */
 /* @var $model app\models\RequastJob */
 /* @var $form yii\widgets\ActiveForm */
+$dataAvatar=[];
+if(!$model->isNewRecord && $model->avatar != ""){
+    $dataAvatar=[
+                        'initialPreview'=>[
+                            Yii::getAlias('@web').'/'.$model->avatar
+                        ],
+                    
+                        'initialPreviewAsData'=>true,
+                        'initialCaption'=>$model->avatar,
+                        'initialPreviewConfig' => [
+                            ['caption' => $model->name],
+                        ],
+                        'overwriteInitial'=>false,
+                ];
+}
+
 ?>
 <div class="container">
 
@@ -78,6 +94,7 @@ use kartik\file\FileInput;
                         'todayBtn' => true,
                         'autoclose'=>false,
                         'format' => 'yyyy-mm-dd',
+                       
                         
                     ]
             ]);?>
@@ -99,9 +116,10 @@ use kartik\file\FileInput;
         <div class="col-md-4">
             <?= $form->field($model, 'file')->widget(FileInput::classname(), [
                     'options' => ['accept' => 'image/*'],
+                    'pluginOptions' => $dataAvatar
                 ]);
             ?>
-        </div>       
+        </div>     
     </div>
     <div class="row">
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
