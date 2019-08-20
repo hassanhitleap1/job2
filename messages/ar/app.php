@@ -71,4 +71,5 @@ return [
     'Must_Contain_10_Digits'=>'يجب ان يكون 10 ارقام',
     'Check_Phone'=>'تاكد من ان الهاتف مكتوب بشكل صحيح',
     'Phone_Already_Exist'=>'الهاتف المدخل مأخوذ يرجى وضع هاتف ثاني',
+    'Not_Send_Message'=>'لم يتم ارسال الرسائل ',
 ];

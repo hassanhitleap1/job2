@@ -7,6 +7,7 @@ use Yii;
 use app\models\SendJob;
 use app\models\SendJobSearch;
 use app\models\User;
+use Exception;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
@@ -69,26 +70,23 @@ class SendJobController extends BaseController
         $model = new SendJob();
         $catgories=Categories::find()->all();
         if ($model->load(Yii::$app->request->post())  ) {
-            $users=(new \yii\db\Query())
+            $query =(new \yii\db\Query())
                 ->select(['phone'])
-                ->from('user');
-                
-            if($_POST["SendJob"]["all"]){
-                $users->where(['user.type'=>User::NORMAL_USER]);
-            }else{
-                $catgotiesSelected=$_POST["SendJob"]["category"];
-                $users->where(['in', 'category_id', $catgotiesSelected])
+                ->from('user')
                 ->where(['user.type'=>User::NORMAL_USER]);
+                
+            if(!$_POST["SendJob"]["all"]){
+                $catgotiesSelected=$_POST["SendJob"]["category"];
+                $query->where(['in', 'category_id', $catgotiesSelected]);
             }
-        
-            $users=$users
-            ->all();
-                var_dump($users);
-                exit;
+            $users=$query->all();
                 $phones = ArrayHelper::getColumn($users, function ($element) {
                     return $element['phone'];
                 });
-                Yii::$app->smscomponent->sendsmsusingtwiz($phones);
+                $isSend=Yii::$app->smscomponent->sendsmsusingtwiz($phones);
+                if(!$isSend)
+                    throw new NotFoundHttpException(Yii::t('app', 'Not_Send_Message'));
+                
             if($model->validate()){
                 if ($model->save()) {
                     return $this->redirect(['view', 'id' => $model->id]);

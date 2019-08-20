@@ -29,14 +29,28 @@ class SMSCompnent extends Component
     }
 
     public function sendsmsusingtwiz($phone){
-      var_dump($phone);
-      exit;
+      if(empty($phone)){
+        return false;
+      }
+     
+      $stringPhones=implode(",",$phone);
+      
       $account_sid = 'AC242fd0d0bd4691793316d207aba7bfbc';
       $auth_token = '147eb946c4fa8f6db42a31c2d34b41d8';
 
         $twilio_number = "+12055468423";
 
         $client = new Client($account_sid, $auth_token);
+
+        // $client->messages->create(
+       
+        //     $stringPhones,
+        //     array(
+        //         'from' => $twilio_number,
+        //         'body' => 'مرحبا!'
+        //     )
+        // );
+
         // $client->messages->create(
         //     // Where to send a text message (your cell phone?)
         //     '+962799263494',
@@ -45,6 +59,8 @@ class SMSCompnent extends Component
         //         'body' => 'مرحبا!'
         //     )
         // );
+        
+        return true;
     }
 
 }    
