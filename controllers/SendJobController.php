@@ -83,9 +83,13 @@ class SendJobController extends BaseController
                 $phones = ArrayHelper::getColumn($users, function ($element) {
                     return $element['phone'];
                 });
+                if(empty($phones))
+                    throw new NotFoundHttpException(Yii::t('app', 'No_Phone'));
                 $isSend=Yii::$app->smscomponent->sendsmsusingtwiz($phones);
-                if(!$isSend)
+                if(!$isSend){
                     throw new NotFoundHttpException(Yii::t('app', 'Not_Send_Message'));
+                }
+                    
                 
             if($model->validate()){
                 if ($model->save()) {
