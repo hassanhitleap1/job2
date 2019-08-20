@@ -36,7 +36,8 @@ class Merchant extends \yii\db\ActiveRecord
             [[ 'phone',  'governorate'], 'integer'],
             [['name_company', 'name', 'note'], 'string'],
             [['name','name_company','phone'], 'required'],   
-            [['phone'], 'match', 'pattern' => '/^(079|078|077)[0-9]/'],
+            [['phone'], 'isJordanPhone'],
+            [['phone'],'unique','message'=>Yii::t('app','Phone_Already_Exist')],  
         ];
     }
 
@@ -55,6 +56,18 @@ class Merchant extends \yii\db\ActiveRecord
         ];
     }
 
+    /**
+     * validation patrin
+     *
+     * @param [type] $attribute
+     * @return boolean
+     */
+    public function isJordanPhone($attribute)
+    {
+        if (!preg_match('/^(079|078|077)[0-9]{7}$/', $this->$attribute)) {
+            $this->addError($attribute, Yii::t('app','Check_Phone'));
+        }
+    }
 
         /**
      * @return \yii\db\ActiveQuery

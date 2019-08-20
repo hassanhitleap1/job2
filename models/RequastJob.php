@@ -38,15 +38,14 @@ class RequastJob extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            //[['file'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg '],
+            [['file'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg '],
             [['agree', 'phone', 'nationality', 'governorate', 'expected_salary'], 'integer'],
             [['certificates', 'experience', 'area','note'], 'string'],
             [['name'], 'string', 'max' => 255],
             [['subscribe_date'], 'date', 'format' => 'yyyy-mm-dd'],
             [['name','phone', 'nationality','agree', 'governorate','category_id'], 'required'],
-            [['phone'], 'match', 'pattern' => '/^(079|078|077)[0-9]/'],
-     
-           
+            [['phone'], 'isJordanPhone'],
+            [['phone'],'unique','message'=>Yii::t('app','Phone_Already_Exist')],           
         ];
     }
 
@@ -74,12 +73,20 @@ class RequastJob extends \yii\db\ActiveRecord
     }
 
 
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getGovernorate0()
     {
         return $this->hasOne(Governorate::className(), ['id' => 'governorate']);
+    }
+
+    public function isJordanPhone($attribute)
+    {
+        if (!preg_match('/^(079|078|077)[0-9]{7}$/', $this->$attribute)) {
+            $this->addError($attribute, Yii::t('app','Check_Phone'));
+        }
     }
 
     /**

@@ -68,4 +68,7 @@ return [
     'Subscribe_Date'=>'تاريخ الاشتراك',
     'Enter_date'=>'ادخل التاريخ',
     'Avatar'=>'صوره شخصية',
+    'Must_Contain_10_Digits'=>'يجب ان يكون 10 ارقام',
+    'Check_Phone'=>'تاكد من ان الهاتف مكتوب بشكل صحيح',
+    'Phone_Already_Exist'=>'الهاتف المدخل مأخوذ يرجى وضع هاتف ثاني',
 ];
