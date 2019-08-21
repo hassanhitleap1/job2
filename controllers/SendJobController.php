@@ -39,6 +39,7 @@ class SendJobController extends BaseController
      */
     public function actionIndex()
     {
+        
         $searchModel = new SendJobSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
