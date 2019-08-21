@@ -7,6 +7,7 @@ use Yii;
 use app\models\SendJob;
 use app\models\SendJobSearch;
 use app\models\User;
+use Carbon\Carbon;
 use Exception;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -73,7 +74,8 @@ class SendJobController extends BaseController
             $query =(new \yii\db\Query())
                 ->select(['phone'])
                 ->from('user')
-                ->where(['user.type'=>User::NORMAL_USER]);
+                ->where(['user.type'=>User::NORMAL_USER])
+                ->where(['>=','user.subscribe_date',Carbon::now()->subDays(30)->toDateString()]);
                 
             if(!$_POST["SendJob"]["all"]){
                 $catgotiesSelected=$_POST["SendJob"]["category"];
