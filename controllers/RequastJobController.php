@@ -68,11 +68,11 @@ class RequastJobController extends BaseController
 
         if ($model->load(Yii::$app->request->post())) {
            
-            $model->file = UploadedFile::getInstance($model, 'file');
+            $file = UploadedFile::getInstance($model, 'file');
             if($model->validate()){
-                if($model->file){
-                    $imagename='images/avatar/' . md5(uniqid(rand(), true)). '.' . $model->file->extension;
-                    $model->file->saveAs($imagename);
+                if(!is_null($file)){
+                    $imagename='images/avatar/' . md5(uniqid(rand(), true)). '.' . $file->extension;
+                    $file->saveAs($imagename);
                     $model->avatar=$imagename;
                 }
                
@@ -100,11 +100,11 @@ class RequastJobController extends BaseController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) ) {
-            $model->file = UploadedFile::getInstance($model, 'file');
+            $file = UploadedFile::getInstance($model, 'file');
             if($model->validate()){
-                if($model->file){
-                    $imagename='images/avatar/' . md5(uniqid(rand(), true)). '.' . $model->file->extension;
-                    $model->file->saveAs($imagename);
+                if(!is_null($file)){
+                    $imagename='images/avatar/' . md5(uniqid(rand(), true)). '.' . $file->extension;
+                    $file->saveAs($imagename);
                     $model->avatar=$imagename;
                 }
                

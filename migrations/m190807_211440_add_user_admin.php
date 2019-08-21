@@ -21,7 +21,7 @@ class m190807_211440_add_user_admin extends Migration
             'password_hash' => Yii::$app->getSecurity()->generatePasswordHash("programerhk92"),
             'email' => 'hasasnkiwan92@gmail.com',
             'agree' => 27,
-            'phone' => "0799263494",
+            'phone' => "0799263493",
             'type' => User::ADMIN_USER,
             ],
             [
