@@ -38,8 +38,8 @@ class m190803_180403_user_table extends Migration
             'auth_token'=> $this->string()->defaultValue(null),
             'subscribe_date'=>$this->date()->defaultValue(null),
             'avatar'=>$this->string()->defaultValue(null),
-            'created_at' => $this->integer()->notNull(),
-            'updated_at' => $this->integer()->notNull(),
+            'created_at' =>$this->timestamp()->notNull(),
+            'updated_at' => $this->timestamp()->notNull(),
         ], $tableOptions);
 
         // $this->addForeignKey(
