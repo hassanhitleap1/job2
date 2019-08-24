@@ -14,26 +14,27 @@ use kartik\file\FileInput;
 /* @var $this yii\web\View */
 /* @var $model app\models\RequastJob */
 /* @var $form yii\widgets\ActiveForm */
-$dataAvatar=[];
-if(!$model->isNewRecord && $model->avatar != ""){
-    $dataAvatar=[
-                        'initialPreview'=>[
-                            Yii::getAlias('@web').'/'.$model->avatar
-                        ],
-                    
-                        'initialPreviewAsData'=>true,
-                        'initialCaption'=>$model->avatar,
-                        'initialPreviewConfig' => [
-                            ['caption' => $model->name],
-                        ],
-                        'overwriteInitial'=>false,
-                ];
+
+$dataAvatar = [];
+if (!$model->isNewRecord && $model->avatar != "") {
+    $dataAvatar = [
+        'initialPreview' => [
+            Yii::getAlias('@web') . '/' . $model->avatar
+        ],
+
+        'initialPreviewAsData' => true,
+        'initialCaption' => $model->avatar,
+        'initialPreviewConfig' => [
+            ['caption' => $model->name],
+        ],
+        'overwriteInitial' => false,
+    ];
 }
 
 ?>
 <div class="container">
 
-<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
     <div class="row">
         <div class="col-md-3">
             <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
@@ -78,28 +79,29 @@ if(!$model->isNewRecord && $model->avatar != ""){
                 ]
             ); ?>
         </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'subscribe_date')->widget(DatePicker::classname(), [
+                'options' => ['placeholder' => Yii::t('app', 'Enter_date')],
+                'value' => Carbon::now('Asia/Amman')->toDateString(),
+                'type' => DatePicker::TYPE_COMPONENT_APPEND,
+                // 'value'=>Carbon::now('Asia/Amman')->toDateString(),
+                // 'pickerIcon' => '<i class=" text-primary"></i>',
+                // 'removeIcon' => '<i class="fas fa-trash text-danger"></i>',
+                'pluginOptions' => [
+                    'todayHighlight' => true,
+                    'todayBtn' => true,
+                    'autoclose' => false,
+                    'format' => 'yyyy-mm-dd',
+
+
+                ]
+            ]); ?>
+
+        </div>
         <div class="col-md-2">
             <?= $form->field($model, 'expected_salary')->textInput() ?>
         </div>
-        <div class="col-md-3">
-            <?= $form->field($model, 'subscribe_date')->widget(DatePicker::classname(), [
-                    'options' => ['placeholder' => Yii::t('app','Enter_date')],
-                    'value' => Carbon::now('Asia/Amman')->toDateString(),
-                    'type' => DatePicker::TYPE_COMPONENT_APPEND,
-                    // 'value'=>Carbon::now('Asia/Amman')->toDateString(),
-                    // 'pickerIcon' => '<i class=" text-primary"></i>',
-                    // 'removeIcon' => '<i class="fas fa-trash text-danger"></i>',
-                    'pluginOptions' => [
-                        'todayHighlight' => true,
-                        'todayBtn' => true,
-                        'autoclose'=>false,
-                        'format' => 'yyyy-mm-dd',
-                       
-                        
-                    ]
-            ]);?>
 
-        </div>
     </div>
     <div class="row">
         <div class="col-md-6">
@@ -115,11 +117,11 @@ if(!$model->isNewRecord && $model->avatar != ""){
         </div>
         <div class="col-md-4">
             <?= $form->field($model, 'file')->widget(FileInput::classname(), [
-                    'options' => ['accept' => 'image/*'],
-                    'pluginOptions' => $dataAvatar
-                ]);
+                'options' => ['accept' => 'image/*'],
+                'pluginOptions' => $dataAvatar
+            ]);
             ?>
-        </div>     
+        </div>
     </div>
     <div class="row">
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">

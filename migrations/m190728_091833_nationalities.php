@@ -8,7 +8,7 @@ use app\models\Nationality;
  */
 class m190728_091833_nationalities extends Migration
 {
-    public $data=[['name_ar'=>'اردني'],['name_ar' => 'فلسطيني'],['name_ar' => 'سوري'], ['name_ar' => 'جبوتي'], 
+    public $data=[['name_ar' => 'لا يهم'],['name_ar'=>'اردني'],['name_ar' => 'فلسطيني'],['name_ar' => 'سوري'], ['name_ar' => 'جبوتي'], 
         ['name_ar' => 'لبناني'], ['name_ar' => 'سعودي'], 
         ['name_ar' => 'قطري'], ['name_ar' => 'كويتي'], ['name_ar' => 'اماراتي'],
         ['name_ar' => 'يمني'], ['name_ar' => 'عماني'],

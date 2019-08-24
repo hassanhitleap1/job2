@@ -63,7 +63,9 @@ class SendJobSearch extends SendJob
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'body', $this->body]);
-
+        $query->orderBy([
+            'created_at' => SORT_DESC //specify sort order ASC for ascending DESC for descending      
+            ]);
         return $dataProvider;
     }
 }

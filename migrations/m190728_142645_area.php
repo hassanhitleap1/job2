@@ -9,6 +9,7 @@ class m190728_142645_area extends Migration
 {
 
     public $data = [
+        ['name_ar' => 'لا يهم'],
         ['name_ar' => 'عبدون الجنوبي'],
         ['name_ar' => 'عبدون الشمالي '],
         ['name_ar' => 'ابو علندا '],

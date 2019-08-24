@@ -80,7 +80,9 @@ class RequestMerchantSearch extends RequestMerchant
             ->andFilterWhere(['like', 'governorate.name_ar', $this->governorate])
             ->andFilterWhere(['like', 'user.name', $this->user_id])
             ->andFilterWhere(['like', 'note', $this->note]);
-
+        $query->orderBy([
+            'created_at' => SORT_DESC //specify sort order ASC for ascending DESC for descending      
+        ]);
         return $dataProvider;
     }
 }

@@ -73,6 +73,9 @@ class MerchantSearch extends Merchant
             ->andFilterWhere(['like', 'name_company', $this->name_company])
           ;
 
+        $query->orderBy([
+            'created_at' => SORT_DESC //specify sort order ASC for ascending DESC for descending      
+        ]);
         return $dataProvider;
     }
 }
