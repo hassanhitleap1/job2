@@ -9,11 +9,11 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Merchant;
 use app\models\SignupForm;
 use app\models\PasswordResetRequestForm;
 use app\models\ResetPasswordForm;
-
-
+use app\models\User;
 
 class SiteController extends Controller
 {
@@ -66,7 +66,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $merchants= Merchant::find()->where(['type'=>User::MERCHANT_USER])->all();
+        return $this->render('index',[
+            'merchants' => $merchants,
+        ]);
     }
 
     /**
@@ -135,17 +138,17 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionSignup()
-    {
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
-            return $this->goHome();
-        }
-        return $this->render('signup', [
-            'model' => $model,
-        ]);
-    }
+    // public function actionSignup()
+    // {
+    //     $model = new SignupForm();
+    //     if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+    //         Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+    //         return $this->goHome();
+    //     }
+    //     return $this->render('signup', [
+    //         'model' => $model,
+    //     ]);
+    // }
 
 
       /**

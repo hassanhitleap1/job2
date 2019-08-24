@@ -43,4 +43,21 @@ $this->title = 'home';
     </a>
   </div>
 
+
+
+</div>
+
+<div class="container">
+  <div class="row">
+    <?php foreach ($merchants as $merchant) : ?>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading"><?= $merchant->name ?></div>
+        <div class="panel-body"><?= Html::img($merchant->avatar,['class'=> 'imgae-avatar-marchent']); ?>  </div>
+      </div>
+    </div>
+    <?php endforeach; ?>
+
+
+  </div>
 </div>

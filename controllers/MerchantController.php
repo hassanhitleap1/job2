@@ -11,6 +11,7 @@ use yii\filters\VerbFilter;
 use app\models\Model;
 use app\models\User;
 use yii\helpers\ArrayHelper;
+use yii\web\UploadedFile;
 
 /**
  * MerchantController implements the CRUD actions for Merchant model.
@@ -80,6 +81,12 @@ class MerchantController extends BaseController
             if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
                 $model->type = User::MERCHANT_USER;
+                $file = UploadedFile::getInstance($model, 'file');
+                if (!is_null($file)) {
+                    $imagename = 'images/avatar/' . md5(uniqid(rand(), true)) . '.' . $file->extension;
+                    $file->saveAs($imagename);
+                    $model->avatar = $imagename;
+                }
                 try {
                     if ($flag = $model->save()) {
                         foreach ($modelsRequestMerchant as $modelRequestMerchant) {
@@ -131,6 +138,12 @@ class MerchantController extends BaseController
             $valid = $model->validate();
             $valid = Model::validateMultiple($modelsRequestMerchant) && $valid;
             if ($valid) {
+                $file = UploadedFile::getInstance($model, 'file');
+                if (!is_null($file)) {
+                    $imagename = 'images/avatar/' . md5(uniqid(rand(), true)) . '.' . $file->extension;
+                    $file->saveAs($imagename);
+                    $model->avatar = $imagename;
+                }
                 $transaction = \Yii::$app->db->beginTransaction();
                 $model->type = User::MERCHANT_USER;
                 try {

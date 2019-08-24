@@ -19,6 +19,7 @@ use Yii;
  */
 class Merchant extends \yii\db\ActiveRecord
 {
+    public $file;
     /**
      * {@inheritdoc}
      */
@@ -33,6 +34,7 @@ class Merchant extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['file'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg '],
             [[ 'phone',  'governorate'], 'integer'],
             [['name_company', 'name', 'note'], 'string'],
             [['name','name_company','phone'], 'required'],   
@@ -53,6 +55,7 @@ class Merchant extends \yii\db\ActiveRecord
             'area' => Yii::t('app', 'Area'),
             'note' => Yii::t('app', 'Note'),
             'name_company' => Yii::t('app', 'Name_Company'),
+            'file' => Yii::t('app', 'Avatar'),
         ];
     }
 
