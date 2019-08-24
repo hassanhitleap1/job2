@@ -9,7 +9,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container" id="cv-print">
     <div class="row">
         <div class="name-cv col-lg-4 col-md-4 col-offset-3">
-            <h2> السيرة الذاتية</h2>
+            <?= Html::img('@web/images/logo.svg', ['class' => 'logo ']) ?>
+            <h2> جرس للتوظيف : السيرة الذاتية </h2>
         </div>
     </div>
     <hr />
@@ -23,11 +24,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 <li> الجنسية :- <?= $model->nationality0->name_ar ?> </li>
             </ul>
         </div>
-        <?php if($model->avatar !="" || $model->avatar!=null):?>
-            <div class="col-md-6">
-                <?= Html::img($model->avatar, ['class' => 'image-profile-cv']); ?>
-            </div>
-        <?php endif;?>
+        <?php if ($model->avatar != "" || $model->avatar != null) : ?>
+        <div class="col-md-6">
+            <?= Html::img($model->avatar, ['class' => 'image-profile-cv']); ?>
+        </div>
+        <?php endif; ?>
     </div>
     <hr />
 
@@ -45,6 +46,14 @@ $this->params['breadcrumbs'][] = $this->title;
             <h2> الخبرات :</h2>
             <p style="font-size: 20px;">
                 <?= $model->experience ?>
+            </p>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                الموظف الذي يحمل هذه السيرة الذاتية     
             </p>
         </div>
     </div>
