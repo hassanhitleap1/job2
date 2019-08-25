@@ -49,7 +49,7 @@ class SMSCompnent extends Component
         $twilio_number = "+12055468423";
 
         $client = new Client($account_sid, $auth_token);
-      foreach ($$phones as $phone) {
+      foreach ($phones as $phone) {
          // $client->messages->create(
        
         //     $stringPhones,
