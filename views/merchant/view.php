@@ -24,21 +24,34 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-    <?= Html::a(Yii::t('app', 'Create Merchant'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Merchant'), ['create'], ['class' => 'btn btn-success']) ?>
         <?= Html::a(Yii::t('app', 'Back'), ['index'], ['class' => 'btn btn-info']) ?>
     </p>
-
+    
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-      
-            'name', 
+
+            'name',
             'phone',
-            'governorate',
-            'area',
+                [
+                    'format' => 'raw',
+                    'name' => 'area',
+                    'attribute' => 'area',
+                    'value' => $model->governorate0->name_ar,
+
+                ],
+
+            [
+                'format' => 'raw',
+                'name' => 'area',
+                'attribute' => 'area',
+                'value' => $model->area0->name_ar,
+
+            ],
             'note:ntext',
             'name_company',
-      
+
         ],
     ]) ?>
 

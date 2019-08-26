@@ -59,15 +59,16 @@ class MerchantSearch extends Merchant
         $query->andFilterWhere([
             'type' => User::MERCHANT_USER,
         ]);
-
+        $query->joinWith('governorate0');
+        $query->joinWith('area0'); 
         // grid filtering conditions
         $query->andFilterWhere([
             'phone' => $this->phone,
         ]);
-        $query->joinWith('governorate0');  
+ 
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'area', $this->area])
+            ->andFilterWhere(['like', 'area.name_ar', $this->area])
             ->andFilterWhere(['like', 'governorate.name_ar', $this->governorate])
             ->andFilterWhere(['like', 'note', $this->note])
             ->andFilterWhere(['like', 'name_company', $this->name_company])

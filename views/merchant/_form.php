@@ -75,7 +75,7 @@ $this->registerJs($js);
             <?= $form->field($model, 'area')->widget(
                 Select2Widget::className(),
                 [
-                    'items' => ArrayHelper::map(Area::find()->all(), 'name_ar', 'name_ar')
+                    'items' => ArrayHelper::map(Area::find()->all(), 'id', 'name_ar')
                 ]
             ); ?>
         </div>
@@ -186,7 +186,7 @@ $this->registerJs($js);
                                     <?= $form->field($modelRequestMerchant, "[{$index}]area")->widget(
                                             Select2Widget::className(),
                                             [
-                                                'items' => ArrayHelper::map(Area::find()->all(), 'name_ar', 'name_ar')
+                                                'items' => ArrayHelper::map(Area::find()->all(), 'id', 'name_ar')
                                             ]
                                         ); ?>
                                 </div>

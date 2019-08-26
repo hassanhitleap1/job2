@@ -35,7 +35,7 @@ class Merchant extends \yii\db\ActiveRecord
     {
         return [
             [['file'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg '],
-            [[ 'phone',  'governorate'], 'integer'],
+            [[ 'phone',  'governorate','area'], 'integer'],
             [['name_company', 'name', 'note'], 'string'],
             [['name','name_company','phone'], 'required'],   
             [['phone'], 'isJordanPhone'],
@@ -87,7 +87,13 @@ class Merchant extends \yii\db\ActiveRecord
     {
         return $this->hasMany(RequestMerchant::className(), ['user_id' => 'id']);
     }
-    
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getArea0()
+    {
+        return $this->hasOne(Area::className(), ['id' => 'area']);
+    }
 
 }

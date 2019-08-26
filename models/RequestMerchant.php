@@ -100,7 +100,11 @@ class RequestMerchant extends \yii\db\ActiveRecord
         return $this->hasOne(Nationality::className(), ['id' => 'nationality']);
     }
 
-    
+
+    public function getArea0()
+    {
+        return $this->hasOne(Area::className(), ['id' => 'area']);
+    }
     /**
      * {@inheritdoc}
      * @return RequestMerchantQuery the active query used by this AR class.

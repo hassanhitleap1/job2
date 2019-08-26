@@ -28,8 +28,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
             'name',
             'phone',
-            'governorate',
-            'area',
+           
+        [
+            'attribute' => 'area',
+            'value' => 'governorate0.name_ar',
+
+        ],
+            [
+                'attribute' => 'area',
+                'value' => 'area0.name_ar',
+
+            ],
             'note:ntext',
             'name_company',
 
