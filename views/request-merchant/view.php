@@ -52,7 +52,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     'value' => $model->nationality0->name_ar,
     
                 ],
-            'area',
+        [
+            'format' => 'raw',
+            'name' => 'nationality',
+            'attribute' => 'nationality',
+            'value' => $model->area0->name_ar,
+
+        ],
+         
             'number_of_houer',
             'note:ntext',
             [
