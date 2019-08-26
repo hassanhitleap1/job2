@@ -39,7 +39,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => 'governorate0.name_ar',
 
             ],
-            'area',
+            [
+                'attribute' => 'area',
+                'value' => 'area0.name_ar',
+
+            ],
             'number_of_houer',
             [
                 'attribute' => 'nationality',

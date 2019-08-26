@@ -57,7 +57,8 @@ class RequestMerchantSearch extends RequestMerchant
         }
 
         $query->joinWith('nationality0');
-        $query->joinWith('governorate0');  
+        $query->joinWith('governorate0');
+        $query->joinWith('area0');  
         $query->joinWith('user0');  
 
         // grid filtering conditions
@@ -75,7 +76,7 @@ class RequestMerchantSearch extends RequestMerchant
 
         $query->andFilterWhere(['like', 'job_title', $this->job_title])
             ->andFilterWhere(['like', 'desc_job', $this->desc_job])
-            ->andFilterWhere(['like', 'area', $this->area])
+            ->andFilterWhere(['like', 'area.name_ar', $this->area])
             ->andFilterWhere(['like', 'nationality.name_ar', $this->nationality])
             ->andFilterWhere(['like', 'governorate.name_ar', $this->governorate])
             ->andFilterWhere(['like', 'user.name', $this->user_id])

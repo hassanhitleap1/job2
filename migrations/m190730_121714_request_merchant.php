@@ -23,7 +23,7 @@ class m190730_121714_request_merchant extends Migration
             'agree_from' => $this->integer(),
             'agree_to' => $this->integer(),
             'governorate'=>$this->integer(),
-            'area'=>$this->string(),
+            'area'=>$this->integer(),
             'number_of_houer'=>$this->integer(),
             'nationality'=>$this->integer(),
             'note'=>$this->text(),
