@@ -52,8 +52,8 @@ $(".add-item").on("click",function(e){
   $("#requestmerchant-0-governorate").val(governorate);
   area=$("select2-merchant-area-container").val();
   $("select-0-requestmerchant-0-area-container").val(area);
-    
 });
+
 ';
 
 $this->registerJs($js);
