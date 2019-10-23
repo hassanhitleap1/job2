@@ -139,8 +139,18 @@ a.desc:after {
     height: 193px;
     float: left;
 }
+.vl {
+    margin-top: 80px;
+    border-left: 6px solid green;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    margin-left: -3px;
+    top: 0;
+}
 
 @media print {
+
   #btn-print-cv {
     display: none !important;
   }

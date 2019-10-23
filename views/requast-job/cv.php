@@ -24,6 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <li> الجنسية :- <?= $model->nationality0->name_ar ?> </li>
             </ul>
         </div>
+        <div class="vl"></div>
+
         <?php if ($model->avatar != "" || $model->avatar != null) : ?>
         <div class="col-md-6">
             <?= Html::img($model->avatar, ['class' => 'image-profile-cv']); ?>
