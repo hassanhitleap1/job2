@@ -76,7 +76,7 @@ class SendJobController extends BaseController
             $userIdArray = yii\helpers\ArrayHelper::getColumn($modelCountSms,'user_id');
 
             $query =(new \yii\db\Query())
-                ->select(['phone'])
+                ->select(['phone','id'])
                 ->from('user')
                 ->where(['user.type'=>User::NORMAL_USER])
                 ->where(['>=','user.subscribe_date',Carbon::now()->subDays(30)->toDateString()])
@@ -103,8 +103,7 @@ class SendJobController extends BaseController
                 $userids = ArrayHelper::getColumn($users, function ($element) {
                     return $element['id'];
                 });
-
-
+                 CountSendSms::updateAllCounters(['count' => 1],['in','user_id',$userids]);
                 if(!$isSend){
                     throw new NotFoundHttpException(Yii::t('app', 'Not_Send_Message'));
                 }
