@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\CountSendSms;
 use Yii;
 use app\models\RequastJob;
 use app\models\RequastJobSearch;
@@ -77,6 +78,10 @@ class RequastJobController extends BaseController
                 }
                
                if($model->save()){
+                   $modelCountSendSms = new CountSendSms();
+                   $modelCountSendSms->user_id=$model->id;
+                   $modelCountSendSms->count=0;
+                   $modelCountSendSms->save(false);
                     return $this->redirect(['view', 'id' => $model->id]);
                }
 

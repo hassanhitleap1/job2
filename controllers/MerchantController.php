@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\CountSendSms;
 use Yii;
 use app\models\Merchant;
 use app\models\MerchantSearch;
@@ -100,6 +101,10 @@ class MerchantController extends BaseController
                     }
 
                     if ($flag) {
+                        $modelCountSendSms = new CountSendSms();
+                        $modelCountSendSms->user_id=$model->id;
+                        $modelCountSendSms->count=0;
+                        $modelCountSendSms->save(false);
                         $transaction->commit();
                         return $this->redirect(['view', 'id' => $model->id]);
                     }

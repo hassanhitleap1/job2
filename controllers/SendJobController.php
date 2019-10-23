@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Categories;
+use app\models\CountSendSms;
 use Yii;
 use app\models\SendJob;
 use app\models\SendJobSearch;
@@ -39,7 +40,6 @@ class SendJobController extends BaseController
      */
     public function actionIndex()
     {
-        
         $searchModel = new SendJobSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -72,23 +72,39 @@ class SendJobController extends BaseController
         $model = new SendJob();
         $catgories=Categories::find()->all();
         if ($model->load(Yii::$app->request->post())  ) {
+            $modelCountSms = CountSendSms::find("user_id")->where(['<=','count_send_sms.count',30])->asArray()->all();
+            $userIdArray = yii\helpers\ArrayHelper::getColumn($modelCountSms,'user_id');
+
             $query =(new \yii\db\Query())
                 ->select(['phone'])
                 ->from('user')
                 ->where(['user.type'=>User::NORMAL_USER])
-                ->where(['>=','user.subscribe_date',Carbon::now()->subDays(30)->toDateString()]);
+                ->where(['>=','user.subscribe_date',Carbon::now()->subDays(30)->toDateString()])
+                ->where(['in', 'category_id', $userIdArray]);
+
                 
-            if(!$_POST["SendJob"]["all"]){
+            if($_POST["SendJob"]["all"]){
                 $catgotiesSelected=$_POST["SendJob"]["category"];
+                array_push($catgotiesSelected,0);
                 $query->where(['in', 'category_id', $catgotiesSelected]);
             }
+
             $users=$query->all();
+
                 $phones = ArrayHelper::getColumn($users, function ($element) {
                     return $element['phone'];
                 });
-                if(empty($phones))
+
+                if(empty($phones)){
                     throw new NotFoundHttpException(Yii::t('app', 'No_Phone'));
+                }
+
                 $isSend=Yii::$app->smscomponent->sendsmsusingtwiz($phones);
+                $userids = ArrayHelper::getColumn($users, function ($element) {
+                    return $element['id'];
+                });
+
+
                 if(!$isSend){
                     throw new NotFoundHttpException(Yii::t('app', 'Not_Send_Message'));
                 }

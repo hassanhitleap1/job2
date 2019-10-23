@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\CountSendSms;
 use Yii;
 use yii\web\Controller;
 use app\models\RequastJobVisitor;
@@ -30,6 +31,10 @@ class RequatJobController extends \yii\web\Controller
                 ->createCommand()
                 ->batchInsert('requast_job', ['name','agree', 'phone','nationality','certificates','experience','governorate','expected_salary'],[$data])
                 ->execute();
+                $modelCountSendSms = new CountSendSms();
+                $modelCountSendSms->user_id=$model->id;
+                $modelCountSendSms->count=0;
+                $modelCountSendSms->save(false);
                 return $this->goHome();
             } 
 

@@ -39,7 +39,7 @@ class m190803_180403_user_table extends Migration
             'subscribe_date'=>$this->date()->defaultValue(null),
             'avatar'=>$this->string()->defaultValue(null),
             'created_at' =>$this->timestamp()->notNull(),
-            'updated_at' => $this->timestamp()->notNull(),
+            'updated_at' => $this->timestamp()->defaultValue(null),
         ], $tableOptions);
 
         // $this->addForeignKey(
