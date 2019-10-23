@@ -10,13 +10,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="name-cv col-lg-4 col-md-4 col-offset-3">
             <?= Html::img('@web/images/logo.svg', ['class' => 'logo ']) ?>
-            <h2> جرس للتوظيف : السيرة الذاتية </h2>
+            <h3> جرس لوساطة التوظيف : السيرة الذاتية </h3>
         </div>
     </div>
     <hr />
     <div class="row">
         <div class="col-md-6 info-profile">
-            <h2>معلومات الشخصية :</h2>
+            <h3>معلومات الشخصية :</h3>
             <ul style="font-size: 20px;">
                 <li> الاسم :- <?= $model->name ?></li>
                 <li> هاتف :- <?= $model->phone ?> </li>
@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <div class="col-md-12">
-            <h2> الشهادات :</h2>
+            <h3> الشهادات :</h3>
             <p style="font-size: 20px;">
                 <?= $model->certificates ?>
             </p>
@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <hr />
     <div class="row">
         <div class="col-md-12">
-            <h2> الخبرات :</h2>
+            <h3> الخبرات :</h3>
             <p style="font-size: 20px;">
                 <?= $model->experience ?>
             </p>
