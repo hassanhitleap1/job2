@@ -109,6 +109,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container">
     <div class="row">
-        <button class="btn btn-primary btn-lg" id="btn-print-cv"><?= Yii::t('app', 'Print_CV') ?></button>
+    <?= Html::a(Yii::t('app', 'Print_CV'), 
+        ['/requast-job/index', 'id' =>$model->id], 
+        ['class' => 'btn btn-primary btn-lg'])
+        ?>
+       
     </div>
+
+
 </div>

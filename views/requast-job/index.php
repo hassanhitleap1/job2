@@ -70,10 +70,13 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'note:ntext',
              [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{view} {update} {delete} {Cv}',  // the default buttons + your custom button
+            'template' => '{view} {update} {delete} {Cv} {printcv}',  // the default buttons + your custom button
             'buttons' => [
                 'Cv' => function($url, $model, $key) {     // render your custom button
                     return  Html::a('CV', ['requast-job/cv', 'id' => $model->id],['class' => 'glyphicon glyphicon-th', 'data-pjax' => 0]);
+                },
+                'printcv' => function($url, $model, $key) {     // render your custom button
+                    return  Html::a('CV', ['requast-job/print-cv', 'id' => $model->id],['class' => 'glyphicon glyphicon-print', 'data-pjax' => 0]);
                 }
             ]
             ],

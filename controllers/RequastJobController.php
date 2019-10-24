@@ -6,8 +6,11 @@ use app\models\CountSendSms;
 use Yii;
 use app\models\RequastJob;
 use app\models\RequastJobSearch;
+use app\models\User;
+use ConvertApi\ConvertApi;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Url;
 use yii\web\UploadedFile;
 
 /**
@@ -154,6 +157,33 @@ class RequastJobController extends BaseController
         ]);
     }
 
+    public function actionPrintCv($id){
+       
+        $user=User::findOne($id);
+        ConvertApi::setApiSecret('AvvRd4prGwWNUP7E');
+        # Example of converting Web Page URL to PDF file
+        # https://www.convertapi.com/web-to-pdf
+        $fromFormat = 'web';
+        $conversionTimeout = 180;
+        $dir = 'Downloads';
+        $result = ConvertApi::convert(
+            'pdf',
+            [
+                'Url' =>    Url::base(). '/index.php?r=requast-job%2Fcv&id='.$id,
+                'FileName' => 'cv_for'.$user->name
+            ],
+            $fromFormat,
+            $conversionTimeout
+        );
+        
+        $savedFiles = $result->saveFiles($dir);
+        if($savedFiles){
+            return $this->redirect(['index']);   
+        }
+          throw new Exception("لم يطبع السيره الذاتية", 1);
+                     
+               
+    }
     /**
      * Finds the RequastJob model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
