@@ -17,17 +17,20 @@ $this->params['breadcrumbs'][] = $this->title;
    
 
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-5 column-info">
            
             <div class="row">
                 <div class="col-md-12">
                     <?= Html::img('@web/images/profile.png', ['class' => 'image-profile-cv']) ?>
                 </div>    
             </div>
-            <hr>
             <div class="row info-profile">
+                
+                <h3><span class="glyphicon glyphicon-user"> </span> معلومات الشخصية :</h3>
+               
+                <hr>
                 <div class="cal-md-12">
-                    <h3>معلومات الشخصية :</h3>
+                    
                     <ul style="font-size: 20px;">
                         <li> هاتف :- <?= $model->phone ?> </li>
                         <li> العمر:- <?= $model->agree ?> سنين </li>
@@ -37,8 +40,10 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <hr>
             <div class="row info-profile">
+            <h3><span class="glyphicon glyphicon-stats"> </span> المهارات الشخصية  :</h3>
+                
                 <div class="cal-md-12">
-                    <h3>المهارات الشخصية  :</h3>
+                  
                     <div>
                         <div class="progress">
                             <div class="progress-bar progress-bar-custum" role="progressbar" aria-valuenow="98"
@@ -73,10 +78,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>   
             </div>
-            <hr>
+            
             <div class="row">
+                    <h3><span class="glyphicon glyphicon-wrench blue-h"></span><strong class="blue-h"> الشهادات :</strong></h3>
+                    <hr>
                     <div class="col-md-12">
-                        <h3> الشهادات :</h3>
+                        
                         <p style="font-size: 20px;">
                             <?= $model->certificates ?>
                         </p>
@@ -84,8 +91,9 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <hr />
         <div class="row">
+            <h3><span class="glyphicon glyphicon-book   blue-h"></span> <strong class="blue-h"> الخبرات :</strong> </h3>
+            <hr>
             <div class="col-md-12">
-                <h3> الخبرات :</h3>
                 <p style="font-size: 20px;">
                     <?= $model->experience ?>
                 </p>
@@ -94,9 +102,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
         </div>
         <hr />
-        <div class="row">
+        <div class="row note">
             <div class="col-md-12">
-                <p>
+                <p style="margin-top: 40px;">
+                   <span class="glyphicon glyphicon-star-empty"></span>
                 الموظف الذي يحمل هذه السيره الذاتية يرجى التوصيه به بنأ على الوصف والمواصفات الوظيفية
 
                 </p>
@@ -107,14 +116,3 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>
 
-<div class="container">
-    <div class="row">
-    <?= Html::a(Yii::t('app', 'Print_CV'), 
-        ['/requast-job/index', 'id' =>$model->id], 
-        ['class' => 'btn btn-primary btn-lg'])
-        ?>
-       
-    </div>
-
-
-</div>

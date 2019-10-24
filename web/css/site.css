@@ -162,7 +162,7 @@ a.desc:after {
     border-left: 6px solid #0e4899;
     height: 100%;
     position: absolute;
-    left: 56%;
+    left: 54%;
     margin-left: -3px;
     top: 0;
 }
@@ -184,58 +184,31 @@ a.desc:after {
 }
 
 
-@media print {
+.column-info{
+    border-radius: 2%;
+    background-color: #0f3367;
+    border: solid 1px black;
+    height: 888px;
+    color: #fff;
+    padding-left: 20px;
+    padding-right: 20px;;
+}
 
-    
-    #btn-print-cv {
-      display: none !important;
-    }
+.panel-heading{
+    text-align: center;
+}
 
-    .card-name{
-        background: #0e4899;
-        color: white;
-        width: 90%;
-        height: 97px ;
-        border-radius: 14%;
-    }
-    .image-profile-cv{
-        width: 235px;
-        height: 267px;
-        border-radius: 49%;
-        margin: 20px;
-        object-fit: cover;
-    }
-    .progress-bar{
-        font-size: 18px !important;
-        padding-top: 5px;
-    }
-    .progress {
-        height: 35px !important;
-        border: solid 1px;
-        
-    }  
-    .card-name{
-        background: #0e4899;
-        color: white;
-        width: 90%;
-        height: 97px ;
-        border-radius: 14%;
-    }
-    .vl {
-        margin-top: 80px;
-        border-left: 6px solid #0e4899;
-        height: 100%;
-        position: absolute;
-        left: 56%;
-        margin-left: -3px;
-        top: 0;
-    }
-    .row2{
-        padding-right: 62px;
-    }
-    .progress-bar-custum{
-        background-color:#0e4899 ;
-        color: white;
-    }
-  
-  }
+.row2{
+
+}
+
+.blue-h{
+    color: #0e4899;
+}
+.glyphicon-whit{
+    color: #fff;
+}
+
+.note{
+    font-size: 16px;
+}
