@@ -157,6 +157,23 @@ class RequastJobController extends BaseController
         ]);
     }
 
+
+        /**
+     * Displays a single RequastJob model.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionShowCv($id)
+    {
+        $this->layout = "cv-layout";
+        return $this->render('show_cv', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+
+
     public function actionPrintCv($id){
        
         $user=User::findOne($id);
