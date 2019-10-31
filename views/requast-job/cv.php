@@ -21,7 +21,11 @@ $this->params['breadcrumbs'][] = $this->title;
            
             <div class="row">
                 <div class="col-md-12">
-                    <?= Html::img('@web/images/profile.png', ['class' => 'image-profile-cv']) ?>
+                    <?php if($model->avatar==null) :?>
+                            <?= Html::img('@web/images/profile.png', ['class' => 'image-profile-cv']) ?>
+                    <?php else:?>
+                            <?= Html::img("@web/$model->avatar", ['class' => 'image-profile-cv']) ?>
+                    <?php endif;?>
                 </div>    
             </div>
             <div class="row info-profile">
