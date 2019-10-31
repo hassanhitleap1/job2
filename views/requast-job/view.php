@@ -33,6 +33,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             // 'id',
             'name',
+            [
+                'format' => 'raw',
+                'attribute' => 'gender',
+                'value' => function($model){
+                        return ($model->gender == 1)? 'ذكر' : ($model->gender==2) ? 'انثى' :'غير محدد';
+                },
+                'filter' =>[0=>"غير محدد",1=>" ذكر",2=>" انثى"],
+
+
+            ],
             'agree',
             'phone',
             [

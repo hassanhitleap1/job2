@@ -31,6 +31,7 @@ class RequestMerchantForm extends Model{
     public $nationality;
     public $avg_salary;
     public $number_of_houer;
+    public $gender;
 
 
     
@@ -45,8 +46,8 @@ class RequestMerchantForm extends Model{
     public function rules()
     {
         return [
-            [['avg_agree', 'phone', 'nationality','area' ,'job_title', 'governorate','avg_salary'], 'required'],
-            [['avg_agree', 'phone', 'nationality', 'governorate', 'avg_salary','number_of_houer'], 'integer'],
+            [['avg_agree', 'phone', 'nationality','area' ,'job_title', 'governorate','avg_salary','gender'], 'required'],
+            [['avg_agree', 'phone', 'nationality', 'governorate', 'avg_salary','number_of_houer','gender'], 'integer'],
             [['name','name_company' , 'job_title ','area' ,'note'], 'string'],
             [['name'], 'string', 'max' => 255],
         ];
@@ -70,6 +71,7 @@ class RequestMerchantForm extends Model{
             'area' => Yii::t('app', 'Area'),
             'avg_salary' => Yii::t('app', 'Avg_Salary'),
             'number_of_houer' => Yii::t('app', 'Number_Of_Houer'),
+            'gender' => Yii::t('app', 'Gender'),
         ];
     }
 

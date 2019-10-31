@@ -130,6 +130,7 @@ $this->registerJs($js);
                         'area',
                         'number_of_houer',
                         'desc_job',
+                        'gender',
                         'note',
                     ],
                 ]); ?>
@@ -167,7 +168,7 @@ $this->registerJs($js);
                                             ]
                                         );  ?>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <?= $form->field($modelRequestMerchant, "[{$index}]category_id")->widget(
                                             Select2Widget::className(),
                                             [
@@ -178,9 +179,12 @@ $this->registerJs($js);
 
 
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <?= $form->field($modelRequestMerchant, "[{$index}]number_of_houer")->textInput() ?>
 
+                                </div>
+                                <div class="col-md-2">
+                                    <?=$form->field($modelRequestMerchant, "[{$index}]gender")->dropDownList([ 0=>'لا يهتم',1=> "ذكر", 2 =>"انثى" ]); ?>
                                 </div>
                             </div>
                             <div class="row">

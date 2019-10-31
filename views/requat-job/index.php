@@ -18,6 +18,8 @@ use app\models\Area;
                     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
                     <?= $form->field($model, 'agree')->textInput() ?>
                     <?= $form->field($model, 'phone')->textInput() ?>
+                    <?=$form->field($model, "gender")->dropDownList([ 1=> "ذكر", 2 =>"انثى" ],['prompt'=>'لا يهم']); ?>
+
 
 
                     <?= $form->field($model, 'governorate')->widget(

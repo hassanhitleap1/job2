@@ -42,16 +42,19 @@ if (!$model->isNewRecord && $model->avatar != "") {
         <div class="col-md-3">
             <?= $form->field($model, 'phone')->textInput() ?>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <?= $form->field($model, 'agree')->textInput() ?>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <?= $form->field($model, 'nationality')->widget(
                 Select2Widget::className(),
                 [
                     'items' => ArrayHelper::map(Nationality::find()->all(), 'id', 'name_ar')
                 ]
             ); ?>
+        </div>
+        <div class="col-md-2">
+            <?=$form->field($model, "gender")->dropDownList([ 1=> "ذكر", 2 =>"انثى" ],['prompt'=>'لا يهم']); ?>
         </div>
     </div>
     <div class="row">

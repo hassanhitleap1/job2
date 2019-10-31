@@ -39,6 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <li> هاتف :- <?= $model->phone ?> </li>
                         <li> العمر:- <?= $model->agree ?> سنين </li>
                         <li> الجنسية :- <?= $model->nationality0->name_ar ?> </li>
+                        <li> الجنس :- <?= ($model->gender == 1)? 'ذكر' : ($model->gender==2) ? 'انثى' :'غير محدد';?> </li>
                     </ul>
                 </div>
             </div>

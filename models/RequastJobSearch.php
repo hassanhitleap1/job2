@@ -17,7 +17,7 @@ class RequastJobSearch extends RequastJob
     public function rules()
     {
         return [
-            [['id', 'agree', 'phone',  'expected_salary'], 'integer'],
+            [['id', 'agree', 'phone',  'expected_salary',"gender"], 'integer'],
             [['name', 'certificates', 'experience', 'nationality', 'governorate','category_id','subscribe_date','note'], 'safe'],
         ];
     }
@@ -65,6 +65,7 @@ class RequastJobSearch extends RequastJob
             'id' => $this->id,
             'agree' => $this->agree,
             'phone' => $this->phone,
+            "gender"=>$this->gender,
             // 'nationality' => $this->nationality,
             // 'governorate' => $this->governorate,
             'expected_salary' => $this->expected_salary,

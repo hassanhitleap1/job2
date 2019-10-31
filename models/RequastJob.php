@@ -19,6 +19,7 @@ use Yii;
  * @property string $area
  * @property string $note
  * @property date $subscribe_date
+ * @property int $gender
  */
 class RequastJob extends \yii\db\ActiveRecord
 {
@@ -39,7 +40,7 @@ class RequastJob extends \yii\db\ActiveRecord
     {
         return [
             [['file'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg '],
-            [['agree', 'phone', 'nationality', 'governorate', 'expected_salary'], 'integer'],
+            [['agree', 'phone', 'nationality', 'governorate', 'expected_salary','gender'], 'integer'],
             [['certificates', 'experience', 'area','note'], 'string'],
             [['name'], 'string', 'max' => 255],
             [['subscribe_date'], 'date', 'format' => 'yyyy-mm-dd'],
@@ -69,6 +70,7 @@ class RequastJob extends \yii\db\ActiveRecord
             'subscribe_date'=>Yii::t('app', 'Subscribe_Date'),
             'avatar'=>Yii::t('app', 'Avatar'),
             'file'=>Yii::t('app', 'Avatar'),
+            'gender'=>Yii::t('app', 'Gender'),
         ];
     }
 

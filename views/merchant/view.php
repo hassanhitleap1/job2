@@ -1,5 +1,6 @@
 <?php
 
+use app\models\User;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -63,6 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <th scope="col">#</th>
                     <th scope="col"><?= Yii::t('app', 'Job_Title'); ?></th>
                     <th scope="col"><?= Yii::t('app', 'Salary_From'); ?></th>
+                    <th scope="col"><?= Yii::t('app', 'Gender'); ?></th>
                     <th scope="col"><?= Yii::t('app', 'Salary_To'); ?></th>
                     <th scope="col"><?= Yii::t('app', 'Agree_From'); ?></th>
                     <th scope="col"><?= Yii::t('app', 'Agree_To'); ?></th>
@@ -80,6 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <th scope="row"><?= $i ?></th>
                     <td><?= $requast->job_title ?></td>
                     <td><?= $requast->salary_from ?></td>
+                    <td><?= ($requast->gender == User::FEMALE)? 'انثى' : ($requast->gender==User::MALE) ? 'ذكر' :'لا يهم ';?> <?= $requast->gender?></td>
                     <td><?= $requast->salary_to ?></td>
                     <td><?= $requast->agree_from ?></td>
                     <td><?= $requast->agree_to ?></td>

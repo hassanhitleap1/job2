@@ -17,7 +17,7 @@ class RequestMerchantSearch extends RequestMerchant
     public function rules()
     {
         return [
-            [['id', 'salary_from', 'salary_to', 'agree_from', 'agree_to',  'number_of_houer'], 'integer'],
+            [['id', 'salary_from', 'salary_to', 'agree_from', 'agree_to',  'number_of_houer','gender'], 'integer'],
             [['job_title', 'desc_job', 'area', 'note','nationality', 'user_id','governorate'], 'safe'],
         ];
     }
@@ -64,10 +64,13 @@ class RequestMerchantSearch extends RequestMerchant
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            
+            'request_merchant.gender' => $this->gender,
             'salary_from' => $this->salary_from,
             'salary_to' => $this->salary_to,
             'agree_from' => $this->agree_from,
             'agree_to' => $this->agree_to,
+            
             //'governorate' => $this->governorate,
             'number_of_houer' => $this->number_of_houer,
             // 'nationality' => $this->nationality,

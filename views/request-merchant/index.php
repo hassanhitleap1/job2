@@ -29,6 +29,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'id',
             'job_title',
+            [
+                'attribute' => 'gender',
+                'value' => function($searchModel){
+                    return ($searchModel->gender == 1)? 'ذكر' : ($searchModel->gender==2) ? 'انثى' :'غير محدد';
+                },
+                'filter' =>[0=>"غير محدد",1=>" ذكر",2=>" انثى"],
+
+                'format' => 'html',
+
+            ],
             'desc_job:ntext',
             'salary_from',
             'salary_to',

@@ -18,7 +18,7 @@ use app\models\User;
 <div class="container">
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <?= $form->field($model, "user_id")->widget(
                 Select2Widget::className(),
                 [
@@ -27,7 +27,7 @@ use app\models\User;
             );
             ?>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <?= $form->field($model, "job_title")->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-2">
@@ -37,6 +37,7 @@ use app\models\User;
                     'items' => ArrayHelper::map(Categories::find()->all(), 'id', 'name_ar')
                 ]
             ); ?>
+      
 
         </div>
         <div class="col-md-2">
@@ -50,6 +51,9 @@ use app\models\User;
                     'items' => ArrayHelper::map(Nationality::find()->all(), 'id', 'name_ar')
                 ]
             );  ?>
+        </div>
+        <div class="col-md-2">
+            <?=$form->field($model, "gender")->dropDownList([ 1=> "ذكر", 2 =>"انثى" ],['prompt'=>'لا يهم']); ?>
         </div>
     </div>
     <div class="row">

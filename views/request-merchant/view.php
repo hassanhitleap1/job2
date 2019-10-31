@@ -45,18 +45,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=> $model->governorate0->name_ar,
                 
                 ],
-                [
-                    'format' => 'raw',
-                    'name' => 'nationality',
-                    'attribute' => 'nationality',
-                    'value' => $model->nationality0->name_ar,
-    
-                ],
+            
         [
             'format' => 'raw',
             'name' => 'nationality',
             'attribute' => 'nationality',
-            'value' => $model->area0->name_ar,
+            'value' => $model->area0['name_ar'],
 
         ],
          

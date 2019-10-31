@@ -20,6 +20,7 @@ use Yii;
  * @property int $nationality
  * @property string $note
  * @property int $user_id
+ * @property int $gender
  */
 class RequestMerchant extends \yii\db\ActiveRecord
 {
@@ -47,7 +48,7 @@ class RequestMerchant extends \yii\db\ActiveRecord
     {
         return [
             [['desc_job', 'note'], 'string'],
-            [['salary_from', 'salary_to', 'agree_from', 'agree_to', 'governorate', 'number_of_houer', 'nationality', 'user_id'], 'integer'],
+            [['salary_from', 'salary_to', 'agree_from', 'agree_to', 'governorate', 'number_of_houer', 'nationality', 'user_id','gender'], 'integer'],
             [['job_title', 'area'], 'string', 'max' => 255],
             [['job_title','number_of_houer', 'nationality','governorate','agree_from','agree_to','salary_from','salary_to'], 'required'],
             //[['job_title','number_of_houer', 'nationality','governorate','agree_from','agree_to','salary_from','salary_to'], 'required', 'on' => self::SCENARIO_MERCHANT],
@@ -74,6 +75,7 @@ class RequestMerchant extends \yii\db\ActiveRecord
             'note' => Yii::t('app', 'Note'),
             'category_id'=>Yii::t('app', 'Category'),
             'user_id' => Yii::t('app', 'Name_Marchant'),
+            'gender' => Yii::t('app', 'Gender')
         ];
     }
 

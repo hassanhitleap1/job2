@@ -31,6 +31,15 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'id',
             'name',
             'agree',
+            [
+                'attribute' => 'gender',
+                'value' => function($searchModel){
+                    return  ($searchModel->gender == 1)? 'ذكر' : ($searchModel->gender==2) ? 'انثى' :'غير محدد';
+                },
+                'filter' =>[0=>"غير محدد",1=>" ذكر",2=>" انثى"],
+
+                'format' => 'html',
+            ],
             'phone',
             [
                 'attribute' => 'nationality',
