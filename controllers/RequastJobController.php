@@ -172,6 +172,34 @@ class RequastJobController extends BaseController
         ]);
     }
 
+    /**
+     * Displays a single RequastJob model.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionSendSms($id)
+    {
+        $model = $this->findModel($id);
+        if ($model->load(Yii::$app->request->post())) { 
+            exit;
+        }
+        return $this->render('send_sms', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+
+    public function actionDoSendSms($id)
+    {
+        $model = $this->findModel($id);
+        $phone = $model->phone;
+        $isSend = Yii::$app->smscomponent->sendsmsforuser($phone);
+        return $this->redirect(['index']);
+    }
+    
+      
+    
 
 
     public function actionPrintCv($id){
