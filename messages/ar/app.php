@@ -74,4 +74,8 @@ return [
     'Not_Send_Message'=>'لم يتم ارسال الرسائل ',
     'No_Phone'=>'لا توجد ارقام في هذه المجموعة',
     "Gender"=>"الجنس",
+    "Affiliated_To"=>"تم تنسيبه الى",
+    "Affiliated_With" => "ينسب الى",
+    "Interview_Time" => "موعد المقابلة",
+    "Year_Of_Experience" => "عدد سنوات الخبرة",
 ];

@@ -1,5 +1,6 @@
 <?php
 
+use app\models\User;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -32,9 +33,17 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'gender',
                 'value' => function($searchModel){
-                    return ($searchModel->gender == 1)? 'ذكر' : ($searchModel->gender==2) ? 'انثى' :'غير محدد';
+                        if ($searchModel->gender == User::MALE) {
+                            return "ذكر";
+                        } elseif ($searchModel->gender == User::FEMALE) {
+                            # code...
+                            return "انثى";
+                        } else {
+                            return 'غير محدد';
+                        }
+                  
                 },
-                'filter' =>[0=>"غير محدد",1=>" ذكر",2=>" انثى"],
+                'filter' =>[0=>"غير محدد", User::MALE=>" ذكر", User::FEMALE=>" انثى"],
 
                 'format' => 'html',
 

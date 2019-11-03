@@ -1,5 +1,6 @@
 <?php
 
+use app\models\User;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -37,9 +38,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'attribute' => 'gender',
                 'value' => function($model){
-                        return ($model->gender == 1)? 'ذكر' : ($model->gender==2) ? 'انثى' :'غير محدد';
+                       if($model->gender == User::MALE){
+                           return "ذكر";
+                       }elseif ($model->gender == User::FEMALE)  {
+                            # code...
+                             return "انثى";
+                       }else{
+                            return 'غير محدد';
+                       }
+                        
                 },
-                'filter' =>[0=>"غير محدد",1=>" ذكر",2=>" انثى"],
+                'filter' =>[0=>"غير محدد", User::MALE=>" ذكر", User::FEMALE=>" انثى"],
 
 
             ],
@@ -65,6 +74,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'expected_salary',
             'subscribe_date',
             'note:ntext',
+            'affiliated_with',
+            'affiliated_to',
+            'interview_time',
+            'year_of_experience',
         ],
     ]) ?>
 

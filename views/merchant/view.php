@@ -82,7 +82,23 @@ $this->params['breadcrumbs'][] = $this->title;
                     <th scope="row"><?= $i ?></th>
                     <td><?= $requast->job_title ?></td>
                     <td><?= $requast->salary_from ?></td>
-                    <td><?= ($requast->gender == User::FEMALE)? 'انثى' : ($requast->gender==User::MALE) ? 'ذكر' :'لا يهم ';?> <?= $requast->gender?></td>
+
+
+                    <td>
+                        <?php
+
+                            if ($requast->gender == User::MALE) {
+                                echo "ذكر";
+                            } elseif ($requast->gender == User::FEMALE) {
+                                # code...
+                                echo "انثى";
+                            } else {
+                            echo 'غير محدد';
+                            }
+                        ?>
+                    </td>
+
+
                     <td><?= $requast->salary_to ?></td>
                     <td><?= $requast->agree_from ?></td>
                     <td><?= $requast->agree_to ?></td>

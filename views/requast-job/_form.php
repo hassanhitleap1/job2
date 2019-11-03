@@ -54,9 +54,10 @@ if (!$model->isNewRecord && $model->avatar != "") {
             ); ?>
         </div>
         <div class="col-md-2">
-            <?=$form->field($model, "gender")->dropDownList([ 1=> "ذكر", 2 =>"انثى" ],['prompt'=>'لا يهم']); ?>
+            <?= $form->field($model, "gender")->dropDownList([1 => "ذكر", 2 => "انثى"]); ?>
         </div>
     </div>
+
     <div class="row">
         <div class="col-md-3">
             <?= $form->field($model, 'governorate')->widget(
@@ -105,6 +106,20 @@ if (!$model->isNewRecord && $model->avatar != "") {
             <?= $form->field($model, 'expected_salary')->textInput() ?>
         </div>
 
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <?= $form->field($model, 'affiliated_with')->textInput() ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'affiliated_to')->textInput() ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'interview_time')->textInput() ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'year_of_experience')->textInput() ?>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-6">

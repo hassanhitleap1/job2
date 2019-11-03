@@ -20,6 +20,10 @@ use Yii;
  * @property string $note
  * @property date $subscribe_date
  * @property int $gender
+ * @property string affiliated_with
+ * @property string affiliated_to
+ * @property string interview_time
+ * @property double year_of_experience
  */
 class RequastJob extends \yii\db\ActiveRecord
 {
@@ -33,6 +37,7 @@ class RequastJob extends \yii\db\ActiveRecord
         return '{{%user}}';
     }
 
+
     /**
      * {@inheritdoc}
      */
@@ -40,8 +45,8 @@ class RequastJob extends \yii\db\ActiveRecord
     {
         return [
             [['file'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg '],
-            [['agree', 'phone', 'nationality', 'governorate', 'expected_salary','gender'], 'integer'],
-            [['certificates', 'experience', 'area','note'], 'string'],
+            [['agree', 'phone', 'nationality', 'governorate', 'expected_salary','gender', 'year_of_experience'], 'integer'],
+            [['certificates', 'experience', 'area','note', 'affiliated_with', 'affiliated_to', 'interview_time'], 'string'],
             [['name'], 'string', 'max' => 255],
             [['subscribe_date'], 'date', 'format' => 'yyyy-mm-dd'],
             [['name','phone', 'nationality','agree', 'governorate','category_id'], 'required'],
@@ -71,6 +76,14 @@ class RequastJob extends \yii\db\ActiveRecord
             'avatar'=>Yii::t('app', 'Avatar'),
             'file'=>Yii::t('app', 'Avatar'),
             'gender'=>Yii::t('app', 'Gender'),
+            'affiliated_to' => Yii::t('app', 'Affiliated_To'),
+            'affiliated_with' => Yii::t('app', 'Affiliated_With'),
+            'interview_time' => Yii::t('app', 'Interview_Time'),
+            'year_of_experience' => Yii::t('app', 'Year_Of_Experience'),
+
+            
+            
+
         ];
     }
 
