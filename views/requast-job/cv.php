@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="name-cv col-lg-4 col-md-4 col-offset-3">
             <?= Html::img('@web/images/logo.svg', ['class' => 'logo ']) ?>
-            <h3> جرس لوساطة التوظيف : السيرة الذاتية </h3>
+            <h3> جرس   : السيرة الذاتية </h3>
         </div>
     </div>
     <hr />
@@ -111,7 +111,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-md-12">
                 <p style="margin-top: 40px;">
                    <span class="glyphicon glyphicon-star-empty"></span>
-                الموظف الذي يحمل هذه السيره الذاتية يرجى التوصيه به بنأ على الوصف والمواصفات الوظيفية
+                 الموظف الذي يحمل هذه السيره الذاتية يرجى التوصيه به بنأ على الوصف والمواصفات الوظيفية ويرجى تزويدنا بتاريخ التوظيف
 
                 </p>
             </div>
