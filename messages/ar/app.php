@@ -78,4 +78,5 @@ return [
     "Affiliated_With" => "ينسب الى",
     "Interview_Time" => "موعد المقابلة",
     "Year_Of_Experience" => "عدد سنوات الخبرة",
+    "Documents"=>"الوثائق - هوية السيره الذاتية ان وجدت "
 ];
