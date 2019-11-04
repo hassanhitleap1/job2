@@ -7,6 +7,8 @@ use yii\helpers\ArrayHelper;
 use app\models\Nationality;
 use app\models\Governorate;
 use app\models\Area;
+use kartik\file\FileInput;
+
 ?>
 <div class="container">
     <div class="panel panel-default">
@@ -18,7 +20,7 @@ use app\models\Area;
                     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
                     <?= $form->field($model, 'agree')->textInput() ?>
                     <?= $form->field($model, 'phone')->textInput() ?>
-                    <?=$form->field($model, "gender")->dropDownList([ 1=> "ذكر", 2 =>"انثى" ],['prompt'=>'لا يهم']); ?>
+                    <?= $form->field($model, "gender")->dropDownList([1 => "ذكر", 2 => "انثى"], ['prompt' => 'لا يهم']); ?>
 
 
 
@@ -41,6 +43,13 @@ use app\models\Area;
                             'items' => ArrayHelper::map(Nationality::find()->all(), 'id', 'name_ar')
                         ]
                     ); ?>
+                    
+                        <?= $form->field($model, 'documents')->widget(FileInput::classname(), [
+                            'options' => ['accept' => 'image/*'],
+                            'pluginOptions' => []
+                        ]);
+                        ?>
+                    
                 </div>
                 <div class="col-md-6">
 
@@ -49,6 +58,13 @@ use app\models\Area;
 
                     <?= $form->field($model, 'experience')->textarea(['rows' => 6]) ?>
 
+                    <div class="col-md-12">
+                        <?= $form->field($model, 'avatar')->widget(FileInput::classname(), [
+                            'options' => ['accept' => 'image/*'],
+                            'pluginOptions' => []
+                        ]);
+                        ?>
+                    </div>
 
                 </div>
             </div>

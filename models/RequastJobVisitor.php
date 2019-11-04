@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%requast_job}}".
+
  *
  * @property int $id
  * @property string $name
@@ -18,7 +18,7 @@ use Yii;
  * @property int $expected_salary
  * @property string $note
  */
-class RequastJobVisitor extends \yii\db\ActiveRecord
+class RequastJobVisitor extends Model
 {
  
     public $name;
@@ -31,12 +31,10 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
     public $expected_salary;
     public $area;
     public $note;
-
-    public static function tableName()
-    {
-        return "requast_job";
-    }
-    
+    public $gender;
+    public $data_of_birth;
+    public $documents;
+    public $avatar;
     
     public function rules()
     {
@@ -45,6 +43,9 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
             [['agree', 'phone', 'nationality', 'governorate', 'expected_salary'], 'integer'],
             [['certificates', 'experience','area' ,'note'], 'string'],
             [['name'], 'string', 'max' => 255],
+            [['avatar'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg'],
+            [['phone'], 'isJordanPhone'],
+            [['phone'], 'unique', 'message' => Yii::t('app', 'Phone_Already_Exist')],   
         ];
     }
 
@@ -64,7 +65,21 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
             'expected_salary' => Yii::t('app', 'Expected_Salary'),
             'area'=> Yii::t('app', 'Area'),
             'note' => Yii::t('app', 'Note'),
+            "gender"=>Yii::t('app', 'Gender'),
+            "data_of_birth" => Yii::t('app', 'Data_Of_Birth'),
+            "documents" => Yii::t('app', 'Documents'),
+            "avatar"=>Yii::t("app", "Avatar")
+
         ];
+    }
+
+
+
+    public function isJordanPhone($attribute)
+    {
+        if (!preg_match('/^(079|078|077)[0-9]{7}$/', $this->$attribute)) {
+            $this->addError($attribute, Yii::t('app', 'Check_Phone'));
+        }
     }
 
 

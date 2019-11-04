@@ -6,7 +6,7 @@ use app\models\CountSendSms;
 use Yii;
 use yii\web\Controller;
 use app\models\RequastJobVisitor;
-
+use yii\web\UploadedFile;
 
 class RequatJobController extends \yii\web\Controller
 {
@@ -14,8 +14,9 @@ class RequatJobController extends \yii\web\Controller
     {
         
         $model = new RequastJobVisitor();
-
+       
         if ($model->load(Yii::$app->request->post()) ) {
+            $file = UploadedFile::getInstance($model, 'avatar');
             if ($model->validate()) {
                  $data['name']=$model->name;
                  $data['agree']=$model->agree;
@@ -26,6 +27,12 @@ class RequatJobController extends \yii\web\Controller
                   $data['governorate']=$model->governorate;
                   $data['area']=$model->area;
                   $data['expected_salary']=$model->expected_salary;
+                if (!is_null($file)) {
+                    $imagename = 'images/avatar/' . md5(uniqid(rand(), true)) . '.' . $file->extension;
+                    $file->saveAs($imagename);
+                    $data["avatar"] = $imagename;
+                }
+                  
                   Yii::$app->session->setFlash('success', 'send aplication sucessfuly');
                 Yii::$app->db
                 ->createCommand()
@@ -41,6 +48,8 @@ class RequatJobController extends \yii\web\Controller
           
         }
 
+   
+      
         return $this->render('index', [
             'model' => $model,
         ]);
