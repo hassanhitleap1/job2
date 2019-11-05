@@ -97,16 +97,20 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
              [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{view} {update} {delete} {Cv} {printcv} {sendsms}',  // the default buttons + your custom button
+            'template' => '{view} {sendsms} {delete} {Cv} {update}    {sendwhatsapp}',  // the default buttons + your custom button
             'buttons' => [
                 'Cv' => function($url, $model, $key) {     // render your custom button
                     return  Html::a('Cv', ['requast-job/show-cv', 'id' => $model->id],['class' => 'glyphicon glyphicon-th', 'data-pjax' => 0]);
                 },
-                'printcv' => function($url, $model, $key) {     // render your custom button
-                    return  Html::a('CV', ['requast-job/print-cv', 'id' => $model->id],['class' => 'glyphicon glyphicon-print', 'data-pjax' => 0]);
-                },
+                // 'printcv' => function($url, $model, $key) {     // render your custom button
+                //     return  Html::a('CV', ['requast-job/print-cv', 'id' => $model->id],['class' => 'glyphicon glyphicon-print', 'data-pjax' => 0]);
+                // },
                 'sendsms' => function ($url, $model, $key) {     // render your custom button
-                    return  Html::a('CV', ['requast-job/send-sms', 'id' => $model->id], ['class' => 'glyphicon glyphicon-envelope', 'data-pjax' => 0]);
+                    return  Html::a('sendsms', ['requast-job/send-sms', 'id' => $model->id], ['class' => 'glyphicon glyphicon-envelope', 'data-pjax' => 0]);
+                },
+                'sendwhatsapp' => function ($url, $model, $key) {     // render your custom button
+                    $phone=substr($model->phone, 1);;
+                    return  Html::a('whatsapp', "https://wa.me/962$phone", ['class' => 'glyphicon glyphicon-envelope', 'data-pjax' => 0]);
                 },
                 
             ]
