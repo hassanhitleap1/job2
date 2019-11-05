@@ -35,19 +35,24 @@ class RequastJobVisitor extends Model
     public $data_of_birth;
     public $documents;
     public $avatar;
+    public $cobon;
     
     public function rules()
     {
         return [
-            [['name','agree', 'phone', 'nationality','area' ,'governorate'], 'required'],
+            [['name','agree', 'phone', 'nationality','area' ,'governorate',"cobon"], 'required'],
             [['agree', 'phone', 'nationality', 'governorate', 'expected_salary'], 'integer'],
             [['certificates', 'experience','area' ,'note'], 'string'],
             [['name'], 'string', 'max' => 255],
             [['avatar'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg'],
             [['phone'], 'isJordanPhone'],
             [['phone'], 'unique', 'message' => Yii::t('app', 'Phone_Already_Exist')],   
+            [['phone'], 'isValideCpon'],
         ];
     }
+
+
+
 
     /**
      * {@inheritdoc}
@@ -68,7 +73,8 @@ class RequastJobVisitor extends Model
             "gender"=>Yii::t('app', 'Gender'),
             "data_of_birth" => Yii::t('app', 'Data_Of_Birth'),
             "documents" => Yii::t('app', 'Documents'),
-            "avatar"=>Yii::t("app", "Avatar")
+            "avatar"=>Yii::t("app", "Avatar"),
+            "cobon"=>Yii::t("app", "Cobon")
 
         ];
     }
@@ -80,6 +86,14 @@ class RequastJobVisitor extends Model
         if (!preg_match('/^(079|078|077)[0-9]{7}$/', $this->$attribute)) {
             $this->addError($attribute, Yii::t('app', 'Check_Phone'));
         }
+    }
+
+
+    public function isValideCpon($attribute)
+    {
+        // if (!preg_match('/^(079|078|077)[0-9]{7}$/', $this->$attribute)) {
+        //     $this->addError($attribute, Yii::t('app', 'Check_Phone'));
+        // }
     }
 
 
