@@ -88,7 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'certificates:ntext',
             'experience:ntext',
-            'note:ntext',
+            // 'note:ntext',
 
             [
                 'attribute' => 'counsendsms',
