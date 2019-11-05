@@ -31,6 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             'job_title',
             [
+                'attribute' => 'Phone',
+                'value' => 'user0.phone',
+            ],
+            [
                 'attribute' => 'gender',
                 'value' => function($searchModel){
                         if ($searchModel->gender == User::MALE) {
