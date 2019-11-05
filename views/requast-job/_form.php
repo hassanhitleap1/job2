@@ -79,7 +79,7 @@ if (!$model->isNewRecord && $model->avatar != "") {
             <?= $form->field($model, 'category_id')->widget(
                 Select2Widget::className(),
                 [
-                    'items' => ArrayHelper::map(Categories::find()->all(), 'name_ar', 'name_ar')
+                    'items' => ArrayHelper::map(Categories::find()->all(), 'id', 'name_ar')
                 ]
             ); ?>
         </div>

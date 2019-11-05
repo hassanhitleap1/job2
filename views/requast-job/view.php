@@ -65,12 +65,25 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'name' => 'nationality',
                 'attribute' => 'nationality',
-                'value' => $model->nationality0->name_ar,
+                'value' => $model->nationality0['name_ar'],
 
             ],
             'certificates:ntext',
             'experience:ntext',
-            'governorate0.name_ar',
+            [
+                'format' => 'raw',
+                'name' => 'governorate',
+                'attribute' => 'governorate',
+                'value' => $model->governorate0['name_ar'],
+
+            ],
+            [
+                'format' => 'raw',
+                'name' => 'category_id',
+                'attribute' => 'category_id',
+                'value' => $model->category0['name_ar'],
+
+            ],
             'expected_salary',
             'subscribe_date',
             'note:ntext',
@@ -78,6 +91,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'affiliated_to',
             'interview_time',
             'year_of_experience',
+            [
+                'format' => 'raw',
+                'name' => 'counsendsms',
+                'attribute' => 'counsendsms',
+                'value' => $model->smssend['count'],
+
+            ],
         ],
     ]) ?>
 

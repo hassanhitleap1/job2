@@ -55,18 +55,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => 'nationality0.name_ar',
 
             ],
-            // 'certificates:ntext',
-            // 'experience:ntext',
-            [
-                'attribute' => 'governorate',
-                'value' => 'governorate0.name_ar',
-
-            ],
             [
                 'attribute' => 'category_id',
                 'value' => 'category0.name_ar',
 
             ],
+            
+            [
+                'attribute' => 'governorate',
+                'value' => 'governorate0.name_ar',
+
+            ],
+          
+           
             
             'expected_salary',
             [
@@ -85,7 +86,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 'format' => 'html',
             ],
-            // 'note:ntext',
+            'certificates:ntext',
+            'experience:ntext',
+            'note:ntext',
+
+            [
+                'attribute' => 'counsendsms',
+                'value' => 'smssend.count',
+
+            ],
              [
             'class' => 'yii\grid\ActionColumn',
             'template' => '{view} {update} {delete} {Cv} {printcv} {sendsms}',  // the default buttons + your custom button

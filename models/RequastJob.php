@@ -80,6 +80,7 @@ class RequastJob extends \yii\db\ActiveRecord
             'affiliated_with' => Yii::t('app', 'Affiliated_With'),
             'interview_time' => Yii::t('app', 'Interview_Time'),
             'year_of_experience' => Yii::t('app', 'Year_Of_Experience'),
+            'counsendsms'=> Yii::t('app', 'Coun_Send_Sms'),
 
             
             
@@ -117,8 +118,17 @@ class RequastJob extends \yii\db\ActiveRecord
      */
     public function getCategory0()
     {
-        return $this->hasOne(Categories::className(), ['id' => 'nationality']);
+        return $this->hasOne(Categories::className(), ['id' => 'category_id']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSmssend()
+    {
+        return $this->hasOne(CountSendSms::className(), ['user_id' => 'id']);
+    }
+
     
     /**
      * {@inheritdoc}

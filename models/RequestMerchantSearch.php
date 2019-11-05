@@ -18,7 +18,7 @@ class RequestMerchantSearch extends RequestMerchant
     {
         return [
             [['id', 'salary_from', 'salary_to', 'agree_from', 'agree_to',  'number_of_houer','gender'], 'integer'],
-            [['job_title', 'desc_job', 'area', 'note','nationality', 'user_id','governorate'], 'safe'],
+            [['job_title', 'desc_job', 'area', 'note','nationality', 'user_id','governorate','category_id'], 'safe'],
         ];
     }
 
@@ -60,6 +60,7 @@ class RequestMerchantSearch extends RequestMerchant
         $query->joinWith('governorate0');
         $query->joinWith('area0');  
         $query->joinWith('user0');  
+        $query->joinWith('category0');  
 
         // grid filtering conditions
         $query->andFilterWhere([
@@ -82,8 +83,10 @@ class RequestMerchantSearch extends RequestMerchant
             ->andFilterWhere(['like', 'area.name_ar', $this->area])
             ->andFilterWhere(['like', 'nationality.name_ar', $this->nationality])
             ->andFilterWhere(['like', 'governorate.name_ar', $this->governorate])
+            ->andFilterWhere(['like', 'categories.name_ar', $this->category_id])
             ->andFilterWhere(['like', 'user.name', $this->user_id])
             ->andFilterWhere(['like', 'note', $this->note]);
+            
         $query->orderBy([
             'created_at' => SORT_DESC //specify sort order ASC for ascending DESC for descending      
         ]);

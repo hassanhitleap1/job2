@@ -21,6 +21,7 @@ use Yii;
  * @property string $note
  * @property int $user_id
  * @property int $gender
+ * @property int $category_id
  */
 class RequestMerchant extends \yii\db\ActiveRecord
 {
@@ -48,7 +49,7 @@ class RequestMerchant extends \yii\db\ActiveRecord
     {
         return [
             [['desc_job', 'note'], 'string'],
-            [['salary_from', 'salary_to', 'agree_from', 'agree_to', 'governorate', 'number_of_houer', 'nationality', 'user_id','gender'], 'integer'],
+            [['salary_from', 'salary_to', 'agree_from', 'agree_to', 'governorate', 'number_of_houer', 'nationality', 'user_id','gender','category_id'], 'integer'],
             [['job_title', 'area'], 'string', 'max' => 255],
             [['job_title','number_of_houer', 'nationality','governorate','agree_from','agree_to','salary_from','salary_to'], 'required'],
             //[['job_title','number_of_houer', 'nationality','governorate','agree_from','agree_to','salary_from','salary_to'], 'required', 'on' => self::SCENARIO_MERCHANT],
@@ -102,7 +103,16 @@ class RequestMerchant extends \yii\db\ActiveRecord
         return $this->hasOne(Nationality::className(), ['id' => 'nationality']);
     }
 
+         /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategory0()
+    {
+        return $this->hasOne(Categories::className(), ['id' => 'category_id']);
+    }
+    
 
+    
     public function getArea0()
     {
         return $this->hasOne(Area::className(), ['id' => 'area']);

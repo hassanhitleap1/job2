@@ -27,11 +27,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= Html::a(Yii::t('app', 'Create_Request_Merchant'), ['create'], ['class' => 'btn btn-success']) ?>
         <?= Html::a(Yii::t('app', 'Back'), ['index'], ['class' => 'btn btn-info']) ?>
     </p>
-
+    
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            // 'id',
             'job_title',
             'desc_job:ntext',
             'salary_from',
@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'name' => 'governorate',
                 'attribute'=> 'governorate',
-                'value'=> $model->governorate0->name_ar,
+                'value'=> $model->governorate0['name_ar'],
                 
                 ],
             
@@ -55,12 +55,25 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
          
             'number_of_houer',
+            [
+                'format' => 'raw',
+                'name' => 'category_id',
+                'attribute' => 'category_id',
+                'value' => $model->category0['name_ar'],
+    
+            ],
             'note:ntext',
             [
                 'format' => 'raw',
                 'name' => 'user_id',
                 'attribute' => 'user_id',
                 'value' => $model->user0['name'],
+
+            ],
+            [
+                'format' => 'raw',
+                'attribute' => Yii::t('app','Phone'),
+                'value' => $model->user0['phone'],
 
             ],
         ],
