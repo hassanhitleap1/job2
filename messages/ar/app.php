@@ -80,5 +80,6 @@ return [
     "Year_Of_Experience" => "عدد سنوات الخبرة",
     "Documents"=>"الوثائق - هوية السيره الذاتية ان وجدت ",
     "Cobon"=>"رقم البطاقة",
-    'Coun_Send_Sms'=>'عدد الرسائل'
+    'Coun_Send_Sms'=>'عدد الرسائل',
+    'Additional'=>'الاضافات',
 ];
