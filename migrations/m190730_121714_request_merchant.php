@@ -27,7 +27,9 @@ class m190730_121714_request_merchant extends Migration
             'number_of_houer'=>$this->integer(),
             'nationality'=>$this->integer(),
             'note'=>$this->text(),
+            'gender' => $this->tinyInteger()->defaultValue(0),
             'user_id'=>$this->integer(),
+  
         ], $tableOptions);
     }
     public function down()

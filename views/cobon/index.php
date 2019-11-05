@@ -32,8 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'used',
             'number_cobon',
             'distributor_id',
-            //'used_by',
-            //'created_at',
+            'used_by',
+            'created_at',
             //'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],

@@ -38,6 +38,11 @@ class m190803_180403_user_table extends Migration
             'auth_token'=> $this->string()->defaultValue(null),
             'subscribe_date'=>$this->date()->defaultValue(null),
             'avatar'=>$this->string()->defaultValue(null),
+            'gender' => $this->tinyInteger()->defaultValue(0),
+            'affiliated_to' => $this->string()->defaultValue(null),
+            'affiliated_with' => $this->string()->defaultValue(null),
+            'interview_time' => $this->string()->defaultValue(null),
+            'year_of_experience' => $this->double()->defaultValue(0.0),
             'created_at' =>$this->timestamp()->notNull(),
             'updated_at' => $this->timestamp()->defaultValue(null),
         ], $tableOptions);

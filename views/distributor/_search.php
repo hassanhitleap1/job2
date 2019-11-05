@@ -24,9 +24,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'phone') ?>
 
+    <?= $form->field($model, 'count_cobon') ?>
+    
     <?= $form->field($model, 'created_at') ?>
 
     <?= $form->field($model, 'updated_at') ?>
+
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

@@ -79,7 +79,7 @@ class SendJobController extends BaseController
                 ->select(['phone','id'])
                 ->from('user')
                 ->where(['user.type'=>User::NORMAL_USER])
-                ->where(['>=','user.subscribe_date',Carbon::now()->subDays(30)->toDateString()])
+                ->where(['>=','user.subscribe_date',Carbon::now("Asia/Amman")->subDays(30)->toDateString()])
                 ->where(['in', 'category_id', $userIdArray]);
 
                 

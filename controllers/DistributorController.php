@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Distributor;
 use app\models\DistributorSearch;
+use Carbon\Carbon;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -67,6 +68,9 @@ class DistributorController extends Controller
         $model = new Distributor();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $count_cobon=$model->count_cobon;
+            $distributed_id=$model->id;
+            $this->genarateCobon($count_cobon,$distributed_id);
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -123,5 +127,30 @@ class DistributorController extends Controller
         }
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    }
+
+    private function genarateCobon($count_cobon,$distributed_id){
+        $data=[];
+        for ($i=0; $i < $count_cobon; $i++) { 
+            # code...
+            $number_cobon=$this->genarate(14);
+            $data[$i]=[
+                "active"=>1,
+                "used"=>0,
+                "number_cobon"=>$number_cobon,
+                "distributor_id"=>$distributed_id,
+                "used_by"=>1,
+                "created_at"=>Carbon::now("Asia/Amman")
+            ];
+
+        }
+        // insaret
+    }
+
+    private function genarate($limit){
+        $code = 0;
+        for($i = 0; $i < $limit; $i++) { $code .= mt_rand(0, 9); }
+        return $code;
+
     }
 }
