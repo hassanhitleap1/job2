@@ -2,9 +2,11 @@
 
 use app\models\User;
 use kartik\date\DatePicker;
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use yii\bootstrap\Modal;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RequastJobSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -19,7 +21,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a(Yii::t('app', 'Create_Requast_Job'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
+    <?php
+        Modal::begin([
+            'header'=>'<h4>send sms</h4>',
+            'id'=>'model',
+            'size'=>'model-lg'
+            ]);
+        echo '<div id="modelcontent"></div>';
+        Modal::end();
+    ?>
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -106,7 +116,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 //     return  Html::a('CV', ['requast-job/print-cv', 'id' => $model->id],['class' => 'glyphicon glyphicon-print', 'data-pjax' => 0]);
                 // },
                 'sendsms' => function ($url, $model, $key) {     // render your custom button
-                    return  Html::a('sendsms', ['requast-job/send-sms', 'id' => $model->id], ['class' => 'glyphicon glyphicon-envelope', 'data-pjax' => 0]);
+                    return  Html::button('sendsms',  [ 'value'=>Url::to('index.php?r=send-job/send-single-message&id='.$model->id),'class' => 'glyphicon glyphicon-envelope', 'id'=>"modelbutton",'data-pjax' => 0]);
                 },
                 'sendwhatsapp' => function ($url, $model, $key) {     // render your custom button
                     $phone=substr($model->phone, 1);;
@@ -120,5 +130,17 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
 
     <?php Pjax::end(); ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <?php
+$script = <<< JS
+     $("#modelbutton").click( function(e){
+            $("#model").model('show')
+                .find('#modelcontent')
+                .load($(this).attr('value'));
+});
+JS;
+$this->registerJs($script);
+?>
 
 </div>
+

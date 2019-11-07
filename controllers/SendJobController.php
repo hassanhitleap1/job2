@@ -7,6 +7,7 @@ use app\models\CountSendSms;
 use Yii;
 use app\models\SendJob;
 use app\models\SendJobSearch;
+use app\models\SendSmsModel;
 use app\models\User;
 use Carbon\Carbon;
 use Exception;
@@ -181,5 +182,21 @@ class SendJobController extends BaseController
         }
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    }
+
+
+    public function actionSendSingleMessage($id){
+        
+        $model = new SendSmsModel();
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->validate()){
+                return $this->redirect(["index"]);
+            }
+           
+        }
+
+        return $this->render('send-single-message', [
+            'model' => $model,
+        ]);
     }
 }

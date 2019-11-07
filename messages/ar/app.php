@@ -82,4 +82,5 @@ return [
     "Cobon"=>"رقم البطاقة",
     'Coun_Send_Sms'=>'عدد الرسائل',
     'Additional'=>'الاضافات',
+    'Send_Sms'=>'ارسال رسالة',
 ];
