@@ -186,7 +186,7 @@ class SendJobController extends BaseController
 
 
     public function actionSendSingleMessage($id){
-        
+
         $model = new SendSmsModel();
         if ($model->load(Yii::$app->request->post())) {
             if($model->validate()){
@@ -195,7 +195,7 @@ class SendJobController extends BaseController
            
         }
 
-        return $this->render('send-single-message', [
+        return $this->renderAjax('send-single-message', [
             'model' => $model,
         ]);
     }

@@ -21,15 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a(Yii::t('app', 'Create_Requast_Job'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?php
-        Modal::begin([
-            'header'=>'<h4>send sms</h4>',
-            'id'=>'model',
-            'size'=>'model-lg'
-            ]);
-        echo '<div id="modelcontent"></div>';
-        Modal::end();
-    ?>
+
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -130,10 +122,11 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
 
     <?php Pjax::end(); ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ 
     <?php
 $script = <<< JS
      $("#modelbutton").click( function(e){
+        
             $("#model").model('show')
                 .find('#modelcontent')
                 .load($(this).attr('value'));
@@ -141,6 +134,16 @@ $script = <<< JS
 JS;
 $this->registerJs($script);
 ?>
+
+<?php
+        Modal::begin([
+            'header'=>'<h4 id="modalHeader">send sms</h4>',
+            'id'=>'model',
+            'size'=>'model-lg'
+            ]);
+        echo '<div id="modelcontent"></div>';
+        Modal::end();
+    ?>
 
 </div>
 
