@@ -125,12 +125,17 @@ $this->params['breadcrumbs'][] = $this->title;
  
     <?php
 $script = <<< JS
-     $("#modelbutton").click( function(e){
-        
-            $("#model").model('show')
-                .find('#modelcontent')
-                .load($(this).attr('value'));
+  $('#results-modals').load('/team-players.html ' + target, function (response, status, xhr) {
+                if (status === "success") {
+                    $(target).modal({ show: true });
+                }
+            });
+$(document).on('click', '#modelbutton', function(){
+    url=$(this).attr('value');
+   
+    $('#model').load(url);
 });
+
 JS;
 $this->registerJs($script);
 ?>
