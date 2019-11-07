@@ -53,7 +53,7 @@ use app\models\User;
             );  ?>
         </div>
         <div class="col-md-2">
-            <?=$form->field($model, "gender")->dropDownList([ 1=> "ذكر", 2 =>"انثى" ],['prompt'=>'لا يهم']); ?>
+            <?=$form->field($model, "gender")->dropDownList([ 0=> "لا يهم ",1=> "ذكر", 2 =>"انثى" ]); ?>
         </div>
     </div>
     <div class="row">
