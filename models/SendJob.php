@@ -8,13 +8,13 @@ use Yii;
  * This is the model class for table "{{%send_job}}".
  *
  * @property int $id
- * @property string $title
  * @property string $body
  */
 class SendJob extends \yii\db\ActiveRecord
 {
     public $category;
     public $all;
+    public $user_id;
     /**
      * {@inheritdoc}
      */
@@ -31,7 +31,6 @@ class SendJob extends \yii\db\ActiveRecord
     {
         return [
             [['body'], 'string'],
-            [['title'], 'string', 'max' => 255],
         ];
     }
 
@@ -42,10 +41,10 @@ class SendJob extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'title' => Yii::t('app', 'Title'),
             'body' => Yii::t('app', 'Body'),
             'category' => Yii::t('app', 'Categories'),
             'all'=> Yii::t('app','All'),
+            'user_id'=> Yii::t('app','User'),
         ];
     }
 

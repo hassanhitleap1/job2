@@ -19,7 +19,6 @@ class m190807_205650_create_send_job_table extends Migration
         }
         $this->createTable('{{%send_job}}', [
             'id' => $this->primaryKey(),
-            'title'=>$this->string(),
             'body' => $this->text(),
         ], $tableOptions);
     }

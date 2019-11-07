@@ -18,7 +18,7 @@ class SendJobSearch extends SendJob
     {
         return [
             [['id'], 'integer'],
-            [['title', 'body'], 'safe'],
+            [[ 'body'], 'safe'],
         ];
     }
 
@@ -61,8 +61,7 @@ class SendJobSearch extends SendJob
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'body', $this->body]);
+        $query->andFilterWhere(['like', 'body', $this->body]);
         $query->orderBy([
             'created_at' => SORT_DESC //specify sort order ASC for ascending DESC for descending      
             ]);

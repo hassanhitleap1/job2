@@ -22,9 +22,6 @@ $arrayCatgories = ArrayHelper::map(Categories::find()->all(), 'id', 'name_ar');
             <?php $form = ActiveForm::begin(['id' => 'send-job-form']); ?>
             <div class="row">
                 <div class="col-lg-6">
-                    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-                </div>
-                <div class="col-lg-6">
                     <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
                 </div>
             </div>
