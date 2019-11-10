@@ -108,7 +108,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 //     return  Html::a('CV', ['requast-job/print-cv', 'id' => $model->id],['class' => 'glyphicon glyphicon-print', 'data-pjax' => 0]);
                 // },
                 'sendsms' => function ($url, $model, $key) {     // render your custom button
-                    return  Html::button('sendsms',  [ 'value'=>Url::to('index.php?r=send-job/send-single-message&id='.$model->id),'class' => 'glyphicon glyphicon-envelope', 'id'=>"modelbutton",'data-pjax' => 0]);
+                    return  Html::button('sendsms',  [ 'value'=>Url::to('index.php?r=requast-job/send-single-message&id='.$model->id),'class' => 'glyphicon glyphicon-envelope', 'id'=>"modelbutton",'data-pjax' => 0]);
                 },
                 'sendwhatsapp' => function ($url, $model, $key) {     // render your custom button
                     $phone=substr($model->phone, 1);;
@@ -125,15 +125,9 @@ $this->params['breadcrumbs'][] = $this->title;
  
     <?php
 $script = <<< JS
-  $('#results-modals').load('/team-players.html ' + target, function (response, status, xhr) {
-                if (status === "success") {
-                    $(target).modal({ show: true });
-                }
-            });
 $(document).on('click', '#modelbutton', function(){
     url=$(this).attr('value');
-   
-    $('#model').load(url);
+    $('#model').load(url).modal({ show: true });;
 });
 
 JS;

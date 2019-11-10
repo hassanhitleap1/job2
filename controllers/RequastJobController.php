@@ -6,6 +6,7 @@ use app\models\CountSendSms;
 use Yii;
 use app\models\RequastJob;
 use app\models\RequastJobSearch;
+use app\models\SendSmsModel;
 use app\models\User;
 use ConvertApi\ConvertApi;
 use yii\web\NotFoundHttpException;
@@ -243,5 +244,23 @@ class RequastJobController extends BaseController
         }
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    }
+
+
+    public function actionSendSingleMessage($id){
+
+        $model = new SendSmsModel();
+      
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->validate()){
+                exit;
+                return $this->redirect(['index']);
+            }
+           
+        }
+
+        return $this->renderAjax('send-single-message', [
+            'model' => $model,
+        ]);
     }
 }

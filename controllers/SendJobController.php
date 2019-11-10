@@ -188,9 +188,10 @@ class SendJobController extends BaseController
     public function actionSendSingleMessage($id){
 
         $model = new SendSmsModel();
+      
         if ($model->load(Yii::$app->request->post())) {
             if($model->validate()){
-                return $this->redirect(["index"]);
+                return $this->redirect(['requast-job/index']);
             }
            
         }
