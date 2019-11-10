@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
 $this->title = Yii::t('app', 'Send_Sms');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -13,7 +14,14 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= Html::encode($this->title) ?>
         </div>
         <div class="panel-body">
-            <?php $form = ActiveForm::begin(['id' => 'send-sms']); ?>
+       
+            <?php $form = ActiveForm::begin([
+                'enableClientValidation' => true,
+                'options'                => [
+                    'id'      => 'dynamic-form'
+                ]
+            ]);
+            ?>
             <div class="row">
                 <div class="col-lg-12">
                     <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>

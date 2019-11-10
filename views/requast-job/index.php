@@ -108,11 +108,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 //     return  Html::a('CV', ['requast-job/print-cv', 'id' => $model->id],['class' => 'glyphicon glyphicon-print', 'data-pjax' => 0]);
                 // },
                 'sendsms' => function ($url, $model, $key) {     // render your custom button
-                    return  Html::button('sendsms',  [ 'value'=>Url::to('index.php?r=requast-job/send-single-message&id='.$model->id),'class' => 'glyphicon glyphicon-envelope', 'id'=>"modelbutton",'data-pjax' => 0]);
+                    return  Html::button('sendsms',  ['target' => '_blank','value'=>Url::to('index.php?r=requast-job/send-single-message&id='.$model->id),'class' => 'glyphicon glyphicon-envelope', 'id'=>"modelbutton",'data-pjax' => 0]);
                 },
                 'sendwhatsapp' => function ($url, $model, $key) {     // render your custom button
                     $phone=substr($model->phone, 1);;
-                    return  Html::a('whatsapp', "https://wa.me/962$phone", ['class' => 'glyphicon glyphicon-envelope', 'data-pjax' => 0]);
+                    return  Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=شكرا لتعاملكم مع جرس للخدمات الوجستية نود اعلامكم عن توفر وظيفة    '     '  لدى مؤسسة للاستفسار الاتصال على الرقم التالي", ['target' => '_blank','class' => 'glyphicon glyphicon-envelope', 'data-pjax' => 0]);
                 },
                 
             ]
