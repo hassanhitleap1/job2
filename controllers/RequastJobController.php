@@ -263,4 +263,36 @@ class RequastJobController extends BaseController
             'model' => $model,
         ]);
     }
+
+    /**
+     * Creates a new RequastJob model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionPlus($id)
+    {
+       $model= CountSendSms::find()->where(['user_id'=> $id])->one();
+       $model->count= $model->count +1;
+       $model->save();
+       return  $model->count;
+    }
+
+
+    /**
+     * Creates a new RequastJob model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionMinus($id)
+    {
+        $model = CountSendSms::find()->where(['user_id' => $id])->one();
+        if ($model->count == 0) {
+            return "can't minus";
+        }
+        $model->count = $model->count - 1;
+        $model->save();
+        return  $model->count;
+    }
+    
+    
 }

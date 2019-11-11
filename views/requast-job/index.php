@@ -93,13 +93,18 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'note:ntext',
 
             [
+                //"format"=> "html",
+                //"format" => "raw",
                 'attribute' => 'counsendsms',
                 'value' => 'smssend.count',
+                'contentOptions' => ['class' => "id" . $searchModel->id]
+                //function ($searchModel) { return "sss";}
+                ,
 
             ],
              [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{view} {sendsms} {delete} {Cv} {update}    {sendwhatsapp}',  // the default buttons + your custom button
+            'template' => '{view} {sendsms} {delete} {Cv} {update} {sendwhatsapp} {plus}{minus}',  // the default buttons + your custom button
             'buttons' => [
                 'Cv' => function($url, $model, $key) {     // render your custom button
                     return  Html::a('Cv', ['requast-job/show-cv', 'id' => $model->id],['class' => 'glyphicon glyphicon-th', 'data-pjax' => 0]);
@@ -113,6 +118,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'sendwhatsapp' => function ($url, $model, $key) {     // render your custom button
                     $phone=substr($model->phone, 1);;
                     return  Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=شكرا لتعاملكم مع جرس للخدمات الوجستية نود اعلامكم عن توفر وظيفة    '     '  لدى مؤسسة للاستفسار الاتصال على الرقم التالي", ['target' => '_blank','class' => 'glyphicon glyphicon-envelope', 'data-pjax' => 0]);
+                },
+                'plus' => function ($url, $model, $key) {     // render your custom button
+                    return  Html::button('plus',  ['value' => $model->id, 'class' => 'glyphicon  glyphicon-plus', 'id' => "plusbutton", 'data-pjax' => 1]);
+                },
+                'minus' => function ($url, $model, $key) {     // render your custom button
+                    return  Html::button('minus',  [ 'value' => $model->id, 'class' => 'glyphicon glyphicon-minus', 'id' => "minusbutton", 'data-pjax' => 1]);
                 },
                 
             ]
@@ -129,6 +140,22 @@ $(document).on('click', '#modelbutton', function(){
     url=$(this).attr('value');
     $('#model').load(url).modal({ show: true });;
 });
+
+$(document).on('click', '#plusbutton', function(){
+    id=$(this).attr('value');
+    $.get("index.php?r=requast-job/plus&id="+id, function(data, status){
+        
+    });
+});
+
+$(document).on('click', '#minusbutton', function(){
+    id=$(this).attr('value');
+    
+    $.get("index.php?r=requast-job/minus&id="+id, function(data, status){
+        
+    });
+});
+
 
 JS;
 $this->registerJs($script);
