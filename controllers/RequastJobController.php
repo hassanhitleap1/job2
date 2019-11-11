@@ -8,6 +8,7 @@ use app\models\RequastJob;
 use app\models\RequastJobSearch;
 use app\models\SendSmsModel;
 use app\models\User;
+use Carbon\Carbon;
 use ConvertApi\ConvertApi;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -273,6 +274,11 @@ class RequastJobController extends BaseController
     {
        $model= CountSendSms::find()->where(['user_id'=> $id])->one();
        $model->count= $model->count +1;
+       
+       if($model->created_at==null){
+        $model->created_at= Carbon::now("Asia/Amman");
+       }
+        $model->updated_at = Carbon::now("Asia/Amman");
        $model->save();
        header('Content-Type: application/json');
        $data["status"]=201;

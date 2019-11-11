@@ -1,6 +1,7 @@
 <?php
 
 use app\models\User;
+use Carbon\Carbon;
 use kartik\date\DatePicker;
 use yii\helpers\Url;
 use yii\helpers\Html;
@@ -29,10 +30,31 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'rowOptions'=>function($searchModel){
-            if($searchModel->smssend->count >2){
+            if($searchModel->smssend->created_at==null ){
                 return ['class' => 'danger'];
             }
-            return ['class' => 'success'];
+            $deff = Carbon::parse(Carbon::now("Asia/Amman"))
+               ->floatDiffInDays($searchModel->smssend->updated_at, false);
+
+            if($searchModel->smssend->count==1 ){
+                if($deff >= 7){
+                    return ['class' => 'danger'];
+                }
+               
+            }elseif ($searchModel->smssend->count == 2) {
+            # code...
+                if ($deff >= 14) {
+                    return ['class' => 'danger'];
+                }
+               
+            }elseif ($searchModel->smssend->count == 3) {
+            # code...
+                if ($deff >= 21) {
+                    return ['class' => 'danger'];
+                }
+                
+            }
+            
                 
         },
         'columns' => [
