@@ -12,6 +12,14 @@ $(document).ready(function () {
         }
      });
     
-     
+     $("tr").click( function(e){
+        if($(this).hasClass("success")){
+            $(this).removeClass("success"); 
+        }else{
+            $(this).addClass("success");
+           
+        }
+        
+     });
 });
 
