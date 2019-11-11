@@ -28,6 +28,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'rowOptions'=>function($searchModel){
+            if($searchModel->smssend->count >2){
+                return ['class' => 'danger'];
+            }
+            return ['class' => 'success'];
+                
+        },
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
