@@ -274,7 +274,11 @@ class RequastJobController extends BaseController
        $model= CountSendSms::find()->where(['user_id'=> $id])->one();
        $model->count= $model->count +1;
        $model->save();
-       return  $model->count;
+       header('Content-Type: application/json');
+       $data["status"]=201;
+       $data["count"]=$model->count;
+       echo json_encode($data,JSON_PRETTY_PRINT);
+       return ;
     }
 
 
@@ -286,12 +290,16 @@ class RequastJobController extends BaseController
     public function actionMinus($id)
     {
         $model = CountSendSms::find()->where(['user_id' => $id])->one();
-        if ($model->count == 0) {
-            return "can't minus";
+        if ($model->count != 0) {
+            $model->count = $model->count - 1;
+            $model->save();
         }
-        $model->count = $model->count - 1;
-        $model->save();
-        return  $model->count;
+        
+        header('Content-Type: application/json');
+        $data["status"]=201;
+        $data["count"]=$model->count;
+        echo json_encode($data,JSON_PRETTY_PRINT);
+        return ;
     }
     
     

@@ -91,16 +91,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'certificates:ntext',
             'experience:ntext',
             // 'note:ntext',
-
             [
-                //"format"=> "html",
-                //"format" => "raw",
                 'attribute' => 'counsendsms',
                 'value' => 'smssend.count',
-                'contentOptions' => ['class' => "id" . $searchModel->id]
-                //function ($searchModel) { return "sss";}
-                ,
-
+                'contentOptions' => function($searchModel)
+                    {
+                        return ['class' => 'class_num_' . $searchModel->id];
+                    }
             ],
              [
             'class' => 'yii\grid\ActionColumn',
@@ -144,7 +141,8 @@ $(document).on('click', '#modelbutton', function(){
 $(document).on('click', '#plusbutton', function(){
     id=$(this).attr('value');
     $.get("index.php?r=requast-job/plus&id="+id, function(data, status){
-        
+        var data = jQuery.parseJSON( data );
+        $(".class_num_"+id).text( data.count );
     });
 });
 
@@ -152,7 +150,8 @@ $(document).on('click', '#minusbutton', function(){
     id=$(this).attr('value');
     
     $.get("index.php?r=requast-job/minus&id="+id, function(data, status){
-        
+        var data = jQuery.parseJSON( data );
+        $(".class_num_"+id).text( data.count );
     });
 });
 
