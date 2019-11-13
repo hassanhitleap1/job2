@@ -132,24 +132,44 @@ $this->params['breadcrumbs'][] = $this->title;
             'class' => 'yii\grid\ActionColumn',
             'template' => '{view} {sendsms} {delete} {Cv} {update} {sendwhatsapp} {plus}{minus}',  // the default buttons + your custom button
             'buttons' => [
-                'Cv' => function($url, $model, $key) {     // render your custom button
-                    return  Html::a('Cv', ['requast-job/show-cv', 'id' => $model->id],['class' => 'glyphicon glyphicon-th', 'data-pjax' => 0]);
+                  'view' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
+                                    'title' => Yii::t('app', 'lead-view'),
+                                    'class' => 'btn btn-info'
+                        ]);
+                    },
+
+                    'update' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
+                                    'title' => Yii::t('app', 'lead-update'),
+                                    'class' => 'btn btn-info'
+                        ]);
+                    },
+                    'delete' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
+                                    'title' => Yii::t('app', 'lead-delete'),
+                                    'class' => 'btn btn-info'
+                        ]);
+                    },
+                'Cv' => function($url, $model, $key) {   
+                      // render your custom button
+                    return  Html::a('Cv', ['requast-job/show-cv', 'id' => $model->id],['class' => 'btn btn-info glyphicon glyphicon-th', 'data-pjax' => 0]);
                 },
                 // 'printcv' => function($url, $model, $key) {     // render your custom button
                 //     return  Html::a('CV', ['requast-job/print-cv', 'id' => $model->id],['class' => 'glyphicon glyphicon-print', 'data-pjax' => 0]);
                 // },
                 'sendsms' => function ($url, $model, $key) {     // render your custom button
-                    return  Html::button('sendsms',  ['target' => '_blank','value'=>Url::to('index.php?r=requast-job/send-single-message&id='.$model->id),'class' => 'glyphicon glyphicon-envelope', 'id'=>"modelbutton",'data-pjax' => 0]);
+                    return  Html::button('sendsms',  ['target' => '_blank','value'=>Url::to('index.php?r=requast-job/send-single-message&id='.$model->id),'class' => 'btn btn-info glyphicon glyphicon-envelope', 'id'=>"modelbutton",'data-pjax' => 0]);
                 },
                 'sendwhatsapp' => function ($url, $model, $key) {     // render your custom button
                     $phone=substr($model->phone, 1);;
-                    return  Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=شكرا لتعاملكم مع جرس للخدمات الوجستية نود اعلامكم عن توفر وظيفة    '     '  لدى مؤسسة للاستفسار الاتصال على الرقم التالي", ['target' => '_blank','class' => 'glyphicon glyphicon-envelope', 'data-pjax' => 0]);
+                    return  Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=شكرا لتعاملكم مع جرس للخدمات الوجستية نود اعلامكم عن توفر وظيفة    '     '  لدى مؤسسة للاستفسار الاتصال على الرقم التالي", ['target' => '_blank','class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]);
                 },
                 'plus' => function ($url, $model, $key) {     // render your custom button
-                    return  Html::button('plus',  ['value' => $model->id, 'class' => 'glyphicon  glyphicon-plus', 'id' => "plusbutton", 'data-pjax' => 1]);
+                    return  Html::button('plus',  ['value' => $model->id, 'class' => 'btn btn-info glyphicon  glyphicon-plus', 'id' => "plusbutton", 'data-pjax' => 1]);
                 },
                 'minus' => function ($url, $model, $key) {     // render your custom button
-                    return  Html::button('minus',  [ 'value' => $model->id, 'class' => 'glyphicon glyphicon-minus', 'id' => "minusbutton", 'data-pjax' => 1]);
+                    return  Html::button('minus',  [ 'value' => $model->id, 'class' => 'btn btn-info glyphicon glyphicon-minus', 'id' => "minusbutton", 'data-pjax' => 1]);
                 },
                 
             ]
@@ -163,6 +183,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php
 $script = <<< JS
 $(document).on('click', '#modelbutton', function(){
+    url=$(this).attr('value');
+    $('#model').load(url).modal({ show: true });;
+});
+
+$(document).on('click', '#show', function(){
     url=$(this).attr('value');
     $('#model').load(url).modal({ show: true });;
 });
@@ -183,6 +208,9 @@ $(document).on('click', '#minusbutton', function(){
         $(".class_num_"+id).text( data.count );
     });
 });
+
+
+
 
 
 JS;
