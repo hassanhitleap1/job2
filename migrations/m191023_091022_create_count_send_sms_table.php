@@ -15,7 +15,9 @@ class m191023_091022_create_count_send_sms_table extends Migration
         $this->createTable('{{%count_send_sms}}', [
             'id' => $this->primaryKey(),
             'user_id'=>$this->integer()->notNull(),
-            'count'=>$this->integer()->defaultValue(0)->notNull()
+            'count'=>$this->integer()->defaultValue(0)->notNull(),
+            'created_at' =>$this->timestamp()->notNull(),
+            'updated_at' => $this->timestamp()->defaultValue(null),
 
         ]);
     }
