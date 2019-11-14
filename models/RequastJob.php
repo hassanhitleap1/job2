@@ -28,6 +28,8 @@ use Yii;
 class RequastJob extends \yii\db\ActiveRecord
 {
     public $file;
+    public $assigns_to=[];
+    public $assigns_for=[];
 
     /**
      * {@inheritdoc}
@@ -81,8 +83,8 @@ class RequastJob extends \yii\db\ActiveRecord
             'interview_time' => Yii::t('app', 'Interview_Time'),
             'year_of_experience' => Yii::t('app', 'Year_Of_Experience'),
             'counsendsms'=> Yii::t('app', 'Coun_Send_Sms'),
-
-            
+            'assigns_to'=>Yii::t('app', 'Assigns_To'),
+            'assigns_for'=>Yii::t('app', 'Assigns_For'),
             
 
         ];

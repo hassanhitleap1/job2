@@ -16,7 +16,11 @@ use kartik\file\FileInput;
 /* @var $form yii\widgets\ActiveForm */
 
 $dataAvatar = [];
+$date=($model->isNewRecord)?Carbon::now("Asia/Amman"):$model->created_at;
+$today=Carbon::now("Asia/Amman");
+
 if (!$model->isNewRecord && $model->avatar != "") {
+
     $dataAvatar = [
         'initialPreview' => [
             Yii::getAlias('@web') . '/' . $model->avatar
@@ -129,6 +133,7 @@ if (!$model->isNewRecord && $model->avatar != "") {
             <?= $form->field($model, 'experience')->textarea(['rows' => 6]) ?>
         </div>
     </div>
+
     <div class="row">
         <div class="col-md-8">
             <?= $form->field($model, 'note')->textarea(['rows' => 6]) ?>
@@ -139,6 +144,59 @@ if (!$model->isNewRecord && $model->avatar != "") {
                 'pluginOptions' => $dataAvatar
             ]);
             ?>
+        </div>
+    </div>
+    <div class="row">
+       <div class="col-md-6">
+                <h2> تاريخ الارسال في  <?=$date->addDays(2)->toDateString();?></h2>
+       </div> 
+       <div class="col-md-6">
+            <h2> تاريخ الارسال في  <?=$date->addDays(9)->toDateString();?></h2>
+       </div> 
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label for="assigns_to[0][0]"><?=Yii::t('app', 'Affiliated_With')?> </label>
+            <input type="text" class="form-control" id="assigns_to[0][0]" name="RequastJob[assigns_to[0][0]]" >
+        </div>
+        <div class="col-md-3">
+            <label for="assigns_to[1][0]"><?=Yii::t('app', 'Affiliated_With')?></label>
+            <input type="text" class="form-control" id="assigns_to[1][0]" name="RequastJob[assigns_to[1][0]]">
+        </div>
+        <div class="col-md-3">
+            <label for="assigns_to[2][0]"><?=Yii::t('app', 'Affiliated_With')?></label>
+            <input type="text" class="form-control" id="assigns_to[2][0]" name="RequastJob[assigns_to[2][0]]">
+        </div>
+        <div class="col-md-3">
+            <label for="assigns_to[3][0]"><?=Yii::t('app', 'Affiliated_With')?></label>
+            <input type="text" class="form-control" id="assigns_to[3][0]" name="RequastJob[assigns_to[3][0]]">
+        </div>
+    </div>
+
+    <div class="row">
+       <div class="col-md-6">
+            <h2> تاريخ الارسال في  <?=$date->addDays(16)->toDateString();?></h2>
+       </div> 
+       <div class="col-md-6">
+            <h2> تاريخ الارسال في  <?=$date->addDays(23)->toDateString();?></h2>
+       </div> 
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label for="assigns_for[0][1]"><?=Yii::t('app', 'Affiliated_To')?></label>
+            <input type="text" class="form-control" id="assigns_for[0][1]" name="RequastJob[assigns_for[0][1]]">
+        </div>
+        <div class="col-md-3">
+            <label for="assigns_for[1][1]"><?=Yii::t('app', 'Affiliated_To')?></label>
+            <input type="text" class="form-control" id="assigns_for[1][1]" name="RequastJob[assigns_for[1][1]]">
+        </div>
+        <div class="col-md-3">
+            <label for="assigns_for[2][1]"><?=Yii::t('app', 'Affiliated_To')?></label>
+            <input type="text" class="form-control" id="assigns_for[2][1]" name="RequastJob[assigns_for[2][1]]">
+        </div>
+        <div class="col-md-3">
+            <label for="assigns_for[3][1]"><?=Yii::t('app', 'Affiliated_To')?></label>
+            <input type="text" class="form-control" id="assigns_for[3][1]" name="RequastJob[assigns_for[3][1]]">
         </div>
     </div>
     <div class="row">

@@ -14,6 +14,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Url;
 use yii\web\UploadedFile;
+use yii\base\Model;
 
 /**
  * RequastJobController implements the CRUD actions for RequastJob model.
@@ -108,7 +109,8 @@ class RequastJobController extends BaseController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $assigns_for=[];
+        $assigns_to=[];
         if ($model->load(Yii::$app->request->post()) ) {
             $file = UploadedFile::getInstance($model, 'file');
             if($model->validate()){
@@ -116,6 +118,9 @@ class RequastJobController extends BaseController
                     $imagename='images/avatar/' . md5(uniqid(rand(), true)). '.' . $file->extension;
                     $file->saveAs($imagename);
                     $model->avatar=$imagename;
+                    // $assigns_for=$_POST["RequastJob"]["assigns_for"];
+                    // $assigns_to=$_POST["RequastJob"]["assigns_to"];
+                    
                 }
                
                if($model->save()){
