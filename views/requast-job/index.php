@@ -11,6 +11,8 @@ use yii\bootstrap\Modal;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RequastJobSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+ 
+
 
 $this->title = Yii::t('app', 'Requast_Jobs');
 $this->params['breadcrumbs'][] = $this->title;
@@ -121,7 +123,37 @@ $this->params['breadcrumbs'][] = $this->title;
             'experience:ntext',
             // 'note:ntext',
             [
-                'attribute' => 'counsendsms',
+                'attribute' => 'created_at',
+                'value'=> function($searchModel){
+                    $now = Carbon::now("Asia/Amman");
+                     $date = Carbon::parse(Carbon::parse($searchModel->created_at));
+                    $mess="";
+                    $def=$date->diffInDays($now);
+                    if($def == 0){
+                      return " registered (today)  must be during 48h " ;  
+                     }else{
+                         
+                         if($def==7 || $def== 14 || $def== 21 || $def==30){
+                            $mess = " must be send message today";
+                         }else{
+                             if( $def >= 7  && $def < 14){
+                                $mess = " must be send message after " . $def - 7; 
+                             }elseif( $def >= 14  && $def < 21){
+                                $mess = " must be send message after " . $def - 14; 
+                             } elseif ($def >= 21  && $def < 30) {
+                                 $mess = " must be send message after " . $def - 21; 
+                            }
+
+                         }
+                        
+                     }
+                     
+                    return "registered befor ". $def . " days --". $mess;
+                    
+                }
+            ],
+            [
+                'attribute' => 'counsendsms',   
                 'value' => 'smssend.count',
                 'contentOptions' => function($searchModel)
                     {

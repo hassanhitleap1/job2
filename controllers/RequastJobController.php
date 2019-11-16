@@ -303,6 +303,7 @@ class RequastJobController extends BaseController
         $model = CountSendSms::find()->where(['user_id' => $id])->one();
         if ($model->count != 0) {
             $model->count = $model->count - 1;
+            $model->updated_at = Carbon::now("Asia/Amman");
             $model->save();
         }
         
