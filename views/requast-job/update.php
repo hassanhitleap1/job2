@@ -20,6 +20,8 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
         </div>
     </div>
 
+    <?php $phone = substr($model->phone, 1); ?>
+    <?= Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=شكرا لتعاملكم مع جرس للخدمات الوجستية نود اعلامكم عن توفر وظيفة    '     '  لدى مؤسسة للاستفسار الاتصال على الرقم التالي", ['target' => '_blank', 'class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]); ?>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

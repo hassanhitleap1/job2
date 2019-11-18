@@ -24,6 +24,7 @@ use Yii;
  * @property string affiliated_to
  * @property string interview_time
  * @property double year_of_experience
+ * @property date created_at
  */
 class RequastJob extends \yii\db\ActiveRecord
 {
@@ -85,6 +86,7 @@ class RequastJob extends \yii\db\ActiveRecord
             'counsendsms'=> Yii::t('app', 'Coun_Send_Sms'),
             'assigns_to'=>Yii::t('app', 'Assigns_To'),
             'assigns_for'=>Yii::t('app', 'Assigns_For'),
+            'Created_At' => Yii::t('app', 'Created_At'),
             
 
         ];

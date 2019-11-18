@@ -124,6 +124,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'note:ntext',
             [
                 'attribute' => 'created_at',
+                'label'=> Yii::t('app', 'Created_At'),
                 'value'=> function($searchModel){
                     $now = Carbon::now("Asia/Amman");
                      $date = Carbon::parse(Carbon::parse($searchModel->created_at));
@@ -137,11 +138,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             $mess = " must be send message today";
                          }else{
                              if( $def >= 7  && $def < 14){
-                                $mess = " must be send message after " . $def - 7; 
+                                 $conct= $def - 7;
+                                $mess = " must be send message after " .(string) $conct; 
                              }elseif( $def >= 14  && $def < 21){
-                                $mess = " must be send message after " . $def - 14; 
+                                $conct = $def - 14;
+                                $mess = " must be send message after " . (string) $conct;; 
                              } elseif ($def >= 21  && $def < 30) {
-                                 $mess = " must be send message after " . $def - 21; 
+                             $conct = $def - 21;
+                                 $mess = " must be send message after " . (string) $conct;; 
                             }
 
                          }

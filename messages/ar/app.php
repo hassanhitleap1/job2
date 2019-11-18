@@ -83,4 +83,5 @@ return [
     'Coun_Send_Sms'=>'عدد الرسائل',
     'Additional'=>'الاضافات',
     'Send_Sms'=>'ارسال رسالة',
+    'Created_At'=>'تاريخ الانشاء',
 ];
