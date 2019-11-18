@@ -1,6 +1,7 @@
 <?php
 
 use app\models\User;
+use Carbon\Carbon;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -84,6 +85,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => 'category0.name_ar',
 
             ],
+            [
+                'attribute' => 'created_at',
+                'value'=> function($searchModel){
+                    $now = Carbon::now("Asia/Amman");
+                     $date = Carbon::parse(Carbon::parse($searchModel->created_at));
+                    
+                    $def=$date->diffInDays($now);  
+                    return "dayes ". $def;
+                }
+        ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
