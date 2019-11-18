@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'name' => 'area',
                 'attribute' => 'area',
-                'value' => $model->area0->name_ar,
+                'value' => $model->area0['name_ar'],
 
             ],
             'note:ntext',
