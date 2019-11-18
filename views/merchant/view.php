@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'name' => 'area',
                 'attribute' => 'area',
-                'value' => $model->governorate0->name_ar,
+                'value' => $model->governorate0['name_ar'],
 
             ],
 
@@ -102,9 +102,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?= $requast->salary_to ?></td>
                     <td><?= $requast->agree_from ?></td>
                     <td><?= $requast->agree_to ?></td>
-                    <td><?= $requast->governorate0->name_ar ?></td>
-                    <td><?= $requast->area0->name_ar ?></td>
-                    <td><?= $requast->nationality0->name_ar ?></td>
+                    <td><?= $requast->governorate0['name_ar'] ?></td>
+                    <td><?= $requast->area0['name_ar'] ?></td>
+                    <td><?= $requast->nationality0['name_ar'] ?></td>
                     <td><?= $requast->number_of_houer ?></td>
                     <td><?= $requast->note ?></td>
 
