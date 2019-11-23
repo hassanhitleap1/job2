@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Carbon\Carbon;
 use Yii;
 
 /**
@@ -31,6 +32,27 @@ class RequastJob extends \yii\db\ActiveRecord
     public $file;
     public $assigns_to=[];
     public $assigns_for=[];
+
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            // Place your custom code here
+            if($this->isNewRecord){
+                 $this->created_at = Carbon::now("Asia/Amman");
+                $this->updated_at = Carbon::now("Asia/Amman");
+            }else{
+                $this->updated_at = Carbon::now("Asia/Amman");
+            }
+
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     /**
      * {@inheritdoc}

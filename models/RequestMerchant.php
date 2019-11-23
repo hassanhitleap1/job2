@@ -34,6 +34,26 @@ class RequestMerchant extends \yii\db\ActiveRecord
         return '{{%request_merchant}}';
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            // Place your custom code here
+            if ($this->isNewRecord) {
+                $this->created_at = Carbon::now("Asia/Amman");
+                $this->updated_at = Carbon::now("Asia/Amman");
+            } else {
+                $this->updated_at = Carbon::now("Asia/Amman");
+            }
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function scenarios()
     {
         $scenarios = parent::scenarios();
