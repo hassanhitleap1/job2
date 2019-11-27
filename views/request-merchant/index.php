@@ -89,7 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'created_at',
-                'label' => Yii::t('app', 'Created_At'),
+                'label' => Yii::t('app', 'Name_Company'),
                 'value'=> function($searchModel){
                     $now = Carbon::now("Asia/Amman");
                      $date = Carbon::parse(Carbon::parse($searchModel->created_at));
