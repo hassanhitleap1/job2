@@ -77,8 +77,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'note:ntext',
             [
                 'attribute' => 'user_id',
-                'value' => 'user0.name',
-
+                'value' => function ($searchModel) {
+            
+                    return "الاسم : " . $searchModel->user0["name"] ."  اسم الشركة: " . $searchModel->user0["name_company"] ;
+                }
             ],
             [
                 'attribute' => 'category_id',
