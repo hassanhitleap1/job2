@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    
+
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
@@ -27,10 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
         <?= Html::a(Yii::t('app', 'Create_Request_Merchant'), ['create'], ['class' => 'btn btn-success']) ?>
         <?= Html::a(Yii::t('app', 'Back'), ['index'], ['class' => 'btn btn-info']) ?>
-
-        <?php $phone = substr($model->phone, 1);?>
+        <?php $phone = substr($model->phone, 1); ?>
         <?= Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=شكرا لتعاملكم مع جرس للخدمات الوجستية نود اعلامكم عن توفر وظيفة    '     '  لدى مؤسسة للاستفسار الاتصال على الرقم التالي", ['target' => '_blank', 'class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]); ?>
+        <?= Html::button('plus',  ['value' => $model->id, 'class' => 'btn btn-info glyphicon  glyphicon-plus', 'id' => "plusbutton", 'data-pjax' => 1]); ?>
+        <?= Html::button('minus',  ['value' => $model->id, 'class' => 'btn btn-info glyphicon glyphicon-minus', 'id' => "minusbutton", 'data-pjax' => 1]); ?>
     </p>
+    <p class="btn btn-info"> الرسائل<span class="massges"> <?= $model->smssend->count ?></span> </p>
+
 
     <?= DetailView::widget([
         'model' => $model,
@@ -40,29 +43,28 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'format' => 'raw',
                 'attribute' => 'gender',
-                'value' => function($model){
-                       if($model->gender == User::MALE){
-                           return "ذكر";
-                       }elseif ($model->gender == User::FEMALE)  {
-                            # code...
-                             return "انثى";
-                       }else{
-                            return 'غير محدد';
-                       }
-                        
+                'value' => function ($model) {
+                    if ($model->gender == User::MALE) {
+                        return "ذكر";
+                    } elseif ($model->gender == User::FEMALE) {
+                        # code...
+                        return "انثى";
+                    } else {
+                        return 'غير محدد';
+                    }
                 },
-                'filter' =>[0=>"غير محدد", User::MALE=>" ذكر", User::FEMALE=>" انثى"],
+                'filter' => [0 => "غير محدد", User::MALE => " ذكر", User::FEMALE => " انثى"],
 
 
             ],
             'agree',
             'phone',
             [
-            'format' => 'raw',
-            'name' => 'governorate',
-            'attribute'=> 'governorate',
-            'value'=> $model->governorate0->name_ar,
-            
+                'format' => 'raw',
+                'name' => 'governorate',
+                'attribute' => 'governorate',
+                'value' => $model->governorate0->name_ar,
+
             ],
             [
                 'format' => 'raw',
@@ -105,3 +107,24 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+  <?php
+$script = <<< JS
+$(document).on('click', '#plusbutton', function(){
+    id=$(this).attr('value');
+    $.get("index.php?r=requast-job/plus&id="+id, function(data, status){
+        var data = jQuery.parseJSON( data );
+        $(".massges").text( data.count );
+    });
+});
+
+$(document).on('click', '#minusbutton', function(){
+    id=$(this).attr('value');
+    
+    $.get("index.php?r=requast-job/minus&id="+id, function(data, status){
+        var data = jQuery.parseJSON( data );
+        $(".massges").text( data.count );
+    });
+});
+JS;
+    $this->registerJs($script);
+    ?>
