@@ -5,6 +5,7 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\RequastJob;
+use Carbon\Carbon;
 
 /**
  * RequastJobSearch represents the model behind the search form of `app\models\RequastJob`.
@@ -40,8 +41,10 @@ class RequastJobSearch extends RequastJob
      */
     public function search($params)
     {
+    
         $query = RequastJob::find();
-
+        // print_r($query->createCommand()->queryAll() );
+        // exit;
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -55,7 +58,15 @@ class RequastJobSearch extends RequastJob
             // $query->where('0=1');
             return $dataProvider;
         }
+        
+            //
+        $subQuery=CountSendSms::find()->where('count > 3')->select('user_id');
+        //
         $query->where(['type' => User::NORMAL_USER]);
+    //     $query->andWhere(['and',
+    //         ['not in', 'user.id', $subQuery],
+    //         ['>=','created_at',Carbon::now("Asia/Amman")->subDays(30)->toDateString()]
+    //    ]);
         $query->joinWith('nationality0');
         $query->joinWith('governorate0');  
         $query->joinWith('category0');  
