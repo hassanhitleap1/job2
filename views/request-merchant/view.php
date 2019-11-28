@@ -72,6 +72,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'format' => 'raw',
+                'label' => Yii::t('app', 'Created_At'),
+                'value' => $model->user0['name_company'],
+
+            ],
+            [
+                'format' => 'raw',
                 'attribute' => Yii::t('app','Phone'),
                 'value' => $model->user0['phone'],
 

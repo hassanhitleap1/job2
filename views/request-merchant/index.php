@@ -77,8 +77,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'note:ntext',
             [
                 'attribute' => 'user_id',
-                'value' => 'user0.name',
-
+                'value' => function ($searchModel) {
+            
+                    return "الاسم : " . $searchModel->user0["name"] ."  اسم الشركة: " . $searchModel->user0["name_company"] ;
+                }
             ],
             [
                 'attribute' => 'category_id',
@@ -87,7 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'created_at',
-                'label' => Yii::t('app', 'Created_At'),
+                'label' => Yii::t('app', 'Name_Company'),
                 'value'=> function($searchModel){
                     $now = Carbon::now("Asia/Amman");
                      $date = Carbon::parse(Carbon::parse($searchModel->created_at));
