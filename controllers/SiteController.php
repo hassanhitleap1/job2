@@ -66,6 +66,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout = "maintheme";
         $merchants= Merchant::find()->where(['type'=>User::MERCHANT_USER])->all();
         return $this->render('index',[
             'merchants' => $merchants,
