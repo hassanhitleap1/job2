@@ -39,9 +39,24 @@ ThemeAsset::register($this);
                     </li>
                     <li>
                         <?= Html::a(Yii::t('app', 'About'), ['/site/about']) ?>
+					</li>
+					<li>
+                        <?= Html::a(Yii::t('app', 'OurVision'), ['/site/our-vision']) ?>
+					</li>
+					<li>
+                        <?= Html::a(Yii::t('app', 'OurMessage'), ['/site/our-message']) ?>
+					</li>
+					<li>
+                        <?= Html::a(Yii::t('app', 'OurGoals'), ['/site/our-goals']) ?>
+					</li>
+					<li>
+                        <?= Html::a(Yii::t('app', 'GrowthStrategies'), ['/site/growth-strategies']) ?>
+					</li>
+					<li>
+                        <?= Html::a(Yii::t('app', 'RateUs'), ['/site/rate-us']) ?>
                     </li>
                     <li>
-                        <?= Html::a(Yii::t('app', 'Servies'), ['/site/servies']) ?>
+                        <?= Html::a(Yii::t('app', 'OurResponsibility'), ['/site/our-responsibility']) ?>
                     </li>
 				</ul>
             </nav>
