@@ -58,9 +58,13 @@ ThemeAsset::register($this);
                     <li>
                         <?= Html::a(Yii::t('app', 'OurResponsibility'), ['/site/our-responsibility']) ?>
 					</li>
+					<?php if(Yii::$app->user->isGuest):?>
 					<li>
                         <?= Html::a(Yii::t('app', 'Login'), ['/site/login']) ?>
 					</li>
+					<?php else:?>
+
+					<?php endif;?>
 					
 				</ul>
             </nav>
