@@ -79,9 +79,11 @@ class SiteController extends Controller
      * @return Response|string
      */
     public function actionLogin()
-    {        if (!Yii::$app->user->isGuest) {
+    {        
+        if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
+        $this->layout = "maintheme";
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();

@@ -57,7 +57,11 @@ ThemeAsset::register($this);
                     </li>
                     <li>
                         <?= Html::a(Yii::t('app', 'OurResponsibility'), ['/site/our-responsibility']) ?>
-                    </li>
+					</li>
+					<li>
+                        <?= Html::a(Yii::t('app', 'Login'), ['/site/login']) ?>
+					</li>
+					
 				</ul>
             </nav>
             
