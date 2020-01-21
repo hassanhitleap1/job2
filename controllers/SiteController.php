@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Pages;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -66,7 +67,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $this->layout = "maintheme";
+        if (Yii::$app->user->isGuest) {
+            $this->layout = "maintheme";
+        }
         $merchants= Merchant::find()->where(['type'=>User::MERCHANT_USER])->all();
         return $this->render('index',[
             'merchants' => $merchants,
@@ -133,7 +136,8 @@ class SiteController extends Controller
     public function actionAbout()
     {
         $this->layout = "maintheme";
-        return $this->render('about');
+        $page=Pages::find()->where(['key'=>'about'])->one();
+        return $this->render('about',['page'=>$page]);
     }
 
     
@@ -145,7 +149,8 @@ class SiteController extends Controller
     public function actionOurVision()
     {
         $this->layout = "maintheme";
-        return $this->render('our-vision');
+        $page=Pages::find()->where(['key'=>'our-vision'])->one();
+        return $this->render('our-vision',['page'=>$page]);
     }
 
       /**
@@ -156,7 +161,8 @@ class SiteController extends Controller
     public function actionOurMessage()
     {
         $this->layout = "maintheme";
-        return $this->render('our-message');
+        $page=Pages::find()->where(['key'=>'our-message'])->one();
+        return $this->render('our-message',['page'=>$page]);
     }
       /**
      * Displays about page.
@@ -166,7 +172,8 @@ class SiteController extends Controller
     public function actionOurGoals()
     {
         $this->layout = "maintheme";
-        return $this->render('our-goals');
+        $page=Pages::find()->where(['key'=>'our-goals'])->one();
+        return $this->render('our-goals',['page'=>$page]);
     }
       /**
      * Displays about page.
@@ -176,7 +183,8 @@ class SiteController extends Controller
     public function actionGrowthStrategies()
     {
         $this->layout = "maintheme";
-        return $this->render('growth-strategies');
+        $page=Pages::find()->where(['key'=>'growth-strategies'])->one();
+        return $this->render('growth-strategies',['page'=>$page]);
     }
 
         /**
@@ -187,7 +195,8 @@ class SiteController extends Controller
     public function actionRateUs()
     {
         $this->layout = "maintheme";
-        return $this->render('rate-us');
+        $page=Pages::find()->where(['key'=>'rate-us'])->one();
+        return $this->render('rate-us',['page'=>$page]);
     }
 
 
@@ -199,7 +208,8 @@ class SiteController extends Controller
     public function actionOurResponsibility()
     {
         $this->layout = "maintheme";
-        return $this->render('our-responsibility');
+        $page=Pages::find()->where(['key'=>'our-responsibility'])->one();
+        return $this->render('our-responsibility',['page'=>$page]);
     }
 
 

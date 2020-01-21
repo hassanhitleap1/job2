@@ -53,6 +53,7 @@ AppAsset::register($this);
                     ['label' => Yii::t('app', 'Governorate'), 'url' => ['/governorate/index']],
                     ['label' => Yii::t('app', 'Nationality'), 'url' => ['/nationality/index']],
                     ['label' => Yii::t('app', 'Area'), 'url' => ['/area/index']],
+                    ['label' => Yii::t('app', 'Pages'), 'url' => ['/pages/index']],
                 ],
             ];
             $menuItems[] = ['label' => Yii::t('app', 'Send_Job'), 'url' => ['/send-job/index']];

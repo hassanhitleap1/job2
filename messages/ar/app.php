@@ -84,4 +84,5 @@ return [
     'Additional'=>'الاضافات',
     'Send_Sms'=>'ارسال رسالة',
     'Created_At'=>'تاريخ الانشاء',
+    'Pages'=>'الصفحات',
 ];
