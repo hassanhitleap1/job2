@@ -95,4 +95,5 @@ return [
     'Payments'=>'الدفعات',
     'Priorities'=>'الولويات التوظيف',
     'First_Payment'=>'الول دفعه',
+    'Message'=>'رسالة الوتس اب',
 ];
