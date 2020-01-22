@@ -85,4 +85,10 @@ return [
     'Send_Sms'=>'ارسال رسالة',
     'Created_At'=>'تاريخ الانشاء',
     'Pages'=>'الصفحات',
+    'OurVision'=>'Our Vision',
+    'OurMessage'=>'Our Message',
+    'OurGoals'=>'Our Goals',
+    'GrowthStrategies'=>'Growth Strategies',
+    'RateUs'=>'Rate Us',
+    'OurResponsibility'=>'Our Responsibility',
 ];
