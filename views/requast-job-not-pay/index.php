@@ -1,6 +1,7 @@
 <?php
 
 use app\models\User;
+use app\models\UserMessage;
 use Carbon\Carbon;
 use kartik\date\DatePicker;
 use yii\helpers\Url;
@@ -11,7 +12,9 @@ use yii\bootstrap\Modal;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RequastJobSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
- 
+
+$dataModel=UserMessage::find()->where(['user_id'=>Yii::$app->user->id])->one();
+$message=($dataModel==null)?'':$dataModel->text;
 
 
 $this->title = Yii::t('app', 'Requast_Jobs');
@@ -199,9 +202,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'sendsms' => function ($url, $model, $key) {     // render your custom button
                     return  Html::button('sendsms',  ['target' => '_blank','value'=>Url::to('index.php?r=requast-job/send-single-message&id='.$model->id),'class' => 'btn btn-info glyphicon glyphicon-envelope', 'id'=>"modelbutton",'data-pjax' => 0]);
                 },
-                'sendwhatsapp' => function ($url, $model, $key) {     // render your custom button
+                'sendwhatsapp' => function ($url, $model, $key) use($message){     // render your custom button
                     $phone=substr($model->phone, 1);;
-                    return  Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=شكرا لتعاملكم مع جرس للخدمات الوجستية نود اعلامكم عن توفر وظيفة    '     '  لدى مؤسسة للاستفسار الاتصال على الرقم التالي", ['target' => '_blank','class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]);
+                    return  Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=$message", ['target' => '_blank','class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]);
                 },
                 'plus' => function ($url, $model, $key) {     // render your custom button
                     return  Html::button('plus',  ['value' => $model->id, 'class' => 'btn btn-info glyphicon  glyphicon-plus', 'id' => "plusbutton", 'data-pjax' => 1]);

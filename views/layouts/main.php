@@ -51,13 +51,13 @@ AppAsset::register($this);
             $menuItems[] = [
                 'label' =>Yii::t('app', 'Additional') ,
                 'items' => [
+                    ['label' => Yii::t('app', 'Message'), 'url' => ['/user-message/index']],
                     ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories/index']],
                     ['label' => Yii::t('app', 'Governorate'), 'url' => ['/governorate/index']],
                     ['label' => Yii::t('app', 'Nationality'), 'url' => ['/nationality/index']],
                     ['label' => Yii::t('app', 'Area'), 'url' => ['/area/index']],
                     ['label' => Yii::t('app', 'Pages'), 'url' => ['/pages/index']],
                     ['label' => Yii::t('app', 'Payments'), 'url' => ['/manual-payment-user/index']],
-
                 ],
             ];
             $menuItems[] = ['label' => Yii::t('app', 'Send_Job'), 'url' => ['/send-job/index']];

@@ -36,3 +36,15 @@ ALTER TABLE `user` ADD `priorities` TEXT NOT NULL AFTER `pay_service`;
 ALTER TABLE `user` ADD `first_payment` DOUBLE NOT NULL DEFAULT '0.0' AFTER `priorities`;
 
 ALTER TABLE `user` CHANGE `priorities` `priorities` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
+
+
+CREATE TABLE `job`.`user_message` (
+                                      `id` INT NOT NULL AUTO_INCREMENT ,
+                                      `text` text DEFAULT NULL,
+                                      `user_id` int(11) DEFAULT NULL,
+                                      `created_at` datetime DEFAULT NULL,
+                                      `updated_at` datetime DEFAULT NULL,
+                                      PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+
+
