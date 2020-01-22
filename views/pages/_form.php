@@ -15,7 +15,7 @@ use coderius\pell\Pell;
     <?= $form->field($model, 'key')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-    
+
     <?= $form->field($model, 'text')->widget(Pell::className(), []);?>
 
     <div class="form-group">
