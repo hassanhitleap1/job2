@@ -2,6 +2,7 @@
 return [
     'Home'=>'الصفحة الرئيسية',
     'Requast_Job'=>'نموذج نعبئه لوظيفة',
+    'Requast_Job_Not_Pay'=>'نموذج نعبئه لوظيفة ( لم يدفع)',
     'Signup'=>'تسجيل',
     'Login'=>'الدخول',
     'Governorate'=>'المحافظة',
