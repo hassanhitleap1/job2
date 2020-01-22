@@ -74,7 +74,7 @@ class RequastJobNotPay extends \yii\db\ActiveRecord
         return [
             [['file'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg '],
             [['agree', 'phone', 'nationality', 'governorate', 'expected_salary','gender', 'year_of_experience'], 'integer'],
-            [['certificates', 'experience', 'area','note', 'affiliated_with', 'affiliated_to', 'interview_time'], 'string'],
+            [['certificates', 'experience', 'area','note', 'affiliated_with', 'affiliated_to', 'interview_time','priorities'], 'string'],
             [['name'], 'string', 'max' => 255],
             [['subscribe_date'], 'date', 'format' => 'yyyy-mm-dd'],
             [['name','phone', 'nationality','agree', 'governorate','category_id'], 'required'],
