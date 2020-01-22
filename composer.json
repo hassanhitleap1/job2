@@ -28,7 +28,8 @@
         "nesbot/carbon": "^2.23",
         "kartik-v/yii2-widget-datepicker": "dev-master",
         "kartik-v/yii2-widget-fileinput": "^1.0",
-        "convertapi/convertapi-php": "^1.1"
+        "convertapi/convertapi-php": "^1.1",
+        "coderius/yii2-pell-widget": "~1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

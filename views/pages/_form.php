@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use coderius\pell\Pell;
 /* @var $this yii\web\View */
 /* @var $model app\models\Pages */
 /* @var $form yii\widgets\ActiveForm */
@@ -15,8 +15,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'key')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
+    
+    <?= $form->field($model, 'text')->widget(Pell::className(), []);?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
