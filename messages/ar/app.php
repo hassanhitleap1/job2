@@ -94,4 +94,5 @@ return [
     'OurResponsibility'=>'Our Responsibility',
     'Payments'=>'الدفعات',
     'Priorities'=>'الولويات التوظيف',
+    'First_Payment'=>'الول دفعه',
 ];

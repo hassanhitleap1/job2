@@ -40,6 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             // 'id',
             'name',
+            'first_payment',
             [
                 'format' => 'raw',
                 'attribute' => 'gender',

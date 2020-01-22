@@ -40,11 +40,14 @@ if (!$model->isNewRecord && $model->avatar != "") {
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <?= $form->field($model, 'phone')->textInput() ?>
+        </div>
+        <div class="col-md-2">
+            <?= $form->field($model, 'first_payment')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-2">
             <?= $form->field($model, 'agree')->textInput() ?>

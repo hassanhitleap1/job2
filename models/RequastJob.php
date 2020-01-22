@@ -29,6 +29,7 @@ use Yii;
  * @property int category_id
  * @property int pay_service
  * @property string  priorities
+ * @property int  first_payment
  */
 class RequastJob extends \yii\db\ActiveRecord
 {
@@ -73,8 +74,8 @@ class RequastJob extends \yii\db\ActiveRecord
     {
         return [
             [['file'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg '],
-            [['agree', 'phone', 'nationality', 'governorate', 'expected_salary','gender', 'year_of_experience'], 'integer'],
-            [['certificates', 'experience', 'area','note', 'affiliated_with', 'affiliated_to', 'interview_time'], 'string'],
+            [['agree', 'phone', 'nationality', 'governorate', 'expected_salary','gender', 'year_of_experience','first_payment'], 'integer'],
+            [['certificates', 'experience', 'area','note', 'affiliated_with', 'affiliated_to', 'interview_time','priorities'], 'string'],
             [['name'], 'string', 'max' => 255],
             [['subscribe_date'], 'date', 'format' => 'yyyy-mm-dd'],
             [['name','phone', 'nationality','agree', 'governorate','category_id'], 'required'],
@@ -113,6 +114,7 @@ class RequastJob extends \yii\db\ActiveRecord
             'assigns_for'=>Yii::t('app', 'Assigns_For'),
             'Created_At' => Yii::t('app', 'Created_At'),
             'priorities' => Yii::t('app', 'Priorities'),
+            'first_payment'=>Yii::t('app', 'First_Payment'),
 
         ];
     }

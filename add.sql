@@ -32,3 +32,7 @@ UPDATE `user` SET `pay_service` =1 WHERE `type`= 0
 
 ALTER TABLE `user` ADD `priorities` TEXT NOT NULL AFTER `pay_service`;
 
+
+ALTER TABLE `user` ADD `first_payment` DOUBLE NOT NULL DEFAULT '0.0' AFTER `priorities`;
+
+ALTER TABLE `user` CHANGE `priorities` `priorities` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
