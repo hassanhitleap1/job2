@@ -17,9 +17,9 @@ class ManualPaymentUserSearch extends ManualPaymentUser
     public function rules()
     {
         return [
-            [['id', 'user_id'], 'integer'],
-            [['amount'], 'number'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['id'], 'integer'],
+            [['amount','is_first_payment'], 'number'],
+            [['created_at', 'updated_at','user_id'], 'safe'],
         ];
     }
 
@@ -57,15 +57,24 @@ class ManualPaymentUserSearch extends ManualPaymentUser
             return $dataProvider;
         }
 
+        $query->joinWith('user');
+
+        if(isset($_GET['user_id'])){
+            $query->andWhere(['user_id'=>$_GET['user_id']]);
+        }
+
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'user_id' => $this->user_id,
+//            'user_id' => $this->user_id,
             'amount' => $this->amount,
+            'is_first_payment'=>$this->is_first_payment,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
+        $query->andFilterWhere(['like', 'user.name', $this->user_id]);
         return $dataProvider;
     }
 }

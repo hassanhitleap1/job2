@@ -28,8 +28,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'user_id',
+            'user.name',
             'amount',
+            [
+                'attribute' => 'is_first_payment',
+                'value' => function($searchModel){
+                    if($searchModel->is_first_payment){
+                        return "yes";
+                    }
+                    return "no";
+                }
+            ],
             'created_at',
             'updated_at',
 

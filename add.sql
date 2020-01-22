@@ -47,4 +47,7 @@ CREATE TABLE `job`.`user_message` (
                                       PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
 
+ALTER TABLE `manual_payment_user` ADD `is_first_payment` TINYINT NOT NULL AFTER `amount`;
+
+
 

@@ -30,8 +30,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'user_id',
+            [
+                'attribute' => 'user_id',
+                'value' => function($model){
+                    return $model->user['name'];
+                }
+            ],
             'amount',
+            [
+                'attribute' => 'is_first_payment',
+                'value' => function($model){
+                        if($model->is_first_payment){
+                            return "نعم";
+                        }
+                        return "لا";
+                }
+            ],
             'created_at',
             'updated_at',
         ],

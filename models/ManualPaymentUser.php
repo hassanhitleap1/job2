@@ -10,11 +10,14 @@ use Yii;
  * @property int $id
  * @property int $user_id
  * @property double $amount
+ *  @property double $is_first_payment
  * @property string $created_at
  * @property string $updated_at
  */
 class ManualPaymentUser extends \yii\db\ActiveRecord
 {
+    const  FIRST_PATMENT=1;
+    const OTHER_PAYMENT=0;
     /**
      * {@inheritdoc}
      */
@@ -30,7 +33,7 @@ class ManualPaymentUser extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'amount', 'created_at', 'updated_at'], 'required'],
-            [['user_id'], 'integer'],
+            [['user_id','is_first_payment'], 'integer'],
             [['amount'], 'number'],
             [['created_at', 'updated_at'], 'safe'],
         ];
@@ -43,10 +46,11 @@ class ManualPaymentUser extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'user_id' => Yii::t('app', 'User ID'),
+            'user_id' => Yii::t('app', 'User_ID'),
             'amount' => Yii::t('app', 'Amount'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
+            'is_first_payment'=>Yii::t('app', 'Is_First_Payment'),
+            'created_at' => Yii::t('app', 'Created_At'),
+            'updated_at' => Yii::t('app', 'Updated_At'),
         ];
     }
 

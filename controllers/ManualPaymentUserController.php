@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use Carbon\Carbon;
 use Yii;
 use app\models\ManualPaymentUser;
 use app\models\ManualPaymentUserSearch;
@@ -65,7 +66,9 @@ class ManualPaymentUserController extends Controller
     public function actionCreate()
     {
         $model = new ManualPaymentUser();
-
+        $now=Carbon::now("Asia/Amman");
+        $model->created_at =$now;
+        $model->updated_at =$now;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -85,7 +88,8 @@ class ManualPaymentUserController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $now=Carbon::now("Asia/Amman");
+        $model->updated_at =$now;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }

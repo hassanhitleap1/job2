@@ -43,12 +43,32 @@ class RequastJob extends \yii\db\ActiveRecord
      */
     public function beforeSave($insert)
     {
+        $now=Carbon::now("Asia/Amman");
         if (parent::beforeSave($insert)) {
             // Place your custom code here
             if($this->isNewRecord){
-                 $this->created_at = Carbon::now("Asia/Amman");
-                $this->updated_at = Carbon::now("Asia/Amman");
+                 $this->created_at =$now;
+                $this->updated_at =$now;
+                $modelPaymet= new ManualPaymentUser();
+                $modelPaymet->user_id=$this->id;
+                $modelPaymet->is_first_payment=ManualPaymentUser::FIRST_PATMENT;
+                $modelPaymet->amount=$this->first_payment;
+                $modelPaymet->created_at =$now;
+                $modelPaymet->updated_at =$now;
+                $modelPaymet->save();
+
             }else{
+                $countPayment=ManualPaymentUser::find()->where(['user_id'=>$this->id])->all()->count();
+                if($countPayment == 0 ){
+                    $modelPaymet= new ManualPaymentUser();
+                    $modelPaymet->user_id=$this->id;
+                    $modelPaymet->is_first_payment=ManualPaymentUser::FIRST_PATMENT;
+                    $modelPaymet->amount=$this->first_payment;
+                    $modelPaymet->created_at =$this->created_at;
+                    $modelPaymet->updated_at =$this->created_at;;
+                    $modelPaymet->save();
+                }
+
                 $this->updated_at = Carbon::now("Asia/Amman");
             }
 
@@ -78,7 +98,7 @@ class RequastJob extends \yii\db\ActiveRecord
             [['certificates', 'experience', 'area','note', 'affiliated_with', 'affiliated_to', 'interview_time','priorities'], 'string'],
             [['name'], 'string', 'max' => 255],
             [['subscribe_date'], 'date', 'format' => 'yyyy-mm-dd'],
-            [['name','phone', 'nationality','agree', 'governorate','category_id'], 'required'],
+            [['name','phone', 'nationality','agree', 'governorate','category_id','first_payment'], 'required'],
             [['phone'], 'isJordanPhone'],
             [['phone'],'unique','message'=>Yii::t('app','Phone_Already_Exist')],           
         ];
