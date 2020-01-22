@@ -91,4 +91,5 @@ return [
     'GrowthStrategies'=>'Growth Strategies',
     'RateUs'=>'Rate Us',
     'OurResponsibility'=>'Our Responsibility',
+    'Payments'=>'الدفعات',
 ];

@@ -15,3 +15,11 @@ INSERT INTO `pages` (`id`, `key`, `title`, `text`, `created_at`, `updated_at`) V
 (6, 'growth-strategies', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (7, 'rate-us', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (8, 'our-responsibility', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
+
+CREATE TABLE `job`.`manual_payment_user` (
+    `id` INT NOT NULL AUTO_INCREMENT ,
+    `user_id` INT NOT NULL , `amount` DOUBLE NOT NULL ,
+     `created_at` DATETIME NOT NULL ,
+      `updated_at` DATETIME NOT NULL ,
+       PRIMARY KEY (`id`)) ENGINE = InnoDB;
