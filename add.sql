@@ -23,3 +23,12 @@ CREATE TABLE `job`.`manual_payment_user` (
      `created_at` DATETIME NOT NULL ,
       `updated_at` DATETIME NOT NULL ,
        PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+
+ALTER TABLE `user` ADD `pay_service` TINYINT NOT NULL DEFAULT '0' AFTER `category_id`;
+
+# ALL user regested must be payed
+UPDATE `user` SET `pay_service` =1 WHERE `type`= 0
+
+ALTER TABLE `user` ADD `priorities` TEXT NOT NULL AFTER `pay_service`;
+

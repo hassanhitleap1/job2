@@ -126,11 +126,14 @@ if (!$model->isNewRecord && $model->avatar != "") {
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <?= $form->field($model, 'certificates')->textarea(['rows' => 6]) ?>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <?= $form->field($model, 'experience')->textarea(['rows' => 6]) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'priorities')->textarea(['rows' => 6]) ?>
         </div>
     </div>
 

@@ -121,6 +121,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'certificates:ntext',
             'experience:ntext',
+            'priorities:ntext',
+
             // 'note:ntext',
             [
                 'attribute' => 'created_at',

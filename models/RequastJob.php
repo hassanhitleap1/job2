@@ -26,6 +26,9 @@ use Yii;
  * @property string interview_time
  * @property double year_of_experience
  * @property date created_at
+ * @property int category_id
+ * @property int pay_service
+ * @property string  priorities
  */
 class RequastJob extends \yii\db\ActiveRecord
 {
@@ -109,7 +112,7 @@ class RequastJob extends \yii\db\ActiveRecord
             'assigns_to'=>Yii::t('app', 'Assigns_To'),
             'assigns_for'=>Yii::t('app', 'Assigns_For'),
             'Created_At' => Yii::t('app', 'Created_At'),
-            
+            'priorities' => Yii::t('app', 'Priorities'),
 
         ];
     }

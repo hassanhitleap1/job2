@@ -92,6 +92,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'expected_salary',
             'subscribe_date',
             'note:ntext',
+            'priorities:ntext',
             'affiliated_with',
             'affiliated_to',
             'interview_time',

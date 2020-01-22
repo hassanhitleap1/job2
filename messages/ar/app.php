@@ -92,4 +92,5 @@ return [
     'RateUs'=>'Rate Us',
     'OurResponsibility'=>'Our Responsibility',
     'Payments'=>'الدفعات',
+    'Priorities'=>'الولويات التوظيف',
 ];
