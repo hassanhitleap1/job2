@@ -58,7 +58,7 @@ class RequastJob extends \yii\db\ActiveRecord
                 $modelPaymet->save();
 
             }else{
-                $countPayment=ManualPaymentUser::find()->where(['user_id'=>$this->id])->all()->count();
+                $countPayment=ManualPaymentUser::find()->where(['user_id'=>$this->id])->count();
                 if($countPayment == 0 ){
                     $modelPaymet= new ManualPaymentUser();
                     $modelPaymet->user_id=$this->id;
