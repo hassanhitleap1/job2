@@ -48,6 +48,7 @@ class RequastJob extends \yii\db\ActiveRecord
             // Place your custom code here
             if($this->isNewRecord){
                  $this->created_at =$now;
+                $this->pay_service=1;
                 $this->updated_at =$now;
                 $modelPaymet= new ManualPaymentUser();
                 $modelPaymet->user_id=$this->id;
