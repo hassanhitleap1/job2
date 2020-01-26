@@ -45,7 +45,7 @@ class RequastJobNotPay extends \yii\db\ActiveRecord
         if (parent::beforeSave($insert)) {
             // Place your custom code here
             if($this->isNewRecord){
-                $this->pay_service=1;
+                $this->pay_service=0;
                  $this->created_at = Carbon::now("Asia/Amman");
                 $this->updated_at = Carbon::now("Asia/Amman");
             }else{
