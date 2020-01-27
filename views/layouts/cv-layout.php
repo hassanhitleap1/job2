@@ -3,15 +3,11 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use app\widgets\Alert;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
-use lo\modules\noty\Wrapper;
+use app\assets\CVAsset;
 
-AppAsset::register($this);
+
+CVAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -19,14 +15,16 @@ AppAsset::register($this);
 
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="favicon.png" rel=icon>
     <?php $this->registerCsrfMetaTags() ?>
     <title> <?= Yii::$app->name . " - " . Html::encode($this->title) ?> </title>
     <?php $this->head() ?>
 </head>
 
-<body>
+<body id="page-top" data-spy="scroll" data-target=".navbar">
 <?php $this->beginBody() ?>
     <?= $content ?>        
 <?php $this->endBody() ?>
