@@ -26,7 +26,14 @@ class CVAsset extends AssetBundle
     ];
     public $js = [
         'js/main.js',
-        'https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js',
+        'resumex/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js',
+        'resumex/js/bootstrap.min.js',
+        'resumex/js/theia-sticky-sidebar.js',
+        'resumex/js/scripts.js',
+        // '',
+        // '',
+   
+        //'https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js',
     ];
     public $depends = [
         // 'yii\web\YiiAsset',
