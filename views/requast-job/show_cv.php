@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="content">
                 <h1><?=$model->name ?></h1>
-                <span class="lead">Marketing Consultant</span>
+                
                 <div class="about-text">
                 <div class="row">
                         <div class="col-md-12">
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="progress-item">
                                     <span class="progress-title">قدره تحمل العمل </span>
                                     <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 62%"><span class="progress-percent"> 90%</span>
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%"><span class="progress-percent"> 90%</span>
                                         </div>
                                     </div>
 
@@ -68,19 +68,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                 </div>
 
-                                <div class="progress-item">
-                                    <span class="progress-title">Organisational Skills</span>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"><span class="progress-percent"> 75%</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
+                              
                                 <div class="progress-item">
                                     <span class="progress-title">الالتزام الرسمي بالدوام</span>
                                     <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" style="width: 55%;"><span class="progress-percent"> 87%</span>
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" style="width: 87%;"><span class="progress-percent"> 87%</span>
                                         </div>
                                     </div>
 
@@ -89,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="progress-item">
                                     <span class="progress-title">مهارات التواصل </span>
                                     <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"><span class="progress-percent"> 85%</span>
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"><span class="progress-percent"> 85%</span>
                                         </div>
                                     </div>
 
@@ -162,18 +154,13 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
 
                             <div class="content-item">
-                                <small>2012 - 2015</small>
-                                <h3>Media Analyst</h3>
-                                <h4>BizzNiss</h4>
-                                <p>United Kingdom, London</p>
+                        
+                                <h3>ملخص</h3>
+                               
+                                <p>أسعى إلى إيجاد بيئة تنافسية ومليئة بالتحديات وفقًا لخبرتي ومؤهلاتي ومهاراتي ، التي يمكنني أن أخدم مؤسستك فيها بأداء عالٍ للغاية وأنشئ مهنة مزدهرة لنفسي.</p>
                             </div>
 
-                            <div class="content-item">
-                                <small>2010 - 2012</small>
-                                <h3>Budget Administrator</h3>
-                                <h4>Somsom LLC</h4>
-                                <p>United Kingdom, London</p>
-                            </div>
+                         
 
                         </div>
                     </div>
@@ -195,6 +182,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="col-md-12">
                             <div class="content-item">
                                     <?=Html::img('@web/images/logo.svg', ['class' => 'logo ']) ?>
+                                    الموظف الذي يحمل هذه السيره الذاتية يرجى التوصيه به بنأ على الوصف والمواصفات الوظيفية ويرجى تزويدنا بتاريخ التوظيف هاتف رقم 0780151570 -0782121456
                             </div>
 
                         </div>
