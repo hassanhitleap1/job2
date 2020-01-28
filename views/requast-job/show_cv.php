@@ -148,17 +148,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row">
                         <div class="col-md-12">
                             <div class="section-title">
-                                <h2>Work Experience</h2></div>
+                                <h2>مهارات العمل </h2></div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12">
                             <div class="content-item">
-                                <small>2015 - Present</small>
-                                <h3>Head of market research</h3>
-                                <h4>Computer & Motor Ltd.</h4>
-                                <p>United Kingdom, London</p>
+                                <p>القدره علي تعلم المهام الجديده بشكل سريع ومحترف</p>
+                                <p> التعامل مع المواقف المختلفه بهدوء وبطريقه مدروسه</p>
+                               <p>لماح ومتمكن من ملاحظه التفاصيل الدقيقة</p>
+                                <p>مبتكر , واقعي , عملي جدا ومتمكن من التأقلم مع الظروف المحيطه بسرعه</p>
                             </div>
 
                             <div class="content-item">
@@ -182,36 +182,19 @@ $this->params['breadcrumbs'][] = $this->title;
 
             </section>
 
-            <section class="section-wrapper section-education">
+            <section class="section-wrapper section-experience gray-bg">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="section-title">
-                                <h2>Education</h2></div>
+                                <h2>توصية شركة جرس</h2></div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12">
                             <div class="content-item">
-                                <small>2010 - 2012</small>
-                                <h3>MA Product Design</h3>
-                                <h4>University of California</h4>
-                                <p>United Kingdom, London</p>
-                            </div>
-
-                            <div class="content-item">
-                                <small>2007 - 2010</small>
-                                <h3>Business marketing course</h3>
-                                <h4>Royal Academy of Business</h4>
-                                <p>United Kingdom, London</p>
-                            </div>
-
-                            <div class="content-item">
-                                <small>2002 - 2006</small>
-                                <h3>BA (Hons) Design</h3>
-                                <h4>University of Michigan</h4>
-                                <p>United Kingdom, London</p>
+                                    <?=Html::img('@web/images/logo.svg', ['class' => 'logo ']) ?>
                             </div>
 
                         </div>
@@ -221,48 +204,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             </section>
 
-            <section class="section-wrapper section-interest gray-bg">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="section-title">
-                                <h2>Interest</h2>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="content-item">
-                                <h3>Books</h3>
-                                <p>Proactively extend market-driven e-tailers rather than enterprise-wide supply chains. Collaboratively embrace 24/7 processes rather than adaptive users. Seamlessly monetize alternative e-business.</p>
-                            </div>
-                            <div class="content-item">
-                                <h3>Sports</h3>
-                                <p>Assertively grow optimal methodologies after viral technologies. Appropriately develop frictionless technology for adaptive functionalities. Competently iterate functionalized networks for best-of-breed services.</p>
-                            </div>
-                            <div class="content-item">
-                                <h3>Art</h3>
-                                <p>Dramatically utilize superior infomediaries whereas functional core competencies. Enthusiastically repurpose synergistic vortals for customer directed portals. Interactively pursue sustainable leadership via.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
+          
         </div>
 
     </div>
 
 </div>
 
-</div>
-<div class="row">
-    <div class="name-cv col-lg-4 col-md-4 col-offset-3">
-        <?=Html::img('@web/images/logo.svg', ['class' => 'logo ']) ?>
-        <h3> جرس  : السيرة الذاتية </h3>
-    </div>
 </div>
 
 
@@ -271,8 +219,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <?=Html::a(Yii::t('app', 'Print_CV') , ['requast-job/cv', array(
     'id' => $model->id
-) ], ['class' => 'btn btn-primary btn-lg'])
-?>
-        
+        ) ], ['class' => 'btn btn-primary btn-lg'])
+        ?>
+                
     </div>
 </div>
