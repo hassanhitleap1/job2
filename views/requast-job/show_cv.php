@@ -6,7 +6,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div id="main-wrapper">
 
-<div class="columns-block container">
+<div class="columns-block container cv_div">
     <div class="left-col-block blocks">
         <header class="header theiaStickySidebar">
             <div class="profile-img">
@@ -209,6 +209,6 @@ $this->params['breadcrumbs'][] = $this->title;
     'id' => $model->id
         ) ], ['class' => 'btn btn-primary btn-lg'])
         ?>
-                
+         <button class="btn btn-primary btn-lg" id="print_cv" >print</button>       
     </div>
 </div>
