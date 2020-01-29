@@ -34,10 +34,10 @@ function chart_div()
 
     var styelink='';
     var SITE_URL= window.location.origin+'/web';
-    styelink='<link href="'+SITE_URL+'/assets/b518d80/css/bootstrap.css" rel="stylesheet">';
-    styelink+='<link href="'+SITE_URL+'/assets/6768feb/css/bootstrap-rtl.css" rel="stylesheet">';
-    styelink+='<link href="'+SITE_URL+'/resumex/css/font-awesome.min.css" rel="stylesheet">';
-    styelink+='<link href="'+SITE_URL+'/resumex/css/style.css" rel="stylesheet">';
+    styelink='<link href="'+SITE_URL+'/assets/b518d80/css/bootstrap.css" media="print" rel="stylesheet">';
+    styelink+='<link href="'+SITE_URL+'/assets/6768feb/css/bootstrap-rtl.css" media="print" rel="stylesheet">';
+    styelink+='<link href="'+SITE_URL+'/resumex/css/font-awesome.min.css" media="print" rel="stylesheet">';
+    styelink+='<link href="'+SITE_URL+'/resumex/css/style.css"  media="print" rel="stylesheet">';
     styelink+='<style>.theiaStickySidebar:after {content: ""; display: table; clear: both;}</style>';
     var divToPrint=document.getElementById("cv_div");
     newWin= window.open("");
@@ -47,6 +47,6 @@ function chart_div()
     newWin.document.write(divToPrint.outerHTML);
     newWin.document.write('</body></html>');
     newWin.print();
-    newWin.close();
+    // newWin.close();
 }
 
