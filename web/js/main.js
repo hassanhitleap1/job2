@@ -23,11 +23,20 @@ $(document).ready(function () {
      });
 });
 
+
 function chart_div()
 {
+
+    var styelink='';
+    styelink='<link href="/assets/b518d80/css/bootstrap.css" rel="stylesheet">';
+    styelink+='<link href="/assets/6768feb/css/bootstrap-rtl.css" rel="stylesheet">';
+    styelink+='<link href="/resumex/css/font-awesome.min.css" rel="stylesheet">';
+    styelink+='<link href="/resumex/css/style.css" rel="stylesheet">';
+    styelink+='<style>.theiaStickySidebar:after {content: ""; display: table; clear: both;}</style>';
     var divToPrint=document.getElementById("cv_div");
     newWin= window.open("");
     newWin.document.write('<html><head>');
+    newWin.document.write(styelink);
     newWin.document.write('</head><body>');
     newWin.document.write(divToPrint.outerHTML);
     newWin.document.write('</body></html>');

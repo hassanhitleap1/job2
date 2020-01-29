@@ -209,10 +209,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container">
     <div class="row">
-        <?=Html::a(Yii::t('app', 'Print_CV') , ['requast-job/cv', array(
-    'id' => $model->id
-        ) ], ['class' => 'btn btn-primary btn-lg'])
-        ?>
          <button class="btn btn-primary btn-lg" id="print_cv" >print</button>       
     </div>
 </div>
