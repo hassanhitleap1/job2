@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Html;
-
+use app\models\User;
 $this->title = Yii::t('app', 'CV');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -11,17 +11,21 @@ $this->params['breadcrumbs'][] = $this->title;
         <header class="header theiaStickySidebar">
             <div class="profile-img">
                     <?php if ($model->avatar == null): ?>
-                            <?=Html::img('@web/images/profile.png', ['class' => 'img-responsive']) ?>
+                            <?php if ($model->gender == User::MALE ): ?>
+                                <?=Html::img('@web/images/profile.png', ['class' => 'img-responsive']) ?>
+                            <?php else: ?>
+                                 <?=Html::img('@web/images/female.png', ['class' => 'img-responsive']) ?>
+                            <?php endif; ?>
                     <?php else: ?>
                             <?=Html::img("@web/$model->avatar", ['class' => 'img-responsive']) ?>
                     <?php endif; ?>
              
             </div>
-            <div class="content">
+            <div class="content ">
                 <h1><?=$model->name ?></h1>
                 
                 <div class="about-text">
-                <div class="row">
+                <div class="row text_right">
                         <div class="col-md-12">
                             <address>
                                            
@@ -97,7 +101,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     </div>
 
-    <div class="right-col-block blocks">
+    <div class="right-col-block blocks text_right">
         <div class="theiaStickySidebar">
             <section class="expertise-wrapper section-wrapper gray-bg">
                 <div class="container-fluid">
