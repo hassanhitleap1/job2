@@ -6,7 +6,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div id="main-wrapper">
 
-<div class="columns-block container cv_div">
+<div class="columns-block container " id="cv_div">
     <div class="left-col-block blocks">
         <header class="header theiaStickySidebar">
             <div class="profile-img">

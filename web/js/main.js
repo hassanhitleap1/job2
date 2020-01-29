@@ -24,6 +24,11 @@ $(document).ready(function () {
 });
 
 
+$(document).on('click', '#print_cv', function () {
+    chart_div();
+});
+
+
 function chart_div()
 {
 
@@ -43,7 +48,4 @@ function chart_div()
     newWin.print();
     newWin.close();
 }
-$(document).on('click', '#print_cv', function () {
-    chart_div();
-});
 
