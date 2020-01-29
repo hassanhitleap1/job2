@@ -33,10 +33,11 @@ function chart_div()
 {
 
     var styelink='';
-    styelink='<link href="/assets/b518d80/css/bootstrap.css" rel="stylesheet">';
-    styelink+='<link href="/assets/6768feb/css/bootstrap-rtl.css" rel="stylesheet">';
-    styelink+='<link href="/resumex/css/font-awesome.min.css" rel="stylesheet">';
-    styelink+='<link href="/resumex/css/style.css" rel="stylesheet">';
+    var SITE_URL= window.location.origin+'/web';
+    styelink='<link href="'+SITE_URL+'/assets/b518d80/css/bootstrap.css" rel="stylesheet">';
+    styelink+='<link href="'+SITE_URL+'/assets/6768feb/css/bootstrap-rtl.css" rel="stylesheet">';
+    styelink+='<link href="'+SITE_URL+'/resumex/css/font-awesome.min.css" rel="stylesheet">';
+    styelink+='<link href="'+SITE_URL+'/resumex/css/style.css" rel="stylesheet">';
     styelink+='<style>.theiaStickySidebar:after {content: ""; display: table; clear: both;}</style>';
     var divToPrint=document.getElementById("cv_div");
     newWin= window.open("");
