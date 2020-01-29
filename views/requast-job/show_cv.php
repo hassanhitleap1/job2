@@ -5,7 +5,8 @@ $this->title = Yii::t('app', 'CV');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div id="main-wrapper">
-
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+        crossorigin="anonymous"></script>
 <div class="columns-block container " id="cv_div">
     <div class="left-col-block blocks">
         <header class="header theiaStickySidebar">
@@ -52,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                 <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 text_left">
                             <div class="progress-wrapper">
                                 <div class="progress-item">
                                     <span class="progress-title">قدره تحمل العمل </span>
@@ -207,8 +208,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
-<div class="container">
+<!-- <div class="container">
     <div class="row">
          <button class="btn btn-primary btn-lg" id="print_cv" >print</button>       
     </div>
-</div>
+</div> -->

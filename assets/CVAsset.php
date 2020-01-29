@@ -30,6 +30,8 @@ class CVAsset extends AssetBundle
         'resumex/js/bootstrap.min.js',
         'resumex/js/theia-sticky-sidebar.js',
         'resumex/js/scripts.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js'
 
    
         //'https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js',
