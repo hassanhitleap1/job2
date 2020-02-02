@@ -95,7 +95,7 @@ class RequastJob extends \yii\db\ActiveRecord
     {
         return [
             [['file'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg '],
-            [['agree', 'phone', 'nationality', 'governorate', 'expected_salary','gender', 'year_of_experience','first_payment'], 'integer'],
+            [['agree', 'phone', 'nationality','work_tolerance', 'teamwork','work_permanently','communication_skills','governorate', 'expected_salary','gender', 'year_of_experience','first_payment'], 'integer'],
             [['certificates', 'experience', 'area','note', 'affiliated_with', 'affiliated_to', 'interview_time','priorities'], 'string'],
             [['name'], 'string', 'max' => 255],
             [['subscribe_date'], 'date', 'format' => 'yyyy-mm-dd'],
@@ -136,6 +136,11 @@ class RequastJob extends \yii\db\ActiveRecord
             'Created_At' => Yii::t('app', 'Created_At'),
             'priorities' => Yii::t('app', 'Priorities'),
             'first_payment'=>Yii::t('app', 'First_Payment'),
+            'work_tolerance'=>Yii::t('app', 'Work_Tolerance'),
+            'teamwork'=>Yii::t('app', 'Teamwork'),
+            'work_permanently'=>Yii::t('app', 'Work_Permanently'),
+            'communication_skills'=>Yii::t('app', 'Communication_Skills'),
+           
 
         ];
     }

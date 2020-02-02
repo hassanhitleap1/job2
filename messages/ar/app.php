@@ -98,4 +98,9 @@ return [
     'Message'=>'رسالة الوتس اب',
     'Amount'=>'المبلغ',
     'Is_First_Payment'=>'هل هذه أول دفع',
+     'Work_Tolerance'=>'قدره تحمل العمل',
+     'Teamwork'=>'العمل بروح الفريق',
+     'Work_Permanently'=>'الالتزام الرسمي بالدوام',
+     'Communication_Skills'=>'مهارات التواصل',
+
 ];

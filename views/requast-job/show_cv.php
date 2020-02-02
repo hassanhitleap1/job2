@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="progress-item">
                                     <span class="progress-title">قدره تحمل العمل </span>
                                     <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%"><span class="progress-percent"> 90%</span>
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="<?= $model->work_tolerance?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $model->work_tolerance?>%"><span class="progress-percent"> <?= $model->work_tolerance?>%</span>
                                         </div>
                                     </div>
 
@@ -67,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="progress-item">
                                     <span class="progress-title"> العمل بروح الفريق</span>
                                     <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%"><span class="progress-percent"> 90%</span>
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="<?= $model->teamwork?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $model->teamwork?>%"><span class="progress-percent"> <?= $model->teamwork?>%</span>
                                         </div>
                                     </div>
 
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="progress-item">
                                     <span class="progress-title">الالتزام الرسمي بالدوام</span>
                                     <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" style="width: 87%;"><span class="progress-percent"> 87%</span>
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="<?= $model->work_permanently?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $model->work_permanently?>%;"><span class="progress-percent"> <?= $model->work_permanently?>%</span>
                                         </div>
                                     </div>
 
@@ -86,7 +86,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="progress-item">
                                     <span class="progress-title">مهارات التواصل </span>
                                     <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"><span class="progress-percent"> 85%</span>
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="<?= $model->communication_skills?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $model->communication_skills?>%;"><span class="progress-percent"> <?= $model->communication_skills?>%</span>
                                         </div>
                                     </div>
 

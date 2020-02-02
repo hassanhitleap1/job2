@@ -115,17 +115,21 @@ if (!$model->isNewRecord && $model->avatar != "") {
 
     </div>
     <div class="row">
-        <div class="col-md-3">
-            <?= $form->field($model, 'affiliated_with')->textInput() ?>
-        </div>
-        <div class="col-md-3">
-            <?= $form->field($model, 'affiliated_to')->textInput() ?>
-        </div>
-        <div class="col-md-3">
-            <?= $form->field($model, 'interview_time')->textInput() ?>
-        </div>
+        
         <div class="col-md-3">
             <?= $form->field($model, 'year_of_experience')->textInput() ?>
+        </div>
+        <div class="col-md-2">
+            <?= $form->field($model, 'work_tolerance')->textInput(['placeholder'=>50]) ?>
+        </div>
+        <div class="col-md-2">
+            <?= $form->field($model, 'teamwork')->textInput(['placeholder'=>50]) ?>
+        </div>
+        <div class="col-md-2">
+            <?= $form->field($model, 'work_permanently')->textInput(['placeholder'=>50]) ?>
+        </div>
+        <div class="col-md-2">
+            <?= $form->field($model, 'communication_skills')->textInput(['placeholder'=>50]) ?>
         </div>
     </div>
     <div class="row">
@@ -141,8 +145,14 @@ if (!$model->isNewRecord && $model->avatar != "") {
     </div>
 
     <div class="row">
-        <div class="col-md-8">
+        
+        <div class="col-md-6">
             <?= $form->field($model, 'note')->textarea(['rows' => 6]) ?>
+        </div>
+        <div class="col-md-2">
+            <?= $form->field($model, 'affiliated_with')->textInput() ?>
+            <?= $form->field($model, 'affiliated_to')->textInput() ?>
+            <?= $form->field($model, 'interview_time')->textInput() ?>
         </div>
         <div class="col-md-4">
             <?= $form->field($model, 'file')->widget(FileInput::classname(), [
