@@ -1,12 +1,14 @@
 <?php
 
+use app\models\UserMessage;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\MerchantSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
+$dataModel=UserMessage::find()->where(['user_id'=>Yii::$app->user->id])->one();
+$message=($dataModel==null)?'':$dataModel->text;
 $this->title = Yii::t('app', 'Merchants');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -44,7 +46,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'name_company',
 
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view}{delete} {update} {sendwhatsapp} ',  // the default buttons + your custom button
+                'buttons' => [
+                    'sendwhatsapp' => function ($url, $model, $key)use($message) {     // render your custom button
+                        $phone=substr($model['phone'], 1);
+                        return  Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=$message", ['target' => '_blank','class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]);
+                    },
+
+
+                ]
+            ],
         ],
     ]); ?>
 
