@@ -1,13 +1,13 @@
 <?php
 
-use app\models\UserMessage;
+use app\models\UserMessageMerchant;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\MerchantSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-$dataModel=UserMessage::find()->where(['user_id'=>Yii::$app->user->id])->one();
+$dataModel=UserMessageMerchant::find()->where(['user_id'=>Yii::$app->user->id])->one();
 $message=($dataModel==null)?'':$dataModel->text;
 $this->title = Yii::t('app', 'Merchants');
 $this->params['breadcrumbs'][] = $this->title;
