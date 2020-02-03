@@ -202,7 +202,13 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $this->hasOne(Governorate::className(), ['id' => 'governorate']);
     }
-
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getArea0()
+    {
+        return $this->hasOne(Area::className(), ['id' => 'area']);
+    }
     /**
      * {@inheritdoc}
      * @return UserQuery the active query used by this AR class.

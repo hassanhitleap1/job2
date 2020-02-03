@@ -65,6 +65,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'area',
+                'label'=>'منطقة صاحب العمل',
+                'value' => function ($searchModel) {
+                    return $searchModel->user0->area0['name_ar'];
+                    }
+
+            ],
+            [
+                'attribute' => 'area',
                 'value' => 'area0.name_ar',
 
             ],
