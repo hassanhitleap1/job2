@@ -49,5 +49,28 @@ CREATE TABLE `job`.`user_message` (
 
 ALTER TABLE `manual_payment_user` ADD `is_first_payment` TINYINT NOT NULL AFTER `amount`;
 
+#
+# user_message_merchant
+
+CREATE TABLE `user_message_merchant` (
+                                `id` int(11) NOT NULL,
+                                `text` text DEFAULT NULL,
+                                `user_id` int(11) DEFAULT NULL,
+                                `created_at` datetime DEFAULT NULL,
+                                `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+ALTER TABLE `user_message_merchant`
+    ADD PRIMARY KEY (`id`);
+
+
+ALTER TABLE `user_message_merchant`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+
+
+
 
 

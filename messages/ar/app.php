@@ -96,6 +96,7 @@ return [
     'Priorities'=>'الولويات التوظيف',
     'First_Payment'=>'الول دفعه',
     'Message'=>'رسالة الوتس اب',
+    'Message_Merchent'=>' رسالة الوتس اب اصحاب العمل',
     'Amount'=>'المبلغ',
     'Is_First_Payment'=>'هل هذه أول دفع',
      'Work_Tolerance'=>'قدره تحمل العمل',
