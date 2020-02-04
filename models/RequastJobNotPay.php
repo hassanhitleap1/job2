@@ -114,6 +114,11 @@ class RequastJobNotPay extends \yii\db\ActiveRecord
             'assigns_for'=>Yii::t('app', 'Assigns_For'),
             'Created_At' => Yii::t('app', 'Created_At'),
             'priorities' => Yii::t('app', 'Priorities'),
+            'first_payment'=>Yii::t('app', 'First_Payment'),
+            'work_tolerance'=>Yii::t('app', 'Work_Tolerance'),
+            'teamwork'=>Yii::t('app', 'Teamwork'),
+            'work_permanently'=>Yii::t('app', 'Work_Permanently'),
+            'communication_skills'=>Yii::t('app', 'Communication_Skills'),
 
         ];
     }

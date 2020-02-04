@@ -173,18 +173,4 @@ if (!$model->isNewRecord && $model->avatar != "") {
     <?php ActiveForm::end(); ?>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
