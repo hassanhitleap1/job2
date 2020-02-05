@@ -72,7 +72,7 @@ $message=($dataModel==null)?'':$dataModel->text;
                 'attribute' => 'area',
                 'label'=>'منطقة صاحب العمل',
                 'value' => function ($searchModel) {
-                    return $searchModel->user0->area0['name_ar'];
+                    return $searchModel['user0']['area0']['name_ar'];
                     }
 
             ],
