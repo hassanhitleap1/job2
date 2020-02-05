@@ -18,7 +18,16 @@ use kartik\file\FileInput;
 $dataAvatar = [];
 $date=($model->isNewRecord)?Carbon::now("Asia/Amman"):$model->created_at;
 $today=Carbon::now("Asia/Amman");
-
+$communication_skills=50;
+$work_tolerance=50;
+$teamwork=50;
+$work_permanently=50;
+if(! $model->isNewRecord ){
+    $communication_skills=$model->communication_skills;
+    $work_tolerance=$model->work_tolerance;
+    $teamwork=$model->teamwork;
+    $work_permanently=$model->work_permanently;
+}
 if (!$model->isNewRecord && $model->avatar != "") {
 
     $dataAvatar = [
@@ -120,16 +129,16 @@ if (!$model->isNewRecord && $model->avatar != "") {
             <?= $form->field($model, 'year_of_experience')->textInput() ?>
         </div>
         <div class="col-md-2">
-            <?= $form->field($model, 'work_tolerance')->textInput(['placeholder'=>50]) ?>
+            <?= $form->field($model, 'work_tolerance')->textInput(['value'=>$work_tolerance]) ?>
         </div>
         <div class="col-md-2">
-            <?= $form->field($model, 'teamwork')->textInput(['placeholder'=>50]) ?>
+            <?= $form->field($model, 'teamwork')->textInput(['value'=>$teamwork]) ?>
         </div>
         <div class="col-md-2">
-            <?= $form->field($model, 'work_permanently')->textInput(['placeholder'=>50]) ?>
+            <?= $form->field($model, 'work_permanently')->textInput(['value'=>$work_permanently]) ?>
         </div>
         <div class="col-md-2">
-            <?= $form->field($model, 'communication_skills')->textInput(['placeholder'=>50]) ?>
+            <?= $form->field($model, 'communication_skills')->textInput(['value'=>$communication_skills]) ?>
         </div>
     </div>
     <div class="row">
