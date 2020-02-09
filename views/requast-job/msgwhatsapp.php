@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="container">
         <h1><?= Html::encode($this->title) ?></h1>
         <?php $form = ActiveForm::begin() ?>
-
+        <div class="message" message="<?= $message?>"></div>
         <div class="row">
             <div class="col-md-12">
                 <?=$form->field($model, 'user_id')->widget(Select2Widget::classname(),
