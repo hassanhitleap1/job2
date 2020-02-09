@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?=$form->field($model, 'user_id')->widget(Select2Widget::classname(),
                     [
                         'items' => ArrayHelper::map(User::find()->where(['type' => User::NORMAL_USER])->all(), 'id', 'name'),
-                        'options' => ['placeholder' => 'Select Phone Number', 'value' =>45 ],
+                        'options' => ['placeholder' => 'Select Phone Number', 'value' =>$user->id ],
                     ]);
                 ?>
             </div>
