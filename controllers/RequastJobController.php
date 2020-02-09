@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\CountSendSms;
+use app\models\UserMessage;
 use Yii;
 use app\models\RequastJob;
 use app\models\RequastJobSearch;
@@ -312,6 +313,19 @@ class RequastJobController extends BaseController
         $data["count"]=$model->count;
         echo json_encode($data,JSON_PRETTY_PRINT);
         return ;
+    }
+
+    /**
+     * @param $id
+     */
+    public function  actionMsgwhatsapp($id){
+        $model = $this->findModel($id);
+        $dataModel=UserMessage::find()->where(['user_id'=>Yii::$app->user->id])->one();
+        $message=($dataModel==null)?'':$dataModel->text;
+        return $this->renderAjax('msgwhatsapp', [
+            'model' => $model,
+            'message'=>$message
+        ]);
     }
     
     

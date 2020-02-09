@@ -171,7 +171,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
              [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{view} {sendsms} {delete} {Cv} {update} {sendwhatsapp} {plus}{minus}',  // the default buttons + your custom button
+            'template' => '{view} {sendsms} {delete} {Cv} {update} {sendwhatsapp} {plus}{minus} {msgwhatsapp}',  // the default buttons + your custom button
             'buttons' => [
                   'view' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
@@ -196,6 +196,15 @@ $this->params['breadcrumbs'][] = $this->title;
                       // render your custom button
                     return  Html::a('Cv', ['requast-job/show-cv', 'id' => $model->id],['class' => 'btn btn-info glyphicon glyphicon-th', 'data-pjax' => 0]);
                 },
+
+
+                'msgwhatsapp' => function ($url, $model,$key) {
+                    $url="index.php?r=requast-job/msgwhatsapp&id=".$model->id;
+                    return Html::button('whatsapp', ['value' => $url,
+                        'title' => Yii::t('app', 'msgwhatsapp'),
+                        'class' => 'msgwhatsapp btn btn-info glyphicon glyphicon-envelope','data-pjax' => 0]);
+                },
+
                 // 'printcv' => function($url, $model, $key) {     // render your custom button
                 //     return  Html::a('CV', ['requast-job/print-cv', 'id' => $model->id],['class' => 'glyphicon glyphicon-print', 'data-pjax' => 0]);
                 // },
@@ -258,14 +267,17 @@ JS;
 $this->registerJs($script);
 ?>
 
-<?php
-        Modal::begin([
-            'header'=>'<h4 id="modalHeader">send sms</h4>',
-            'id'=>'model',
-            'size'=>'model-lg'
-            ]);
-        echo '<div id="modelcontent"></div>';
-        Modal::end();
+    <?php
+
+    Modal::begin([
+        'id'     => 'model',
+        'size'   => 'model-lg',
+    ]);
+
+    echo "<div id='modelContent'></div>";
+
+    Modal::end();
+
     ?>
 
 </div>
