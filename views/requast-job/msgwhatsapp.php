@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 ?>
-    <div class="container">
+    <div class="">
         <h1><?= Html::encode($this->title) ?></h1>
         <?php $form = ActiveForm::begin() ?>
         <div class="message" message="<?= $message?>"></div>
