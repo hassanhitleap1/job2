@@ -45,7 +45,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </address>
                                                 <address>
                                         <strong>الجنس</strong><br>
-                                        <?=($model->gender == 1) ? 'ذكر' : ($model->gender == 2) ? 'انثى' : 'غير محدد'; ?> 
+                                        <?php
+                                                if ($model->gender == User::MALE) {
+                                                echo  "ذكر";
+                                            } elseif ($model->gender == User::FEMALE) {
+                                                # code...
+                                                echo  "انثى";
+                                            } else {
+                                                echo 'غير محدد';
+                                            }?> 
                                         </address>
                         </div>
                     </div>
