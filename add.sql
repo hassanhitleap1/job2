@@ -71,6 +71,27 @@ COMMIT;
 
 
 
+# date 9-2-2020   message job
+
+CREATE TABLE `message_job_user` (
+                                    `id` int(11) NOT NULL,
+                                    `user_id` int(11) NOT NULL,
+                                    `text` text NOT NULL,
+                                    `created_at` datetime NOT NULL,
+                                    `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+ALTER TABLE `message_job_user`
+    ADD PRIMARY KEY (`id`);
+
+
+ALTER TABLE `message_job_user`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+
+
 
 
 

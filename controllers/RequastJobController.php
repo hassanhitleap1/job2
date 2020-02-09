@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\CountSendSms;
+use app\models\MessageJobUser;
 use app\models\UserMessage;
 use Yii;
 use app\models\RequastJob;
@@ -319,11 +320,14 @@ class RequastJobController extends BaseController
      * @param $id
      */
     public function  actionMsgwhatsapp($id){
-        $model = $this->findModel($id);
+        $user = $this->findModel($id);
+        $model=new MessageJobUser();
         $dataModel=UserMessage::find()->where(['user_id'=>Yii::$app->user->id])->one();
         $message=($dataModel==null)?'':$dataModel->text;
+
         return $this->renderAjax('msgwhatsapp', [
             'model' => $model,
+            'user'=>$user,
             'message'=>$message
         ]);
     }

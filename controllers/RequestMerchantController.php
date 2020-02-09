@@ -7,6 +7,7 @@ use app\models\RequestMerchant;
 use app\models\RequestMerchantSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Controller;
 
 /**
  * RequestMerchantController implements the CRUD actions for RequestMerchant model.
@@ -107,6 +108,28 @@ class RequestMerchantController extends BaseController
 
         return $this->redirect(['index']);
     }
+
+    /**
+     * filter api
+     * @return mixed
+     */
+    public function actionFilter()
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $requst_marchents = RequestMerchant::find()
+            ->select(['id','job_title','desc_job']);
+       if(isset($_GET['search'])){
+           $search=$_GET['search'];
+           $requst_marchents->where(['like', 'job_title', '%'.$search . '%', false])
+               ->where(['like', 'desc_job','%'.$search . '%', false]);
+
+       }
+       $requst_marchents=$requst_marchents->limit(12)->all();
+
+       return $requst_marchents;
+    }
+
+
 
     /**
      * Finds the RequestMerchant model based on its primary key value.
