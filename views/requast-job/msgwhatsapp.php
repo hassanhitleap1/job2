@@ -6,6 +6,7 @@ use conquer\select2\Select2Widget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
+
 /* @var $this yii\web\View */
 /* @var $model app\models\RequastJob */
 
@@ -33,20 +34,14 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row">
             <div class="col-md-12">
                 <?= $form->field($model, 'text')->textarea(['maxlength' => true,'id'=>'message-text']) ?>
+                <div class="list-group suggesstion-box">
+                    <a href="#" class="list-group-item disabled">First item</a>
+                    <a href="#" class="list-group-item">Second item</a>
+                    <a href="#" class="list-group-item">Third item</a>
+                </div>
             </div>
+
         </div>
-
-        <div class="frmSearch">
-            <input type="text" id="search-box" placeholder="Country Name" />
-            <div id="suggesstion-box">
-                dasd
-                das
-                das
-            </div>
-        </div>
-
-
-
 
         <div class="row">
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
