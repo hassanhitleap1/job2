@@ -3,7 +3,8 @@ $(document).ready(function () {
         e.preventDefault();
         window.print();
 
-    });    
+    });
+
     $("#sendjob-all").click( function(e){
         if( $(this).is(':checked') ){
             $('input:checkbox').prop('checked',true);   
@@ -33,54 +34,52 @@ $(document).on("click",".msgwhatsapp",function(){
 
 //////////////////////////////////////////////////////////// auto complete ////////////////////////////////////
 var keywords=[];
-$(document).on("keypress","#message-text",function(e){
+// $(document).on("keypress","#message-text",function(e){
+//
+//     console.log(this.value);
+//     url="/index.php?r=request-merchant/filter";
+//     if(this.value != null && this.value != ''){
+//         url+="&search="+this.value;
+//     }
+//     $.ajax({
+//         url: url ,
+//         type: 'GET',
+//         dataType: 'JSON',
+//         success: function (data) {
+//             data.forEach(function (item){
+//                 console.log(item);
+//                 keywords.push(item.job_title+item.desc_job );
+//             });
+//
+//
+//         },
+//         error: function (jqXHR, textStatus, errorThrown) {
+//             console.log('error')
+//         }
+//     });
+// });
 
-    console.log(this.value);
-    url="/index.php?r=request-merchant/filter";
-    if(this.value != null && this.value != ''){
-        url+="&search="+this.value;
-    }
+
+$(document).on("keyup","#search-box",function(e){
+    var url="/index.php?r=request-merchant/filter";
     $.ajax({
-        url: url ,
-        type: 'GET',
-        dataType: 'JSON',
-        success: function (data) {
-            data.forEach(function (item){
-                console.log(item);
-                keywords.push(item.job_title+item.desc_job );
-            });
-
-
+        type: "GET",
+        url: url,
+        beforeSend: function(){
+            $("#search-box").css("background","#FFF url(LoaderIcon.gif) no-repeat 165px");
         },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log('error')
+        success: function(data){
+            $("#suggesstion-box").show();
+                $("#suggesstion-box").html(data);
+            $("#search-box").css("background","#FFF");
         }
     });
 });
 
+//To select country name
+function selectCountry(val) {
+    $("#search-box").val(val);
+    $("#suggesstion-box").hide();
+}
 
-$('#message-text').autocomplete({
 
-    serviceUrl: '/index.php?r=request-merchant/filter',
-    onSelect: function (suggestion) {
-        alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
-    }
-});
-$('#message-text').autocomplete({
-    paramName: 'searchString',
-    transformResult: function(response) {
-        
-        return {
-            suggestions: $.map(response.myData, function(dataItem) {
-                return { value: dataItem.valueField, data: dataItem.dataField };
-            })
-        };
-    }
-})
-
-// $('#autocomplete').autocomplete({
-//     serviceUrl: '/autocomplete/countries',
-//     onSelect: function (suggestion) {
-//         alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
-//     }
-// });

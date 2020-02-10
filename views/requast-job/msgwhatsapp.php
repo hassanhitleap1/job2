@@ -36,6 +36,15 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
 
+        <div class="frmSearch">
+            <input type="text" id="search-box" placeholder="Country Name" />
+            <div id="suggesstion-box">
+                dasd
+                das
+                das
+            </div>
+        </div>
+
 
 
 
