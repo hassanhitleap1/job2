@@ -45,10 +45,15 @@ $(document).on("keypress","#message-text",function(e){
         type: 'GET',
         dataType: 'JSON',
         success: function (data) {
+            var html="";
+            var index=1;
+            $(".suggesstion-box").html(html);
             data.forEach(function (item){
-                console.log(item);
-                keywords.push(item.job_title+item.desc_job );
+                html+='<li  class="list-group-item" id="'+item.id+'">'+item.job_title + '  - ' +item.desc_job  +' </li>';
+                keywords.push(item.job_title+item.desc_job ) ;
+                index=1;
             });
+            $(".suggesstion-box").html(html);
 
 
         },
@@ -58,6 +63,25 @@ $(document).on("keypress","#message-text",function(e){
     });
 });
 
+$(document).on("change","#messagejobuser-user_id",function(e){
+    var user_id=$(this).val();
+
+    var url="/index.php?r=user%2Fget-user&id=".user_id;
+
+    $.ajax({
+        url: url ,
+        type: 'GET',
+        dataType: 'JSON',
+        success: function (data) {
+            $("#user-name").html(data.name);
+            $("#priorities").html(data.priorities);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('error')
+        }
+    });
+    
+});
 
 
 
