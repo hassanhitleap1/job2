@@ -9,14 +9,8 @@ class UserInfoController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-    
-        
-        $data=User::find($_GET['id'])->one();
-        
-        header('Content-Type: application/json');
-        echo json_encode($data,JSON_PRETTY_PRINT);
-        $data= json_encode($data,JSON_PRETTY_PRINT);
-        print_r($data);
+        $data=User::findOne($_GET['id']);
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
          return $data;
     }
 

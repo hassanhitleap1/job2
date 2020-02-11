@@ -49,7 +49,7 @@ $(document).on("keypress","#message-text",function(e){
             var index=1;
             $(".suggesstion-box").html(html);
             data.forEach(function (item){
-                html+='<li  class="list-group-item" id="'+item.id+'">'+item.job_title + '  - ' +item.desc_job  +' </li>';
+                html+='<li  class="list-group-item custom-message" id="'+item.id+'">'+item.job_title + '  - ' +item.desc_job  +' </li>';
                 keywords.push(item.job_title+item.desc_job ) ;
                 index=1;
             });
@@ -63,24 +63,44 @@ $(document).on("keypress","#message-text",function(e){
     });
 });
 
-$(document).on("change","#messagejobuser-user_id",function(e){
+$(document).on("change","#user-id",function(e){
     var user_id=$(this).val();
-
-    var url="/index.php?r=user%2Fget-user&id=".user_id;
-
+    var url="/index.php?r=user-info&id="+user_id;
     $.ajax({
         url: url ,
         type: 'GET',
         dataType: 'JSON',
         success: function (data) {
+            console.log(data)
             $("#user-name").html(data.name);
             $("#priorities").html(data.priorities);
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            console.log('error')
+            console.log('error');
         }
     });
     
+});
+
+
+$(document).on("click",".custom-message",function(e){
+    var id=$(this).attr('id');
+    var message=$(".message").attr('message');
+    var url="/index.php?r=request-merchant&get-request&id="+id;
+    $.ajax({
+        url: url ,
+        type: 'GET',
+        dataType: 'JSON',
+        success: function (data) {
+            message= 
+            $("#user-name").html(data.name);
+            $("#priorities").html(data.priorities);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('error');
+        }
+    });
+
 });
 
 
