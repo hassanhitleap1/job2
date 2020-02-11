@@ -92,9 +92,9 @@ $(document).on("click",".custom-message",function(e){
         type: 'GET',
         dataType: 'JSON',
         success: function (data) {
-            message= 
-            $("#user-name").html(data.name);
-            $("#priorities").html(data.priorities);
+            message=$(".message").attr('message');
+
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log('error');
