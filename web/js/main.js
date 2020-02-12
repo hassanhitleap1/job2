@@ -84,6 +84,35 @@ $(document).on("change","#user-id",function(e){
             $("#user-name").html(data.name);
             $("#phone-for").attr('phone',data.phone);
             $("#priorities").html(data.priorities);
+            $("#priorities").html(data.priorities);
+            $("#experience-user").html(data.experience);
+            $("#phone-user").html(data.phone);
+
+            $("#nationality-user").html('phone',data.nationality);
+            $("#area-user").html(data.area);
+           
+            var gender="غير محدد";
+            if (data.gender == 1) {
+                gender ="ذكر";
+            } else if (data.gender == 2) {
+                gender= "انثى";
+            }
+            $("#gender-user").html(gender);
+
+            $("#coun-send-sms-user").html(data.phone);
+
+            $("#agree-user").html(data.agree);
+            
+            // currentTime=new Date();
+            // var currentTime =  format(new Date(currentTime.toDateString()), 'yyyy-MM-dd');
+            // alert(currentTime)
+            // var date2 = new Date(data.created_at);
+            // const diffTime = Math.abs(date2 - currentTime);
+            // alert(diffTime)
+            // $("#created-at-user").html(diffTime);
+            
+           
+           
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log('error');

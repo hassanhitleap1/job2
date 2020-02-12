@@ -104,6 +104,6 @@ return [
      'Work_Permanently'=>'الالتزام الرسمي بالدوام',
      'Communication_Skills'=>'مهارات التواصل',
     'Name_Merchant'=>'صاحب العمل',
-
+    'Send'=>'ارسال',
 
 ];

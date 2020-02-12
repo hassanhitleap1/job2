@@ -147,6 +147,14 @@ class RequastJob extends \yii\db\ActiveRecord
 
 
 
+       /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getArea0()
+    {
+        return $this->hasOne(Area::className(), ['id' => 'area']);
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */

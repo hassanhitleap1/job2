@@ -1,6 +1,7 @@
 <?php
 
 use app\models\User;
+use Carbon\Carbon;
 use yii\widgets\ActiveForm;
 use conquer\select2\Select2Widget;
 use yii\helpers\ArrayHelper;
@@ -16,28 +17,91 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 ?>
+
     <div class="">
         <h3 id="user-name"><?= Html::encode($this->title) ?></h3>
         <?php $form = ActiveForm::begin() ?>
         <div class="row">
         
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                 <div class="form-group">
-                      <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-primary btn-lg btn-block']) ?>
-                </div>
+                        <a href="#" class="btn btn-primary" id="send-message"><?= Yii::t('app', 'Send')?></a>
+                    </div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <div class="form-group">
-                      <a href="#" class="btn btn-primary btn-lg  btn-block" id="send-message"><?= Yii::t('app', 'Send')?></a>
-                </div>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" >
+         
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" >
                 <h3><?= Yii::t('app','Priorities')?></h3>
                 <div id="priorities">
                 <?= $user->priorities	?>
                 </div>
-               
             </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                <h3><?= Yii::t('app','Area')?></h3>
+                <div id="area-user">
+                <?= $user->area	?>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <h3><?= Yii::t('app', 'Experience')?></h3>
+                <div id="experience-user">
+                <?= $user->experience	?>
+                </div>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                <h3><?= Yii::t('app', 'Nationality')?></h3>
+                <div id="nationality-user">
+                <?= $user->nationality0->name_ar	?>
+                </div>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                <h3><?= Yii::t('app','Gender')?></h3>
+                <div id="gender-user">
+                    <?php
+                      if ($user->gender == User::MALE) {
+                        echo "ذكر";
+                    } elseif ($user->gender == User::FEMALE) {
+                        # code...
+                        echo "انثى";
+                    } else {
+                        echo 'غير محدد';
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                <h3><?= Yii::t('app','Coun_Send_Sms')?></h3>
+                <div id="coun-send-sms-user">
+                <?= $user->smssend->count	?>
+                </div>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                <h3><?= Yii::t('app','Agree')?></h3>
+                <div id="agree-user">
+                <?= $user->agree	?>
+                </div>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                <h3><?= Yii::t('app','Created_At')?></h3>
+                <div id="created-at-user">
+                 <?php 
+                 $now = Carbon::now("Asia/Amman");
+                 $date = Carbon::parse(Carbon::parse($user->created_at));
+                 $def=$date->diffInDays($now);
+                 echo  "سجلت قبل ". $def . " يوم";
+                 ?>   
+                </div>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                <h3><?= Yii::t('app','Phone')?></h3>
+                <div id="phone-user">
+                <?= $user->phone	?>
+                </div>
+            </div>
+
+            
+            
+            
+            
         </div>
         <div class="message" message="<?= $message?>"></div>
         <div  id="#phone-for" message="<?= $user->phone?>"></div>
