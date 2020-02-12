@@ -49,8 +49,7 @@ $(document).on("keypress","#message-text",function(e){
             var index=1;
             $(".suggesstion-box").html(html);
             data.forEach(function (item){
-                html+='<li  class="list-group-item custom-message" id="'+item.id+'">'+item.job_title + '  - ' +item.desc_job  +' </li>';
-                keywords.push(item.job_title+item.desc_job ) ;
+                html+= '<tr class="custom-message"  id="'+item.id+'"><th scope="row">'+index+'</th><td>'+item.job_title + ' </td><td>'+item.desc_job  +'</td> <td>@mdo</td></tr>';
                 index=1;
             });
             $(".suggesstion-box").html(html);
@@ -73,6 +72,7 @@ $(document).on("change","#user-id",function(e){
         success: function (data) {
             console.log(data)
             $("#user-name").html(data.name);
+            $("#phone-for").attr('phone',data.phone);
             $("#priorities").html(data.priorities);
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -86,13 +86,22 @@ $(document).on("change","#user-id",function(e){
 $(document).on("click",".custom-message",function(e){
     var id=$(this).attr('id');
     var message=$(".message").attr('message');
-    var url="/index.php?r=request-merchant&get-request&id="+id;
+    1
+    var url="/index.php?r=request-merchant/get-request&id="+id;
     $.ajax({
         url: url ,
         type: 'GET',
         dataType: 'JSON',
         success: function (data) {
-            message=$(".message").attr('message');
+            // $("#message-text").val='';
+            document.getElementById("message-text").value ='';
+            var message=$(".message").attr('message');
+             message = message.replace("phone",data.marchent.phone);
+             message = message.replace("job",data.requst_marchent.job_title);
+             document.getElementById("message-text").value =message;
+             //$("#message-text").val=message;
+
+    
 
 
         },
@@ -102,6 +111,16 @@ $(document).on("click",".custom-message",function(e){
     });
 
 });
+
+
+$(document).on("click","#send-message",function(e){
+    var url='';
+    var phone=$("#phone-for").attr('phone');
+    var message=$("#message-text").val();
+    url= 'https://api.whatsapp.com/send?phone=962'+phone+'&text='+message
+    window.open(url,'_blank');
+});
+
 
 
 

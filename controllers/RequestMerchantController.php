@@ -130,6 +130,21 @@ class RequestMerchantController extends BaseController
     }
 
 
+    public function actionGetRequest($id)
+    {
+        $data=[];
+        $requst_marchent=RequestMerchant::findOne($id);
+        $marchent=$requst_marchent->user0;
+        $data['marchent']=$marchent;
+        $data['requst_marchent']=$requst_marchent;
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        if($requst_marchent ==null){
+            $data=[];
+        }
+         return $data;
+    }
+
+
 
     /**
      * Finds the RequestMerchant model based on its primary key value.
