@@ -60,10 +60,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 <table class="table">
                     <thead>
                         <tr>
-                        <th scope="col"><?= Yii::t('app','Priorities')?></th>
-                        <th scope="col"><?= Yii::t('app','Priorities')?></th>
-                        <th scope="col"><?= Yii::t('app','Priorities')?></th>
-                        <th scope="col"><?= Yii::t('app','Priorities')?></th>
+                            <th scope="col">#</th>
+                            <th scope="col"><?= Yii::t('app','Name_Merchant')?></th>
+                            <th scope="col"><?= Yii::t('app','Area')?></th>
+                            <th scope="col"><?= Yii::t('app','Job_Title')?></th>
+                            <th scope="col"><?= Yii::t('app','Desc_Job')?></th>
+                            <th scope="col"><?= Yii::t('app','Phone')?></th>
+                            <th scope="col"><?= Yii::t('app','Created_At')?></th>
                         </tr>
                     </thead>
                     <tbody class="suggesstion-box">

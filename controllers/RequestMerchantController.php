@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\RequestMerchant;
 use app\models\RequestMerchantSearch;
+use yii\db\Query;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -116,17 +117,33 @@ class RequestMerchantController extends BaseController
     public function actionFilter()
     {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        $requst_marchents = RequestMerchant::find()
-            ->select(['id','job_title','desc_job']);
-       if(isset($_GET['search'])){
-           $search=$_GET['search'];
-           $requst_marchents->where(['like', 'job_title', '%'.$search . '%', false])
-               ->where(['like', 'desc_job','%'.$search . '%', false]);
 
-       }
-       $requst_marchents=$requst_marchents->limit(12)->all();
+        $query = new Query();
+        $query->select(   'request_merchant.id as id,
+                    job_title,
+                    desc_job,
+                    request_merchant.created_at,
+                    user.name,
+                    user.phone,
+                    area.name_ar as area')
+                ->from('request_merchant')
+                ->leftJoin('user', 'user.id = request_merchant.user_id')
+                ->leftJoin('area', 'user.area = area.id');
+                if(isset($_GET['search'])){
+                    $search=$_GET['search'];
+                    $query->where(['like', 'job_title', '%'.$search . '%', false])
+                        ->orWhere(['like', 'desc_job','%'.$search . '%', false]);
 
-       return $requst_marchents;
+                }
+                $query->limit(20);
+
+            $rows = $query->all();
+        return $rows;
+
+
+
+
+
     }
 
 

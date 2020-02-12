@@ -49,7 +49,17 @@ $(document).on("keypress","#message-text",function(e){
             var index=1;
             $(".suggesstion-box").html(html);
             data.forEach(function (item){
-                html+= '<tr class="custom-message"  id="'+item.id+'"><th scope="row">'+index+'</th><td>'+item.job_title + ' </td><td>'+item.desc_job  +'</td> <td>@mdo</td></tr>';
+                html+= '<tr class="custom-message"  id="'+item.id+'">' +
+                    '<th scope="col">#</th>'+
+                    '<th scope="col">'+item.name+'</th>'+
+                    '<th scope="col">'+item.area+'</th>'+
+                    '<th scope="col">'+item.job_title+'</th>'+
+                    '<th scope="col">'+item.desc_job+'</th>'+
+                    '<th scope="col">'+item.phone+'</th>'+
+                    '<th scope="col">'+item.created_at+'</th>';
+                '</tr>';
+           
+
                 index=1;
             });
             $(".suggesstion-box").html(html);
