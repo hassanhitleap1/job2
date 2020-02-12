@@ -58,7 +58,7 @@ $(document).on("keypress","#message-text",function(e){
                     '<th scope="col">'+item.phone+'</th>'+
                     '<th scope="col">'+item.created_at+'</th>';
                 '</tr>';
-           
+
 
                 index=1;
             });

@@ -212,3 +212,9 @@ a.desc:after {
 .note{
     font-size: 16px;
 }
+.model-lg{
+    width: 80% !important;
+}
+#model{
+    width: 110% !important;
+}
