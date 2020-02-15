@@ -135,7 +135,7 @@ class RequestMerchantController extends BaseController
                         ->orWhere(['like', 'desc_job','%'.$search . '%', false]);
 
                 }
-                $query->limit(20);
+                $query->orderBy(['request_merchant.created_at'=>SORT_DESC])->limit(20);
 
             $rows = $query->all();
         return $rows;

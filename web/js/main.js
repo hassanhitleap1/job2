@@ -48,7 +48,10 @@ $(document).on("keypress","#message-text",function(e){
             var html="";
             var index=1;
             $(".suggesstion-box").html(html);
+            var diffTime='';
             data.forEach(function (item){
+                 diffTime =diff_time(item.created_at);
+                $("#created-at-user").html(diffTime +" days");
                 html+= '<tr class="custom-message"  id="'+item.id+'">' +
                     '<th scope="col">#</th>'+
                     '<th scope="col">'+item.name+'</th>'+
@@ -56,7 +59,7 @@ $(document).on("keypress","#message-text",function(e){
                     '<th scope="col">'+item.job_title+'</th>'+
                     '<th scope="col">'+item.desc_job+'</th>'+
                     '<th scope="col">'+item.phone+'</th>'+
-                    '<th scope="col">'+item.created_at+'</th>';
+                    '<th scope="col">'+diffTime +' dayes'+'</th>';
                 '</tr>';
 
 
@@ -80,37 +83,31 @@ $(document).on("change","#user-id",function(e){
         type: 'GET',
         dataType: 'JSON',
         success: function (data) {
-            console.log(data)
-            $("#user-name").html(data.name);
-            $("#phone-for").attr('phone',data.phone);
-            $("#priorities").html(data.priorities);
-            $("#priorities").html(data.priorities);
-            $("#experience-user").html(data.experience);
-            $("#phone-user").html(data.phone);
 
+            $("#user-name").html(data.user.name);
+            $("#phone-for").attr('phone',data.user.phone);
+            $("#priorities").html(data.user.priorities);
+            $("#priorities").html(data.user.priorities);
+            $("#experience-user").html(data.user.experience);
+            $("#phone-user").html(data.phone);
             $("#nationality-user").html('phone',data.nationality);
-            $("#area-user").html(data.area);
+            $("#area-user").html(data.user.area);
            
             var gender="غير محدد";
-            if (data.gender == 1) {
+            if (data.user.gender == 1) {
                 gender ="ذكر";
-            } else if (data.gender == 2) {
+            } else if (data.user.gender == 2) {
                 gender= "انثى";
             }
             $("#gender-user").html(gender);
 
-            $("#coun-send-sms-user").html(data.phone);
+            $("#coun-send-sms-user").html(data.message_count);
 
-            $("#agree-user").html(data.agree);
-            
-            // currentTime=new Date();
-            // var currentTime =  format(new Date(currentTime.toDateString()), 'yyyy-MM-dd');
-            // alert(currentTime)
-            // var date2 = new Date(data.created_at);
-            // const diffTime = Math.abs(date2 - currentTime);
-            // alert(diffTime)
-            // $("#created-at-user").html(diffTime);
-            
+            $("#agree-user").html(data.user.agree);
+
+            var diffTime =diff_time(data.user.created_at);
+            $("#created-at-user").html(diffTime +" days");
+        
            
            
         },
@@ -164,3 +161,12 @@ $(document).on("click","#send-message",function(e){
 
 
 
+function diff_time(date){
+    var dateNow= new Date();
+    const date1 = new Date(dateNow);
+    const date2 = new Date(date);
+    const diffTime = Math.abs(date2 - date1);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+    console.log(diffDays);
+    return diffDays;
+}

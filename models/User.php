@@ -114,6 +114,14 @@ class User extends ActiveRecord implements IdentityInterface
             'status' => self::STATUS_INACTIVE
         ]);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSmssend()
+    {
+        return $this->hasOne(CountSendSms::className(), ['user_id' => 'id']);
+    }
     /**
      * Finds out if password reset token is valid
      *
