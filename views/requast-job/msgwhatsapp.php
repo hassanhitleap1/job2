@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
     <div class="">
+        <button id="save-message"  class="btn btn-primary float-right hidden" ><?= Yii::t('app', 'Save')?></button>
         <h3 id="user-name"><?= Html::encode($this->title) ?></h3>
         <?php $form = ActiveForm::begin() ?>
         <div class="row">

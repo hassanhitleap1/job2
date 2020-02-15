@@ -151,12 +151,17 @@ $(document).on("click",".custom-message",function(e){
 
 $(document).on("click","#send-message",function(e){
     var url='';
+    $("#save-message").removeClass("hidden");
     var phone=$("#phone-for").attr('phone');
     var message=$("#message-text").val();
     url= 'https://api.whatsapp.com/send?phone=962'+phone+'&text='+message
     window.open(url,'_blank');
 });
 
+
+$(document).on("click","#save-message",function(e){
+    $(this).addClass("hidden");
+});
 
 
 

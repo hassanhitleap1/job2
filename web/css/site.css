@@ -218,3 +218,6 @@ a.desc:after {
 #model{
     width: 110% !important;
 }
+.heddin{
+    display: none;
+}
