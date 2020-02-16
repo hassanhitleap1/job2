@@ -161,6 +161,20 @@ $(document).on("click","#send-message",function(e){
 
 $(document).on("click","#save-message",function(e){
     $(this).addClass("hidden");
+    data={
+        user_id:$("#user-id").val(),
+        marchent_id:$("#marchent_id").val(),
+        text:$("#message").val(),
+    }
+    url="";
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        success: function (response) {
+          alert("success") 
+        }
+    });
 });
 
 
