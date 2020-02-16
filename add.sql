@@ -93,5 +93,12 @@ COMMIT;
 
 
 
+CREATE TABLE `job`.`user_message_whatsapp` ( `id` INT NOT NULL , `test` TEXT NOT NULL , `user_id` INT NOT NULL , `marchent_id` INT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL ) ENGINE = InnoDB;
 
 
+
+
+
+ALTER TABLE `user_message_whatsapp` ADD PRIMARY KEY(`id`);
+
+ALTER TABLE `user_message_whatsapp` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
