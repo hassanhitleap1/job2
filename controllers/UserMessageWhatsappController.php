@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\UserMessageWhatsapp;
 use app\models\UserMessageWhatsappSearch;
+use Carbon\Carbon;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -107,6 +108,28 @@ class UserMessageWhatsappController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+
+    public function actionSaveMessage()
+    {
+        $message= new UserMessageWhatsapp();
+        $message->test=$_POST["text"];
+        $message->user_id=$_POST["user_id"];
+        $message->marchent_id=$_POST["marchent_id"];
+        $message->created_at=Carbon::now('Asia/Amman');
+        $message->updated_at=Carbon::now('Asia/Amman');
+        
+        $data["code"]=401;
+        $data["mesg"]="success";
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        if($message->save()){
+            return $data;
+           
+        }
+        $data["code"]=501;
+        $data["mesg"]="filed";
+        return ["ss"];
     }
 
     /**

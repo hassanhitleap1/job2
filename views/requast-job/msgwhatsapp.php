@@ -20,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="">
         <button id="save-message"  class="btn btn-primary float-right hidden" ><?= Yii::t('app', 'Save')?></button>
+        <h3 id="marchent_id" ></h3>
         <h3 id="user-name"><?= Html::encode($this->title) ?></h3>
         <?php $form = ActiveForm::begin() ?>
         <div class="row">
@@ -94,7 +95,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                 <h3><?= Yii::t('app','Phone')?></h3>
-                <div id="phone-user">
+                <div id="phone-user" >
                 <?= $user->phone	?>
                 </div>
             </div>
@@ -105,6 +106,7 @@ $this->params['breadcrumbs'][] = $this->title;
             
         </div>
         <div class="message" message="<?= $message?>"></div>
+        
         <div  id="#phone-for" message="<?= $user->phone?>"></div>
        
         <div class="row">

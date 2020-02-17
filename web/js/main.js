@@ -35,7 +35,7 @@ $(document).on("click",".msgwhatsapp",function(){
 //////////////////////////////////////////////////////////// auto complete ////////////////////////////////////
 var keywords=[];
 $(document).on("keypress","#message-text",function(e){
-    console.log(this.value);
+  
     url="/index.php?r=request-merchant/filter";
     if(this.value != null && this.value != ''){
         url+="&search="+this.value;
@@ -93,6 +93,7 @@ $(document).on("change","#user-id",function(e){
             $("#nationality-user").html('phone',data.nationality);
             $("#area-user").html(data.user.area);
            
+           
             var gender="غير محدد";
             if (data.user.gender == 1) {
                 gender ="ذكر";
@@ -135,7 +136,11 @@ $(document).on("click",".custom-message",function(e){
              message = message.replace("phone",data.marchent.phone);
              message = message.replace("job",data.requst_marchent.job_title);
              document.getElementById("message-text").value =message;
-             //$("#message-text").val=message;
+
+             $("#marchent_id").attr("marchent_id",data.marchent.id);
+             $("#marchent_id").html(" التنسيب الى "  +data.marchent.name + " - " +data.requst_marchent.job_title);
+             
+             
 
     
 
@@ -163,15 +168,17 @@ $(document).on("click","#save-message",function(e){
     $(this).addClass("hidden");
     data={
         user_id:$("#user-id").val(),
-        marchent_id:$("#marchent_id").val(),
-        text:$("#message").val(),
+        marchent_id:$("#marchent_id").attr("marchent_id"),
+        text:$("#message-text").val(),
     }
-    url="";
+
+    var url="/index.php?r=user-message-whatsapp/save-message";
     $.ajax({
         type: "POST",
         url: url,
         data: data,
         success: function (response) {
+            console.log(response)
           alert("success") 
         }
     });
@@ -186,6 +193,6 @@ function diff_time(date){
     const date2 = new Date(date);
     const diffTime = Math.abs(date2 - date1);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-    console.log(diffDays);
+ 
     return diffDays;
 }
