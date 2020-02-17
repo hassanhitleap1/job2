@@ -61,7 +61,7 @@ AppAsset::register($this);
                     ['label' => Yii::t('app', 'Payments'), 'url' => ['/manual-payment-user/index']],
                 ],
             ];
-            $menuItems[] = ['label' => Yii::t('app', 'Send_Job'), 'url' => ['/send-job/index']];
+            $menuItems[] = ['label' => Yii::t('app', 'Message'), 'url' => ['/user-message-whatsapp/index']];
             $menuItems[] = ['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requast-job/index']];
             $menuItems[] = ['label' => Yii::t('app', 'Merchants'), 'url' => ['/merchant/index']];
             $menuItems[] = ['label' => Yii::t('app', 'Request_Merchant'), 'url' => ['/request-merchant/index']];

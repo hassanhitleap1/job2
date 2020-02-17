@@ -10,7 +10,7 @@ use yii\widgets\Pjax;
 $this->title = Yii::t('app', 'User Message Whatsapps');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-message-whatsapp-index">
+<div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
