@@ -179,7 +179,12 @@ $(document).on("click","#save-message",function(e){
         data: data,
         success: function (response) {
             console.log(response)
-          alert("success") 
+            if(response.code==401){
+                    $("#success_message").css("display", "block")
+            }else{
+                $("#error_message").css("display", "block")
+            }
+          
         }
     });
 });

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\CountSendSms;
 use Yii;
 use app\models\UserMessageWhatsapp;
 use app\models\UserMessageWhatsappSearch;
@@ -114,6 +115,15 @@ class UserMessageWhatsappController extends Controller
     public function actionSaveMessage()
     {
         $message= new UserMessageWhatsapp();
+        $model= CountSendSms::find()->where(['user_id'=> $_POST["user_id"]])->one();
+        $model->count= $model->count +1;
+        
+        if($model->created_at==null){
+         $model->created_at= Carbon::now("Asia/Amman");
+        }
+         $model->updated_at = Carbon::now("Asia/Amman");
+        $model->save();
+
         $message->test=$_POST["text"];
         $message->user_id=$_POST["user_id"];
         $message->marchent_id=$_POST["marchent_id"];

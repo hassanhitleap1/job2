@@ -22,6 +22,13 @@ $this->params['breadcrumbs'][] = $this->title;
         <button id="save-message"  class="btn btn-primary float-right hidden" ><?= Yii::t('app', 'Save')?></button>
         <h3 id="marchent_id" ></h3>
         <h3 id="user-name"><?= Html::encode($this->title) ?></h3>
+        <div class="alert alert-success" id="success_message" style="display: none;" role="alert">
+            succefully send message
+        </div>
+        <div class="alert alert-danger" id="error_message"   style="display: none;" role="alert">
+                error the messge not saved
+        </div>
+ 
         <?php $form = ActiveForm::begin() ?>
         <div class="row">
         
