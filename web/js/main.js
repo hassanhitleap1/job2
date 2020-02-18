@@ -123,7 +123,7 @@ $(document).on("change","#user-id",function(e){
 $(document).on("click",".custom-message",function(e){
     var id=$(this).attr('id');
     var message=$(".message").attr('message');
-    
+
     var url="/index.php?r=request-merchant/get-request&id="+id;
     $.ajax({
         url: url ,
@@ -160,7 +160,12 @@ $(document).on("click","#send-message",function(e){
     var phone=$("#phone-for").attr('phone');
     var message=$("#message-text").val();
     url= 'https://api.whatsapp.com/send?phone=962'+phone+'&text='+message
-    window.open(url,'_blank');
+    window.open(url, '_blank');
+    setTimeout(function(){
+        window.open(url, '_blank');
+    }, 500);
+
+
 });
 
 
