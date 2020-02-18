@@ -115,15 +115,10 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <div class="message" message="<?= $message?>"></div>
         
-        <div  id="#phone-for" message="<?= $user->phone?>"></div>
+        <div  id="phone-for" phone="<?= $user->phone?>"></div>
        
         <div class="row">
-            <div class="col-md-2">
-                <label for="add-user"> اضغط  لاضافة المستخدم</label>
-                <a id="add-user"  class="btn btn-primary" ><?= Yii::t('app', 'Add')?></a>
-            </div>
-            <div class="col-md-10">
-
+            <div class="col-md-12">
                 <?=$form->field($model, 'user_id')->widget(Select2Widget::classname(),
                     [
                         'items' => ArrayHelper::map(User::find()->where(['type' => User::NORMAL_USER])->all(), 'id', 'name'),

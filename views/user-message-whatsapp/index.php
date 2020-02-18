@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -27,11 +28,32 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            // 'id',
             'test:ntext',
+           
             'user_id',
-            'marchent_id',
-            'created_at',
+            [
+                'attribute' => 'user_id',
+                'value' => 'user0.name',
+
+            ],
+            [
+                'attribute' => 'marchent_id',
+                'value' => 'marchent0.name',
+
+            ],
+           
+            [
+                'attribute' => 'created_at',
+                'label'=> Yii::t('app', 'Created_At'),
+                'value'=> function($searchModel){
+                    $now = Carbon::now("Asia/Amman");
+                     $date = Carbon::parse(Carbon::parse($searchModel->created_at));
+                     $def=$date->diffInDays($now);
+                     return "send befor ". $def;
+                    }
+            ],
+    
             //'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],

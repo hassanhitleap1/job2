@@ -17,8 +17,8 @@ class UserMessageWhatsappSearch extends UserMessageWhatsapp
     public function rules()
     {
         return [
-            [['id', 'user_id', 'marchent_id'], 'integer'],
-            [['test', 'created_at', 'updated_at'], 'safe'],
+            [['id'], 'integer'],
+            [['test','user_id', 'marchent_id', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -56,16 +56,22 @@ class UserMessageWhatsappSearch extends UserMessageWhatsapp
             return $dataProvider;
         }
 
+       $query->joinWith('user0  as user');
+       $query->joinWith('marchent0 as marchent');  
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'user_id' => $this->user_id,
-            'marchent_id' => $this->marchent_id,
+            // 'user_id' => $this->user_id,
+            // 'marchent_id' => $this->marchent_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'test', $this->test]);
+        $query->andFilterWhere(['like', 'test', $this->test])
+       ->andFilterWhere(['like', 'marchent0.name', $this->marchent_id])
+        ->andFilterWhere(['like', 'user0.name', $this->user_id])
+        ;
 
         return $dataProvider;
     }

@@ -33,25 +33,7 @@ $(document).on("click",".msgwhatsapp",function(){
 
 
 //////////////////////////////////////////////////////////// auto complete ////////////////////////////////////
-var keywords=[];
-var users=[];
 
-$(document).on("click","#add-user",function(e){
-    var user_id=$("#user-id").val();
-    var name=$("#user-name").html();
-    if(users.length){
-        users.push({
-            "user_id":user_id,
-            "name":name,
-        });
-    }else {
-        const result = users.find( ({ user_id }) => user_id ===  $("#user-id").val());
-
-    };
-
-
-
-});
 
 $(document).on("keyup","#message-text",function(e){
   
@@ -81,7 +63,6 @@ $(document).on("keyup","#message-text",function(e){
                     '<th scope="col">'+diffTime +' dayes'+'</th>';
                 '</tr>';
 
-
                 index=1;
             });
             $(".suggesstion-box").html(html);
@@ -102,17 +83,14 @@ $(document).on("change","#user-id",function(e){
         type: 'GET',
         dataType: 'JSON',
         success: function (data) {
-
             $("#user-name").html(data.user.name);
             $("#phone-for").attr('phone',data.user.phone);
             $("#priorities").html(data.user.priorities);
             $("#priorities").html(data.user.priorities);
             $("#experience-user").html(data.user.experience);
-            $("#phone-user").html(data.phone);
-            $("#nationality-user").html('phone',data.nationality);
+            $("#phone-user").html(data.user.phone);
+            $("#nationality-user").html(data.nationality);
             $("#area-user").html(data.user.area);
-           
-           
             var gender="غير محدد";
             if (data.user.gender == 1) {
                 gender ="ذكر";
@@ -149,21 +127,13 @@ $(document).on("click",".custom-message",function(e){
         type: 'GET',
         dataType: 'JSON',
         success: function (data) {
-            // $("#message-text").val='';
             document.getElementById("message-text").value ='';
             var message=$(".message").attr('message');
              message = message.replace("phone",data.marchent.phone);
              message = message.replace("job",data.requst_marchent.job_title);
              document.getElementById("message-text").value =message;
-
              $("#marchent_id").attr("marchent_id",data.marchent.id);
              $("#marchent_id").html(" التنسيب الى "  +data.marchent.name + " - " +data.requst_marchent.job_title);
-             
-             
-
-    
-
-
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log('error');
@@ -176,13 +146,12 @@ $(document).on("click",".custom-message",function(e){
 $(document).on("click","#send-message",function(e){
     var url='';
     $("#save-message").removeClass("hidden");
-    var phone=$("#phone-for").attr('phone');
+    var phone=$("#phone-user").html();
+    phone=phone.trim();
     var message=$("#message-text").val();
     url= 'https://api.whatsapp.com/send?phone=962'+phone+'&text='+message
     window.open(url, '_blank');
-    setTimeout(function(){
-        window.open(url, '_blank');
-    }, 500);
+   
 
 
 });
@@ -208,12 +177,15 @@ $(document).on("click","#save-message",function(e){
             }else{
                 $("#error_message").css("display", "block")
             }
+
+            setTimeout(() => {
+                $("#success_message").css("display", "none") 
+                $("#error_message").css("display", "none")
+            }, 1000);
           
         }
     });
 });
-
-
 
 
 function diff_time(date){

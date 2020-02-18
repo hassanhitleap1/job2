@@ -45,11 +45,27 @@ class UserMessageWhatsapp extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'test' => Yii::t('app', 'Test'),
-            'user_id' => Yii::t('app', 'User ID'),
-            'marchent_id' => Yii::t('app', 'Marchent ID'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
+            'user_id' => Yii::t('app', 'User_ID'),
+            'marchent_id' => Yii::t('app', 'Marchent_ID'),
+            'created_at' => Yii::t('app', 'Created_At'),
+            'updated_at' => Yii::t('app', 'Updated_At'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser0()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+
+            /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMarchent0()
+    {
+        return $this->hasOne(User::className(), ['id' => 'marchent_id']);
     }
 
     /**

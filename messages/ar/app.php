@@ -105,5 +105,8 @@ return [
      'Communication_Skills'=>'مهارات التواصل',
     'Name_Merchant'=>'صاحب العمل',
     'Send'=>'ارسال',
+    'Marchent_ID'=>'التاجر',
+    'User_ID'=>'اسم المستخدم',
+    'Test'=>'النص',
 
 ];
