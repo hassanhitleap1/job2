@@ -123,7 +123,7 @@ $(document).on("change","#user-id",function(e){
 $(document).on("click",".custom-message",function(e){
     var id=$(this).attr('id');
     var message=$(".message").attr('message');
-    1
+    
     var url="/index.php?r=request-merchant/get-request&id="+id;
     $.ajax({
         url: url ,
