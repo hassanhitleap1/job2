@@ -69,8 +69,8 @@ class UserMessageWhatsappSearch extends UserMessageWhatsapp
         ]);
 
         $query->andFilterWhere(['like', 'test', $this->test])
-       ->andFilterWhere(['like', 'marchent0.name', $this->marchent_id])
-        ->andFilterWhere(['like', 'user0.name', $this->user_id])
+       ->andFilterWhere(['like', 'marchent.name', $this->marchent_id])
+        ->andFilterWhere(['like', 'user.name', $this->user_id])
         ;
 
         return $dataProvider;
