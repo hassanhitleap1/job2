@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
     <div class="">
+        <div class="users"></div>
         <button id="save-message"  class="btn btn-primary float-right hidden" ><?= Yii::t('app', 'Save')?></button>
         <h3 id="marchent_id" ></h3>
         <h3 id="user-name"><?= Html::encode($this->title) ?></h3>
@@ -117,7 +118,12 @@ $this->params['breadcrumbs'][] = $this->title;
         <div  id="#phone-for" message="<?= $user->phone?>"></div>
        
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-2">
+                <label for="add-user"> اضغط  لاضافة المستخدم</label>
+                <a id="add-user"  class="btn btn-primary" ><?= Yii::t('app', 'Add')?></a>
+            </div>
+            <div class="col-md-10">
+
                 <?=$form->field($model, 'user_id')->widget(Select2Widget::classname(),
                     [
                         'items' => ArrayHelper::map(User::find()->where(['type' => User::NORMAL_USER])->all(), 'id', 'name'),

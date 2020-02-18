@@ -34,7 +34,26 @@ $(document).on("click",".msgwhatsapp",function(){
 
 //////////////////////////////////////////////////////////// auto complete ////////////////////////////////////
 var keywords=[];
-$(document).on("keypress","#message-text",function(e){
+var users=[];
+
+$(document).on("click","#add-user",function(e){
+    var user_id=$("#user-id").val();
+    var name=$("#user-name").html();
+    if(users.length){
+        users.push({
+            "user_id":user_id,
+            "name":name,
+        });
+    }else {
+        const result = users.find( ({ user_id }) => user_id ===  $("#user-id").val());
+
+    };
+
+
+
+});
+
+$(document).on("keyup","#message-text",function(e){
   
     url="/index.php?r=request-merchant/filter";
     if(this.value != null && this.value != ''){
