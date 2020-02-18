@@ -108,5 +108,6 @@ return [
     'Marchent_ID'=>'التاجر',
     'User_ID'=>'اسم المستخدم',
     'Test'=>'النص',
+    "msgwhatsapp"=>'التنسيب',
 
 ];
