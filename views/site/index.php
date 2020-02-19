@@ -31,7 +31,7 @@ $this->title = 'home';
                     </p>
 
 				</div>
-				<video autoplay loop muted playsinline src="images/banner.mp4"></video>
+				<video autoplay loop muted playsinline src="https://player.vimeo.com/video/46847325?title=0&byline=0&portrait=0"></video>
 			</section>
 
 		<!-- Highlights -->
