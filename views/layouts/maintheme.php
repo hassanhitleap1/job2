@@ -17,7 +17,7 @@ ThemeAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="جرس لتسويق الكفاءات ">
-    <meta name="keywords" content="[jaras for job,jaras,job,جرس للخدمات,وظائف,جرس لتسويق الكفاءات,جرس">
+    <meta name="keywords" content="[jaras for job,jaras,job,جرس للخدمات,وظائف,جرس لتسويق الكفاءات,جرس ,جرس للتوظيف">
     <?php $this->registerCsrfMetaTags() ?>
     <title> <?= Yii::$app->name . " - " . Html::encode($this->title) ?> </title>
     <?php $this->head() ?>
@@ -27,9 +27,19 @@ ThemeAsset::register($this);
 
 		<!-- Header -->
         <header id="header">
+
                 <?= Html::a(Yii::$app->name, ['/site/index'],['class'=>'logo']) ?>
 				<nav>
+                    <a href="tel:0782121456">
+                        <strong><i class="fa fa-phone" aria-hidden="true"> 0782121456 </i></strong>
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=962782121456&text=">
+                        <strong><i class="fa fa-whatsapp" aria-hidden="true"> 0782121456 </i></strong>
+                    </a>
 					<a href="#menu"> <?= Yii::t('app', 'Menu')?></a>
+
+
+
 				</nav>
 			</header>
 
@@ -83,7 +93,7 @@ ThemeAsset::register($this);
 						</section>
 
 						<section>
-							<h4>Magna sed ipsum</h4>
+							<h4><?= Yii::t('app','Social')?></h4>
 							<ul class="plain">
 								<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
 								<li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
