@@ -37,7 +37,7 @@ $(document).on("click",".msgwhatsapp",function(){
 
 $(document).on("keyup","#message-text",function(e){
   
-    url="/index.php?r=request-merchant/filter";
+    url="/web/index.php?r=request-merchant/filter";
     if(this.value != null && this.value != ''){
         url+="&search="+this.value;
     }
@@ -77,7 +77,7 @@ $(document).on("keyup","#message-text",function(e){
 
 $(document).on("change","#user-id",function(e){
     var user_id=$(this).val();
-    var url="/index.php?r=user-info&id="+user_id;
+    var url="/web/index.php?r=user-info&id="+user_id;
     $.ajax({
         url: url ,
         type: 'GET',
@@ -121,7 +121,7 @@ $(document).on("click",".custom-message",function(e){
     var id=$(this).attr('id');
     var message=$(".message").attr('message');
 
-    var url="/index.php?r=request-merchant/get-request&id="+id;
+    var url="/web/index.php?r=request-merchant/get-request&id="+id;
     $.ajax({
         url: url ,
         type: 'GET',
@@ -165,7 +165,7 @@ $(document).on("click","#save-message",function(e){
         text:$("#message-text").val(),
     }
 
-    var url="/index.php?r=user-message-whatsapp/save-message";
+    var url="/web/index.php?r=user-message-whatsapp/save-message";
     $.ajax({
         type: "POST",
         url: url,
