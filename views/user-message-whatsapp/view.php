@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -16,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?php // Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -29,12 +30,39 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            //'id',
             'test:ntext',
-            'user_id',
-            'marchent_id',
+            [
+                'attribute' => 'user_id',
+                'value' => function($model){
+                    return $model->user0->name;
+                },
+
+            ],
+
+            [
+                'attribute' => 'marchent_id',
+                'value' => function($model){
+                    return $model->marchent0->name;
+                },
+
+            ],
+
             'created_at',
-            'updated_at',
+
+            [
+                'attribute' => 'created_at',
+                'value' => function($model){
+                    $now = Carbon::now("Asia/Amman");
+                     $date = Carbon::parse(Carbon::parse($model->created_at));
+                     $def=$date->diffInDays($now);
+                     return "send befor ". $def;
+                    }
+            ],
+
+
+
+//            'updated_at',
         ],
     ]) ?>
 
