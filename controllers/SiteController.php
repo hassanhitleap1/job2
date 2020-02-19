@@ -67,11 +67,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $namepage="index-local";
         if (Yii::$app->user->isGuest) {
             $this->layout = "maintheme";
+            $namepage="index";
         }
         $merchants= Merchant::find()->where(['type'=>User::MERCHANT_USER])->all();
-        return $this->render('index',[
+        return $this->render($namepage,[
             'merchants' => $merchants,
         ]);
     }
