@@ -66,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             // 'id',
             'name',
-            'first_payment',
+            // 'first_payment',
             'agree',
             [
                 'attribute' => 'gender',
@@ -87,6 +87,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'phone',
             [
+                'attribute' => 'area',
+                'value' => 'area',
+
+            ],
+            [
                 'attribute' => 'nationality',
                 'value' => 'nationality0.name_ar',
 
@@ -105,7 +110,7 @@ $this->params['breadcrumbs'][] = $this->title;
           
            
             
-            'expected_salary',
+            // 'expected_salary',
             [
                 'attribute' => 'subscribe_date',
                 'value' => 'subscribe_date',
