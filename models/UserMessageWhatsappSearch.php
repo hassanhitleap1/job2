@@ -73,6 +73,10 @@ class UserMessageWhatsappSearch extends UserMessageWhatsapp
         ->andFilterWhere(['like', 'user.name', $this->user_id])
         ;
 
+        $query->orderBy([
+            'created_at' => SORT_DESC //specify sort order ASC for ascending DESC for descending      
+        ]);
+
         return $dataProvider;
     }
 }
