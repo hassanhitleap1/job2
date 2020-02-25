@@ -19,7 +19,7 @@ class RequastJobNotPaySearch extends RequastJob
     {
         return [
             [['id', 'agree', 'phone',  'expected_salary',"gender"], 'integer'],
-            [['name', 'certificates', 'experience', 'nationality', 'governorate','category_id','subscribe_date','note','priorities'], 'safe'],
+            [['name', 'certificates', 'experience', 'area','nationality', 'governorate','category_id','subscribe_date','note','priorities'], 'safe'],
         ];
     }
 
@@ -87,6 +87,7 @@ class RequastJobNotPaySearch extends RequastJob
             ->andFilterWhere(['like', 'certificates', $this->certificates])
             ->andFilterWhere(['like', 'experience', $this->experience])
             ->andFilterWhere(['like', 'priorities', $this->priorities])
+            ->andFilterWhere(['like', 'area', $this->area])
             ->andFilterWhere(['like', 'nationality.name_ar', $this->nationality])
             ->andFilterWhere(['like', 'governorate.name_ar', $this->governorate])
             ->andFilterWhere(['like', 'categories.name_ar', $this->category_id])
