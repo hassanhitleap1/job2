@@ -113,4 +113,5 @@ return [
     "About"=>"عنا",
     "Administration"=>"الادارة",
     "Social"=>"مواقع تواصل اجتماعي",
+    "Requast_Jobs_Google"=>"طلب وظيفه من جوجل",
 ];

@@ -102,3 +102,63 @@ CREATE TABLE `job`.`user_message_whatsapp` ( `id` INT NOT NULL , `test` TEXT NOT
 ALTER TABLE `user_message_whatsapp` ADD PRIMARY KEY(`id`);
 
 ALTER TABLE `user_message_whatsapp` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
+
+
+
+
+--
+-- Table structure for table `user_from_google`
+--
+
+CREATE TABLE `user_from_google` (
+                        `id` int(11) NOT NULL,
+                        `username` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `auth_key` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `password_hash` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `password_reset_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `status` smallint(6) DEFAULT 10,
+                        `agree` int(11) DEFAULT NULL,
+                        `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `nationality` int(11) DEFAULT -1,
+                        `certificates` text COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `experience` text COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `governorate` int(11) DEFAULT -1,
+                        `area` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `expected_salary` int(11) DEFAULT NULL,
+                        `note` text COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `type` smallint(6) DEFAULT 0,
+                        `name_company` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `auth_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `subscribe_date` date DEFAULT NULL,
+                        `avatar` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `gender` tinyint(3) DEFAULT NULL,
+                        `affiliated_to` varchar(1200) CHARACTER SET utf8 DEFAULT NULL,
+                        `affiliated_with` varchar(1200) CHARACTER SET utf8 DEFAULT NULL,
+                        `interview_time` varchar(1200) CHARACTER SET utf8 DEFAULT NULL,
+                        `year_of_experience` double DEFAULT NULL,
+                        `created_at` timestamp NULL DEFAULT NULL,
+                        `updated_at` timestamp NULL DEFAULT NULL,
+                        `verification_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                        `category_id` int(11) DEFAULT NULL,
+                        `pay_service` tinyint(4) NOT NULL DEFAULT 0,
+                        `priorities` text CHARACTER SET utf8 DEFAULT NULL,
+                        `first_payment` double NOT NULL DEFAULT 0,
+                        `work_tolerance` int(11) NOT NULL DEFAULT 50,
+                        `teamwork` int(11) NOT NULL DEFAULT 50,
+                        `work_permanently` int(11) DEFAULT 50,
+                        `communication_skills` int(11) NOT NULL DEFAULT 50
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+ALTER TABLE `user_from_google`
+    ADD PRIMARY KEY (`id`),
+    ADD UNIQUE KEY `username` (`username`),
+    ADD UNIQUE KEY `password_reset_token` (`password_reset_token`),
+    ADD UNIQUE KEY `email` (`email`);
+
+
+ALTER TABLE `user_from_google`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=993;
+COMMIT;

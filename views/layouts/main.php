@@ -51,6 +51,7 @@ AppAsset::register($this);
             $menuItems[] = [
                 'label' =>Yii::t('app', 'Additional') ,
                 'items' => [
+
                     ['label' => Yii::t('app', 'Message'), 'url' => ['/user-message/index']],
                     ['label' => Yii::t('app', 'Message_Merchent'), 'url' => ['/user-message-merchant/index']],
                     ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories/index']],
@@ -59,6 +60,7 @@ AppAsset::register($this);
                     ['label' => Yii::t('app', 'Area'), 'url' => ['/area/index']],
                     ['label' => Yii::t('app', 'Pages'), 'url' => ['/pages/index']],
                     ['label' => Yii::t('app', 'Payments'), 'url' => ['/manual-payment-user/index']],
+                    ['label' => Yii::t('app', 'Requast_Jobs_Google'), 'url' => ['/requast-job-google/index']],
                 ],
             ];
             $menuItems[] = ['label' => Yii::t('app', 'Message'), 'url' => ['/user-message-whatsapp/index']];
