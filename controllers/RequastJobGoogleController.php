@@ -135,7 +135,7 @@ class RequastJobGoogleController extends BaseController
 
 
     public function actionImportFromGoogle(){
-
+        return "sss";
     }
     /**
      * Finds the RequastJob model based on its primary key value.

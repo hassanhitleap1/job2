@@ -3,12 +3,14 @@
 namespace app\controllers;
 
 use app\models\CountSendSms;
+use app\models\MessageJobUser;
 use app\models\RequastJobNotPay;
 use Yii;
 use app\models\RequastJob;
 use app\models\RequastJobNotPaySearch;
 use app\models\SendSmsModel;
 use app\models\User;
+use app\models\UserMessage;
 use Carbon\Carbon;
 use ConvertApi\ConvertApi;
 use yii\web\NotFoundHttpException;
@@ -315,6 +317,24 @@ class RequastJobNotPayController extends BaseController
         $data["count"]=$model->count;
         echo json_encode($data,JSON_PRETTY_PRINT);
         return ;
+    }
+
+
+
+        /**
+     * @param $id
+     */
+    public function  actionMsgwhatsapp($id){
+        $user = $this->findModel($id);
+        $model=new MessageJobUser();
+        $dataModel=UserMessage::find()->where(['user_id'=>Yii::$app->user->id])->one();
+        $message=($dataModel==null)?'':$dataModel->text;
+
+        return $this->renderAjax('msgwhatsapp', [
+            'model' => $model,
+            'user'=>$user,
+            'message'=>$message
+        ]);
     }
     
     

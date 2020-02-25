@@ -28,7 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a(Yii::t('app', 'Create_Requast_Job'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
@@ -102,7 +101,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => 'governorate0.name_ar',
 
             ],
-          
+            [
+                'attribute' => 'area',
+                'value' => 'area',
+                           
+            ],
            
             
             'expected_salary',
@@ -171,7 +174,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
              [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{view} {sendsms} {delete} {Cv} {update} {sendwhatsapp} {plus}{minus}',  // the default buttons + your custom button
+            'template' => '{view} {sendsms} {delete} {Cv} {update} {sendwhatsapp} {plus}{minus}{msgwhatsapp}',  // the default buttons + your custom button
             'buttons' => [
                   'view' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
@@ -213,13 +216,19 @@ $this->params['breadcrumbs'][] = $this->title;
                     return  Html::button('minus',  [ 'value' => $model->id, 'class' => 'btn btn-info glyphicon glyphicon-minus', 'id' => "minusbutton", 'data-pjax' => 1]);
                 },
                 
+                'msgwhatsapp' => function ($url, $model,$key) {
+                    $url="index.php?r=requast-job/msgwhatsapp&id=".$model->id;
+                    return Html::button(' '.Yii::t('app', 'msgwhatsapp') , ['value' => $url,
+                        'title' => Yii::t('app', 'msgwhatsapp'),
+                        'class' => 'msgwhatsapp btn btn-info glyphicon glyphicon-envelope','data-pjax' => 0]);
+                },
+                
             ]
             ],
            
         ],
     ]); ?>
 
-    <?php Pjax::end(); ?>
  
     <?php
 $script = <<< JS
@@ -258,15 +267,19 @@ JS;
 $this->registerJs($script);
 ?>
 
+
 <?php
-        Modal::begin([
-            'header'=>'<h4 id="modalHeader">send sms</h4>',
-            'id'=>'model',
-            'size'=>'model-lg'
-            ]);
-        echo '<div id="modelcontent"></div>';
-        Modal::end();
-    ?>
+
+Modal::begin([
+    'id'     => 'model',
+    'size'   => 'model-lg',
+]);
+
+echo "<div id='modelContent'></div>";
+
+Modal::end();
+
+?>
 
 </div>
 
