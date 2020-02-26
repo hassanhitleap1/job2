@@ -162,6 +162,22 @@ $(document).on("click","#send-message",function(e){
 
 });
 
+$(document).on("click",".send-message-suggested",function(e){
+    var url='';
+    var user-id=$(this).attr("user-id");
+    $("#btt_save_"+user-id).removeClass("hidden");
+    $("#btt_send_"+user-id).addClass("hidden");
+
+    var phone=$("#phone-user").html();
+    phone=phone.trim();
+    var message=$("#message-text").val();
+    url= 'https://api.whatsapp.com/send?phone=962'+phone+'&text='+message
+    window.open(url, '_blank');
+
+
+
+});
+
 
 $(document).on("click","#save-message",function(e){
     $(this).addClass("hidden");

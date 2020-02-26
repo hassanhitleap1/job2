@@ -14,6 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container">
     <h1><?= Html::encode($this->title) ?></h1>
+  
     <div  class="row">
         <div class="col-md-6">
             <div class="row">
@@ -62,8 +63,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             <td><?= $user_pay->area?></td>
                             <td><?= $user_pay->priorities?></td>
                             <td>
-                                <button id="send-message-suggested"  class="btn btn-primary float-right " ><?= Yii::t('app', 'Send')?></button>
-                                <button id="save-message-suggested"  class="btn btn-primary float-right hidden" ><?= Yii::t('app', 'Save')?></button>
+                                <button  id="btt_send_<?=$user_not_pay->id?>" user-id="<?=$user_not_pay->id?>" phone="<?=$user_not_pay->phone?>"  class="btn btn-primary float-right send-message-suggested" ><?= Yii::t('app', 'Send')?></button>
+                                <button  id="btt_save_<?=$user_not_pay->id?>"  user-id="<?=$user_not_pay->id?>" phone="<?=$user_not_pay->phone?>"  class="btn btn-primary float-right save-message-suggested hidden" ><?= Yii::t('app', 'Save')?></button>
                             </td>
                         </tr>
                     <?php endforeach;?>
