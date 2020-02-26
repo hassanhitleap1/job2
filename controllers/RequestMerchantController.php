@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\User;
 use Yii;
 use app\models\RequestMerchant;
 use app\models\RequestMerchantSearch;
@@ -162,6 +163,40 @@ class RequestMerchantController extends BaseController
     }
 
 
+
+    /**
+     * @param $id
+     */
+    public function  actionSuggestedJobs($id){
+        $request_merchant = $this->findModel($id);
+        $job_title=$request_merchant->job_title;
+        $query_users_pay = User::find();
+        $query_users_pay->where(['type' => User::NORMAL_USER]);
+        $query_users_pay->andWhere(['pay_service' => User::PAY_SERVICE]);
+        $query_users_pay->andFilterWhere(['like', 'priorities', $job_title]);
+        $query_users_pay->limit(20);
+        $query_users_pay->orderBy([
+            'created_at' => SORT_DESC //specify sort order ASC for ascending DESC for descending
+        ]);
+
+        $users_pay=$query_users_pay->all();
+
+        $query_users__not_pay = User::find();
+        $query_users__not_pay->where(['type' => User::NORMAL_USER]);
+        $query_users__not_pay->andWhere(['pay_service' => User::NOT_PAY_SERVICE]);
+        $query_users__not_pay->andFilterWhere(['like', 'priorities', $job_title]);
+        $query_users__not_pay->limit(20);
+        $query_users__not_pay->orderBy([
+            'created_at' => SORT_DESC //specify sort order ASC for ascending DESC for descending
+        ]);
+        $users_not_pay=$query_users__not_pay->all();
+
+        return $this->renderAjax('suggestedjobs', [
+            'request_merchant' => $request_merchant,
+            'users_pay'=>$users_pay,
+            'users_not_pay'=>$users_not_pay,
+        ]);
+    }
 
     /**
      * Finds the RequestMerchant model based on its primary key value.
