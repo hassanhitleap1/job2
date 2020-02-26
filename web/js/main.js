@@ -30,6 +30,12 @@ $(document).on("click",".msgwhatsapp",function(){
 });
 
 
+$(document).on("click",".suggested-jobs",function(){
+    $('.modal').modal('show')
+        .find('#modelContent')
+        .load($(this).attr('value'));
+});
+
 
 
 //////////////////////////////////////////////////////////// auto complete ////////////////////////////////////

@@ -3,6 +3,7 @@
 use app\models\User;
 use app\models\UserMessageMerchant;
 use Carbon\Carbon;
+use yii\bootstrap\Modal;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\Url;
@@ -114,11 +115,17 @@ $message=($dataModel==null)?'':$dataModel->text;
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{view}{delete} {update} {sendwhatsapp} ',  // the default buttons + your custom button
+                'template' => '{view}{delete} {update} {sendwhatsapp} {suggestedjobs}',  // the default buttons + your custom button
                 'buttons' => [
                     'sendwhatsapp' => function ($url, $model, $key)use($message) {     // render your custom button
                         $phone=substr($model->user0['phone'], 1);
                         return  Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=$message", ['target' => '_blank','class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]);
+                    },
+                    'suggestedjobs' => function ($url, $model,$key) {
+                        $url="index.php?r=request-merchant/suggested-jobs&id=".$model->id;
+                        return Html::button(' '.Yii::t('app', 'Suggested_Jobs') , ['value' => $url,
+                            'title' => Yii::t('app', 'Suggested_Jobs'),
+                            'class' => 'suggested-jobs btn btn-info glyphicon glyphicon-envelope','data-pjax' => 0]);
                     },
 
 
@@ -128,5 +135,18 @@ $message=($dataModel==null)?'':$dataModel->text;
     ]); ?>
 
     <?php Pjax::end(); ?>
+
+    <?php
+
+    Modal::begin([
+        'id'     => 'model',
+        'size'   => 'model-lg',
+    ]);
+
+    echo "<div id='modelContent'></div>";
+
+    Modal::end();
+
+    ?>
 
 </div>
