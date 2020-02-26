@@ -27,8 +27,7 @@ ThemeAsset::register($this);
 
 		<!-- Header -->
         <header id="header">
-
-                <?= Html::a(Yii::$app->name, ['/site/index'],['class'=>'logo']) ?>
+				<?= Html::a(Yii::t('app', 'Create_Requast_Job'),['/requat-job/index'],['class'=>'logo']) ?>
 				<nav>
                     <a href="tel:0782121456">
                         <strong><i class="fa fa-phone" aria-hidden="true"> 0782121456 </i></strong>
@@ -48,6 +47,9 @@ ThemeAsset::register($this);
 				<ul class="links">
 					<li>
                         <?= Html::a(Yii::t('app', 'Home'), ['/site/index']) ?>
+                    </li>
+					<li>
+                        <?= Html::a(Yii::t('app', 'Create_Requast_Job'), ['/requat-job/index']) ?>
                     </li>
                     <li>
                         <?= Html::a(Yii::t('app', 'About'), ['/site/about']) ?>

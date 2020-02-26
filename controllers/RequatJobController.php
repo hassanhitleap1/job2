@@ -12,6 +12,7 @@ class RequatJobController extends \yii\web\Controller
 {
     public function actionIndex()
     {
+        $this->layout = "maintheme";
         
         $model = new RequastJobVisitor();
        
