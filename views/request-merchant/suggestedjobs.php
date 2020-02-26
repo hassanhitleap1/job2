@@ -1,21 +1,25 @@
 <?php
 
-use app\models\UserMessage;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RequastJobSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
-$dataModel=UserMessage::find()->where(['user_id'=>Yii::$app->user->id])->one();
-$message=($dataModel==null)?'':$dataModel->text;
 $this->title = Yii::t('app', 'Suggested_Jobs');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container">
     <h1><?= Html::encode($this->title) ?></h1>
-  
+        <input  id=message-text" type="hidden" value="<?=$message?>">
+        <input  id=marchent_id" type="hidden" value="<?=$merchant_id?>">
+
     <div  class="row">
+        <div class="alert alert-success" id="success_message" style="display: none;" role="alert">
+            succefully send message
+        </div>
+        <div class="alert alert-danger" id="error_message"   style="display: none;" role="alert">
+            error the messge not saved
+        </div>
         <div class="col-md-6">
             <div class="row">
                 <h2><?= Yii::t('app', 'Users_Pay')?></h2>

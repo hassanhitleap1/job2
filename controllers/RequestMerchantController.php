@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\User;
+use app\models\UserMessage;
 use Yii;
 use app\models\RequestMerchant;
 use app\models\RequestMerchantSearch;
@@ -170,6 +171,8 @@ class RequestMerchantController extends BaseController
     public function  actionSuggestedJobs($id){
         $request_merchant = $this->findModel($id);
         $job_title=$request_merchant->job_title;
+        $phone_merchant=$request_merchant['marchent']['phone'];
+        $merchant_id=$request_merchant['marchent']['id'];
         $query_users_pay = User::find();
         $query_users_pay->where(['type' => User::NORMAL_USER]);
         $query_users_pay->andWhere(['pay_service' => User::PAY_SERVICE]);
@@ -191,10 +194,17 @@ class RequestMerchantController extends BaseController
         ]);
         $users_not_pay=$query_users__not_pay->all();
 
+        $dataModel=UserMessage::find()->where(['user_id'=>Yii::$app->user->id])->one();
+        $message=($dataModel==null)?'':$dataModel->text;
+        $message =str_replace("",$job_title,$message);
+        $message =str_replace("phone",$phone_merchant);
+        $message =str_replace("job",$job_title);
         return $this->renderAjax('suggestedjobs', [
             'request_merchant' => $request_merchant,
             'users_pay'=>$users_pay,
             'users_not_pay'=>$users_not_pay,
+            'message'=>$message,
+            'merchant_id'=>$merchant_id,
         ]);
     }
 

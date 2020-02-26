@@ -167,16 +167,48 @@ $(document).on("click",".send-message-suggested",function(e){
     var user-id=$(this).attr("user-id");
     $("#btt_save_"+user-id).removeClass("hidden");
     $("#btt_send_"+user-id).addClass("hidden");
-
-    var phone=$("#phone-user").html();
+    var phone=$(this).attr("phone");
     phone=phone.trim();
     var message=$("#message-text").val();
+
     url= 'https://api.whatsapp.com/send?phone=962'+phone+'&text='+message
     window.open(url, '_blank');
 
-
-
 });
+
+
+
+
+$(document).on("click",".save-message-suggested",function(e){
+    $(this).addClass("hidden");
+    data={
+        user_id:$(this).attr("user-id"),
+        marchent_id:$("#marchent_id").attr("marchent_id"),
+        text:$("#message-text").val(),
+    }
+
+    var url="/web/index.php?r=user-message-whatsapp/save-message";
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        success: function (response) {
+            console.log(response)
+            if(response.code==401){
+                $("#success_message").css("display", "block");
+            }else{
+                $("#error_message").css("display", "block");
+            }
+
+            setTimeout(() => {
+                $("#success_message").css("display", "none");
+                $("#error_message").css("display", "none");
+            }, 1000);
+
+        }
+    });
+});
+
 
 
 $(document).on("click","#save-message",function(e){
