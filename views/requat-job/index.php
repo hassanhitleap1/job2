@@ -48,18 +48,25 @@ use yii\helpers\Html;
 
                                             <!-- Break -->
                                             <div class="col-6 col-12-xsmall">
-                                                <input type="date" name="phone" id="phone"  placeholder="<?= Yii::t('app','Phone')?>" />
-
+                                                <label for="date_of_birth"><?= Yii::t('app','Date_Of_Birth')?></label>
+                                                <input type="date" name="date_of_birth" id="date_of_birth"  placeholder="<?= Yii::t('app','Date_Of_Birth')?>" />
 											</div>
 
                                             <div class="col-6 col-12-xsmall">
-
-
+                                                <input type="text" name="nationality" id="nationality"  placeholder="<?= Yii::t('app','Nationality')?>" />
                                             </div>
 											<div class="col-6 col-12-xsmall">
+                                                <div class="col-2">
+                                                    <label><?= Yii::t('app','Address')?></label>
+                                                </div>
+                                                <div class="col-4 col-12-xsmall">
+                                                    <input type="text" name="governorate" id="governorate"  placeholder="<?= Yii::t('app','Governorate')?>" />
+                                                </div>
+                                                <div class="col-4 col-12-xsmall">
+                                                    <input type="text" name="area" id="area"  placeholder="<?= Yii::t('app','Area')?>" />
+                                                </div>
 
-
-											</div>
+                                            </div>
 
 											<!-- Break -->
 											<div class="col-12">
