@@ -114,4 +114,6 @@ return [
     "Administration"=>"الادارة",
     "Social"=>"مواقع تواصل اجتماعي",
     "Requast_Jobs_Google"=>"طلب وظيفه من جوجل",
+    "Male"=>"ذكر",
+    "FeMale"=>"انثى",
 ];

@@ -164,9 +164,9 @@ $(document).on("click","#send-message",function(e){
 
 $(document).on("click",".send-message-suggested",function(e){
     var url='';
-    var user-id=$(this).attr("user-id");
-    $("#btt_save_"+user-id).removeClass("hidden");
-    $("#btt_send_"+user-id).addClass("hidden");
+    var user_id=$(this).attr("user-id");
+    $("#btt_save_"+user_id).removeClass("hidden");
+    $("#btt_send_"+user_id).addClass("hidden");
     var phone=$(this).attr("phone");
     phone=phone.trim();
     var message=$("#message-text").val();
