@@ -60,6 +60,7 @@ AppAsset::register($this);
                     ['label' => Yii::t('app', 'Area'), 'url' => ['/area/index']],
                     ['label' => Yii::t('app', 'Pages'), 'url' => ['/pages/index']],
                     ['label' => Yii::t('app', 'Payments'), 'url' => ['/manual-payment-user/index']],
+                    ['label' => Yii::t('app', 'Name_OF_Jobs'), 'url' => ['/name-of-Jobs/index']],
                     ['label' => Yii::t('app', 'Requast_Jobs_Google'), 'url' => ['/requast-job-google/index']],
                 ],
             ];

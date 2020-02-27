@@ -162,3 +162,30 @@ ALTER TABLE `user_from_google`
 ALTER TABLE `user_from_google`
     MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=993;
 COMMIT;
+
+
+
+
+-- name_of_jobs
+
+CREATE TABLE `name_of_jobs` (
+                                `id` int(11) NOT NULL,
+                                `name_ar` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+ALTER TABLE `name_of_jobs`
+    ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `name_of_jobs`
+--
+ALTER TABLE `name_of_jobs`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+
