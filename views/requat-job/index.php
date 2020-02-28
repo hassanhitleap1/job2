@@ -1,7 +1,13 @@
 <?php
 
+use app\models\Area;
+use app\models\Governorate;
+use app\models\Nationality;
 use yii\helpers\Html;
 
+$nationalitys=Nationality::find()->all();
+$governorates=Governorate::find()->all();
+$areas=Area::find()->all();
 ?>
 
 
@@ -47,35 +53,46 @@ use yii\helpers\Html;
                                             </div>
 
                                             <!-- Break -->
-                                            <div class="col-6 col-12-xsmall">
-                                                <label for="date_of_birth"><?= Yii::t('app','Date_Of_Birth')?></label>
+                                            <!-- <div class="col-6 col-12-xsmall">
+                                                <label for="date_of_birth"><?php // Yii::t('app','Date_Of_Birth')?></label>
                                                 <input type="date" name="date_of_birth" id="date_of_birth"  placeholder="<?= Yii::t('app','Date_Of_Birth')?>" />
-											</div>
+											</div> -->
 
+                                            <div class="col-4 col-12-xsmall">
+                                                <select name="nationality" id="nationality">
+                                                    <?php foreach($nationalitys as $nationality):?>
+                                                        <option value="<?= $nationality->id?>"> <?= $nationality->name_ar?></option>
+                                                    <?php endforeach;?>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-4 col-12-xsmall">
+                                                <select name="nationality" id="nationality">
+                                                    <?php foreach($governorates as $governorate):?>
+                                                        <option value="<?= $governorate->id?>"> <?= $governorate->name_ar?></option>
+                                                    <?php endforeach;?>
+                                                </select>
+                                            </div>
+                                            <div class="col-4 col-12-xsmall">
+                                                <select name="nationality" id="nationality">
+                                                    <?php foreach($areas as $area):?>
+                                                        <option value="<?= $area->id?>"> <?= $area->name_ar?></option>
+                                                    <?php endforeach;?>
+                                                </select>
+                                            </div>
                                             <div class="col-6 col-12-xsmall">
-                                                <input type="text" name="nationality" id="nationality"  placeholder="<?= Yii::t('app','Nationality')?>" />
-                                            </div>
-											<div class="col-6 col-12-xsmall">
-                                                <div class="col-2">
-                                                    <label><?= Yii::t('app','Address')?></label>
-                                                </div>
-                                                <div class="col-4 col-12-xsmall">
-                                                    <input type="text" name="governorate" id="governorate"  placeholder="<?= Yii::t('app','Governorate')?>" />
-                                                </div>
-                                                <div class="col-4 col-12-xsmall">
-                                                    <input type="text" name="area" id="area"  placeholder="<?= Yii::t('app','Area')?>" />
-                                                </div>
-
-                                            </div>
+                                                <textarea name="certificates" id="certificates" placeholder="<?=Yii::t('app', 'Certificates')?>"  rows="6"></textarea>
+											</div>
+								
 
 											<!-- Break -->
-											<div class="col-12">
+											<div class="col-12 col-12-xsmall">
 												<ul class="actions">
                                                         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'primary']) ?>
 												</ul>
 											</div>
 										</div>
-                                      <form/>
+                                    </form>
 							</div>
 						</div>
 					</div>
