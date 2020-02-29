@@ -3,7 +3,11 @@
 use app\models\Area;
 use app\models\Governorate;
 use app\models\Nationality;
+use conquer\select2\Select2Widget;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
 
 $nationalitys=Nationality::find()->all();
 $governorates=Governorate::find()->all();
@@ -27,14 +31,15 @@ $areas=Area::find()->all();
 
 								<!-- Form -->
 									<h3><?= Yii::t('app', 'Create_Requast_Job') ?></h3>
-                                <form>
+                                    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 										<div class="row gtr-uniform">
 											<div class="col-4 col-12-xsmall">
-                                                <input type="text" name="name" id="name"  placeholder="<?= Yii::t('app','Name')?>" />
+                                                <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 											</div>
 											<div class="col-4 col-12-xsmall">
-                                                <input type="text" name="phone" id="phone"  placeholder="<?= Yii::t('app','Phone')?>" />
-											</div>
+                                                <?= $form->field($model, 'phone')->textInput() ?>
+                                            </div>
+                                          
                                             <div class="col-4 col-12-xsmall">
                                                 <div class="row">
                                                     <div class="col-2 col-12-small">
@@ -53,35 +58,32 @@ $areas=Area::find()->all();
                                             </div>
 
                                             <!-- Break -->
-                                            <!-- <div class="col-6 col-12-xsmall">
-                                                <label for="date_of_birth"><?php // Yii::t('app','Date_Of_Birth')?></label>
-                                                <input type="date" name="date_of_birth" id="date_of_birth"  placeholder="<?= Yii::t('app','Date_Of_Birth')?>" />
-											</div> -->
+                                            <div class="col-3 col-12-xsmall">
+                                                 <?= $form->field($model, 'agree')->textInput() ?>
+											</div>
 
-                                            <div class="col-4 col-12-xsmall">
-                                                <select name="nationality" id="nationality">
-                                                    <?php foreach($nationalitys as $nationality):?>
-                                                        <option value="<?= $nationality->id?>"> <?= $nationality->name_ar?></option>
-                                                    <?php endforeach;?>
-                                                </select>
+                                            <div class="col-3 col-12-xsmall">
+                                                 <?=  $form->field($model, 'nationality')
+                                                            ->dropdownList(ArrayHelper::map(Nationality::find()->where(['!=', 'id', 1])->all(), 'id', 'name_ar'),['class'=>'']); ?>
+                                         
                                             </div>
 
-                                            <div class="col-4 col-12-xsmall">
-                                                <select name="nationality" id="nationality">
-                                                    <?php foreach($governorates as $governorate):?>
-                                                        <option value="<?= $governorate->id?>"> <?= $governorate->name_ar?></option>
-                                                    <?php endforeach;?>
-                                                </select>
+                                            <div class="col-3 col-12-xsmall">
+                                                 <?=  $form->field($model, 'governorate')
+                                                            ->dropdownList(ArrayHelper::map(Governorate::find()->all(), 'id', 'name_ar'),['class'=>'']); ?>
+                                         
                                             </div>
-                                            <div class="col-4 col-12-xsmall">
-                                                <select name="nationality" id="nationality">
-                                                    <?php foreach($areas as $area):?>
-                                                        <option value="<?= $area->id?>"> <?= $area->name_ar?></option>
-                                                    <?php endforeach;?>
-                                                </select>
+                                            <div class="col-3 col-12-xsmall">
+                                                 <?=  $form->field($model, 'area')
+                                                            ->dropdownList(ArrayHelper::map(Area::find()->where(['!=', 'id', 1])->all(), 'id', 'name_ar'),['class'=>'']); ?>
+                                         
+                                            </div>
+                                        
+                                            <div class="col-6 col-12-xsmall">
+                                                    <?= $form->field($model, 'certificates')->textarea(['rows' => 6,'class'=>'']) ?>
                                             </div>
                                             <div class="col-6 col-12-xsmall">
-                                                <textarea name="certificates" id="certificates" placeholder="<?=Yii::t('app', 'Certificates')?>"  rows="6"></textarea>
+                                                    <?= $form->field($model, 'experience')->textarea(['rows' => 6,'class'=>'']) ?>
 											</div>
 								
 
@@ -92,7 +94,7 @@ $areas=Area::find()->all();
 												</ul>
 											</div>
 										</div>
-                                    </form>
+                                        <?php ActiveForm::end(); ?>
 							</div>
 						</div>
 					</div>
