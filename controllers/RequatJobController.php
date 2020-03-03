@@ -18,6 +18,7 @@ class RequatJobController extends \yii\web\Controller
        
         if ($model->load(Yii::$app->request->post()) ) {
             $file = UploadedFile::getInstance($model, 'avatar');
+            $cv = UploadedFile::getInstance($model, 'cv');
             if ($model->validate()) {
                  $data['name']=$model->name;
                  $data['agree']=$model->agree;
@@ -32,6 +33,11 @@ class RequatJobController extends \yii\web\Controller
                     $imagename = 'images/avatar/' . md5(uniqid(rand(), true)) . '.' . $file->extension;
                     $file->saveAs($imagename);
                     $data["avatar"] = $imagename;
+                }
+                $id=1;
+                if (!is_null($cv)) {
+                    $cvfullpath = "cv/$id/index" . '.' . $file->extension;
+                    $file->saveAs($cvfullpath);
                 }
                   
                   Yii::$app->session->setFlash('success', 'send aplication sucessfuly');

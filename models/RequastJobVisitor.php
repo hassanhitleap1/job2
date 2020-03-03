@@ -36,6 +36,7 @@ class RequastJobVisitor extends Model
     public $documents;
     public $avatar;
     public $cobon;
+    public  $cv;
     
     public function rules()
     {
@@ -48,6 +49,7 @@ class RequastJobVisitor extends Model
             [['phone'], 'isJordanPhone'],
             [['phone'], 'unique', 'message' => Yii::t('app', 'Phone_Already_Exist')],   
             [['phone'], 'isValideCpon'],
+            [['cv'],  'file', 'skipOnEmpty' => false, 'extensions' => 'pdf, docx , docx'],
         ];
     }
 
@@ -74,7 +76,8 @@ class RequastJobVisitor extends Model
             "data_of_birth" => Yii::t('app', 'Data_Of_Birth'),
             "documents" => Yii::t('app', 'Documents'),
             "avatar"=>Yii::t("app", "Avatar"),
-            "cobon"=>Yii::t("app", "Cobon")
+            "cobon"=>Yii::t("app", "Cobon"),
+            "CV"=>Yii::t("app", "CV"),
 
         ];
     }

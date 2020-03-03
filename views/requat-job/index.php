@@ -9,9 +9,6 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 
-$nationalitys=Nationality::find()->all();
-$governorates=Governorate::find()->all();
-$areas=Area::find()->all();
 ?>
 
 
@@ -85,7 +82,9 @@ $areas=Area::find()->all();
                                             <div class="col-6 col-12-xsmall">
                                                     <?= $form->field($model, 'experience')->textarea(['rows' => 6,'class'=>'']) ?>
 											</div>
-								
+                                            <div class="col-6 col-12-xsmall">
+                                                <?= $form->field($model, 'file')->fileInput() ?>
+                                            </div>
 
 											<!-- Break -->
 											<div class="col-12 col-12-xsmall">
