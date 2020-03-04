@@ -34,9 +34,15 @@ class RequatJobController extends \yii\web\Controller
                     $file->saveAs($imagename);
                     $data["avatar"] = $imagename;
                 }
-                $id=1;
+                $id= Yii::app()->db->getLastInsertID(SEQUENCE_NAME);;
+
                 if (!is_null($cv)) {
-                    $cvfullpath = "cv/$id/index" . '.' . $file->extension;
+                    if(is_dir("cv_form/$id")){
+                        rmdir("cv_form/$id");
+                    }else{
+                        mkdir("cv_form/$id");
+                    }
+                    $cvfullpath = "cv_form/$id/index" . '.' . $file->extension;
                     $file->saveAs($cvfullpath);
                 }
                   
