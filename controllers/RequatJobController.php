@@ -7,6 +7,7 @@ use Yii;
 use yii\web\Controller;
 use app\models\RequastJobVisitor;
 use yii\web\UploadedFile;
+use  yii\web\Session;
 
 class RequatJobController extends \yii\web\Controller
 {
@@ -20,6 +21,15 @@ class RequatJobController extends \yii\web\Controller
             $file = UploadedFile::getInstance($model, 'avatar');
             $cv = UploadedFile::getInstance($model, 'cv');
             if ($model->validate()) {
+               
+                
+                \Yii::$app->session->set('message','1234');
+
+         
+                return $this->render('index', [
+                    'model' => $model,
+                ]);
+
                  $data['name']=$model->name;
                  $data['agree']=$model->agree;
                   $data['phone']=$model->phone;
@@ -34,7 +44,7 @@ class RequatJobController extends \yii\web\Controller
                     $file->saveAs($imagename);
                     $data["avatar"] = $imagename;
                 }
-                $id= Yii::app()->db->getLastInsertID(SEQUENCE_NAME);;
+                $id= Yii::app()->db->getLastInsertID(SEQUENCE_NAME);
 
                 if (!is_null($cv)) {
                     if(is_dir("cv_form/$id")){

@@ -27,7 +27,17 @@ use yii\widgets\ActiveForm;
 							<div class="col-12 col-12-medium">
 
 								<!-- Form -->
-									<h3><?= Yii::t('app', 'Create_Requast_Job') ?></h3>
+                                    <h3><?= Yii::t('app', 'Create_Requast_Job') ?></h3>
+                                    <?php
+                                    
+                                    $session = Yii::$app->session;
+                                    echo $session->getFlash('message');
+                                    
+                                    ?>
+                                    <?php if(Yii::$app->session->has('message')): ?>
+                                        <h1><?= Yii::$app->session->get('message');?></h1>
+                                        <?php Yii::$app->session->remove('message');?>
+                                    <?php endif;?>
                                     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 										<div class="row gtr-uniform">
 											<div class="col-4 col-12-xsmall">
@@ -83,7 +93,10 @@ use yii\widgets\ActiveForm;
                                                     <?= $form->field($model, 'experience')->textarea(['rows' => 6,'class'=>'']) ?>
 											</div>
                                             <div class="col-6 col-12-xsmall">
-                                                <?= $form->field($model, 'file')->fileInput() ?>
+                                                <?= $form->field($model, 'cv')->fileInput() ?>
+                                            </div>
+                                            <div class="col-6 col-12-xsmall">
+                                                <?= $form->field($model, 'avatar')->fileInput() ?>
                                             </div>
 
 											<!-- Break -->
