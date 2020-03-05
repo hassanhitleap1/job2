@@ -29,14 +29,13 @@ use yii\widgets\ActiveForm;
 								<!-- Form -->
                                     <h3><?= Yii::t('app', 'Create_Requast_Job') ?></h3>
                                     <?php
-                                    
                                     $session = Yii::$app->session;
                                     echo $session->getFlash('message');
-                                    
                                     ?>
                                     <?php if(Yii::$app->session->has('message')): ?>
-                                        <h1><?= Yii::$app->session->get('message');?></h1>
+                                        <h1><?php echo Yii::$app->session->get('message');?></h1>
                                         <?php Yii::$app->session->remove('message');?>
+                                        <?php exit;?>
                                     <?php endif;?>
                                     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 										<div class="row gtr-uniform">
@@ -107,7 +106,7 @@ use yii\widgets\ActiveForm;
 												</ul>
 											</div>
 										</div>
-                                        <?php ActiveForm::end(); ?>
+                                    <?php ActiveForm::end(); ?>
 							</div>
 						</div>
 					</div>

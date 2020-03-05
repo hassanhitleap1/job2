@@ -38,6 +38,14 @@ class RequastJobGoogle extends \yii\db\ActiveRecord
 
 
     /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return '{{%user_from_google}}';
+    }
+
+    /**
      * @inheritdoc
      */
     public function beforeSave($insert)
@@ -58,13 +66,7 @@ class RequastJobGoogle extends \yii\db\ActiveRecord
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public static function tableName()
-    {
-        return '{{%user_from_google}}';
-    }
+
 
 
     /**
