@@ -52,13 +52,14 @@ use yii\widgets\ActiveForm;
                                                     <div class="col-2 col-12-small">
                                                         <label ><?= Yii::t('app','Gender')?> </label>
                                                     </div>
-                                                    <div class="col-5 col-12-small">
+
+                                                    <div class="col-4 col-12-small">
                                                         <input type="radio" id="radio-alpha" name="radio" value="1"  checked>
-                                                        <label for="radio-alpha"><?= Yii::t('app','Male')?> </label>
+                                                        <label for="radio-alpha"> <?= Yii::t('app','Male')?> </label>
                                                     </div>
-                                                    <div class="col-5 col-12-small">
-                                                        <input type="radio" id="radio-beta" name="radio" value="2">
-                                                        <label for="radio-alpha"><?= Yii::t('app','FeMale')?> </label>
+                                                    <div class="col-4 col-12-small">
+                                                        <input type="radio" id="radio-beta"   value="2" name="radio">
+                                                        <label for="radio-beta"><?= Yii::t('app','FeMale')?></label>
                                                     </div>
                                                 </div>
 
