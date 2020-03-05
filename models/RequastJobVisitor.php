@@ -41,15 +41,15 @@ class RequastJobVisitor extends Model
     public function rules()
     {
         return [
-            // [['name','agree', 'phone', 'nationality','area' ,'governorate',"cobon"], 'required'],
-            // [['agree', 'phone', 'nationality', 'governorate', 'expected_salary'], 'integer'],
-            // [['certificates', 'experience','area' ,'note'], 'string'],
-            // [['name'], 'string', 'max' => 255],
-            // [['avatar'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg'],
-            // [['phone'], 'isJordanPhone'],
-            // [['phone'], 'unique', 'message' => Yii::t('app', 'Phone_Already_Exist')],   
-            // [['phone'], 'isValideCpon'],
-            // [['cv'],  'file', 'skipOnEmpty' => false, 'extensions' => 'pdf, docx , docx'],
+             [['name','agree', 'phone', 'nationality','area' ,'governorate',"cobon"], 'required'],
+             [['agree', 'phone', 'nationality', 'governorate', 'expected_salary'], 'integer'],
+             [['certificates', 'experience','area' ,'note'], 'string'],
+             [['name'], 'string', 'max' => 255],
+             [['avatar'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg'],
+             [['phone'], 'isJordanPhone'],
+             [['phone'], 'unique', 'message' => Yii::t('app', 'Phone_Already_Exist')],
+             [['phone'], 'isValideCpon'],
+             [['cv'],  'file', 'skipOnEmpty' => false, 'extensions' => 'pdf, docx , docx'],
         ];
     }
 
