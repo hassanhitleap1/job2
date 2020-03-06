@@ -5,8 +5,6 @@ namespace app\models;
 use Yii;
 
 /**
-
- *
  * @property int $id
  * @property string $name
  * @property int $agree

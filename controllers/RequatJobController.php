@@ -18,7 +18,7 @@ class RequatJobController extends \yii\web\Controller
         
         $model = new RequastJobVisitor();
        
-        if ($model->load(Yii::$app->request->post()) ) {
+        if ($model->load(Yii::$app->request->post())){
             $file = UploadedFile::getInstance($model, 'avatar');
             $cv = UploadedFile::getInstance($model, 'cv');
             if ($model->validate()) {
@@ -53,8 +53,7 @@ class RequatJobController extends \yii\web\Controller
                     $cvfullpath = "cv_form/$id/index" . '.' . $file->extension;
                     $file->saveAs($cvfullpath);
                 }
-                print_r($model->name);
-                exit;
+               
                 $modelForm->save();
 
                 $modelCountSendSms = new CountSendSms();
