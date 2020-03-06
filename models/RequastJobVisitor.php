@@ -46,7 +46,6 @@ class RequastJobVisitor extends Model
              [['avatar'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg'],
              [['phone'], 'isJordanPhone'],
              [['phone'], 'unique', 'message' => Yii::t('app', 'Phone_Already_Exist')],
-             [['phone'], 'isValideCpon'],
              [['cv'],  'file', 'skipOnEmpty' => false, 'extensions' => 'pdf, docx , docx'],
         ];
     }
@@ -90,12 +89,7 @@ class RequastJobVisitor extends Model
     }
 
 
-    public function isValideCpon($attribute)
-    {
-        // if (!preg_match('/^(079|078|077)[0-9]{7}$/', $this->$attribute)) {
-        //     $this->addError($attribute, Yii::t('app', 'Check_Phone'));
-        // }
-    }
+
 
 
 }
