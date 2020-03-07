@@ -27,9 +27,12 @@ use yii\widgets\ActiveForm;
 							<div class="col-12 col-12-medium">
 
 								<!-- Form -->
+                            
                                     <h3><?= Yii::t('app', 'Create_Requast_Job') ?></h3>
                                     <?php if(Yii::$app->session->has('message')): ?>
-                                        <h1><?php echo Yii::$app->session->get('message');?></h1>
+                                        <div class="alert alert-success" role="alert">
+                                            <h1><?php echo Yii::$app->session->get('message');?></h1>
+                                        </div>
                                         <?php Yii::$app->session->remove('message');?>
                                         <?php else:?>
                                     
