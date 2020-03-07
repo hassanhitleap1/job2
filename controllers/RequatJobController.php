@@ -7,6 +7,7 @@ use app\models\RequastJobGoogle;
 use Yii;
 use yii\web\Controller;
 use app\models\RequastJobVisitor;
+use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
 use  yii\web\Session;
 
@@ -22,6 +23,7 @@ class RequatJobController extends \yii\web\Controller
             $file = UploadedFile::getInstance($model, 'avatar');
             $cv = UploadedFile::getInstance($model, 'cv');
             if ($model->validate()) {
+            
                 $modelForm= new RequastJobGoogle();
                 $modelForm->name=$model->name;
                 $modelForm->agree=$model->agree;
@@ -43,29 +45,34 @@ class RequatJobController extends \yii\web\Controller
                 if($id==''){
                     $id=1;
                 }
-
+               
+               
                 if (!is_null($cv)) {
                     if(is_dir("cv_form/$id")){
                         rmdir("cv_form/$id");
                     }else{
-                        mkdir("cv_form/$id");
+                        FileHelper::createDirectory("cv_form/$id", $mode = 0775, $recursive = true);
                     }
-                    $cvfullpath = "cv_form/$id/index" . '.' . $file->extension;
-                    $file->saveAs($cvfullpath);
+
+                    $cvfullpath = "cv_form/$id/index" . '.' . $cv->extension;
+                    $cv->saveAs($cvfullpath);
                 }
                
-                $modelForm->save();
+                $modelForm->save(false);
+              
 
                 $modelCountSendSms = new CountSendSms();
                 $modelCountSendSms->user_id=$modelForm->id;
                 $modelCountSendSms->count=0;
                 $modelCountSendSms->save(false);
-                Yii::$app->session->setFlash('success', 'send aplication sucessfuly');
+                Yii::$app->session->setFlash('message', 'send aplication sucessfuly');
+                
                 return $this->render('index', [
                     'model' => $model,
                 ]);
             }
         }
+     
 
         return $this->render('index', [
             'model' => $model,
