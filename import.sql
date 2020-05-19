@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: May 19, 2020 at 10:49 AM
--- Server version: 5.6.47-cll-lve
--- PHP Version: 7.2.7
+-- Host: 127.0.0.1
+-- Generation Time: May 20, 2020 at 01:13 AM
+-- Server version: 10.1.33-MariaDB
+-- PHP Version: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `job_jaras`
+-- Database: `job`
 --
 
 -- --------------------------------------------------------
@@ -2729,6 +2729,19 @@ INSERT INTO `request_merchant` (`id`, `job_title`, `desc_job`, `salary_from`, `s
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `schools`
+--
+
+CREATE TABLE `schools` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `send_job`
 --
 
@@ -2739,6 +2752,19 @@ CREATE TABLE `send_job` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `university`
+--
+
+CREATE TABLE `university` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -4290,9 +4316,21 @@ ALTER TABLE `request_merchant`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `schools`
+--
+ALTER TABLE `schools`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `send_job`
 --
 ALTER TABLE `send_job`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `university`
+--
+ALTER TABLE `university`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -4393,9 +4431,21 @@ ALTER TABLE `request_merchant`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=964;
 
 --
+-- AUTO_INCREMENT for table `schools`
+--
+ALTER TABLE `schools`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `send_job`
 --
 ALTER TABLE `send_job`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `university`
+--
+ALTER TABLE `university`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
