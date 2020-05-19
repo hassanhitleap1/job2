@@ -116,4 +116,10 @@ return [
     "Requast_Jobs_Google"=>"طلب وظيفه من جوجل",
     "Male"=>"ذكر",
     "FeMale"=>"انثى",
+    "University"=>"الجامعات",
+    "Schools"=>"المدارس",
+    "Create_Schools"=>"انشاء مدرسة",
+    "Update_Schools"=>"تحديث المدرسة",
+    "Create_University"=>"انشاء جامعة",
+    "Update_University"=>"تحديث جامعة"
 ];
