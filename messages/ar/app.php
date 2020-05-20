@@ -121,5 +121,7 @@ return [
     "Create_Schools"=>"انشاء مدرسة",
     "Update_Schools"=>"تحديث المدرسة",
     "Create_University"=>"انشاء جامعة",
-    "Update_University"=>"تحديث جامعة"
+    "Update_University"=>"تحديث جامعة",
+    "Universities"=>"الجامعات",
+    "Updated_At"=>"تاريخ التحديث",
 ];

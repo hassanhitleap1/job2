@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 <div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
+    <p><?= Html::a(Yii::t('app', 'Back'), ['index'], ['class' => 'btn btn-info']) ?></p>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
