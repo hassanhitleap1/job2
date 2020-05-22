@@ -124,4 +124,5 @@ return [
     "Update_University"=>"تحديث جامعة",
     "Universities"=>"الجامعات",
     "Updated_At"=>"تاريخ التحديث",
+    "Name_full"=>"الاسم من اربع مقاطع"
 ];

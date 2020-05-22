@@ -59,7 +59,7 @@ class RequastJobVisitor extends Model
     public function attributeLabels()
     {
         return [
-            'name' => Yii::t('app', 'Name'),
+            'name' => Yii::t('app', 'Name_full'),
             'agree' => Yii::t('app', 'Agree'),
             'phone' => Yii::t('app', 'Phone'),
             'nationality' => Yii::t('app', 'Nationality'),
