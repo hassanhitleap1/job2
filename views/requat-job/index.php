@@ -87,12 +87,75 @@ use yii\widgets\ActiveForm;
                                 </div>
 
                                 <div class="col-12 col-12-xsmall">
+                                    <h3>التحصيل العلمي</h3>
+                                    <table class="table sqeqr">
+                                        <thead >
+                                        <tr>
+                                            <th>
+                                                <div class="float-right">الدرجة العلمية</div>
+                                            </th>
+                                            <th >
+                                                <div class="float-right">االتخصص</div>
+                                            </th>
+                                            <th >
+                                                <div class="float-right">الجامعة الكلية</div>
+                                            </th>
+                                            <th >
+                                                <div class="float-right">سمة الحصول عليها</div>
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="academic_achie in count_academic_achievement">
+                                            <td>
+                                                <select class="form-control">
+                                                    <option v-for="degree in data.degree">{{degree }}</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type=" text" class="form-control" name="jobs[]" />
+                                            </td>
+                                            <td>
+                                                <input type=" text" class="form-control" name="jobs[]" />
+                                            </td>
+                                            <td>
+                                                <select name="year-jobs[]" class="form-control">
+                                                    <option v-for="item in count">{{item +from_year}}</option>
+                                                </select>
+                                            </td>
+
+                                        </tr>
+                                        <tfoot>
+                                        <tr>
+                                            <td>
+                                                <span class="glyphicon glyphicon-plus" @click="add_academic_achievement" style="color:green"></span>
+                                                <span class="glyphicon glyphicon-minus" @click="remove_academic_achievement" style="color:red"></span>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        </tfoot>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="col-12 col-12-xsmall">
+                                    <h3>الخبرات</h3>
                                     <table class="table sqeqr">
                                         <thead>
                                             <tr class="float-left">
-                                                <th scope="col">المسمى الوظيقي</th>
-                                                <th scope="col">من</th>
-                                                <th scope="col">الى</th>
+                                                <th>
+                                                    <div class="float-right"> المسمى الوظيقي</div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div class="float-right">الفترة الزمنية</div>
+                                                </th>
+
+                                                <th scope="col">ا
+                                                    <div class="float-right">اسم المنشأة</div>
+                                                </th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -103,32 +166,27 @@ use yii\widgets\ActiveForm;
                                                 <td>
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            <select name="month-jobs[]">
+                                                            <select name="month-jobs[]" class="form-control">
                                                                 <option v-for="item in 12">{{item }}</option>
                                                             </select>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <select name="year-jobs[]">
-                                                                <option v-for="item in count">{{item +from_year}}</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                </td>
-                                                <td>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <select name="month-jobs[]">
+                                                            <select name="month-jobs[]" class="form-control">
                                                                 <option v-for="item in 12">{{item}}</option>
                                                             </select>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <select name="year-jobs[]">
-                                                                <option v-for="item in count">{{item +from_year}}</option>
+                                                            <select name="month-jobs[]" class="form-control">
+                                                                <option v-for="item in 12">{{item }}</option>
+                                                            </select>
+                                                            <select name="month-jobs[]" class="form-control">
+                                                                <option v-for="item in 12">{{item}}</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </td>
+                                                <td>
+                                                    <input type=" text" class="form-control" name="jobs[]" />
+                                                </td>
+
                                             </tr>
                                         <tfoot>
                                             <tr>
@@ -139,6 +197,68 @@ use yii\widgets\ActiveForm;
                                                 <td></td>
                                                 <td></td>
                                             </tr>
+                                        </tfoot>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="col-12 col-12-xsmall">
+                                    <h3>الدورات</h3>
+                                    <table class="table sqeqr">
+                                        <thead>
+                                        <tr class="float-left">
+                                            <th scope="col">
+                                                <div class="float-right">اسم الدورة</div>
+                                            </th>
+                                            <th scope="col">
+                                                <div class="float-right">الجهة</div>
+                                            </th>
+                                            <th scope="col">
+                                                <div class="float-right">الفترة</div>
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="count_co in count_courses">
+                                            <td>
+                                                <input type=" text" class="form-control" name="jobs[]" />
+                                            </td>
+
+                                            <td>
+                                                <input type=" text" class="form-control" name="jobs[]" />
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <select name="month-jobs[]" class="form-control">
+                                                            <option v-for="item in 12">{{item }}</option>
+                                                        </select>
+                                                        <select name="month-jobs[]" class="form-control">
+                                                            <option v-for="item in 12">{{item}}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <select name="month-jobs[]" class="form-control">
+                                                            <option v-for="item in 12">{{item }}</option>
+                                                        </select>
+                                                        <select name="month-jobs[]" class="form-control">
+                                                            <option v-for="item in 12">{{item}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                        <tfoot>
+                                        <tr>
+                                            <td>
+                                                <span class="glyphicon glyphicon-plus" @click="add_courses" style="color:green"></span>
+                                                <span class="glyphicon glyphicon-minus" @click="remove_courses" style="color:red"></span>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
                                         </tfoot>
 
                                         </tbody>
@@ -174,7 +294,9 @@ use yii\widgets\ActiveForm;
     .sqeqr {
         border: 1px solid black;
         padding-top: 30px;
-
+    }
+    .float-right{
+        float: right !important;
     }
 </style>
 <script>
@@ -186,7 +308,10 @@ use yii\widgets\ActiveForm;
         year: n,
         from_year: 1992,
         count: count_m,
-        count_experience: 1
+        count_experience: 1,
+        count_academic_achievement:1,
+        count_courses:1,
+        degree:["باكالوريا","وبلوم","دكتوراه","اعدادي","ثانوي","اساسي"]
     };
     var app = new Vue({
         el: '#app',
@@ -200,6 +325,26 @@ use yii\widgets\ActiveForm;
             remove_experience() {
                 if (this.count_experience) {
                     this.count_experience--;
+                }
+            },
+            add_academic_achievement() {
+                if (this.count_academic_achievement) {
+                    this.count_academic_achievement++;
+                }
+            },
+            remove_academic_achievement() {
+                if (this.count_academic_achievement) {
+                    this.count_academic_achievement--;
+                }
+            },
+            add_courses(){
+                if (this.count_courses) {
+                    this.count_courses++;
+                }
+            },
+            remove_courses(){
+                if (this.count_courses) {
+                    this.count_courses--;
                 }
             }
         },

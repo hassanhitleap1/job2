@@ -124,5 +124,13 @@ return [
     "Update_University"=>"تحديث جامعة",
     "Universities"=>"الجامعات",
     "Updated_At"=>"تاريخ التحديث",
-    "Name_full"=>"الاسم من اربع مقاطع"
+    "Name_full"=>"الاسم من اربع مقاطع",
+    "Courses"=>"الدورات",
+    "Job_Title"=>"المسمى الوظيفي",
+    "Time_Period"=>"الفترة الزمنية",
+    "Facility_Name"=>"اسم المنشأة",
+    "The_Name_Of_The_Course"=>"اسم الدورة",
+    "The_Destination"=>"الجهة",
+    "Specialization"=>"التخصص",
+    "The_College_University"=>"الجامعة الكلية",
 ];
