@@ -108,7 +108,7 @@ use yii\widgets\ActiveForm;
                                         <tbody>
                                         <tr v-for="academic_achie in count_academic_achievement">
                                             <td>
-                                                <select class="form-control">
+                                                <select class="form-control" v-model="degrees">
                                                     <option v-for="degree in data.degree">{{degree }}</option>
                                                 </select>
                                             </td>
@@ -311,7 +311,8 @@ use yii\widgets\ActiveForm;
         count_experience: 1,
         count_academic_achievement:1,
         count_courses:1,
-        degree:["باكالوريا","وبلوم","دكتوراه","اعدادي","ثانوي","اساسي"]
+        degree:["باكالوريا","وبلوم","دكتوراه","اعدادي","ثانوي","اساسي"],
+        degrees:[]
     };
     var app = new Vue({
         el: '#app',
