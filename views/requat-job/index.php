@@ -39,6 +39,7 @@ use yii\widgets\ActiveForm;
                         <?php else : ?>
 
                             <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+
                             <div class="row gtr-uniform">
                                 <div class="col-4 col-12-xsmall">
                                     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
@@ -108,18 +109,18 @@ use yii\widgets\ActiveForm;
                                         <tbody>
                                         <tr v-for="academic_achie in count_academic_achievement">
                                             <td>
-                                                <select class="form-control" v-model="degrees">
+                                                <select class="form-control" v-model="degrees[academic_achie]">
                                                     <option v-for="degree in data.degree">{{degree }}</option>
                                                 </select>
                                             </td>
                                             <td>
-                                                <input type=" text" class="form-control" name="jobs[]" />
+                                                <input type=" text" class="form-control" v-model="specialization[academic_achie]"/>
                                             </td>
                                             <td>
-                                                <input type=" text" class="form-control" name="jobs[]" />
+                                                <input type=" text" class="form-control" v-model="the_college_universitys[academic_achie]" />
                                             </td>
                                             <td>
-                                                <select name="year-jobs[]" class="form-control">
+                                                <select v-model="year_academic_achievement[academic_achie]" class="form-control">
                                                     <option v-for="item in count">{{item +from_year}}</option>
                                                 </select>
                                             </td>
@@ -275,6 +276,7 @@ use yii\widgets\ActiveForm;
                                 <!-- Break -->
                                 <div class="col-12 col-12-xsmall">
                                     <ul class="actions">
+
                                         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'primary']) ?>
                                     </ul>
                                 </div>
@@ -285,69 +287,9 @@ use yii\widgets\ActiveForm;
             </div>
         </div>
     </section>
-</div>
+    <button class="btn btn-success" @click="submitform">ssssssss</button>
 
+</div>
 
 <?php endif; ?>
 
-<style>
-    .sqeqr {
-        border: 1px solid black;
-        padding-top: 30px;
-    }
-    .float-right{
-        float: right !important;
-    }
-</style>
-<script>
-    var d = new Date();
-    var n = d.getFullYear();
-    var count_m = n - 1992;
-    let data = {
-        message: 'Hello Vue!',
-        year: n,
-        from_year: 1992,
-        count: count_m,
-        count_experience: 1,
-        count_academic_achievement:1,
-        count_courses:1,
-        degree:["باكالوريا","وبلوم","دكتوراه","اعدادي","ثانوي","اساسي"],
-        degrees:[]
-    };
-    var app = new Vue({
-        el: '#app',
-        data: data,
-        methods: {
-            add_experience() {
-                if (this.count_experience) {
-                    this.count_experience++;
-                }
-            },
-            remove_experience() {
-                if (this.count_experience) {
-                    this.count_experience--;
-                }
-            },
-            add_academic_achievement() {
-                if (this.count_academic_achievement) {
-                    this.count_academic_achievement++;
-                }
-            },
-            remove_academic_achievement() {
-                if (this.count_academic_achievement) {
-                    this.count_academic_achievement--;
-                }
-            },
-            add_courses(){
-                if (this.count_courses) {
-                    this.count_courses++;
-                }
-            },
-            remove_courses(){
-                if (this.count_courses) {
-                    this.count_courses--;
-                }
-            }
-        },
-    });
-</script>

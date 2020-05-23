@@ -251,3 +251,62 @@ function diff_time(date){
  
     return diffDays;
 }
+
+
+var d = new Date();
+var n = d.getFullYear();
+var count_m = n - 1992;
+let data = {
+    message: 'Hello Vue!',
+    year: n,
+    from_year: 1992,
+    count: count_m,
+    count_experience: 1,
+    count_academic_achievement:1,
+    count_courses:1,
+    degree:["باكالوريا","وبلوم","دكتوراه","اعدادي","ثانوي","اساسي"],
+    degrees:[],
+    specialization:[],
+    the_college_universitys:[],
+    year_academic_achievement:[]
+};
+var app = new Vue({
+    el: '#app',
+    data: data,
+    methods: {
+        add_experience() {
+            if (this.count_experience) {
+                this.count_experience++;
+            }
+        },
+        remove_experience() {
+            if (this.count_experience) {
+                this.count_experience--;
+            }
+        },
+        add_academic_achievement() {
+            if (this.count_academic_achievement) {
+                this.count_academic_achievement++;
+            }
+        },
+        remove_academic_achievement() {
+            if (this.count_academic_achievement) {
+                this.count_academic_achievement--;
+            }
+        },
+        add_courses(){
+            if (this.count_courses) {
+                this.count_courses++;
+            }
+        },
+        remove_courses(){
+            if (this.count_courses) {
+                this.count_courses--;
+            }
+        },
+        submitform(e){
+
+            
+        }
+    },
+});

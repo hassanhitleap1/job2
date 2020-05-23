@@ -784,3 +784,11 @@ button:focus,.btn:focus,.btn:active:focus{
          text-align: left;
     }
 }
+
+.sqeqr {
+    border: 1px solid black;
+    padding-top: 30px;
+}
+.float-right{
+    float: right !important;
+}
