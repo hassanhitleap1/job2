@@ -87,21 +87,21 @@ use yii\widgets\ActiveForm;
                                 </div>
 
                                 <div class="col-12 col-12-xsmall">
-                                    <h3>التحصيل العلمي</h3>
+                                    <h3><?= Yii::t('app','Educational_Attainment')?></h3>
                                     <table class="table sqeqr">
                                         <thead >
                                         <tr>
                                             <th>
-                                                <div class="float-right">الدرجة العلمية</div>
+                                                <div class="float-right"><?=Yii::t('app','Degree')?></div>
                                             </th>
                                             <th >
-                                                <div class="float-right">االتخصص</div>
+                                                <div class="float-right"><?= Yii::t('app','Specialization')?></div>
                                             </th>
                                             <th >
-                                                <div class="float-right">الجامعة الكلية</div>
+                                                <div class="float-right"><?= Yii::t('app','The_College_University')?></div>
                                             </th>
                                             <th >
-                                                <div class="float-right">سمة الحصول عليها</div>
+                                                <div class="float-right"><?= Yii::t('app','Year_Of_Acquiring_It')?></div>
                                             </th>
                                         </tr>
                                         </thead>
@@ -141,19 +141,19 @@ use yii\widgets\ActiveForm;
                                 </div>
 
                                 <div class="col-12 col-12-xsmall">
-                                    <h3>الخبرات</h3>
+                                    <h3><?= Yii::t('app','Experience')?></h3>
                                     <table class="table sqeqr">
                                         <thead>
                                             <tr class="float-left">
                                                 <th>
-                                                    <div class="float-right"> المسمى الوظيقي</div>
+                                                    <div class="float-right"> <?= Yii::t('app','Job_Title')?></div>
                                                 </th>
                                                 <th scope="col">
-                                                    <div class="float-right">الفترة الزمنية</div>
+                                                    <div class="float-right"><?= Yii::t('app','Time_Period')?> </div>
                                                 </th>
 
                                                 <th scope="col">ا
-                                                    <div class="float-right">اسم المنشأة</div>
+                                                    <div class="float-right"><?= Yii::t('app','Facility_Name')?></div>
                                                 </th>
 
                                             </tr>
@@ -204,18 +204,18 @@ use yii\widgets\ActiveForm;
                                 </div>
 
                                 <div class="col-12 col-12-xsmall">
-                                    <h3>الدورات</h3>
+                                    <h3><?= Yii::t('app','Courses')?></h3>
                                     <table class="table sqeqr">
                                         <thead>
                                         <tr class="float-left">
                                             <th scope="col">
-                                                <div class="float-right">اسم الدورة</div>
+                                                <div class="float-right"><?= Yii::t('app','The_Name_Of_The_Course')?></div>
                                             </th>
                                             <th scope="col">
-                                                <div class="float-right">الجهة</div>
+                                                <div class="float-right"> <?= Yii::t('app','The_Destination')?></div>
                                             </th>
                                             <th scope="col">
-                                                <div class="float-right">الفترة</div>
+                                                <div class="float-right"><?= Yii::t('app','Time_Period')?></div>
                                             </th>
                                         </tr>
                                         </thead>

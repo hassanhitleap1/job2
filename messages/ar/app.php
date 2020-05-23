@@ -133,4 +133,7 @@ return [
     "The_Destination"=>"الجهة",
     "Specialization"=>"التخصص",
     "The_College_University"=>"الجامعة الكلية",
+    "Educational_Attainment"=>"التحصيل العلمي",
+    "Degree"=>"الدرجة العلمية",
+    "Year_Of_Acquiring_It"=>"سنة الحصول عليها ",
 ];
