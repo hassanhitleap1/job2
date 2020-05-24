@@ -12,6 +12,7 @@ use yii\widgets\ActiveForm;
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <div id="heading">
     <h1><?= Yii::t('app', 'Create_Requast_Job') ?></h1>
 </div>
@@ -39,13 +40,18 @@ use yii\widgets\ActiveForm;
                         <?php else : ?>
 
                             <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
-
+                        <form
+                                @submit="checkForm"
+                                method="post"
+                        >
                             <div class="row gtr-uniform">
                                 <div class="col-4 col-12-xsmall">
-                                    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                                    <label for="name"><?= Yii::t('app',"Name");?></label>
+                                    <input type="text" v-mode="form.name" id="name" class="form-control" />
                                 </div>
                                 <div class="col-4 col-12-xsmall">
-                                    <?= $form->field($model, 'phone')->textInput() ?>
+                                    <label for="name"><?= Yii::t('app',"Phone");?></label>
+                                    <input type="text" v-mode="form.phone" id="phone" class="form-control" />
                                 </div>
 
                                 <div class="col-4 col-12-xsmall">
@@ -53,13 +59,13 @@ use yii\widgets\ActiveForm;
                                         <div class="col-2 col-12-small">
                                             <label><?= Yii::t('app', 'Gender') ?> </label>
                                         </div>
-
                                         <div class="col-4 col-12-small">
-                                            <input type="radio" id="radio-alpha" name="radio" value="1" checked>
+
+                                            <input type="radio" id="radio-alpha" name="radio" :value="1" checked>
                                             <label for="radio-alpha"> <?= Yii::t('app', 'Male') ?> </label>
                                         </div>
                                         <div class="col-4 col-12-small">
-                                            <input type="radio" id="radio-beta" value="2" name="radio">
+                                            <input type="radio" id="radio-beta" :value="2" name="radio" v-model="form.gender">
                                             <label for="radio-beta"><?= Yii::t('app', 'FeMale') ?></label>
                                         </div>
                                     </div>
@@ -68,22 +74,34 @@ use yii\widgets\ActiveForm;
 
                                 <!-- Break -->
                                 <div class="col-3 col-12-xsmall">
-                                    <?= $form->field($model, 'agree')->textInput() ?>
+                                    <label for="agree"><?= Yii::t('app',"Agree");?></label>
+                                    <input type="text" v-mode="form.agree" id="agree" class="form-control" />
                                 </div>
 
                                 <div class="col-3 col-12-xsmall">
+                                    <label for="nationality"><?= Yii::t('app',"Nationality");?></label>
+                                    <select v-mode="form.nationality">
+                                        <option v-for="nation in nationalitys">{{nation.name_ar}}</option>
+                                    </select>
+
                                     <?= $form->field($model, 'nationality')
                                         ->dropdownList(ArrayHelper::map(Nationality::find()->where(['!=', 'id', 1])->all(), 'id', 'name_ar'), ['class' => '']); ?>
 
                                 </div>
 
                                 <div class="col-3 col-12-xsmall">
+                                    <label for="governorate"><?= Yii::t('app',"Governorate");?></label>
+                                    <select v-mode="form.governorate">
+                                        <option v-for="gover in governorates">{{gover.name_ar}}</option>
+                                    </select>
+
                                     <?= $form->field($model, 'governorate')
                                         ->dropdownList(ArrayHelper::map(Governorate::find()->all(), 'id', 'name_ar'), ['class' => '']); ?>
 
                                 </div>
                                 <div class="col-3 col-12-xsmall">
-                                    <?= $form->field($model, 'area')->textInput() ?>
+                                    <label for="area"><?= Yii::t('app',"Area");?></label>
+                                    <input type="text" v-mode="form.area" id="area" class="form-control" />
 
                                 </div>
 

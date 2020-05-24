@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\CountSendSms;
+use app\models\Governorate;
+use app\models\Nationality;
 use app\models\RequastJob;
 use app\models\RequastJobGoogle;
 use app\models\RequastJobNotPay;
@@ -10,6 +12,7 @@ use Yii;
 use yii\web\Controller;
 use app\models\RequastJobVisitor;
 use yii\helpers\FileHelper;
+use yii\web\Response;
 use yii\web\UploadedFile;
 use  yii\web\Session;
 
@@ -81,6 +84,14 @@ class RequatJobController extends \yii\web\Controller
             'model' => $model,
         ]);
       
+    }
+
+    public function  actionGetData(){
+        $data['code']=201;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $data['data']['nationality']=Nationality::find()->where(['!=', 'id', 1])->all();
+        $data['data']['governorate']=Governorate::find()->all();
+        return $data;
     }
 
 

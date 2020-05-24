@@ -258,7 +258,17 @@ var n = d.getFullYear();
 var count_m = n - 1992;
 var degreees_=["باكالوريا","وبلوم","دكتوراه","اعدادي","ثانوي","اساسي"];
 let data = {
-    message: 'Hello Vue!',
+    form:{
+          name:'',
+          phone:'',
+         gender:1,
+         agree:'',
+        nationality:'',
+        governorate:'',
+        area:'',
+    },
+    nationalitys:{},
+    governorates:{},
     year: n,
     from_year: 1992,
     count: count_m,
@@ -283,7 +293,7 @@ let data = {
     year_from_course:[],
     month_to_course:[],
     year_to_course:[],
-
+    errors: [],
 };
 var app = new Vue({
     el: '#app',
@@ -324,4 +334,7 @@ var app = new Vue({
             
         }
     },
+    mounted:{
+
+    }
 });
