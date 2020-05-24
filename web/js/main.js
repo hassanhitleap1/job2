@@ -256,6 +256,7 @@ function diff_time(date){
 var d = new Date();
 var n = d.getFullYear();
 var count_m = n - 1992;
+var degreees_=["باكالوريا","وبلوم","دكتوراه","اعدادي","ثانوي","اساسي"];
 let data = {
     message: 'Hello Vue!',
     year: n,
@@ -264,11 +265,25 @@ let data = {
     count_experience: 1,
     count_academic_achievement:1,
     count_courses:1,
-    degree:["باكالوريا","وبلوم","دكتوراه","اعدادي","ثانوي","اساسي"],
+    degree:degreees_,
     degrees:[],
     specialization:[],
     the_college_universitys:[],
-    year_academic_achievement:[]
+    year_academic_achievement:[],
+    job_title:[],
+    year_from_exp:[],
+    month_to_exp:[],
+    month_from_exp:[],
+    year_to_exp:[],
+    year_from_exp:[],
+    facility_name:[],
+    name_courses:[],
+    destinations:[],
+    month_from_course:[],
+    year_from_course:[],
+    month_to_course:[],
+    year_to_course:[],
+
 };
 var app = new Vue({
     el: '#app',

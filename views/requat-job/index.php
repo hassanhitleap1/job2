@@ -110,7 +110,7 @@ use yii\widgets\ActiveForm;
                                         <tr v-for="academic_achie in count_academic_achievement">
                                             <td>
                                                 <select class="form-control" v-model="degrees[academic_achie]">
-                                                    <option v-for="degree in data.degree">{{degree }}</option>
+                                                    <option v-for="(degree,index) in data.degree" :key="index" :value="index"  >{{ degree  }}</option>
                                                 </select>
                                             </td>
                                             <td>
@@ -162,30 +162,30 @@ use yii\widgets\ActiveForm;
                                         <tbody>
                                             <tr v-for="exp in count_experience">
                                                 <td>
-                                                    <input type=" text" class="form-control" name="jobs[]" />
+                                                    <input type=" text" class="form-control" v-model="job_title[exp]"/>
                                                 </td>
                                                 <td>
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            <select name="month-jobs[]" class="form-control">
+                                                            <select  v-model="month_from_exp[exp]" class="form-control">
                                                                 <option v-for="item in 12">{{item }}</option>
                                                             </select>
-                                                            <select name="month-jobs[]" class="form-control">
-                                                                <option v-for="item in 12">{{item}}</option>
+                                                            <select v-model="year_from_exp[exp]" class="form-control">
+                                                                <option v-for="item in count">{{item +from_year}}</option>
                                                             </select>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <select name="month-jobs[]" class="form-control">
+                                                            <select  v-model="month_to_exp[exp]" class="form-control">
                                                                 <option v-for="item in 12">{{item }}</option>
                                                             </select>
-                                                            <select name="month-jobs[]" class="form-control">
-                                                                <option v-for="item in 12">{{item}}</option>
+                                                            <select v-model="year_to_exp[exp]" class="form-control">
+                                                                <option v-for="item in count">{{item +from_year}}</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <input type=" text" class="form-control" name="jobs[]" />
+                                                    <input type=" text" class="form-control" v-model="facility_name[exp]" />
                                                 </td>
 
                                             </tr>
@@ -223,28 +223,28 @@ use yii\widgets\ActiveForm;
                                         <tbody>
                                         <tr v-for="count_co in count_courses">
                                             <td>
-                                                <input type=" text" class="form-control" name="jobs[]" />
+                                                <input type=" text" class="form-control" v-model="name_courses[count_co]"/>
                                             </td>
 
                                             <td>
-                                                <input type=" text" class="form-control" name="jobs[]" />
+                                                <input type=" text" class="form-control" v-model="destinations[count_co]" />
                                             </td>
                                             <td>
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <select name="month-jobs[]" class="form-control">
+                                                        <select  v-model="month_from_course[count_co]" class="form-control">
                                                             <option v-for="item in 12">{{item }}</option>
                                                         </select>
-                                                        <select name="month-jobs[]" class="form-control">
-                                                            <option v-for="item in 12">{{item}}</option>
+                                                        <select v-model="year_from_course[count_co]" class="form-control">
+                                                            <option v-for="item in count">{{item +from_year}}</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <select name="month-jobs[]" class="form-control">
+                                                        <select  v-model="month_to_course[count_co]" class="form-control">
                                                             <option v-for="item in 12">{{item }}</option>
                                                         </select>
-                                                        <select name="month-jobs[]" class="form-control">
-                                                            <option v-for="item in 12">{{item}}</option>
+                                                        <select v-model="year_to_course[count_co]" class="form-control">
+                                                            <option v-for="item in count">{{item +from_year}}</option>
                                                         </select>
                                                     </div>
                                                 </div>
