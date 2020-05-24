@@ -39,8 +39,8 @@ use yii\widgets\ActiveForm;
                             <?php Yii::$app->session->remove('message'); ?>
                         <?php else : ?>
 
-                            <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
-                            <form @submit="checkForm" method="post">
+
+                            <form @submit="submitform" method="post" enctype="multipart/form-data">
                                 <div class="row gtr-uniform">
                                     <div class="col-4 col-12-xsmall">
                                         <label for="name"><?= Yii::t('app', "Name"); ?></label>
@@ -240,7 +240,7 @@ use yii\widgets\ActiveForm;
                                                     </td>
                                                     <td>
                                                         <div class="row">
-                                                            <div class="col-md-6">  
+                                                            <div class="col-md-6">
                                                                 <select v-model="form.month_from_course[count_co]" class="form-control">
                                                                     <option v-for="item in 12">{{item }}</option>
                                                                 </select>
@@ -278,25 +278,28 @@ use yii\widgets\ActiveForm;
                                     </div>
 
                                     <div class="col-6 col-12-xsmall">
-                                        <?= $form->field($model, 'cv')->fileInput() ?>
+                                        <label for="cv"><?= Yii::t('app', "Cv"); ?></label>
+                                        <input type="file" v-mode="form.cv" id="cv" class="form-control" />
+
+
                                     </div>
 
 
                                     <!-- Break -->
                                     <div class="col-12 col-12-xsmall">
                                         <ul class="actions">
+                                            <button class="btn btn-success" @click="submitform"><?= Yii::t('app', 'Save') ?></button>
 
-                                            <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'primary']) ?>
                                         </ul>
                                     </div>
                                 </div>
-                                <?php ActiveForm::end(); ?>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <button class="btn btn-success" @click="submitform">ssssssss</button>
+
 
 </div>
 
