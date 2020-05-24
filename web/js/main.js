@@ -266,9 +266,26 @@ let data = {
         nationality:'',
         governorate:'',
         area:'',
+        degrees: [],
+        specialization: [],
+        the_college_universitys: [],
+        year_academic_achievement: [],
+        job_title: [],
+        year_from_exp: [],
+        month_to_exp: [],
+        month_from_exp: [],
+        year_to_exp: [],
+        year_from_exp: [],
+        facility_name: [],
+        name_courses: [],
+        destinations: [],
+        month_from_course: [],
+        year_from_course: [],
+        month_to_course: [],
+        year_to_course: [],
     },
-    nationalitys:{},
-    governorates:{},
+    nationalitys:[],
+    governorates:[],
     year: n,
     from_year: 1992,
     count: count_m,
@@ -276,23 +293,11 @@ let data = {
     count_academic_achievement:1,
     count_courses:1,
     degree:degreees_,
-    degrees:[],
-    specialization:[],
-    the_college_universitys:[],
-    year_academic_achievement:[],
-    job_title:[],
-    year_from_exp:[],
-    month_to_exp:[],
-    month_from_exp:[],
-    year_to_exp:[],
-    year_from_exp:[],
-    facility_name:[],
-    name_courses:[],
-    destinations:[],
-    month_from_course:[],
-    year_from_course:[],
-    month_to_course:[],
-    year_to_course:[],
+    
+    
+ 
+   
+    
     errors: [],
 };
 var app = new Vue({
@@ -334,7 +339,13 @@ var app = new Vue({
             
         }
     },
-    mounted:{
-
+    mounted() {
+        axios
+            .get(`http://localhost:8000/index.php?r=requat-job/get-data`)
+            .then(response => {
+                this.nationalitys = response.data.data.nationality;
+                this.governorates = response.data.data.governorate;
+                
+            });
     }
 });
