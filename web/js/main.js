@@ -334,7 +334,10 @@ var app = new Vue({
             }
         },
         submitform(e){
-
+            
+            e.preventDefault();
+            if(this.form.name)
+            return;
             
         }
     },
