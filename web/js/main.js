@@ -259,7 +259,14 @@ var count_m = n - 1992;
 var degreees_=["باكالوريا","وبلوم","دكتوراه","اعدادي","ثانوي","اساسي"];
 
 let data = {
-    errors: [],
+    errors: {
+        name: null,
+        phone: null,
+        agree: null,
+        nationality: null,
+        governorate: null,
+        area: null,
+    },
     form:{
           name:'',
           phone:'',
@@ -337,28 +344,30 @@ var app = new Vue({
         submitform(e){
             
             e.preventDefault();
+           
             if(this.form.name ==""){
                 this.errors['name']=["name is required"];
             }
 
-            // if(this.form.phone ==""){
-            //     this.errors['phone']=["phone is required"];
-            // }
-            //
-            // if(this.form.agree ==""){
-            //     this.errors['agree']=["agree is required"];
-            // }
-            // if(this.form.nationality ==""){
-            //     this.errors['nationality']=["nationality must be selected "];
-            // }
-            // if(this.form.governorate ==""){
-            //     this.errors['governorate']=["governorate must be selected "];
-            // }
-            //
-            // if(this.form.area ==""){
-            //     this.errors['area']=["area is required"];
-            // }
+            if(this.form.phone ==""){
+                this.errors['phone']=["phone is required"];
+            }
+            
+            if(this.form.agree ==""){
+                this.errors['agree']=["agree is required"];
+            }
+            if(this.form.nationality ==""){
+                this.errors['nationality']=["nationality must be selected "];
+            }
+            if(this.form.governorate ==""){
+                this.errors['governorate']=["governorate must be selected "];
+            }
+            
+            if(this.form.area ==""){
+                this.errors['area']=["area is required"];
+            }
 
+            //this.errors = {};
 
                 // degrees: [],
                 // specialization: [],
