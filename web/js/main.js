@@ -333,32 +333,31 @@ var app = new Vue({
                 this.count_courses--;
             }
         },
-        
+
         submitform(e){
             
             e.preventDefault();
             if(this.form.name ==""){
-                this.errors.push({"name":"ssss"});
-            }
-            if(this.form.phone ==""){
-                this.errors.push({"name":"ssss"});
-            }
-            if(this.form.name ==""){
-                this.errors.push({"name":"ssss"});
-            }
-            if(this.form.agree ==""){
-                this.errors.push({"name":"ssss"});
-            }
-            if(this.form.nationality ==""){
-                this.errors.push({"name":"ssss"});
-            }
-            if(this.form.governorate ==""){
-                this.errors.push({"name":"ssss"});
+                this.errors['name']=["name is required"];
             }
 
-            if(this.form.area ==""){
-                this.errors.push({"name":"ssss"});
-            }
+            // if(this.form.phone ==""){
+            //     this.errors['phone']=["phone is required"];
+            // }
+            //
+            // if(this.form.agree ==""){
+            //     this.errors['agree']=["agree is required"];
+            // }
+            // if(this.form.nationality ==""){
+            //     this.errors['nationality']=["nationality must be selected "];
+            // }
+            // if(this.form.governorate ==""){
+            //     this.errors['governorate']=["governorate must be selected "];
+            // }
+            //
+            // if(this.form.area ==""){
+            //     this.errors['area']=["area is required"];
+            // }
 
 
                 // degrees: [],

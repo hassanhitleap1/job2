@@ -45,11 +45,12 @@ use yii\widgets\ActiveForm;
                                     <div class="col-4 col-12-xsmall">
                                         <label for="name"><?= Yii::t('app', "Name"); ?></label>
                                         <input type="text" v-mode="form.name" id="name" class="form-control" />
-                                        <small id="name"  v-if="errors.name" class="form-text text-muted error">{{errors.name}}</small>
+                                        <small id="name"  v-show="errors.name" class="form-text text-muted error">{{errors.name[0]}}</small>
                                     </div>
                                     <div class="col-4 col-12-xsmall">
-                                        <label for="name"><?= Yii::t('app', "Phone"); ?></label>
+                                        <label for="phone"><?= Yii::t('app', "Phone"); ?></label>
                                         <input type="text" v-mode="form.phone" id="phone" class="form-control" />
+                                        <small id="name"  v-if="errors.phone" class="form-text text-muted error">{{errors.phone[0]}}</small>
                                     </div>
 
                                     <div class="col-4 col-12-xsmall">
@@ -74,6 +75,7 @@ use yii\widgets\ActiveForm;
                                     <div class="col-3 col-12-xsmall">
                                         <label for="agree"><?= Yii::t('app', "Agree"); ?></label>
                                         <input type="text" v-mode="form.agree" id="agree" class="form-control" />
+                                        <small id="agree"  v-if="errors.agree" class="form-text text-muted error">{{errors.agree[0]}}</small>
                                     </div>
 
                                     <div class="col-3 col-12-xsmall">
@@ -81,6 +83,7 @@ use yii\widgets\ActiveForm;
                                         <select v-mode="form.nationality">
                                             <option v-for="nation in nationalitys">{{nation.name_ar}}</option>
                                         </select>
+                                        <small id="nationality"  v-if="errors.nationality" class="form-text text-muted error">{{errors.nationality[0]}}</small>
 
                                     </div>
 
@@ -89,11 +92,13 @@ use yii\widgets\ActiveForm;
                                         <select v-mode="form.governorate">
                                             <option v-for="gover in governorates">{{gover.name_ar}}</option>
                                         </select>
+                                        <small id="governorate"  v-if="errors.governorate" class="form-text text-muted error">{{errors.governorate[0]}}</small>
 
                                     </div>
                                     <div class="col-3 col-12-xsmall">
                                         <label for="area"><?= Yii::t('app', "Area"); ?></label>
                                         <input type="text" v-mode="form.area" id="area" class="form-control" />
+                                        <small id="area"  v-if="errors.area" class="form-text text-muted error">{{errors.area[0]}}</small>
 
                                     </div>
 
