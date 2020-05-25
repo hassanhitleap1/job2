@@ -2826,3 +2826,6 @@ body.is-menu-visible #menu {
 .float-right{
   float: right !important;
 }
+.error{
+  color: red;
+}

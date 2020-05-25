@@ -45,6 +45,7 @@ use yii\widgets\ActiveForm;
                                     <div class="col-4 col-12-xsmall">
                                         <label for="name"><?= Yii::t('app', "Name"); ?></label>
                                         <input type="text" v-mode="form.name" id="name" class="form-control" />
+                                        <small id="name"  v-if="errors.name" class="form-text text-muted error">{{errors.name}}</small>
                                     </div>
                                     <div class="col-4 col-12-xsmall">
                                         <label for="name"><?= Yii::t('app', "Phone"); ?></label>

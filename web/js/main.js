@@ -333,11 +333,54 @@ var app = new Vue({
                 this.count_courses--;
             }
         },
+        
         submitform(e){
             
             e.preventDefault();
-            if(this.form.name)
-            return;
+            if(this.form.name ==""){
+                this.errors.push({"name":"ssss"});
+            }
+            if(this.form.phone ==""){
+                this.errors.push({"name":"ssss"});
+            }
+            if(this.form.name ==""){
+                this.errors.push({"name":"ssss"});
+            }
+            if(this.form.agree ==""){
+                this.errors.push({"name":"ssss"});
+            }
+            if(this.form.nationality ==""){
+                this.errors.push({"name":"ssss"});
+            }
+            if(this.form.governorate ==""){
+                this.errors.push({"name":"ssss"});
+            }
+
+            if(this.form.area ==""){
+                this.errors.push({"name":"ssss"});
+            }
+
+
+                // degrees: [],
+                // specialization: [],
+                // the_college_universitys: [],
+                // year_academic_achievement: [],
+                // job_title: [],
+                // year_from_exp: [],
+                // month_to_exp: [],
+                // month_from_exp: [],
+                // year_to_exp: [],
+                // year_from_exp: [],
+                // facility_name: [],
+                // name_courses: [],
+                // destinations: [],
+                // month_from_course: [],
+                // year_from_course: [],
+                // month_to_course: [],
+                // year_to_course: [],
+                // cv:''
+
+        return;
             
         }
     },
