@@ -368,32 +368,22 @@ var app = new Vue({
                 this.errors['area']=["area is required"];
             }
 
-           // if(this.count_academic_achievement >=1){
-           //     if(this.form.degrees.length >=1){
-           //
-           //     }
-           //
-           // }
 
             for(let i=1; i <= this.count_academic_achievement;i++){
-                if(!(this.form.degrees[i]=='undefined' &&
-                    this.form.specialization[i]=='undefined' &&
-                    this.form.the_college_universitys[i]=='undefined' &&
+                if(this.form.degrees[i]=='undefined' ||
+                    this.form.specialization[i]=='undefined' ||
+                    this.form.the_college_universitys[i]=='undefined' ||
                     this.form.year_academic_achievement[i]=='undefined'
-                )){
+                ){
                     console.log(this.degrees)
                     console.log(this.specialization)
                     console.log(this.the_college_universitys)
                     console.log(this.year_academic_achievement)
-                    this.errors['experience']=["area is required"];
+                    this.errors['experience']=["experience is required"];
                 }
-
             }
 
-                // degrees: [],
-                // specialization: [],
-                // the_college_universitys: [],
-                // year_academic_achievement: [],
+
 
 
         return;
