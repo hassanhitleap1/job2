@@ -259,14 +259,7 @@ var count_m = n - 1992;
 var degreees_=["باكالوريا","وبلوم","دكتوراه","اعدادي","ثانوي","اساسي"];
 
 let data = {
-    errors: {
-        name: null,
-        phone: null,
-        agree: null,
-        nationality: null,
-        governorate: null,
-        area: null,
-    },
+    errors: {},
     form:{
           name:'',
           phone:'',
@@ -344,17 +337,28 @@ var app = new Vue({
         submitform(e){
             
             e.preventDefault();
-           
+           this.errors={};
             if(this.form.name ==""){
                 this.errors['name']=["name is required"];
             }
+            console.log(this.form.name);
+            console.log(this.errors);
+
 
             if(this.form.phone ==""){
                 this.errors['phone']=["phone is required"];
             }
-            
+            var pattern= /^\(?(079|078|077)\)?([0-9]{7})$/;
+
+            if(this.form.phone && ! this.form.phone.match(pattern)){
+                this.errors['phone']=["phone is pattern"];
+            }
+
             if(this.form.agree ==""){
                 this.errors['agree']=["agree is required"];
+            }
+            if(this.form.agree && isNaN(this.form.agree)){
+                this.errors['agree']=["set valiade agree"];
             }
             if(this.form.nationality ==""){
                 this.errors['nationality']=["nationality must be selected "];
@@ -394,7 +398,7 @@ var app = new Vue({
     },
     mounted() {
         axios
-            .get(`http://localhost:8000/index.php?r=requat-job/get-data`)
+            .get(`/index.php?r=requat-job/get-data`)
             .then(response => {
                 this.nationalitys = response.data.data.nationality;
                 this.governorates = response.data.data.governorate;
