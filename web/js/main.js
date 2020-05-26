@@ -289,13 +289,14 @@ let data = {
     },
     nationalitys:[],
     governorates:[],
+    degree:[],
     year: n,
     from_year: 1992,
     count: count_m,
     count_experience: 1,
     count_academic_achievement:1,
     count_courses:1,
-    degree:degreees_,
+
      
   
 };
@@ -341,10 +342,6 @@ var app = new Vue({
             if(this.form.name ==""){
                 this.errors['name']=["name is required"];
             }
-            console.log(this.form.name);
-            console.log(this.errors);
-
-
             if(this.form.phone ==""){
                 this.errors['phone']=["phone is required"];
             }
@@ -371,26 +368,33 @@ var app = new Vue({
                 this.errors['area']=["area is required"];
             }
 
-            //this.errors = {};
+           // if(this.count_academic_achievement >=1){
+           //     if(this.form.degrees.length >=1){
+           //
+           //     }
+           //
+           // }
+
+            for(let i=1; i <= this.count_academic_achievement;i++){
+                if(!(this.form.degrees[i]=='undefined' &&
+                    this.form.specialization[i]=='undefined' &&
+                    this.form.the_college_universitys[i]=='undefined' &&
+                    this.form.year_academic_achievement[i]=='undefined'
+                )){
+                    console.log(this.degrees)
+                    console.log(this.specialization)
+                    console.log(this.the_college_universitys)
+                    console.log(this.year_academic_achievement)
+                    this.errors['experience']=["area is required"];
+                }
+
+            }
 
                 // degrees: [],
                 // specialization: [],
                 // the_college_universitys: [],
                 // year_academic_achievement: [],
-                // job_title: [],
-                // year_from_exp: [],
-                // month_to_exp: [],
-                // month_from_exp: [],
-                // year_to_exp: [],
-                // year_from_exp: [],
-                // facility_name: [],
-                // name_courses: [],
-                // destinations: [],
-                // month_from_course: [],
-                // year_from_course: [],
-                // month_to_course: [],
-                // year_to_course: [],
-                // cv:''
+
 
         return;
             
@@ -402,6 +406,7 @@ var app = new Vue({
             .then(response => {
                 this.nationalitys = response.data.data.nationality;
                 this.governorates = response.data.data.governorate;
+                this.degree= response.data.data.degrees;
                 
             });
     }

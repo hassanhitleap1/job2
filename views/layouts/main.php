@@ -64,6 +64,7 @@ AppAsset::register($this);
                     ['label' => Yii::t('app', 'Requast_Jobs_Google'), 'url' => ['/requast-job-google/index']],
                     ['label' => Yii::t('app', 'Schools'), 'url' => ['/schools/index']],
                     ['label' => Yii::t('app', 'University'), 'url' => ['/university/index']],
+                    ['label' => Yii::t('app', 'Degrees'), 'url' => ['/degrees/index']],
                 ],
             ];
             $menuItems[] = ['label' => Yii::t('app', 'Message'), 'url' => ['/user-message-whatsapp/index']];

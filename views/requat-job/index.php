@@ -103,7 +103,7 @@ use yii\widgets\ActiveForm;
                                     <div class="col-3 col-12-xsmall">
                                         <label for="area"><?= Yii::t('app', "Area"); ?></label>
                                         <input type="text" v-model="form.area" id="area" class="form-control" />
-                                        <small id="area" v-if="errors.area" class="form-text text-muted error">{{errors.area[0]}}</small>
+
 
                                     </div>
 
@@ -130,11 +130,11 @@ use yii\widgets\ActiveForm;
                                                 <tr v-for="academic_achie in count_academic_achievement">
                                                     <td>
                                                         <select class="form-control" v-model="form.degrees[academic_achie]">
-                                                            <option v-for="(degree,index) in data.degree" :key="index" :value="index">{{ degree  }}</option>
+                                                            <option v-for="(degree,index) in data.degree" :key="degree.id" :value="degree.id">{{ degree.name  }}</option>
                                                         </select>
                                                     </td>
                                                     <td>
-                                                        <input type=" text" class="form-control" v-model="form.specialization[academic_achie]" />
+                                                        <input type="text" class="form-control" v-model="form.specialization[academic_achie]" />
                                                     </td>
                                                     <td>
                                                         <input type=" text" class="form-control" v-model="form.the_college_universitys[academic_achie]" />
@@ -159,6 +159,7 @@ use yii\widgets\ActiveForm;
 
                                             </tbody>
                                         </table>
+                                        <small id="experience" v-if="errors.experience" class="form-text text-muted error">{{errors.experience[0]}}</small>
                                     </div>
 
                                     <div class="col-12 col-12-xsmall">
@@ -222,6 +223,7 @@ use yii\widgets\ActiveForm;
 
                                             </tbody>
                                         </table>
+
                                     </div>
 
                                     <div class="col-12 col-12-xsmall">

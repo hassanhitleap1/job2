@@ -136,4 +136,6 @@ return [
     "Educational_Attainment"=>"التحصيل العلمي",
     "Degree"=>"الدرجة العلمية",
     "Year_Of_Acquiring_It"=>"سنة الحصول عليها ",
+    "Degrees"=>"الشهادة",
+    "Create_Degrees"=>"انشاء شهادة",
 ];

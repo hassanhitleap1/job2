@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\CountSendSms;
+use app\models\Degrees;
 use app\models\Governorate;
 use app\models\Nationality;
 use app\models\RequastJob;
@@ -91,6 +92,8 @@ class RequatJobController extends \yii\web\Controller
         Yii::$app->response->format = Response::FORMAT_JSON;
         $data['data']['nationality']=Nationality::find()->where(['!=', 'id', 1])->all();
         $data['data']['governorate']=Governorate::find()->all();
+        $data['data']['degrees']=Degrees::find()->all();
+
         return $data;
     }
 
