@@ -9,7 +9,7 @@ $this->title = Yii::t('app', 'Create Educational Attainment');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Educational Attainments'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="educational-attainment-create">
+<div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

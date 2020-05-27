@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Carbon\Carbon;
 use Yii;
 
 /**
@@ -34,7 +35,7 @@ class Experiences extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'job_title', 'month_from_exp', 'year_from_exp', 'month_to_exp', 'year_to_exp', 'facility_name', 'created_at', 'updated_at'], 'required'],
+            [['user_id', 'job_title', 'month_from_exp', 'year_from_exp', 'month_to_exp', 'year_to_exp', 'facility_name'], 'required'],
             [['user_id', 'month_from_exp', 'year_from_exp', 'month_to_exp', 'year_to_exp'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['job_title', 'facility_name'], 'string', 'max' => 255],
@@ -48,15 +49,15 @@ class Experiences extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'user_id' => Yii::t('app', 'User ID'),
-            'job_title' => Yii::t('app', 'Job Title'),
-            'month_from_exp' => Yii::t('app', 'Month From Exp'),
-            'year_from_exp' => Yii::t('app', 'Year From Exp'),
-            'month_to_exp' => Yii::t('app', 'Month To Exp'),
-            'year_to_exp' => Yii::t('app', 'Year To Exp'),
-            'facility_name' => Yii::t('app', 'Facility Name'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
+            'user_id' => Yii::t('app', 'User_ID'),
+            'job_title' => Yii::t('app', 'Job_Title'),
+            'month_from_exp' => Yii::t('app', 'Month_From_Exp'),
+            'year_from_exp' => Yii::t('app', 'Year_From_Exp'),
+            'month_to_exp' => Yii::t('app', 'Month_To_Exp'),
+            'year_to_exp' => Yii::t('app', 'Year_To_Exp'),
+            'facility_name' => Yii::t('app', 'Facility_Name'),
+            'created_at' => Yii::t('app', 'Created_At'),
+            'updated_at' => Yii::t('app', 'Updated_At'),
         ];
     }
 
@@ -67,5 +68,25 @@ class Experiences extends \yii\db\ActiveRecord
     public static function find()
     {
         return new ExperiencesQuery(get_called_class());
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            // Place your custom code here
+            if ($this->isNewRecord) {
+                $this->created_at = Carbon::now("Asia/Amman");
+                $this->updated_at = Carbon::now("Asia/Amman");
+            } else {
+                $this->updated_at = Carbon::now("Asia/Amman");
+            }
+
+            return true;
+        } else {
+            return false;
+        }
     }
 }

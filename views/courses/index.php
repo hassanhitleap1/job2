@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Courses');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="courses-index">
+<div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

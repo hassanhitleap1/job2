@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Carbon\Carbon;
 use Yii;
 
 /**
@@ -31,7 +32,7 @@ class Courses extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'name_course', 'destination', 'duration', 'created_at', 'updated_at'], 'required'],
+            [['user_id', 'name_course', 'destination', 'duration'], 'required'],
             [['user_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name_course', 'destination', 'duration'], 'string', 'max' => 255],
@@ -45,12 +46,12 @@ class Courses extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'user_id' => Yii::t('app', 'User ID'),
-            'name_course' => Yii::t('app', 'Name Course'),
+            'user_id' => Yii::t('app', 'User_ID'),
+            'name_course' => Yii::t('app', 'Name_Course'),
             'destination' => Yii::t('app', 'Destination'),
             'duration' => Yii::t('app', 'Duration'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
+            'created_at' => Yii::t('app', 'Created_At'),
+            'updated_at' => Yii::t('app', 'Updated_At'),
         ];
     }
 
@@ -61,5 +62,25 @@ class Courses extends \yii\db\ActiveRecord
     public static function find()
     {
         return new CoursesQuery(get_called_class());
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            // Place your custom code here
+            if ($this->isNewRecord) {
+                $this->created_at = Carbon::now("Asia/Amman");
+                $this->updated_at = Carbon::now("Asia/Amman");
+            } else {
+                $this->updated_at = Carbon::now("Asia/Amman");
+            }
+
+            return true;
+        } else {
+            return false;
+        }
     }
 }

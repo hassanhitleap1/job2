@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Carbon\Carbon;
 use Yii;
 
 /**
@@ -31,7 +32,7 @@ class EducationalAttainment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'specialization', 'university', 'year_get', 'created_at', 'updated_at'], 'required'],
+            [['user_id', 'specialization', 'university', 'year_get'], 'required'],
             [['user_id', 'year_get'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['specialization', 'university'], 'string', 'max' => 250],
@@ -45,12 +46,12 @@ class EducationalAttainment extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'user_id' => Yii::t('app', 'User ID'),
+            'user_id' => Yii::t('app', 'User_ID'),
             'specialization' => Yii::t('app', 'Specialization'),
             'university' => Yii::t('app', 'University'),
-            'year_get' => Yii::t('app', 'Year Get'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
+            'year_get' => Yii::t('app', 'Year_Get'),
+            'created_at' => Yii::t('app', 'Created_At'),
+            'updated_at' => Yii::t('app', 'Updated_At'),
         ];
     }
 
@@ -61,5 +62,25 @@ class EducationalAttainment extends \yii\db\ActiveRecord
     public static function find()
     {
         return new EducationalAttainmentQuery(get_called_class());
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            // Place your custom code here
+            if ($this->isNewRecord) {
+                $this->created_at = Carbon::now("Asia/Amman");
+                $this->updated_at = Carbon::now("Asia/Amman");
+            } else {
+                $this->updated_at = Carbon::now("Asia/Amman");
+            }
+
+            return true;
+        } else {
+            return false;
+        }
     }
 }

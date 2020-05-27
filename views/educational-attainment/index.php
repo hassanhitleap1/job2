@@ -10,7 +10,7 @@ use yii\widgets\Pjax;
 $this->title = Yii::t('app', 'Educational Attainments');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="educational-attainment-index">
+<div class="econtainer">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
