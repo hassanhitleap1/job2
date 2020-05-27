@@ -1,5 +1,8 @@
 <?php
 
+use app\models\User;
+use conquer\select2\Select2Widget;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -12,7 +15,15 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+
+
+    <?= $form->field($model, "user_id")->widget(
+        Select2Widget::className(),
+        [
+            'items' => ArrayHelper::map(User::find()->where(['type' => User::NORMAL_USER])->all(), 'id', 'name')
+        ]
+    );
+    ?>
 
     <?= $form->field($model, 'specialization')->textInput(['maxlength' => true]) ?>
 

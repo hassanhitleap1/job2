@@ -138,4 +138,8 @@ return [
     "Year_Of_Acquiring_It"=>"سنة الحصول عليها ",
     "Degrees"=>"الشهادة",
     "Create_Degrees"=>"انشاء شهادة",
+    "Experiences"=>"الخبرات",
+    "Educational_Attainment"=>"التحصيل العلمي ",
+    "Year_Get"=>"سنه التخرج",
+    "Requast_Job_Pay"=>"متقدم لوظيقة دفع",
 ];

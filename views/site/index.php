@@ -14,16 +14,16 @@ $this->title = 'home';
 				<div class="inner">
 					<h1> <?=Yii::$app->name?>  </h1>
 
-                    <p>
-                        <a href="tel:0782121456">
-                             <strong><i class="fa fa-phone" aria-hidden="true"> 0782121456 </i></strong>
-                        </a>
-                    </p>
-                    <p>
-                        <a href="https://api.whatsapp.com/send?phone=962782121456&text=">
-                            <strong><i class="fa fa-whatsapp" aria-hidden="true"> 0782121456 </i></strong>
-                        </a>
-                    </p>
+<!--                    <p>-->
+<!--                        <a href="tel:0782121456">-->
+<!--                             <strong><i class="fa fa-phone" aria-hidden="true"> 0782121456 </i></strong>-->
+<!--                        </a>-->
+<!--                    </p>-->
+<!--                    <p>-->
+<!--                        <a href="https://api.whatsapp.com/send?phone=962782121456&text=">-->
+<!--                            <strong><i class="fa fa-whatsapp" aria-hidden="true"> 0782121456 </i></strong>-->
+<!--                        </a>-->
+<!--                    </p>-->
                     <p>
                         <strong><i class="fa fa-address-book" aria-hidden="true">
                                 عمان - جبل الحسين - اشارة فراس - عمارة الاردن - الطابق الاول - رقم 104

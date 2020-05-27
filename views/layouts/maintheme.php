@@ -29,12 +29,12 @@ ThemeAsset::register($this);
         <header id="header">
 				<?= Html::a(Yii::t('app', 'Create_Requast_Job'),['/requat-job/index'],['class'=>'logo']) ?>
 				<nav>
-                    <a href="tel:0782121456">
-                        <strong><i class="fa fa-phone" aria-hidden="true"> 0782121456 </i></strong>
-                    </a>
-                    <a href="https://api.whatsapp.com/send?phone=962782121456&text=">
-                        <strong><i class="fa fa-whatsapp" aria-hidden="true"> 0782121456 </i></strong>
-                    </a>
+<!--                    <a href="tel:0782121456">-->
+<!--                        <strong><i class="fa fa-phone" aria-hidden="true"> 0782121456 </i></strong>-->
+<!--                    </a>-->
+<!--                    <a href="https://api.whatsapp.com/send?phone=962782121456&text=">-->
+<!--                        <strong><i class="fa fa-whatsapp" aria-hidden="true"> 0782121456 </i></strong>-->
+<!--                    </a>-->
 					<a href="#menu"> <?= Yii::t('app', 'Menu')?></a>
 
 

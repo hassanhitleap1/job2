@@ -51,7 +51,6 @@ AppAsset::register($this);
             $menuItems[] = [
                 'label' =>Yii::t('app', 'Additional') ,
                 'items' => [
-
                     ['label' => Yii::t('app', 'Message'), 'url' => ['/user-message/index']],
                     ['label' => Yii::t('app', 'Message_Merchent'), 'url' => ['/user-message-merchant/index']],
                     ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories/index']],
@@ -65,13 +64,30 @@ AppAsset::register($this);
                     ['label' => Yii::t('app', 'Schools'), 'url' => ['/schools/index']],
                     ['label' => Yii::t('app', 'University'), 'url' => ['/university/index']],
                     ['label' => Yii::t('app', 'Degrees'), 'url' => ['/degrees/index']],
+                    ['label' => Yii::t('app', 'Courses'), 'url' => ['/courses/index']],
+                    ['label' => Yii::t('app', 'Experiences'), 'url' => ['/experiences/index']],
+                    ['label' => Yii::t('app', 'Educational_Attainment'), 'url' => ['/educational-attainment/index']],
                 ],
             ];
+
+            $menuItems[] = [
+                'label' =>Yii::t('app', 'Merchants') ,
+                'items' => [
+                    ['label' => Yii::t('app', 'Merchants'), 'url' => ['/merchant/index']],
+                    ['label' => Yii::t('app', 'Request_Merchant'), 'url' => ['/request-merchant/index']]
+                ],
+            ];
+
+            $menuItems[] = [
+                'label' =>Yii::t('app', 'Requast_Job') ,
+                'items' => [
+                    ['label' => Yii::t('app', 'Requast_Job_Pay'), 'url' => ['/requast-job/index']],
+                    ['label' => Yii::t('app', 'Requast_Job_Not_Pay'), 'url' => ['/requast-job-not-pay/index']]
+                ],
+            ];
+
             $menuItems[] = ['label' => Yii::t('app', 'Message'), 'url' => ['/user-message-whatsapp/index']];
-            $menuItems[] = ['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requast-job/index']];
-            $menuItems[] = ['label' => Yii::t('app', 'Merchants'), 'url' => ['/merchant/index']];
-            $menuItems[] = ['label' => Yii::t('app', 'Request_Merchant'), 'url' => ['/request-merchant/index']];
-            $menuItems[] = ['label' => Yii::t('app', 'Requast_Job_Not_Pay'), 'url' => ['/requast-job-not-pay/index']];
+
             //$menuItems[] = ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories/index']];
            // $menuItems[] = ['label' => Yii::t('app', 'Governorate'), 'url' => ['/governorate/index']];
            // $menuItems[] = ['label' => Yii::t('app', 'Nationality'), 'url' => ['/nationality/index']];
