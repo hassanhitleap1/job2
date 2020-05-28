@@ -3,12 +3,16 @@
 namespace app\controllers;
 
 use app\models\CountSendSms;
+use app\models\Courses;
 use app\models\Degrees;
+use app\models\EducationalAttainment;
+use app\models\Experiences;
 use app\models\Governorate;
 use app\models\Nationality;
 use app\models\RequastJob;
 use app\models\RequastJobGoogle;
 use app\models\RequastJobNotPay;
+use app\models\User;
 use Yii;
 use yii\web\Controller;
 use app\models\RequastJobVisitor;
@@ -24,66 +28,91 @@ class RequatJobController extends \yii\web\Controller
         $this->layout = "maintheme";
         
         $model = new RequastJobVisitor();
-       
-        if ($model->load(Yii::$app->request->post())){
-            $file = UploadedFile::getInstance($model, 'avatar');
-            $cv = UploadedFile::getInstance($model, 'cv');
-            if ($model->validate()) {
-            
-                $modelForm= new RequastJobGoogle();
-                $modelForm->name=$model->name;
-                $modelForm->agree=$model->agree;
-                $modelForm->gender=$_POST['radio'];
-                $modelForm->phone=$model->phone;
-                $modelForm->nationality=$model->nationality;
-                $modelForm->certificates=$model->certificates;
-                $modelForm->experience=$model->experience;
-                $modelForm->governorate=$model->governorate;
-                $modelForm->area=$model->area;
-                $modelForm->expected_salary=$model->expected_salary;
 
+        $modelsCourses= [new Courses];
+        $modelsExperiences= [new Experiences];
+        $modelsEducationalAttainment= [new EducationalAttainment];
+
+        if ($model->load(Yii::$app->request->post())) {
+            //_________________________________________________________________________
+            $modelsCourses = Model::createMultiple(Courses::classname(),$modelsCourses  );
+            Model::loadMultiple($modelsCourses, Yii::$app->request->post());
+            //___________________________________________________________________________
+            $modelsExperiences = Model::createMultiple(Experiences::classname(),$modelsExperiences  );
+            Model::loadMultiple($modelsExperiences, Yii::$app->request->post());
+            //___________________________________________________________________________
+            $modelsEducationalAttainment = Model::createMultiple(EducationalAttainment::classname(),$modelsEducationalAttainment  );
+            Model::loadMultiple($modelsEducationalAttainment, Yii::$app->request->post());
+            //___________________________________________________________________________
+
+            // validate all models
+            $valid = $model->validate();
+            $valid = Model::validateMultiple($modelsCourses) &&
+                Model::validateMultiple($modelsExperiences) &&
+                Model::validateMultiple($modelsEducationalAttainment) &&
+                $valid ;
+
+            if ($valid) {
+                $transaction = \Yii::$app->db->beginTransaction();
+                $model->type = User::NORMAL_USER;
+                $file = UploadedFile::getInstance($model, 'avatar');
+                $image_file = UploadedFile::getInstance($model, 'cv');
                 if (!is_null($file)) {
                     $imagename = 'images/avatar/' . md5(uniqid(rand(), true)) . '.' . $file->extension;
                     $file->saveAs($imagename);
-                    $modelForm->avatar= $imagename;
+                    $model->avatar = $imagename;
                 }
-                $id =Yii::$app->db->createCommand('SELECT id FROM 	user_from_google  ORDER BY id DESC LIMIT 1')
-                    ->queryScalar();
-                if($id==''){
-                    $id=1;
+                if (!is_null($image_file)) {
+                    $imagename = 'images/1/' . md5(uniqid(rand(), true)) . '.' . $file->extension;
+                    $file->saveAs($imagename);
                 }
-               
-               
-                if (!is_null($cv)) {
-                    if(is_dir("cv_form/$id")){
-                        rmdir("cv_form/$id");
-                    }else{
-                        FileHelper::createDirectory("cv_form/$id", $mode = 0775, $recursive = true);
+                try {
+                    if ($flag = $model->save()) {
+                        foreach ($modelsCourses as $modelsCourse) {
+                            $modelsCourse->user_id = $model->id;
+                            if (!($flag = $modelsCourse->save(false))) {
+                                $transaction->rollBack();
+                                break;
+                            }
+                        }
+                        foreach ($modelsExperiences as $modelsExperience) {
+                            $modelsExperience->user_id = $model->id;
+                            if (!($flag = $modelsExperience->save(false))) {
+                                $transaction->rollBack();
+                                break;
+                            }
+                        }
+                        foreach ($modelsEducationalAttainment as $modelsEducationalAttainm) {
+                            $modelsEducationalAttainm->user_id = $model->id;
+                            if (!($flag = $modelsCourse->save(false))) {
+                                $transaction->rollBack();
+                                break;
+                            }
+                        }
                     }
 
-                    $cvfullpath = "cv_form/$id/index" . '.' . $cv->extension;
-                    $cv->saveAs($cvfullpath);
+                    if ($flag) {
+                        $modelCountSendSms = new CountSendSms();
+                        $modelCountSendSms->user_id=$model->id;
+                        $modelCountSendSms->count=0;
+                        $modelCountSendSms->save(false);
+                        $transaction->commit();
+                        return $this->redirect(['index']);
+                    }
+                } catch (Exception $e) {
+                    $transaction->rollBack();
                 }
-               
-                $modelForm->save(false);
-              
-
-                $modelCountSendSms = new CountSendSms();
-                $modelCountSendSms->user_id=$modelForm->id;
-                $modelCountSendSms->count=0;
-                $modelCountSendSms->save(false);
-                Yii::$app->session->setFlash('message', 'تم ارسال نموذج التقديم لوظيفة');
-                
-                return $this->render('index', [
-                    'model' => $model,
-                ]);
             }
         }
-     
 
         return $this->render('index', [
             'model' => $model,
+            'modelsCourses' => (empty($modelsCourses)) ? [new Courses] : $modelsCourses,
+            'modelsExperiences' => (empty($modelsExperiences)) ? [new Experiences] : $modelsExperiences,
+            'modelsEducationalAttainment' => (empty($modelsEducationalAttainment)) ? [new EducationalAttainment] : $modelsEducationalAttainment,
         ]);
+     
+
       
     }
 

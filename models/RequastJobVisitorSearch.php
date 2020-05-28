@@ -10,7 +10,7 @@ use Carbon\Carbon;
 /**
  * RequastJobSearch represents the model behind the search form of `app\models\RequastJob`.
  */
-class RequastJobSearch extends RequastJobVisitor
+class RequastJobVisitorSearch extends RequastJob
 {
     /**
      * {@inheritdoc}
@@ -42,7 +42,7 @@ class RequastJobSearch extends RequastJobVisitor
     public function search($params)
     {
     
-        $query = RequastJobVisitor::find();
+        $query = RequastJob::find();
         // print_r($query->createCommand()->queryAll() );
         // exit;
         // add conditions that should always apply here
@@ -63,7 +63,7 @@ class RequastJobSearch extends RequastJobVisitor
         $subQuery=CountSendSms::find()->where('count > 3')->select('user_id');
         //
         $query->where(['type' => User::NORMAL_USER]);
-        $query->andWhere(['pay_service' => User::NOT_PAY_SERVICE_FORM]);
+        $query->andWhere(['pay_service' => User::PAY_SERVICE]);
     //     $query->andWhere(['and',
     //         ['not in', 'user.id', $subQuery],
     //         ['>=','created_at',Carbon::now("Asia/Amman")->subDays(30)->toDateString()]
