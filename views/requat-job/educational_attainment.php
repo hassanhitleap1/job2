@@ -66,32 +66,4 @@
 
 </div>
 
-<?php
-
-$js = '
-
-jQuery(".dynamicform_wrapper_educational_attainment_educational_attainment").on("afterInsert", function(e, item) {
-   
-jQuery(".dynamicform_wrapper_educational_attainment .panel-title-address").each(function(index) {
-jQuery(this).html("Address: " + (index + 1))
-});
-});
-
-jQuery(".dynamicform_wrapper_educational_attainment").on("afterDelete", function(e) {
-jQuery(".dynamicform_wrapper_educational_attainment .panel-title-address").each(function(index) {
-jQuery(this).html("Address: " + (index + 1))
-});
-});
-
-$(".add-item").on("click",function(e){
-  governorate=$("#select2-merchant-governorate-container").val();
-  $("#requestmerchant-0-governorate").val(governorate);
-  area=$("select2-merchant-area-container").val();
-  $("select-0-requestmerchant-0-area-container").val(area);
-});
-
-';
-
-$this->registerJs($js);
-?>
 
