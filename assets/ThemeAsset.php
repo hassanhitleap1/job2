@@ -29,12 +29,12 @@ class ThemeAsset extends AssetBundle
     ];
     public $js = [
         'js/main.js',
-        'theme/assets/js/jquery.min.js',
-        'theme/assets/js/browser.min.js',
+        // 'theme/assets/js/jquery.min.js',
+        // 'theme/assets/js/browser.min.js',
         'theme/assets/js/breakpoints.min.js',
         'theme/assets/js/util.js',
         'theme/assets/js/main.js',
-        'https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js',
+       
     ];
     public $depends = [
         'yii\web\YiiAsset',

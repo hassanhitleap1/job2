@@ -8,6 +8,7 @@ use app\models\Degrees;
 use app\models\EducationalAttainment;
 use app\models\Experiences;
 use app\models\Governorate;
+use app\models\Model;
 use app\models\Nationality;
 use app\models\RequastJob;
 use app\models\RequastJobGoogle;

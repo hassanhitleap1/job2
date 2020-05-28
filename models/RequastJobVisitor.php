@@ -7,7 +7,7 @@ use Yii;
 
 /**
  */
-class RequastJobVisitor extends Model
+class RequastJobVisitor extends \yii\db\ActiveRecord
 {
  
     public $file;
