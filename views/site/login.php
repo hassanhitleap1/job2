@@ -9,6 +9,8 @@ use yii\bootstrap\ActiveForm;
 $this->title = Yii::t('app', 'Login');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+    <div class="container">
+
 
 	<!-- Heading -->
     <div id="heading" >
@@ -43,5 +45,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
 				</div>
 			</section>
+</div>
 
    
