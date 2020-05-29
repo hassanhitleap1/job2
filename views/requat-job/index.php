@@ -26,7 +26,7 @@ $this->title= Yii::t('app', 'Create_Requast_Job');
         <div class="panel-heading">
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
-        <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+        <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
             <div class="panel-body">
             <div class="row">
                 <div class="col-lg-3">
