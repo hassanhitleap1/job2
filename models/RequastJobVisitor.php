@@ -12,7 +12,8 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
  
     public $file;
     public  $cv;
-
+    public $confirm_pass;
+    public $password;
     public $assigns_to=[];
     public $assigns_for=[];
 

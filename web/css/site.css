@@ -221,4 +221,6 @@ a.desc:after {
 .heddin{
     display: none;
 }
-
+.panel-hight{
+    height: 47px;
+}

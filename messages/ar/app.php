@@ -142,4 +142,13 @@ return [
     "Educational_Attainment"=>"التحصيل العلمي ",
     "Year_Get"=>"سنه التخرج",
     "Requast_Job_Pay"=>"متقدم لوظيقة دفع",
+    "Month_From_Exp"=>"الشهر من",
+    "Year_From_Exp"=>"السنه من ",
+    "Month_To_Exp"=>"الشهر الى",
+    "Year_To_Exp"=>"السنه الى",
+    "Name_Course"=>"اسم الدورة",
+    "Destination"=>"الجهة",
+    "Duration"=>"المدة الزمية",
+    "From"=>"من",
+    "To"=>"الى",
 ];

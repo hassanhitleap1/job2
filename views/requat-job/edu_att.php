@@ -4,8 +4,8 @@ use wbraganca\dynamicform\DynamicFormWidget;
 
 ?>
 <div class="panel panel-default">
-    <div class="panel-heading">
-        <h4><i class="glyphicon glyphicon-envelope"></i><?= Yii::t('app', 'Educational_Attainment') ?> </h4>
+    <div class="panel-heading panel-hight">
+        <h4><?= Yii::t('app', 'Educational_Attainment') ?> </h4>
     </div>
     <div class="panel-body">
         <?php DynamicFormWidget::begin([
@@ -32,7 +32,6 @@ use wbraganca\dynamicform\DynamicFormWidget;
                 <div class="item panel panel-default">
                     <!-- widgetBody -->
                     <div class="panel-heading">
-                        <h3 class="panel-title pull-left"><?= Yii::t('app', 'Request_Merchant') . " {" . ($index + 1) . "}" ?> </h3>
                         <div class="pull-right">
                             <button type="button" class="add-item btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i></button>
                             <button type="button" class="remove-item btn btn-danger btn-xs"><i class="glyphicon glyphicon-minus"></i></button>
