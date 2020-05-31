@@ -7,73 +7,36 @@ use yii\helpers\Html;
 $this->title = 'home';
 ?>
 
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+	<!-- Indicators -->
+	<ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+		<li data-target="#myCarousel" data-slide-to="2"></li>
+	</ol>
 
+	<!-- Wrapper for slides -->
+	<div class="carousel-inner">
+		<div class="item active">
+			<img src="https://jctechs.co.uk/images/resume.jpg" alt="Los Angeles">
+		</div>
 
-		<!-- Banner -->
-			<section id="banner">
-				<div class="inner">
-					<h1> <?=Yii::$app->name?>  </h1>
+		<div class="item">
+			<img src="https://jctechs.co.uk/images/resume.jpg" alt="Chicago">
+		</div>
 
-<!--                    <p>-->
-<!--                        <a href="tel:0782121456">-->
-<!--                             <strong><i class="fa fa-phone" aria-hidden="true"> 0782121456 </i></strong>-->
-<!--                        </a>-->
-<!--                    </p>-->
-<!--                    <p>-->
-<!--                        <a href="https://api.whatsapp.com/send?phone=962782121456&text=">-->
-<!--                            <strong><i class="fa fa-whatsapp" aria-hidden="true"> 0782121456 </i></strong>-->
-<!--                        </a>-->
-<!--                    </p>-->
-                    <p>
-                        <strong><i class="fa fa-address-book" aria-hidden="true">
-                                عمان - جبل الحسين - اشارة فراس - عمارة الاردن - الطابق الاول - رقم 104
-                            </i></strong>
-                    </p>
+		<div class="item">
+			<img src="https://jctechs.co.uk/images/resume.jpg" alt="New York">
+		</div>
+	</div>
 
-				</div>
-				<video autoplay loop muted playsinline src="https://player.vimeo.com/video/46847325?title=0&byline=0&portrait=0"></video>
-			</section>
-
-		<!-- Highlights -->
-			<section class="wrapper">
-				<div class="inner">
-					<header class="special">
-						<h2><?=Yii::t('app','Administration')?></h2>
-					</header>
-					<div class="highlights">
-						<section>
-							<div class="content">
-								<header>
-									<a href="#" class="icon fas fa-user"><span class="label">Icon</span></a>
-									<h3>Hasan kiwan</h3>
-								</header>
-								<p> CEO </p>
-							</div>
-						</section>
-						<section>
-							<div class="content">
-								<header>
-									<a href="#" class="icon fas fa-user"><span class="label">Icon</span></a>
-									<h3>Mai kiwan</h3>
-								</header>
-								<p>CDO .</p>
-							</div>
-						</section>
-						<section>
-							<div class="content">
-								<header>
-									<a href="#" class="icon fas fa-user"><span class="label">Icon</span></a>
-									<h3>abduallah alawiushih</h3>
-								</header>
-								<p>CTO .</p>
-							</div>
-						</section>
-						
-					</div>
-				</div>
-			</section>
-
-		<!-- CTA -->
-		
-
-
+	<!-- Left and right controls -->
+	<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+		<span class="glyphicon glyphicon-chevron-left"></span>
+		<span class="sr-only">Previous</span>
+	</a>
+	<a class="right carousel-control" href="#myCarousel" data-slide="next">
+		<span class="glyphicon glyphicon-chevron-right"></span>
+		<span class="sr-only">Next</span>
+	</a>
+</div>
