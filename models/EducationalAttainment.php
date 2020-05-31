@@ -32,7 +32,8 @@ class EducationalAttainment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [[ 'specialization', 'university', 'year_get'], 'required'],
+            //[[ 'specialization', 'university', 'year_get'], 'required'],
+            [['specialization'],'is_all_required'],
             [['year_get'], 'integer'],
             [['specialization', 'university'], 'string', 'max' => 250],
         ];
@@ -41,9 +42,8 @@ class EducationalAttainment extends \yii\db\ActiveRecord
 
     public function is_all_required($attribute,$params)
     {
-        if( empty($this->$attribute)){
-            $this->addError($attribute, Yii::t('app','Check_Phone'));
-        }
+        $this->addError($attribute, Yii::t('app','Check_Phone'));
+
 
     }
 

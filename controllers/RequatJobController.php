@@ -36,7 +36,7 @@ class RequatJobController extends \yii\web\Controller
 
         if ($model->load(Yii::$app->request->post())) {
             //_________________________________________________________________________
-            $modelsCourses = Model::createMultiple(Courses::classname(),$modelsCourses  );
+            $modelsCourses = Model::createMultiple(Courses::classname(),$modelsCourses );
             Model::loadMultiple($modelsCourses, Yii::$app->request->post());
             //___________________________________________________________________________
             $modelsExperiences = Model::createMultiple(Experiences::classname(),$modelsExperiences  );
@@ -48,11 +48,13 @@ class RequatJobController extends \yii\web\Controller
 
             // validate all models
             $valid = $model->validate();
-            $valid = Model::validateMultiple($modelsCourses) &&
-                Model::validateMultiple($modelsExperiences) &&
-                Model::validateMultiple($modelsEducationalAttainment) &&
-                $valid ;
-
+//            $valid = Model::validateMultiple($modelsCourses) &&
+//                Model::validateMultiple($modelsExperiences) &&
+//                Model::validateMultiple($modelsEducationalAttainment) &&
+//                $valid ;
+            $valid = Model::validateMultiple($modelsEducationalAttainment) && $valid;
+            echo "<pre>". $valid ."</pre>";
+            exit;
             if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
                 $model->type = User::NORMAL_USER;
