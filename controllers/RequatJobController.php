@@ -8,6 +8,7 @@ use app\models\Degrees;
 use app\models\EducationalAttainment;
 use app\models\Experiences;
 use app\models\Governorate;
+use app\models\LoginForm;
 use app\models\Model;
 use app\models\Nationality;
 use app\models\RequastJob;
@@ -17,6 +18,7 @@ use app\models\User;
 use Yii;
 use yii\web\Controller;
 use app\models\RequastJobVisitor;
+use Exception;
 use yii\helpers\FileHelper;
 use yii\web\Response;
 use yii\web\UploadedFile;
@@ -48,13 +50,11 @@ class RequatJobController extends \yii\web\Controller
 
             // validate all models
             $valid = $model->validate();
-//            $valid = Model::validateMultiple($modelsCourses) &&
-//                Model::validateMultiple($modelsExperiences) &&
-//                Model::validateMultiple($modelsEducationalAttainment) &&
-//                $valid ;
-            $valid = Model::validateMultiple($modelsEducationalAttainment) && $valid;
-            echo "<pre>". $valid ."</pre>";
-            exit;
+        //    $valid = Model::validateMultiple($modelsCourses) &&
+        //        Model::validateMultiple($modelsExperiences) &&
+        //        Model::validateMultiple($modelsEducationalAttainment) &&
+        //        $valid ;
+            
             if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
                 $model->type = User::NORMAL_USER;
@@ -69,6 +69,7 @@ class RequatJobController extends \yii\web\Controller
                     $imagename = 'images/1/' . md5(uniqid(rand(), true)) . '.' . $file->extension;
                     $file->saveAs($imagename);
                 }
+             
                 try {
                     if ($flag = $model->save()) {
                         foreach ($modelsCourses as $modelsCourse) {
@@ -79,6 +80,7 @@ class RequatJobController extends \yii\web\Controller
                             }
                         }
                         foreach ($modelsExperiences as $modelsExperience) {
+                           
                             $modelsExperience->user_id = $model->id;
                             if (!($flag = $modelsExperience->save(false))) {
                                 $transaction->rollBack();
@@ -94,6 +96,7 @@ class RequatJobController extends \yii\web\Controller
                         }
                     }
 
+                   
                     if ($flag) {
                         $modelCountSendSms = new CountSendSms();
                         $modelCountSendSms->user_id=$model->id;
@@ -105,6 +108,12 @@ class RequatJobController extends \yii\web\Controller
                 } catch (Exception $e) {
                     $transaction->rollBack();
                 }
+
+                $model_login = new LoginForm();
+                $user = User::findByPhone($model->phone);
+
+                $model_login->login_form($user);
+
             }
         }
 

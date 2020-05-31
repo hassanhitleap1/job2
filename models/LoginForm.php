@@ -64,7 +64,16 @@ class LoginForm extends Model
         }
         return false;
     }
-
+    /**
+     * Logs in a user using the provided username and password.
+     * @return bool whether the user is logged in successfully
+     */
+    public function login_form($user)
+    {
+        
+        return Yii::$app->user->login($user, $this->rememberMe ? 3600 * 24 * 30 : 0);
+       
+    }
     /**
      * Finds user by [[username]]
      *
