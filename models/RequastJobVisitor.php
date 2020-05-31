@@ -14,8 +14,7 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
     public  $cv;
     public $confirm_pass;
     public $password;
-    public $assigns_to=[];
-    public $assigns_for=[];
+
 
 
     /**
@@ -74,14 +73,15 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['name','phone','phone','password' ,'gender','agree','nationality', 'governorate','area'], 'required'],
             [['file'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg '],
-            [['agree', 'phone', 'nationality','work_tolerance', 'teamwork','work_permanently','communication_skills','governorate', 'expected_salary','gender', 'year_of_experience','first_payment'], 'integer'],
-            [['certificates', 'experience', 'area','note', 'affiliated_with', 'affiliated_to', 'interview_time','priorities'], 'string'],
+            [['cv'], 'image', 'skipOnEmpty' => true, 'extensions' => 'pdf,doc,ducx'],
+            [['agree', 'phone', 'nationality','governorate','gender'], 'integer'],
             [['name'], 'string', 'max' => 255],
-            [['subscribe_date'], 'date', 'format' => 'yyyy-mm-dd'],
-            [['name','phone', 'nationality','agree', 'governorate','category_id','first_payment'], 'required'],
             [['phone'], 'isJordanPhone'],
             [['phone'],'unique','message'=>Yii::t('app','Phone_Already_Exist')],
+            [['password'], 'string', 'min' => 6],
+            ['confirm_pass', 'compare', 'compareAttribute' => 'password', 'message' => Yii::t('app','Pass_Dont_match')],
         ];
     }
 

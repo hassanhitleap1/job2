@@ -27,7 +27,7 @@ $this->title = Yii::t('app', 'Requast_Job');
             <div class="panel-heading">
                 <h1><?= Html::encode($this->title) ?></h1>
             </div>
-            <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
+            <?php $form = ActiveForm::begin(['id' => 'dynamic-form','options' => ['enctype' => 'multipart/form-data']]); ?>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-3">
@@ -38,10 +38,10 @@ $this->title = Yii::t('app', 'Requast_Job');
                         <?= $form->field($model, 'phone')->textInput() ?>
                     </div>
                     <div class="col-lg-3">
-                        <?= $form->field($model, 'password')->textInput() ?>
+                        <?= $form->field($model, 'password')->passwordInput()->label(Yii::t('app', 'Password'))?>
                     </div>
                     <div class="col-lg-3">
-                        <?= $form->field($model, 'confirm_pass')->textInput() ?>
+                        <?= $form->field($model, 'confirm_pass')->passwordInput()->label(Yii::t('app', 'Conf_Password'))  ?>
                     </div>
                 </div>
                 <div class="row">

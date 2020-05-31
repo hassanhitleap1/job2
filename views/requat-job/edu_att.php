@@ -2,6 +2,8 @@
 
 use wbraganca\dynamicform\DynamicFormWidget;
 
+$year = range(1990, date("Y"));
+
 ?>
 <div class="panel panel-default">
     <div class="panel-heading panel-hight">
@@ -53,7 +55,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
                                 <?= $form->field($modelEduAt, "[{$index}]university")->textInput(['maxlength' => true]) ?>
                             </div>
                             <div class="col-md-4">
-                                <?= $form->field($modelEduAt, "[{$index}]year_get")->textInput(['maxlength' => true]) ?>
+                                <?= $form->field($modelEduAt, "[{$index}]year_get")->dropDownList($year, ['prompt' => Yii::t('app', 'Plz_Select_Year')])?>
                             </div>
                         </div>
 
