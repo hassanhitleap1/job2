@@ -4,26 +4,20 @@
 
 use yii\helpers\Html;
 
-$this->title = Yii::t('app','About');
+$this->title = Yii::t('app', 'About');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-
-		<!-- Heading -->
-        <div id="heading" >
-				<h1><?= Html::encode($this->title) ?></h1>
-			</div>
-
-		<!-- Main -->
-			<section id="main" class="wrapper">
-				<div class="inner">
-					<div class="content">
-						<header>
-							<h2><?= Html::encode($this->title) ?></h2>
-						</header>
-                        <p>
-                            <?= $page->text ?>
-                        </p>
-                    </div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h1><?= Html::encode($this->title) ?></h1>
 				</div>
-			</section>
+				<div class="panel-body content">
+					<?= $page->text ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> 
