@@ -79,13 +79,13 @@ $js = '
 jQuery(".dynamicform_wrapper_courses").on("afterInsert", function(e, item) {
    
 jQuery(".dynamicform_wrapper_courses .panel-title-address").each(function(index) {
-jQuery(this).html("Address: " + (index + 1))
+jQuery(this).html()
 });
 });
 
 jQuery(".dynamicform_wrapper_courses").on("afterDelete", function(e) {
 jQuery(".dynamicform_wrapper_courses .panel-title-address").each(function(index) {
-jQuery(this).html("Address: " + (index + 1))
+jQuery(this).html()
 });
 });
 

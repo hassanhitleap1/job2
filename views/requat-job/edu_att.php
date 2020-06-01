@@ -11,7 +11,7 @@ $year = range(1990, date("Y"));
             'widgetContainer' => 'dynamicform_wrapper_edu', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
             'widgetBody' => '.container-items', // required: css class selector
             'widgetItem' => '.item', // required: css class
-            'limit' => 4, // the maximum times, an element can be cloned (default 999)
+            'limit' => 8, // the maximum times, an element can be cloned (default 999)
             'min' => "0", // 0 or 1 (default 1)
             'insertButton' => '.add-item', // css class
             'deleteButton' => '.remove-item', // css class
@@ -36,7 +36,7 @@ $year = range(1990, date("Y"));
                     <div class="item panel panel-default">
                         <!-- widgetBody -->
                         <div class="panel-heading">
-                            <span class="panel-title-address"></span>
+                            
                             <button type="button" class="pull-right remove-item btn btn-danger btn-xs"><i class="fa fa-minus"></i></button>
                             <div class="clearfix"></div>
                         </div>
@@ -76,13 +76,13 @@ $js = '
 jQuery(".dynamicform_wrapper_edu").on("afterInsert", function(e, item) {
    
 jQuery(".dynamicform_wrapper_edu .panel-title-address").each(function(index) {
-jQuery(this).html("Address: " + (index + 1))
+jQuery(this).html()
 });
 });
 
 jQuery(".dynamicform_wrapper_edu").on("afterDelete", function(e) {
 jQuery(".dynamicform_wrapper_edu .panel-title-address").each(function(index) {
-jQuery(this).html("Address: " + (index + 1))
+jQuery(this).html()
 });
 });
 

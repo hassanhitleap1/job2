@@ -89,13 +89,13 @@ $js = '
 jQuery(".dynamicform_wrapper_experience").on("afterInsert", function(e, item) {
    
 jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
-jQuery(this).html("Address: " + (index + 1))
+jQuery(this).html()
 });
 });
 
 jQuery(".dynamicform_wrapper_experience").on("afterDelete", function(e) {
 jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
-jQuery(this).html("Address: " + (index + 1))
+jQuery(this).html()
 });
 });
 
