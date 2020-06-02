@@ -34,6 +34,7 @@ class RequatJobController extends \yii\web\Controller
         $model = new RequastJobVisitor();
         $experience='';
         $count_experience=0;
+        $diff_dayes=0;
         $modelsCourses= [new Courses];
         $modelsExperiences= [new Experiences];
         $modelsEducationalAttainment= [new EducationalAttainment(['scenario' => EducationalAttainment::SCENARIO_REGISTER])];
@@ -100,7 +101,7 @@ class RequatJobController extends \yii\web\Controller
                             // format date 2019-10-26 15:48:41
                             $from = Carbon::parse($modelsCourse->year_to_exp.'-'.$modelsCourse->month_to_exp.'-'.'1');
                             $to = Carbon::parse($modelsCourse->year_from_exp.'-'.$modelsCourse->month_from_exp.'-'.'1');
-                            $count_experience +=$from->diffInDays($to);
+                            $diff_dayes +=$from->diffInDays($to);
 
                             $modelsExperience->user_id = $model->id;
                             if (!($flag = $modelsExperience->save(false))) {
@@ -123,7 +124,19 @@ class RequatJobController extends \yii\web\Controller
                         }
                     }
 
-                    // set expricance 
+                    
+
+                    if($diff_dayes !=0){
+                        $count_experience= round($diff_dayes / 360, 1);
+                    }else {
+                        # code...
+                        $count_experience= $diff_dayes;
+                    }
+                     
+                    $model->year_of_experience= $count_experience;
+                    $model->experience= $experience;
+                    $model->save(false);
+
                     if ($flag) {
                         $modelCountSendSms = new CountSendSms();
                         $modelCountSendSms->user_id=$model->id;
