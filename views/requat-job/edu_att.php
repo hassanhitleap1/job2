@@ -56,7 +56,7 @@ $year = range(1990, date("Y"));
                                     <?= $form->field($modelEduAt, "[{$index}]university")->textInput(['maxlength' => true]) ?>
                                 </div>
                                 <div class="col-sm-4">
-                                    <?= $form->field($modelEduAt, "[{$index}]year_get")->textInput(['maxlength' => true]) ?>
+                                    <?= $form->field($modelEduAt, "[{$index}]year_get")->dropDownList($year, ['prompt' => Yii::t('app', 'Plz_Select_Year')]) ?>
                                 </div>
                             </div><!-- end:row -->
 
