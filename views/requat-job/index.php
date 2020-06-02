@@ -27,7 +27,7 @@ $this->title = Yii::t('app', 'Requast_Job');
             <div class="panel-heading">
                 <h1><?= Html::encode($this->title) ?></h1>
             </div>
-            <?php $form = ActiveForm::begin(['id' => 'dynamic-form','options' => ['enctype' => 'multipart/form-data']]); ?>
+            <?php $form = ActiveForm::begin(['id' => 'dynamic-form', 'options' => ['enctype' => 'multipart/form-data']]); ?>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-3">
@@ -38,7 +38,7 @@ $this->title = Yii::t('app', 'Requast_Job');
                         <?= $form->field($model, 'phone')->textInput() ?>
                     </div>
                     <div class="col-lg-3">
-                        <?= $form->field($model, 'password')->passwordInput()->label(Yii::t('app', 'Password'))?>
+                        <?= $form->field($model, 'password')->passwordInput()->label(Yii::t('app', 'Password')) ?>
                     </div>
                     <div class="col-lg-3">
                         <?= $form->field($model, 'confirm_pass')->passwordInput()->label(Yii::t('app', 'Conf_Password'))  ?>
@@ -55,7 +55,7 @@ $this->title = Yii::t('app', 'Requast_Job');
                         <?= $form->field($model, 'nationality')->widget(
                             Select2Widget::className(),
                             [
-                                'items' => ArrayHelper::map(Nationality::find()->all(), 'id', 'name_ar')
+                                'items' => ArrayHelper::map(Nationality::find()->where(['<>', 'id', 1])->all(), 'id', 'name_ar')
                             ]
                         ); ?>
                     </div>
@@ -69,7 +69,12 @@ $this->title = Yii::t('app', 'Requast_Job');
                     </div>
 
                     <div class="col-md-3">
-                        <?= $form->field($model, 'area')->textInput() ?>
+                        <?= $form->field($model, 'area')->widget(
+                            Select2Widget::className(),
+                            [
+                                'items' => ArrayHelper::map(Area::find()->where(['<>', 'id', 1])->all(), 'name_ar', 'name_ar')
+                            ]
+                        ); ?>
                     </div>
                 </div>
                 <div class="row">
