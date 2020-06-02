@@ -154,4 +154,5 @@ return [
     "Plz_Select_Year"=>"ارجو تحديد السنة",
     "Plz_Select_Month"=>"ارجو تحديد الشهر",
     "Add"=>"اضافة",
+    "IF_Exist"=>"املأ ان وجد",
 ];
