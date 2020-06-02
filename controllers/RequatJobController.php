@@ -15,6 +15,7 @@ use app\models\RequastJob;
 use app\models\RequastJobGoogle;
 use app\models\RequastJobNotPay;
 use app\models\User;
+use Carbon\Carbon;
 use Yii;
 use yii\web\Controller;
 use app\models\RequastJobVisitor;
@@ -31,10 +32,12 @@ class RequatJobController extends \yii\web\Controller
         $this->layout = "maintheme";
         
         $model = new RequastJobVisitor();
-
+        $experience='';
+        $count_experience=0;
         $modelsCourses= [new Courses];
         $modelsExperiences= [new Experiences];
-        $modelsEducationalAttainment= [new EducationalAttainment];
+        $modelsEducationalAttainment= [new EducationalAttainment(['scenario' => EducationalAttainment::SCENARIO_REGISTER])];
+//        $modelsEducationalAttainment->scenario = EducationalAttainment::SCENARIO_REGISTER;
 
         if ($model->load(Yii::$app->request->post())) {
             //_________________________________________________________________________
@@ -49,7 +52,8 @@ class RequatJobController extends \yii\web\Controller
             //___________________________________________________________________________
 
             // validate all models
-            $valid = $model->validate();
+            $valid = $model->validate() && Model::validateMultiple($modelsEducationalAttainment);
+
         //    $valid = Model::validateMultiple($modelsCourses) &&
         //        Model::validateMultiple($modelsExperiences) &&
         //        Model::validateMultiple($modelsEducationalAttainment) &&
@@ -65,6 +69,7 @@ class RequatJobController extends \yii\web\Controller
                     $file->saveAs($imagename);
                     $model->avatar = $imagename;
                 }
+
                 if (!is_null($image_file)) {
                     $imagename = 'images/1/' . md5(uniqid(rand(), true)) . '.' . $file->extension;
                     $file->saveAs($imagename);
@@ -73,14 +78,30 @@ class RequatJobController extends \yii\web\Controller
                 try {
                     if ($flag = $model->save()) {
                         foreach ($modelsCourses as $modelsCourse) {
+                            $experience .=
+                                $modelsCourse->name_course. "  ".
+                                $modelsCourse->destination ."  ".
+                                $modelsCourse->duration .
+                                "<br />";
                             $modelsCourse->user_id = $model->id;
                             if (!($flag = $modelsCourse->save(false))) {
                                 $transaction->rollBack();
                                 break;
                             }
                         }
+
                         foreach ($modelsExperiences as $modelsExperience) {
-                           
+                            $experience .=
+                                $modelsCourse->job_title. "  ".
+                                ' من ' .$modelsCourse->month_from_exp.'-'.$modelsCourse->year_from_exp  ."  ".
+                                ' الى '.$modelsCourse->month_to_exp.'-'.$modelsCourse->year_to_exp. "  ".
+                                 ' في '.$modelsCourse->facility_name .
+                                "<br />";
+                            // format date 2019-10-26 15:48:41
+                            $from = Carbon::parse($modelsCourse->year_to_exp.'-'.$modelsCourse->month_to_exp.'-'.'1');
+                            $to = Carbon::parse($modelsCourse->year_from_exp.'-'.$modelsCourse->month_from_exp.'-'.'1');
+                            $count_experience +=$from->diffInDays($to);
+
                             $modelsExperience->user_id = $model->id;
                             if (!($flag = $modelsExperience->save(false))) {
                                 $transaction->rollBack();
@@ -88,6 +109,12 @@ class RequatJobController extends \yii\web\Controller
                             }
                         }
                         foreach ($modelsEducationalAttainment as $modelsEducationalAttainm) {
+                            $experience .=
+                                $modelsEducationalAttainm->specialization. "  ".
+                                $modelsEducationalAttainm->university ."  ".
+                                $modelsEducationalAttainm->year_get .
+                                "<br />";
+
                             $modelsEducationalAttainm->user_id = $model->id;
                             if (!($flag = $modelsCourse->save(false))) {
                                 $transaction->rollBack();
@@ -96,7 +123,7 @@ class RequatJobController extends \yii\web\Controller
                         }
                     }
 
-                   
+                    // set expricance 
                     if ($flag) {
                         $modelCountSendSms = new CountSendSms();
                         $modelCountSendSms->user_id=$model->id;

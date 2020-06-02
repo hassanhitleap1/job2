@@ -18,6 +18,7 @@ use Yii;
  */
 class Courses extends \yii\db\ActiveRecord
 {
+    const  SCENARIO_ADD='add';
     /**
      * {@inheritdoc}
      */
@@ -32,7 +33,7 @@ class Courses extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'name_course', 'destination', 'duration'], 'required'],
+            [['user_id', 'name_course', 'destination', 'duration'], 'required', 'on' => self::SCENARIO_ADD],
             [['user_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name_course', 'destination', 'duration'], 'string', 'max' => 255],

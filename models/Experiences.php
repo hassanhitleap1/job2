@@ -21,6 +21,7 @@ use Yii;
  */
 class Experiences extends \yii\db\ActiveRecord
 {
+    const  SCENARIO_ADD='add';
     /**
      * {@inheritdoc}
      */
@@ -35,7 +36,7 @@ class Experiences extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'job_title', 'month_from_exp', 'year_from_exp', 'month_to_exp', 'year_to_exp', 'facility_name'], 'required'],
+            [['user_id', 'job_title', 'month_from_exp', 'year_from_exp', 'month_to_exp', 'year_to_exp', 'facility_name'], 'required', 'on' => self::SCENARIO_ADD],
             [['user_id', 'month_from_exp', 'year_from_exp', 'month_to_exp', 'year_to_exp'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['job_title', 'facility_name'], 'string', 'max' => 255],

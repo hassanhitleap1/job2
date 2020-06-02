@@ -21,6 +21,7 @@ class EducationalAttainment extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    const SCENARIO_REGISTER = 'register';
     public static function tableName()
     {
         return '{{%educational_attainment}}';
@@ -32,8 +33,7 @@ class EducationalAttainment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            //[[ 'specialization', 'university', 'year_get'], 'required'],
-            [['specialization'],'is_all_required'],
+            [[ 'specialization', 'university', 'year_get'], 'required',  'on' => self::SCENARIO_REGISTER],
             [['year_get'], 'integer'],
             [['specialization', 'university'], 'string', 'max' => 250],
         ];
