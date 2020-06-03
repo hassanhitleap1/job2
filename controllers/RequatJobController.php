@@ -35,6 +35,7 @@ class RequatJobController extends \yii\web\Controller
         $experience='';
         $count_experience=0;
         $diff_dayes=0;
+        $certificate='';
         $modelsCourses= [new Courses];
         $modelsExperiences= [new Experiences];
         $modelsEducationalAttainment= [new EducationalAttainment(['scenario' => EducationalAttainment::SCENARIO_REGISTER])];
@@ -51,7 +52,14 @@ class RequatJobController extends \yii\web\Controller
             $modelsEducationalAttainment = Model::createMultiple(EducationalAttainment::classname(),$modelsEducationalAttainment  );
             Model::loadMultiple($modelsEducationalAttainment, Yii::$app->request->post());
             //___________________________________________________________________________
-
+            $model->username =null;
+            $model->password_hash=Yii::$app->security->generatePasswordHash($model->password);
+            $model->email=null;
+            $model->status=User::STATUS_ACTIVE;
+            $model->expected_salary=0;
+            $model->note='';
+            $model->name_company='';
+            $model->subscribe_date=null;
             // validate all models
             $valid = $model->validate() && Model::validateMultiple($modelsEducationalAttainment);
 
@@ -63,21 +71,21 @@ class RequatJobController extends \yii\web\Controller
             if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
                 $model->type = User::NORMAL_USER;
-                $file = UploadedFile::getInstance($model, 'avatar');
-                $image_file = UploadedFile::getInstance($model, 'cv');
-                if (!is_null($file)) {
-                    $imagename = 'images/avatar/' . md5(uniqid(rand(), true)) . '.' . $file->extension;
-                    $file->saveAs($imagename);
-                    $model->avatar = $imagename;
-                }
-
-                if (!is_null($image_file)) {
-                    $imagename = 'images/1/' . md5(uniqid(rand(), true)) . '.' . $file->extension;
-                    $file->saveAs($imagename);
-                }
+//                $file = UploadedFile::getInstance($model, 'avatar');
+//                $image_file = UploadedFile::getInstance($model, 'cv');
+//                if (!is_null($file)) {
+//                    $imagename = 'images/avatar/' . md5(uniqid(rand(), true)) . '.' . $file->extension;
+//                    $file->saveAs($imagename);
+//                    $model->avatar = $imagename;
+//                }
+//
+//                if (!is_null($image_file)) {
+//                    $imagename = 'images/1/' . md5(uniqid(rand(), true)) . '.' . $file->extension;
+//                    $file->saveAs($imagename);
+//                }
              
                 try {
-                    if ($flag = $model->save()) {
+                    if ($flag = $model->save(false)) {
                         foreach ($modelsCourses as $modelsCourse) {
                             $experience .=
                                 $modelsCourse->name_course. "  ".
@@ -147,11 +155,16 @@ class RequatJobController extends \yii\web\Controller
                     }
                 } catch (Exception $e) {
                     $transaction->rollBack();
+                    echo $e;
+                    exit;
                 }
-
+                    echo "susufu;la add";
+                exit;
                 $model_login = new LoginForm();
                 $user = User::findByPhone($model->phone);
+                echo $model->phone;
 
+                exit;
                 $model_login->login_form($user);
 
             }

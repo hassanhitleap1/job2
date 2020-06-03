@@ -14,12 +14,9 @@ use wbraganca\dynamicform\DynamicFormWidget; ?>
             'model' => $modelsCourses[0],
             'formId' => 'dynamic-form',
             'formFields' => [
-                'job_title',
-                'month_from_exp',
-                'year_from_exp',
-                'month_to_exp',
-                'year_to_exp',
-                'facility_name'
+                'name_course',
+                'destination',
+                'duration',
             ],
         ]); ?>
 
