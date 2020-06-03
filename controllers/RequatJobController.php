@@ -85,29 +85,30 @@ class RequatJobController extends \yii\web\Controller
 //                }
 
                 try {
+                    print_r($modelsCourses);
+                    exit;
                     if ($flag = $model->save(false)) {
-                        foreach ($modelsCourses as $modelsCourse) {
+                        foreach ($modelsCourses as $modelCourse) {
 
-                            if($modelsCourse->name_course != null){
+                            // if($modelCourse->name_course != null){
                                 $certificate .=
-                                    $modelsCourse->name_course. "  ".
-                                    $modelsCourse->destination ."  ".
-                                    $modelsCourse->duration .
+                                $modelCourse->name_course. "  ".
+                                $modelCourse->destination ."  ".
+                                $modelCourse->duration .
                                     "<br />";
-                                $modelsCourse->user_id = $model->id;
-                                if (!($flag = $modelsCourse->save(false))) {
-                                    echo "modelsCourse";
-                                    exit;
+                                $modelCourse->user_id = $model->id;
+                                if (!($flag = $modelCourse->save(false))) {
                                     $transaction->rollBack();
                                     break;
                                 }
-                            }
-
+                           // }
+                            echo $modelCourse->name_course;
+                            exit;
                         }
-
+                      
                         foreach ($modelsExperiences as $modelsExperience) {
-                    
-                            if($modelsExperience->job_title != null){
+
+                            if ($modelsExperience->year_to_exp != null) {
                                 $experience .=
                                     $modelsExperience->job_title. "  ".
                                     ' من ' .$modelsExperience->month_from_exp.'-'.$modelsExperience->year_from_exp  ."  ".
@@ -115,17 +116,20 @@ class RequatJobController extends \yii\web\Controller
                                     ' في '.$modelsExperience->facility_name .
                                     "<br />";
                                 // format date 2019-10-26 15:48:41
-                                $from = Carbon::parse(strval($modelsExperience->year_to_exp).'-'.strval($modelsExperience->month_to_exp).'-'.'1');
-                                $to = Carbon::parse(strval($modelsExperience->year_from_exp).'-'.strval($modelsExperience->month_from_exp).'-'.'1');
-                                $diff_dayes +=$from->diffInDays($to);
+                                
+                                $from = Carbon::parse(strval($modelsExperience->year_to_exp) . '-' . strval($modelsExperience->month_to_exp) . '-' . '1');
+                                $to = Carbon::parse(strval($modelsExperience->year_from_exp) . '-' . strval($modelsExperience->month_from_exp) . '-' . '1');
+                                $diff_dayes += $from->diffInDays($to);
+                                
+                               
                                 $modelsExperience->user_id = $model->id;
                                 if (!($flag = $modelsExperience->save(false))) {
                                     $transaction->rollBack();
-                                    echo "modelsExperience";
-                                    exit;
+                                    
                                     break;
                                 }
-                            }
+                             
+                           }
 
                         }
 
@@ -172,7 +176,8 @@ class RequatJobController extends \yii\web\Controller
                     }
                 } catch (Exception $e) {
                     $transaction->rollBack();
-
+                    echo $e;
+                    exit;
                     return $this->render('index', [
                         'model' => $model,
                         'modelsCourses' => (empty($modelsCourses)) ? [new Courses] : $modelsCourses,
@@ -195,16 +200,7 @@ class RequatJobController extends \yii\web\Controller
       
     }
 
-    public function  actionGetData(){
-        $data['code']=201;
-        Yii::$app->response->format = Response::FORMAT_JSON;
-        $data['data']['nationality']=Nationality::find()->where(['!=', 'id', 1])->all();
-        $data['data']['governorate']=Governorate::find()->all();
-        $data['data']['degrees']=Degrees::find()->all();
-
-        return $data;
-    }
-
+ 
 
   
 }
