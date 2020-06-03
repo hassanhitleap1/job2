@@ -39,7 +39,7 @@ class RequatJobController extends \yii\web\Controller
         $modelsCourses= [new Courses];
         $modelsExperiences= [new Experiences];
         $modelsEducationalAttainment= [new EducationalAttainment(['scenario' => EducationalAttainment::SCENARIO_REGISTER])];
-//        $modelsEducationalAttainment->scenario = EducationalAttainment::SCENARIO_REGISTER;
+
 
         if ($model->load(Yii::$app->request->post())) {
             //_________________________________________________________________________
@@ -83,40 +83,52 @@ class RequatJobController extends \yii\web\Controller
 //                    $imagename = 'images/1/' . md5(uniqid(rand(), true)) . '.' . $file->extension;
 //                    $file->saveAs($imagename);
 //                }
-             
+
                 try {
                     if ($flag = $model->save(false)) {
                         foreach ($modelsCourses as $modelsCourse) {
-                            $experience .=
-                                $modelsCourse->name_course. "  ".
-                                $modelsCourse->destination ."  ".
-                                $modelsCourse->duration .
-                                "<br />";
-                            $modelsCourse->user_id = $model->id;
-                            if (!($flag = $modelsCourse->save(false))) {
-                                $transaction->rollBack();
-                                break;
+
+                            if($modelsCourse->name_course != null){
+                                $certificate .=
+                                    $modelsCourse->name_course. "  ".
+                                    $modelsCourse->destination ."  ".
+                                    $modelsCourse->duration .
+                                    "<br />";
+                                $modelsCourse->user_id = $model->id;
+                                if (!($flag = $modelsCourse->save(false))) {
+                                    echo "modelsCourse";
+                                    exit;
+                                    $transaction->rollBack();
+                                    break;
+                                }
                             }
+
                         }
 
                         foreach ($modelsExperiences as $modelsExperience) {
-                            $experience .=
-                                $modelsCourse->job_title. "  ".
-                                ' من ' .$modelsCourse->month_from_exp.'-'.$modelsCourse->year_from_exp  ."  ".
-                                ' الى '.$modelsCourse->month_to_exp.'-'.$modelsCourse->year_to_exp. "  ".
-                                 ' في '.$modelsCourse->facility_name .
-                                "<br />";
-                            // format date 2019-10-26 15:48:41
-                            $from = Carbon::parse($modelsCourse->year_to_exp.'-'.$modelsCourse->month_to_exp.'-'.'1');
-                            $to = Carbon::parse($modelsCourse->year_from_exp.'-'.$modelsCourse->month_from_exp.'-'.'1');
-                            $diff_dayes +=$from->diffInDays($to);
-
-                            $modelsExperience->user_id = $model->id;
-                            if (!($flag = $modelsExperience->save(false))) {
-                                $transaction->rollBack();
-                                break;
+                    
+                            if($modelsExperience->job_title != null){
+                                $experience .=
+                                    $modelsExperience->job_title. "  ".
+                                    ' من ' .$modelsExperience->month_from_exp.'-'.$modelsExperience->year_from_exp  ."  ".
+                                    ' الى '.$modelsExperience->month_to_exp.'-'.$modelsExperience->year_to_exp. "  ".
+                                    ' في '.$modelsExperience->facility_name .
+                                    "<br />";
+                                // format date 2019-10-26 15:48:41
+                                $from = Carbon::parse(strval($modelsExperience->year_to_exp).'-'.strval($modelsExperience->month_to_exp).'-'.'1');
+                                $to = Carbon::parse(strval($modelsExperience->year_from_exp).'-'.strval($modelsExperience->month_from_exp).'-'.'1');
+                                $diff_dayes +=$from->diffInDays($to);
+                                $modelsExperience->user_id = $model->id;
+                                if (!($flag = $modelsExperience->save(false))) {
+                                    $transaction->rollBack();
+                                    echo "modelsExperience";
+                                    exit;
+                                    break;
+                                }
                             }
+
                         }
+
                         foreach ($modelsEducationalAttainment as $modelsEducationalAttainm) {
                             $experience .=
                                 $modelsEducationalAttainm->specialization. "  ".
@@ -125,7 +137,7 @@ class RequatJobController extends \yii\web\Controller
                                 "<br />";
 
                             $modelsEducationalAttainm->user_id = $model->id;
-                            if (!($flag = $modelsCourse->save(false))) {
+                            if (!($flag = $modelsEducationalAttainm->save(false))) {
                                 $transaction->rollBack();
                                 break;
                             }
@@ -143,6 +155,7 @@ class RequatJobController extends \yii\web\Controller
                      
                     $model->year_of_experience= $count_experience;
                     $model->experience= $experience;
+                    $model->certificates=$certificate;
                     $model->save(false);
 
                     if ($flag) {
@@ -151,21 +164,22 @@ class RequatJobController extends \yii\web\Controller
                         $modelCountSendSms->count=0;
                         $modelCountSendSms->save(false);
                         $transaction->commit();
-                        return $this->redirect(['index']);
+                        $model_login = new LoginForm();
+                        $user = User::findByPhone($model->phone);
+                        $model_login->login_form($user);
+
+                        return $this->goHome();
                     }
                 } catch (Exception $e) {
                     $transaction->rollBack();
-                    echo $e;
-                    exit;
-                }
-                    echo "susufu;la add";
-                exit;
-                $model_login = new LoginForm();
-                $user = User::findByPhone($model->phone);
-                echo $model->phone;
 
-                exit;
-                $model_login->login_form($user);
+                    return $this->render('index', [
+                        'model' => $model,
+                        'modelsCourses' => (empty($modelsCourses)) ? [new Courses] : $modelsCourses,
+                        'modelsExperiences' => (empty($modelsExperiences)) ? [new Experiences] : $modelsExperiences,
+                        'modelsEducationalAttainment' => (empty($modelsEducationalAttainment)) ? [new EducationalAttainment] : $modelsEducationalAttainment,
+                    ]);
+                }
 
             }
         }

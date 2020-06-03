@@ -72,7 +72,7 @@ $this->title = Yii::t('app', 'Requast_Job');
                         <?= $form->field($model, 'area')->widget(
                             Select2Widget::className(),
                             [
-                                'items' => ArrayHelper::map(Area::find()->where(['<>', 'id', 1])->all(), 'name_ar', 'name_ar')
+                                'items' => ArrayHelper::map(Area::find()->where(['<>', 'id', 1])->all(), 'id', 'name_ar')
                             ]
                         ); ?>
                     </div>
