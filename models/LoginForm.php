@@ -82,7 +82,12 @@ class LoginForm extends Model
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->username);
+            if(is_numeric($this->username)){
+                $this->_user = User::findByPhone($this->username);
+            }else{
+                $this->_user = User::findByUsername($this->username);
+            }
+
         }
 
         return $this->_user;

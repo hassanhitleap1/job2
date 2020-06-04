@@ -174,6 +174,29 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
         return $this->hasOne(CountSendSms::className(), ['user_id' => 'id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getExperiences()
+    {
+        return $this->hasMany(Experiences::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCourses()
+    {
+        return $this->hasMany(Courses::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEducationalAttainment()
+    {
+        return $this->hasMany(EducationalAttainment::className(), ['user_id' => 'id']);
+    }
 
     /**
      * {@inheritdoc}

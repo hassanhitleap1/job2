@@ -155,4 +155,5 @@ return [
     "Plz_Select_Month"=>"ارجو تحديد الشهر",
     "Add"=>"اضافة",
     "IF_Exist"=>"املأ ان وجد",
+    "My_Request"=>"طلبي",
 ];

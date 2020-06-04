@@ -1,29 +1,18 @@
 <?php
 
 namespace app\controllers;
-
+use Yii;
 use app\models\CountSendSms;
 use app\models\Courses;
-use app\models\Degrees;
 use app\models\EducationalAttainment;
 use app\models\Experiences;
-use app\models\Governorate;
 use app\models\LoginForm;
 use app\models\Model;
-use app\models\Nationality;
-use app\models\RequastJob;
-use app\models\RequastJobGoogle;
-use app\models\RequastJobNotPay;
 use app\models\User;
 use Carbon\Carbon;
-use Yii;
-use yii\web\Controller;
 use app\models\RequastJobVisitor;
 use Exception;
-use yii\helpers\FileHelper;
-use yii\web\Response;
-use yii\web\UploadedFile;
-use  yii\web\Session;
+
 
 class RequatJobController extends \yii\web\Controller
 {
@@ -178,8 +167,7 @@ class RequatJobController extends \yii\web\Controller
                     }
                 } catch (Exception $e) {
                     $transaction->rollBack();
-                    echo $e;
-                    exit;
+
                     return $this->render('index', [
                         'model' => $model,
                         'modelsCourses' => (empty($modelsCourses)) ? [new Courses] : $modelsCourses,
