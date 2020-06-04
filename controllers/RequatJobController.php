@@ -1,18 +1,29 @@
 <?php
 
 namespace app\controllers;
-use Yii;
+
 use app\models\CountSendSms;
 use app\models\Courses;
+use app\models\Degrees;
 use app\models\EducationalAttainment;
 use app\models\Experiences;
+use app\models\Governorate;
 use app\models\LoginForm;
 use app\models\Model;
+use app\models\Nationality;
+use app\models\RequastJob;
+use app\models\RequastJobGoogle;
+use app\models\RequastJobNotPay;
 use app\models\User;
 use Carbon\Carbon;
+use Yii;
+use yii\web\Controller;
 use app\models\RequastJobVisitor;
 use Exception;
-
+use yii\helpers\FileHelper;
+use yii\web\Response;
+use yii\web\UploadedFile;
+use  yii\web\Session;
 
 class RequatJobController extends \yii\web\Controller
 {
@@ -32,7 +43,7 @@ class RequatJobController extends \yii\web\Controller
 
         if ($model->load(Yii::$app->request->post())) {
             //_________________________________________________________________________
-            $modelsCourses = Model::createMultiple(Courses::classname(),$modelsCourses  );
+            $modelsCourses = Model::createMultiple(Courses::classname(),$modelsCourses );
             Model::loadMultiple($modelsCourses, Yii::$app->request->post());
             //___________________________________________________________________________
             $modelsExperiences = Model::createMultiple(Experiences::classname(),$modelsExperiences  );
@@ -56,8 +67,7 @@ class RequatJobController extends \yii\web\Controller
         //        Model::validateMultiple($modelsExperiences) &&
         //        Model::validateMultiple($modelsEducationalAttainment) &&
         //        $valid ;
-
-
+            
             if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
                 $model->type = User::NORMAL_USER;
@@ -73,28 +83,26 @@ class RequatJobController extends \yii\web\Controller
 //                    $imagename = 'images/1/' . md5(uniqid(rand(), true)) . '.' . $file->extension;
 //                    $file->saveAs($imagename);
 //                }
-
+                
                 try {
-
+                   
+                 
                     if ($flag = $model->save(false)) {
-                        foreach ($_POST['Courses'] as $modelCourse) {
-                            $model_course =new Courses();
-                            $model_course->name_course=$modelCourse['name_course'];
-                            $model_course->destination=$modelCourse['destination'];
-                            $model_course->duration=$modelCourse['duration'];
+                        foreach ($modelsCourses as $modelCourse) {
+
                             // if($modelCourse->name_course != null){
                                 $certificate .=
-                                    $modelCourse['name_course']. "  ".
-                                    $modelCourse['destination'] ."  ".
-                                    $modelCourse['duration'] .
+                                $modelCourse->name_course. "  ".
+                                $modelCourse->destination ."  ".
+                                $modelCourse->duration .
                                     "<br />";
-                                $model_course->user_id = $model->id;
-                                if (!($flag = $model_course->save(false))) {
+                                $modelCourse->user_id = $model->id;
+                                if (!($flag = $modelCourse->save(false))) {
                                     $transaction->rollBack();
                                     break;
                                 }
                            // }
-
+                          
                         }
                       
                         foreach ($modelsExperiences as $modelsExperience) {
@@ -167,7 +175,8 @@ class RequatJobController extends \yii\web\Controller
                     }
                 } catch (Exception $e) {
                     $transaction->rollBack();
-
+                    echo $e;
+                    exit;
                     return $this->render('index', [
                         'model' => $model,
                         'modelsCourses' => (empty($modelsCourses)) ? [new Courses] : $modelsCourses,
