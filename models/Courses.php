@@ -33,10 +33,10 @@ class Courses extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'name_course', 'destination', 'duration'], 'required', 'on' => self::SCENARIO_ADD],
-            [['user_id'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['name_course', 'destination', 'duration'], 'string', 'max' => 255],
+//           [['user_id', 'name_course', 'destination', 'duration'], 'required', 'on' => self::SCENARIO_ADD],
+//            [['user_id'], 'integer'],
+//            [['created_at', 'updated_at'], 'safe'],
+//            [['name_course', 'destination', 'duration'], 'string', 'max' => 255],
         ];
     }
 

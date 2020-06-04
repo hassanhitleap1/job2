@@ -43,7 +43,7 @@ class RequatJobController extends \yii\web\Controller
 
         if ($model->load(Yii::$app->request->post())) {
             //_________________________________________________________________________
-            $modelsCourses = Model::createMultiple(Courses::classname(),$modelsCourses );
+            $modelsCourses = Model::createMultiple(Courses::classname(),$modelsCourses  );
             Model::loadMultiple($modelsCourses, Yii::$app->request->post());
             //___________________________________________________________________________
             $modelsExperiences = Model::createMultiple(Experiences::classname(),$modelsExperiences  );
@@ -67,7 +67,8 @@ class RequatJobController extends \yii\web\Controller
         //        Model::validateMultiple($modelsExperiences) &&
         //        Model::validateMultiple($modelsEducationalAttainment) &&
         //        $valid ;
-            
+
+
             if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
                 $model->type = User::NORMAL_USER;
@@ -85,25 +86,26 @@ class RequatJobController extends \yii\web\Controller
 //                }
 
                 try {
-                    print_r($modelsCourses);
-                    exit;
-                    if ($flag = $model->save(false)) {
-                        foreach ($modelsCourses as $modelCourse) {
 
+                    if ($flag = $model->save(false)) {
+                        foreach ($_POST['Courses'] as $modelCourse) {
+                            $model_course =new Courses();
+                            $model_course->name_course=$modelCourse['name_course'];
+                            $model_course->destination=$modelCourse['destination'];
+                            $model_course->duration=$modelCourse['duration'];
                             // if($modelCourse->name_course != null){
                                 $certificate .=
-                                $modelCourse->name_course. "  ".
-                                $modelCourse->destination ."  ".
-                                $modelCourse->duration .
+                                    $modelCourse['name_course']. "  ".
+                                    $modelCourse['destination'] ."  ".
+                                    $modelCourse['duration'] .
                                     "<br />";
-                                $modelCourse->user_id = $model->id;
-                                if (!($flag = $modelCourse->save(false))) {
+                                $model_course->user_id = $model->id;
+                                if (!($flag = $model_course->save(false))) {
                                     $transaction->rollBack();
                                     break;
                                 }
                            // }
-                            echo $modelCourse->name_course;
-                            exit;
+
                         }
                       
                         foreach ($modelsExperiences as $modelsExperience) {

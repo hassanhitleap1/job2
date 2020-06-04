@@ -45,21 +45,25 @@ use wbraganca\dynamicform\DynamicFormWidget; ?>
                             ?>
 
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <?= $form->field($modelCourse, "[{$index}]name_course")->textInput(['maxlength' => true]) ?>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <?= $form->field($modelCourse, "[{$index}]destination")->textInput(['maxlength' => true]) ?>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <?= $form->field($modelCourse, "[{$index}]duration")->textInput(['maxlength' => true]) ?>
                                 </div>
-                            </div>
+                            </div><!-- end:row -->
 
 
                         </div>
                     </div>
                 <?php endforeach; ?>
+
+
+
+
             </div>
         </div>
 
@@ -67,15 +71,12 @@ use wbraganca\dynamicform\DynamicFormWidget; ?>
     </div>
 </div>
 
-
 <?php
-
 $js = '
 
 jQuery(".dynamicform_wrapper_courses").on("afterInsert", function(e, item) {
-   
 jQuery(".dynamicform_wrapper_courses .panel-title-address").each(function(index) {
-jQuery(this).html("'. Yii::t('app', 'Courses'). ': " + (index + 1))
+jQuery(this).html("' . Yii::t('app', 'Courses') . ': " + (index + 1))
 });
 });
 
@@ -84,14 +85,6 @@ jQuery(".dynamicform_wrapper_courses .panel-title-address").each(function(index)
 jQuery(this).html("' . Yii::t('app', 'Courses') . ': " + (index - 1))
 });
 });
-
-$(".add-item").on("click",function(e){
-  governorate=$("#select2-merchant-governorate-container").val();
-  $("#requestmerchant-0-governorate").val(governorate);
-  area=$("select2-merchant-area-container").val();
-  $("select-0-requestmerchant-0-area-container").val(area);
-});
-
 ';
 
 $this->registerJs($js);
