@@ -94,7 +94,7 @@ AppAsset::register($this);
             }
 
 
-            $menuItems[] = '<li>'
+            $menuItemsLeft[] = '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
                     '( '.Yii::t('app', 'Logout'). ' ' . Yii::$app->user->identity->username . ')',
@@ -108,6 +108,12 @@ AppAsset::register($this);
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => $menuItems,
             ]);
+
+        echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-left'],
+            'items' => $menuItemsLeft,
+        ]);
+
             NavBar::end();
             ?>
 

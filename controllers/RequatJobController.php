@@ -114,13 +114,14 @@ class RequatJobController extends \yii\web\Controller
                         
                         //________________________________ Experiences ________________________________
                         foreach ($_POST['Experiences'] as $modelsExperience) {
-                            $model_experiences = new Experiences();
-                            $model_experiences->job_title= $modelsExperience['job_title'];
-                            $model_experiences->month_from_exp= $modelsExperience['month_from_exp'];
-                            $model_experiences->year_from_exp= $modelsExperience['year_from_exp'];
-                            $model_experiences->month_to_exp= $modelsExperience['month_to_exp'];
-                            $model_experiences->year_to_exp= $modelsExperience['year_to_exp'];
-                            $model_experiences->facility_name = $modelsExperience['facility_name'];
+                            if($modelsExperience['year_from_exp'] != null){
+                                $model_experiences = new Experiences();
+                                $model_experiences->job_title= $modelsExperience['job_title'];
+                                $model_experiences->month_from_exp= $modelsExperience['month_from_exp'];
+                                $model_experiences->year_from_exp= $modelsExperience['year_from_exp'];
+                                $model_experiences->month_to_exp= $modelsExperience['month_to_exp'];
+                                $model_experiences->year_to_exp= $modelsExperience['year_to_exp'];
+                                $model_experiences->facility_name = $modelsExperience['facility_name'];
                                 $experience .=
                                     $modelsExperience['job_title'] . "  " .
                                     ' من ' . $modelsExperience['month_from_exp'] . '-' . $modelsExperience['year_from_exp']  . "  " .
@@ -140,6 +141,8 @@ class RequatJobController extends \yii\web\Controller
 
                                     break;
                                 }
+                            }
+
                         }
                     
                          //________________________________ Experiences ________________________________
