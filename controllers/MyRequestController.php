@@ -23,6 +23,7 @@ class MyRequestController extends BaseController
     {
 
         $model = $this->findModel(Yii::$app->user->identity->id);
+        $model->scenario  = RequastJobVisitor::UPDATE;
         $modelsCourses= $model->courses;
         $modelsExperiences= $model->experiences;
         $modelsEducationalAttainment= $model->educationalAttainment;
@@ -38,7 +39,7 @@ class MyRequestController extends BaseController
             $experiencesIDs = ArrayHelper::map($modelsExperiences, 'id', 'id');
             $educationalAttainmentIDs = ArrayHelper::map($modelsEducationalAttainment, 'id', 'id');
 
-
+         
 
             //_________________________________________________________________________
             $modelsCourses = Model::createMultiple(Courses::classname(),$modelsCourses  );
@@ -51,12 +52,15 @@ class MyRequestController extends BaseController
             Model::loadMultiple($modelsEducationalAttainment, Yii::$app->request->post());
             //___________________________________________________________________________
 
-            $deleted_coursesIDs = array_diff($coursesIDs, array_filter(ArrayHelper::map($modelsCourses, 'id', 'id')));
+            $deleted_coursesIDs = array_diff($coursesIDs, array_filter(ArrayHelper::map($modelsCourses, 'id', 'id'))); 
             $deleted_experiencesIDs = array_diff($experiencesIDs, array_filter(ArrayHelper::map($modelsExperiences, 'id', 'id')));
             $deleted_educationalAttainmentIDs = array_diff($educationalAttainmentIDs, array_filter(ArrayHelper::map($modelsEducationalAttainment, 'id', 'id')));
-
+            print_r($educationalAttainmentIDs[]);
+            print_r($deleted_educationalAttainmentIDs);
+            exit;
 
             $valid = $model->validate() && Model::validateMultiple($modelsEducationalAttainment);
+          
             if ($valid) {
 
                 $transaction = \Yii::$app->db->beginTransaction();
@@ -65,7 +69,9 @@ class MyRequestController extends BaseController
 
                     if ($flag = $model->save(false)) {
 
-
+                        if (!empty($deleted_coursesIDs)) {
+                            Courses::deleteAll(['id' => $deleted_coursesIDs]);
+                        }
                         //________________________________Courses ________________________________
                         foreach ($_POST['Courses'] as $modelCourse) {
                             $model_course = new Courses();
@@ -88,7 +94,15 @@ class MyRequestController extends BaseController
                         }
 
 
+
+
                         //________________________________ Experiences ________________________________
+
+                        if (!empty($deleted_experiencesIDs)) {
+                            Experiences::deleteAll(['id' => $deleted_experiencesIDs]);
+                        }
+
+
                         foreach ($_POST['Experiences'] as $modelsExperience) {
                             $model_experiences = new Experiences();
                             $model_experiences->job_title = $modelsExperience['job_title'];
@@ -119,6 +133,11 @@ class MyRequestController extends BaseController
                         }
 
                         //________________________________ Experiences ________________________________
+
+                        if (!empty($deleted_educationalAttainmentIDs)) {
+                            EducationalAttainment::deleteAll(['id' => $deleted_educationalAttainmentIDs]);
+                        }
+
                         foreach ($modelsEducationalAttainment as $modelsEducationalAttainm) {
                             $experience .=
                                 $modelsEducationalAttainm->specialization . "  " .

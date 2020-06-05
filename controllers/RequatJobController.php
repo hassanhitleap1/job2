@@ -32,6 +32,7 @@ class RequatJobController extends \yii\web\Controller
         $this->layout = "maintheme";
         
         $model = new RequastJobVisitor();
+        $model->scenario  = RequastJobVisitor::CREATE;
         $experience='';
         $count_experience=0;
         $diff_dayes=0;
