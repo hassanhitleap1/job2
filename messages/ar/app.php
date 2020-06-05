@@ -156,4 +156,5 @@ return [
     "Add"=>"اضافة",
     "IF_Exist"=>"املأ ان وجد",
     "My_Request"=>"طلبي",
+    "Successfuly_Message_Update"=>"تم تعديل بنجاح ",
 ];

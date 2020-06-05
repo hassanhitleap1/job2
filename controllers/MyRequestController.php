@@ -40,7 +40,7 @@ class MyRequestController extends BaseController
             $modelsExperiences = Model::createMultiple(Experiences::classname(),$modelsExperiences);
             Model::loadMultiple($modelsExperiences, Yii::$app->request->post());
             //___________________________________________________________________________
-            $modelsEducationalAttainment = Model::createMultiple(EducationalAttainment::classname(),$modelsEducationalAttainment);
+            $modelsEducationalAttainment = Model::createMultiple(EducationalAttainment::classname(), $modelsEducationalAttainment);
             Model::loadMultiple($modelsEducationalAttainment, Yii::$app->request->post());
             //___________________________________________________________________________
 
@@ -132,15 +132,21 @@ class MyRequestController extends BaseController
                             EducationalAttainment::deleteAll(['id' => $deleted_educationalAttainmentIDs]);
                         }
 
-                        foreach ($modelsEducationalAttainment as $modelsEducationalAttainm) {
-                            $experience .=
-                                $modelsEducationalAttainm->specialization . "  " .
-                                $modelsEducationalAttainm->university . "  " .
-                                $modelsEducationalAttainm->year_get .
-                                "<br />";
+                    
+                        foreach ($_POST['EducationalAttainment'] as $modelsEducationalAttainm) {
+                            $model_educational_attainment = new EducationalAttainment();
+                            $model_educational_attainment->specialization = $modelsEducationalAttainm['specialization'];
+                            $model_educational_attainment->university = $modelsEducationalAttainm['university'];
+                            $model_educational_attainment->year_get = $modelsEducationalAttainm['year_get'];
 
-                            $modelsEducationalAttainm->user_id = $model->id;
-                            if (!($flag = $modelsEducationalAttainm->save(false))) {
+
+                            $experience .=
+                            $modelsEducationalAttainm['specialization'] . "  " .
+                                $modelsEducationalAttainm['university'] . "  " .
+                                $modelsEducationalAttainm['year_get'] .
+                                "<br />";
+                            $model_educational_attainment->user_id = $model->id;
+                            if (!($flag = $model_educational_attainment->save(false))) {
                                 $transaction->rollBack();
                                 break;
                             }
@@ -167,6 +173,8 @@ class MyRequestController extends BaseController
 
                     if ($flag) {
                         $transaction->commit();
+                        Yii::$app->session->set('message', Yii::t('app', 'Successfuly_Message_Update'));
+
                         return $this->redirect(['index']);
                     }
                 } catch (Exception $e) {
