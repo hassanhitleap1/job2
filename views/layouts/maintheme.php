@@ -43,7 +43,7 @@ AppAsset::register($this);
 
         if (Yii::$app->user->isGuest) {
             $menuItems[] = ['label' => Yii::t('app', 'Create_Requast_Job'), 'url' => ['/requat-job/index']];
-            $menuItems[] = ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
+            $menuItemsleft[] = ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
         } else {
 
             $menuItems[] = '<li>'
@@ -58,6 +58,10 @@ AppAsset::register($this);
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right'],
             'items' => $menuItems,
+        ]);
+        echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-left'],
+            'items' => $menuItemsleft,
         ]);
         NavBar::end();
         ?>

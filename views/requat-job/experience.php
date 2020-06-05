@@ -1,6 +1,7 @@
 <?php
 
 use wbraganca\dynamicform\DynamicFormWidget;
+use yii\bootstrap\Html;
 
 $month = range(1, 12);
 $year = range(1990, date("Y"));
