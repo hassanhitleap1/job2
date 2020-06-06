@@ -41,7 +41,7 @@ AppAsset::register($this);
                 'class' => 'navbar-inverse navbar-fixed-top',
             ],
         ]);
-
+        $menuItemsLeft=array();
         if (Yii::$app->user->isGuest) {
           $menuItems[] =['label' => Yii::t('app', 'Home'), 'url' => ['/site/index']];
            // $menuItems[] = ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/signup']];
