@@ -83,6 +83,7 @@ AppAsset::register($this);
                 $menuItems[] = [
                     'label' =>Yii::t('app', 'Requast_Job') ,
                     'items' => [
+                        ['label' => Yii::t('app', 'Requast_Job_Form'), 'url' => ['/requast-job-form/index']],
                         ['label' => Yii::t('app', 'Requast_Job_Pay'), 'url' => ['/requast-job/index']],
                         ['label' => Yii::t('app', 'Requast_Job_Not_Pay'), 'url' => ['/requast-job-not-pay/index']]
                     ],
