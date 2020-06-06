@@ -71,19 +71,7 @@ class RequatJobController extends \yii\web\Controller
             
             if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
-                $model->type = User::NORMAL_USER;
-//                $file = UploadedFile::getInstance($model, 'avatar');
-//                $image_file = UploadedFile::getInstance($model, 'cv');
-//                if (!is_null($file)) {
-//                    $imagename = 'images/avatar/' . md5(uniqid(rand(), true)) . '.' . $file->extension;
-//                    $file->saveAs($imagename);
-//                    $model->avatar = $imagename;
-//                }
-//
-//                if (!is_null($image_file)) {
-//                    $imagename = 'images/1/' . md5(uniqid(rand(), true)) . '.' . $file->extension;
-//                    $file->saveAs($imagename);
-//                }
+                $model->type = User::FORM_APPLAY_USER;
                 
                 try {
                 
