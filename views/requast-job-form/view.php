@@ -113,7 +113,7 @@ $this->params['breadcrumbs'][] = $this->title;
 $script = <<< JS
 $(document).on('click', '#plusbutton', function(){
     id=$(this).attr('value');
-    $.get("index.php?r=requast-job/plus&id="+id, function(data, status){
+    $.get("index.php?r=requast-job-form/plus&id="+id, function(data, status){
         var data = jQuery.parseJSON( data );
         $(".massges").text( data.count );
     });
@@ -122,7 +122,7 @@ $(document).on('click', '#plusbutton', function(){
 $(document).on('click', '#minusbutton', function(){
     id=$(this).attr('value');
     
-    $.get("index.php?r=requast-job/minus&id="+id, function(data, status){
+    $.get("index.php?r=requast-job-form/minus&id="+id, function(data, status){
         var data = jQuery.parseJSON( data );
         $(".massges").text( data.count );
     });

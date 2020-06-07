@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use app\models\CountSendSms;
 use app\models\MessageJobUser;
+use app\models\RequastJobForm;
+use app\models\RequastJobFormSearch;
 use app\models\UserMessage;
 use Yii;
 use app\models\RequastJob;
@@ -44,7 +46,7 @@ class RequastJobFormController extends BaseController
      */
     public function actionIndex()
     {
-        $searchModel = new RequastJobSearch();
+        $searchModel = new RequastJobFormSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -73,7 +75,7 @@ class RequastJobFormController extends BaseController
      */
     public function actionCreate()
     {
-        $model = new RequastJob();
+        $model = new RequastJobForm();
 
         if ($model->load(Yii::$app->request->post())) {
            
@@ -84,7 +86,7 @@ class RequastJobFormController extends BaseController
                     $file->saveAs($imagename);
                     $model->avatar=$imagename;
                 }
-               
+                $model->type=User::FORM_APPLAY_USER;
                if($model->save()){
                    $modelCountSendSms = new CountSendSms();
                    $modelCountSendSms->user_id=$model->id;
@@ -247,7 +249,7 @@ class RequastJobFormController extends BaseController
      */
     protected function findModel($id)
     {
-        if (($model = RequastJob::findOne($id)) !== null) {
+        if (($model = RequastJobForm::findOne($id)) !== null) {
             return $model;
         }
 
