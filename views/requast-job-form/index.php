@@ -109,9 +109,27 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
           
             // 'expected_salary',
-            'certificates:ntext',
-            'experience:ntext',
-            'priorities:ntext',
+           
+            [
+                'attribute' => 'certificates',
+                'value' => 'certificates',
+                'format' => 'html',
+
+            ],
+            [
+                'attribute' => 'experience',
+                'value' => 'experience',
+                'format' => 'html',
+
+            ],
+            [
+                'attribute' => 'priorities',
+                'value' => 'priorities',
+                'format' => 'html',
+
+            ],
+           
+        
 
             // 'note:ntext',
             [

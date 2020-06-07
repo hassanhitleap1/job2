@@ -56,7 +56,6 @@ class RequatJobController extends \yii\web\Controller
             //___________________________________________________________________________
             $model->username =null;
             $model->password_hash=Yii::$app->security->generatePasswordHash($model->password);
-            $model->email=null;
             $model->status=User::STATUS_ACTIVE;
             $model->expected_salary=0;
             $model->note='';

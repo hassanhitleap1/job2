@@ -79,7 +79,7 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
             [['name', 'phone',  'gender', 'agree', 'nationality', 'governorate', 'area'], 'required', 'on' => self::UPDATE],
             [['agree', 'phone', 'nationality','governorate','gender'], 'integer'],
             [['email'],'email'],
-            ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => '\app\models\User', 'message' =>'This email address has already been taken.',  'on' => self::CREATE],
             [['name'], 'string', 'max' => 255],
             [['phone'], 'isJordanPhone'],
             [['phone'],'unique','message'=>Yii::t('app','Phone_Already_Exist')],

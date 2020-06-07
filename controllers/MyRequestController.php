@@ -24,6 +24,7 @@ class MyRequestController extends BaseController
 
         $model = $this->findModel(Yii::$app->user->identity->id);
         $model->scenario  = RequastJobVisitor::UPDATE;
+   
         $modelsCourses= $model->courses;
         $modelsExperiences= $model->experiences;
         $modelsEducationalAttainment= $model->educationalAttainment;
@@ -52,7 +53,7 @@ class MyRequestController extends BaseController
 
 
             $valid = $model->validate() && Model::validateMultiple($modelsEducationalAttainment);
-        
+          
             if ($valid) {
 
                 $transaction = \Yii::$app->db->beginTransaction();
