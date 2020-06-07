@@ -16,13 +16,6 @@ $this->title = Yii::t('app', 'Requast_Job');
 ?>
 
 <div class="container">
-
-    <?php if (Yii::$app->session->has('message')) : ?>
-        <div class="alert alert-success" role="alert">
-            <h1><?php echo Yii::$app->session->get('message'); ?></h1>
-        </div>
-        <?php Yii::$app->session->remove('message'); ?>
-    <?php else : ?>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h1><?= Html::encode($this->title) ?></h1>
@@ -34,13 +27,16 @@ $this->title = Yii::t('app', 'Requast_Job');
                         <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
                     </div>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                         <?= $form->field($model, 'phone')->textInput() ?>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
+                        <?= $form->field($model, 'email')->textInput() ?>
+                    </div>
+                    <div class="col-lg-2">
                         <?= $form->field($model, 'password')->passwordInput()->label(Yii::t('app', 'Password')) ?>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                         <?= $form->field($model, 'confirm_pass')->passwordInput()->label(Yii::t('app', 'Conf_Password'))  ?>
                     </div>
                 </div>
@@ -94,6 +90,4 @@ $this->title = Yii::t('app', 'Requast_Job');
             </div>
             <?php ActiveForm::end(); ?>
         </div>
-
-    <?php endif; ?>
 </div>
