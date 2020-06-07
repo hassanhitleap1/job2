@@ -6,3 +6,5 @@ CREATE TABLE `job`.`courses` ( `id` INT NOT NULL AUTO_INCREMENT , `name_course` 
 
 ALTER TABLE `courses` ADD `user_id` INT NOT NULL AFTER `id`;
 ALTER TABLE `experiences` ADD `user_id` INT NOT NULL AFTER `id`;
+
+ALTER TABLE `educational_attainment` ADD `degree` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `user_id`

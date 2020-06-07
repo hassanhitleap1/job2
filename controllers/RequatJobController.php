@@ -37,6 +37,7 @@ class RequatJobController extends \yii\web\Controller
         $count_experience=0;
         $diff_dayes=0;
         $certificate='';
+        $priorities='';
         $modelsCourses= [new Courses];
         $modelsExperiences= [new Experiences];
         $modelsEducationalAttainment= [new EducationalAttainment(['scenario' => EducationalAttainment::SCENARIO_REGISTER])];
@@ -85,7 +86,7 @@ class RequatJobController extends \yii\web\Controller
                             $model_course->destination = $modelCourse['destination'];
                             $model_course->duration = $modelCourse['duration'];
                             // if($modelCourse->name_course != null){
-                            $certificate .=
+                            $priorities .=
                                 $modelCourse['name_course'] . "  " .
                                 $modelCourse['destination'] . "  " .
                                 $modelCourse['duration'] .
@@ -101,6 +102,7 @@ class RequatJobController extends \yii\web\Controller
 
                         
                         //________________________________ Experiences ________________________________
+                        
                         foreach ($_POST['Experiences'] as $modelsExperience) {
                             if($modelsExperience['year_from_exp'] != null){
                                 $model_experiences = new Experiences();
@@ -135,7 +137,8 @@ class RequatJobController extends \yii\web\Controller
                     
                          //________________________________ Experiences ________________________________
                         foreach ($modelsEducationalAttainment as $modelsEducationalAttainm) {
-                            $experience .=
+                            $certificate .=
+                                $modelsEducationalAttainm->degree . "  " .
                                 $modelsEducationalAttainm->specialization. "  ".
                                 $modelsEducationalAttainm->university ."  ".
                                 $modelsEducationalAttainm->year_get .
@@ -161,6 +164,7 @@ class RequatJobController extends \yii\web\Controller
                     $model->year_of_experience= $count_experience;
                     $model->experience= $experience;
                     $model->certificates=$certificate;
+                    $model->priorities= $priorities;
                     $model->save(false);
 
                     if ($flag) {

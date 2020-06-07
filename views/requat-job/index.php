@@ -30,7 +30,7 @@ $this->title = Yii::t('app', 'Requast_Job');
                     <div class="col-lg-2">
                         <?= $form->field($model, 'phone')->textInput() ?>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <?= $form->field($model, 'email')->textInput() ?>
                     </div>
                     <div class="col-lg-2">

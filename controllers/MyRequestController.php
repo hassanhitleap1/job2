@@ -31,6 +31,7 @@ class MyRequestController extends BaseController
         $count_experience=0;
         $diff_dayes=0;
         $certificate='';
+        $priorities='';
 
         if ($model->load(Yii::$app->request->post())) {
             //_________________________________________________________________________
@@ -71,7 +72,7 @@ class MyRequestController extends BaseController
                             $model_course->destination = $modelCourse['destination'];
                             $model_course->duration = $modelCourse['duration'];
                             // if($modelCourse->name_course != null){
-                            $certificate .=
+                            $priorities .=
                                 $modelCourse['name_course'] . "  " .
                                 $modelCourse['destination'] . "  " .
                                 $modelCourse['duration'] .
@@ -135,12 +136,14 @@ class MyRequestController extends BaseController
                     
                         foreach ($_POST['EducationalAttainment'] as $modelsEducationalAttainm) {
                             $model_educational_attainment = new EducationalAttainment();
+                            $model_educational_attainment->degree = $modelsEducationalAttainm['degree'];
                             $model_educational_attainment->specialization = $modelsEducationalAttainm['specialization'];
                             $model_educational_attainment->university = $modelsEducationalAttainm['university'];
                             $model_educational_attainment->year_get = $modelsEducationalAttainm['year_get'];
 
 
-                            $experience .=
+                            $certificate .=
+                            $modelsEducationalAttainm['degree'] . "  " .
                             $modelsEducationalAttainm['specialization'] . "  " .
                                 $modelsEducationalAttainm['university'] . "  " .
                                 $modelsEducationalAttainm['year_get'] .
@@ -155,8 +158,6 @@ class MyRequestController extends BaseController
 
 
 
-
-
                     
                     if($diff_dayes !=0){
                         $count_experience= round($diff_dayes / 360, 1);
@@ -168,6 +169,7 @@ class MyRequestController extends BaseController
                     $model->year_of_experience= $count_experience;
                     $model->experience= $experience;
                     $model->certificates=$certificate;
+                    $model->priorities= $priorities;
                     $model->save(false);
 
 

@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
                         <div class="row">
                             <div class="col-lg-12">
-                            <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label(Yii::t('app', 'Username'))  ?>
+                            <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label(Yii::t('app', 'Email_Or_Phone'))  ?>
                             <?= $form->field($model, 'password')->passwordInput()->label(Yii::t('app', 'Password'))  ?>
                             <?= $form->field($model, 'rememberMe')->checkbox()->label(Yii::t('app', 'Remember_Me')) ?>
                             </div>

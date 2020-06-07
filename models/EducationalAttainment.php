@@ -33,7 +33,7 @@ class EducationalAttainment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [[ 'specialization', 'university', 'year_get'], 'required',  'on' => self::SCENARIO_REGISTER],
+            [['degree','specialization', 'university', 'year_get'], 'required',  'on' => self::SCENARIO_REGISTER],
             [['year_get'], 'integer'],
             [['specialization', 'university'], 'string', 'max' => 250],
         ];
@@ -59,6 +59,7 @@ class EducationalAttainment extends \yii\db\ActiveRecord
             'specialization' => Yii::t('app', 'Specialization'),
             'university' => Yii::t('app', 'University'),
             'year_get' => Yii::t('app', 'Year_Get'),
+            'degree' => Yii::t('app', 'Degree'),
             'created_at' => Yii::t('app', 'Created_At'),
             'updated_at' => Yii::t('app', 'Updated_At'),
         ];

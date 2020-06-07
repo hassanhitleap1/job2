@@ -39,7 +39,7 @@ return [
     'Requast_Jobs'=>'طلب وظيفة',
     'Create_Request_Merchant'=>'انشاء طلب صاحب عمل ',
     'Request_Merchants'=>'طلبات صاحب عمل',
-    'email'=>'البريد الاليكتروني',
+    'Email'=>'البريد الاليكتروني',
     'Username'=>'اسم المستخدم',
     'Password'=>'كلمة السر',
     'Remember_Me'=>'تذكرني',
@@ -158,4 +158,5 @@ return [
     "My_Request"=>"طلبي",
     "Successfuly_Message_Update"=>"تم تعديل بنجاح ",
     "Requast_Job_Form"=> "نموذج نعبئه لوظيفة من  النموذج",
+    "Email_Or_Phone"=>"البريد الاليكتروني أو الهاتف",
 ];

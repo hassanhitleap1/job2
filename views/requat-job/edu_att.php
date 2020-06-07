@@ -1,6 +1,9 @@
 <?php
 
+use app\models\Degrees;
+use conquer\select2\Select2Widget;
 use wbraganca\dynamicform\DynamicFormWidget;
+use yii\helpers\ArrayHelper;
 
 $year = range(1990, date("Y"));
 
@@ -49,13 +52,21 @@ $year = range(1990, date("Y"));
                             ?>
 
                             <div class="row">
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
+                                    <?= $form->field($modelEduAt, "[{$index}]degree")->widget(
+                                        Select2Widget::className(),
+                                        [
+                                            'items' => ArrayHelper::map(Degrees::find()->all(), 'name', 'name')
+                                        ]
+                                    ); ?>
+                                </div>
+                                <div class="col-sm-3">
                                     <?= $form->field($modelEduAt, "[{$index}]specialization")->textInput(['maxlength' => true]) ?>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <?= $form->field($modelEduAt, "[{$index}]university")->textInput(['maxlength' => true]) ?>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <?= $form->field($modelEduAt, "[{$index}]year_get")->dropDownList($year, ['prompt' => Yii::t('app', 'Plz_Select_Year')]) ?>
                                 </div>
                             </div><!-- end:row -->
