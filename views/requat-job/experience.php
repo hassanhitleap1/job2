@@ -92,6 +92,9 @@ $year = range(1990, date("Y"));
                                     <?= $form->field($modelsExperience, "[{$index}]facility_name")->textInput(['maxlength' => true]) ?>
                                 </div>
                             </div>
+                            <div class="col-md-2">
+                                <input mbsc-input id="demo-desktop" data-input-style="box" placeholder="Please Select..." />
+                            </div>
 
                         </div>
                     </div>
@@ -101,6 +104,9 @@ $year = range(1990, date("Y"));
         <?php DynamicFormWidget::end(); ?>
     </div>
 </div>
+
+
+
 
 <?php
 
@@ -120,8 +126,31 @@ jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1))
 });
 
 
+  mobiscroll.settings = {
+        lang: \'en\',                // Specify language like: lang: \'pl\' or omit setting to use default
+        theme: \'ios\',              // Specify theme like: theme: \'ios\' or omit setting to use default
+        themeVariant: \'light\'  // More info about themeVariant: https://docs.mobiscroll.com/4-10-3/datetime#opt-themeVariant
+    };
+
+    $(function () {
+
+        // Mobiscroll Date & Time initialization
+        $(\'#demo-mobile\').mobiscroll().date({
+            display: \'bubble\'      // Specify display mode like: display: \'bottom\' or omit setting to use default
+        });
+
+        // Mobiscroll Date & Time initialization
+        $(\'#demo-desktop\').mobiscroll().date({
+            display: \'bubble\',     // Specify display mode like: display: \'bottom\' or omit setting to use default
+            touchUi: false         // More info about touchUi: https://docs.mobiscroll.com/4-10-3/datetime#opt-touchUi
+        });
+
+    });
 
 ';
 
 $this->registerJs($js);
+
+
 ?>
+
