@@ -66,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             // 'id',
             'name',
-            // 'first_payment',
+
             'agree',
             [
                 'attribute' => 'gender',
@@ -88,7 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'phone',
             [
                 'attribute' => 'area',
-                'value' => 'area',
+                'value' => 'area0.name_ar',
 
             ],
             [
@@ -96,20 +96,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => 'nationality0.name_ar',
 
             ],
-            [
-                'attribute' => 'category_id',
-                'value' => 'category0.name_ar',
 
-            ],
-            
             [
                 'attribute' => 'governorate',
                 'value' => 'governorate0.name_ar',
 
             ],
-          
-            // 'expected_salary',
-           
+
             [
                 'attribute' => 'certificates',
                 'value' => 'certificates',
@@ -128,44 +121,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'html',
 
             ],
-           
-        
 
-            // 'note:ntext',
-            [
-                'attribute' => 'created_at',
-                'label'=> Yii::t('app', 'Created_At'),
-                'value'=> function($searchModel){
-                    $now = Carbon::now("Asia/Amman");
-                     $date = Carbon::parse(Carbon::parse($searchModel->created_at));
-                    $mess="";
-                    $def=$date->diffInDays($now);
-                    if($def == 0){
-                      return " registered (today)  must be during 48h " ;  
-                     }else{
-                         
-                         if($def==7 || $def== 14 || $def== 21 || $def==30){
-                            $mess = " must be send message today";
-                         }else{
-                             if( $def >= 7  && $def < 14){
-                                 $conct= $def - 7;
-                                $mess = " must be send message after " .(string) $conct; 
-                             }elseif( $def >= 14  && $def < 21){
-                                $conct = $def - 14;
-                                $mess = " must be send message after " . (string) $conct;; 
-                             } elseif ($def >= 21  && $def < 30) {
-                             $conct = $def - 21;
-                                 $mess = " must be send message after " . (string) $conct;; 
-                            }
-
-                         }
-                        
-                     }
-                     
-                    return "registered befor ". $def . " days --". $mess;
-                    
-                }
-            ],
             [
                 'attribute' => 'counsendsms',   
                 'value' => 'smssend.count',
