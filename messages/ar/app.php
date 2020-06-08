@@ -159,4 +159,6 @@ return [
     "Successfuly_Message_Update"=>"تم تعديل بنجاح ",
     "Requast_Job_Form"=> "نموذج نعبئه لوظيفة من  النموذج",
     "Email_Or_Phone"=>"البريد الاليكتروني أو الهاتف",
+    "Date_From"=>"من تاريخ",
+    "Date_To"=>"الى اتاريخ",
 ];

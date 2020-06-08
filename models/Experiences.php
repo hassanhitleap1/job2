@@ -10,11 +10,8 @@ use Yii;
  *
  * @property int $id
  * @property int $user_id
- * @property string $job_title
- * @property int $month_from_exp
- * @property int $year_from_exp
- * @property int $month_to_exp
- * @property int $year_to_exp
+ * @property date $date_from
+ * @property date $date_to
  * @property string $facility_name
  * @property string $created_at
  * @property string $updated_at
@@ -36,8 +33,8 @@ class Experiences extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'job_title', 'month_from_exp', 'year_from_exp', 'month_to_exp', 'year_to_exp', 'facility_name'], 'required', 'on' => self::SCENARIO_ADD],
-            [['user_id', 'month_from_exp', 'year_from_exp', 'month_to_exp', 'year_to_exp'], 'integer'],
+            [['user_id', 'job_title','date_from','date_to' ,'facility_name'], 'required', 'on' => self::SCENARIO_ADD],
+            [['user_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['job_title', 'facility_name'], 'string', 'max' => 255],
         ];
@@ -52,10 +49,8 @@ class Experiences extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'user_id' => Yii::t('app', 'User_ID'),
             'job_title' => Yii::t('app', 'Job_Title'),
-            'month_from_exp' => Yii::t('app', 'Month_From_Exp'),
-            'year_from_exp' => Yii::t('app', 'Year_From_Exp'),
-            'month_to_exp' => Yii::t('app', 'Month_To_Exp'),
-            'year_to_exp' => Yii::t('app', 'Year_To_Exp'),
+            'date_from' => Yii::t('app', 'Date_From'),
+            'date_to' => Yii::t('app', 'Date_To'),
             'facility_name' => Yii::t('app', 'Facility_Name'),
             'created_at' => Yii::t('app', 'Created_At'),
             'updated_at' => Yii::t('app', 'Updated_At'),

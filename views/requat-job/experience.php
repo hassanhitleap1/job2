@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+use kartik\date\DatePicker;
 use wbraganca\dynamicform\DynamicFormWidget;
 use yii\bootstrap\Html;
 
@@ -60,20 +62,36 @@ $year = range(1990, date("Y"));
                                     <?= $form->field($modelsExperience, "[{$index}]job_title")->textInput(['maxlength' => true]) ?>
                                 </div>
                                 <div class="col-md-2">
-                                    <?= $form->field($modelsExperience, "[{$index}]month_from_exp")->dropDownList($month, ['prompt' => Yii::t('app', 'Plz_Select_Month')])->label(Yii::t('app', 'From'))  ?>
-                                    <?= $form->field($modelsExperience, "[{$index}]year_from_exp")->dropDownList($year, ['prompt' => Yii::t('app', 'Plz_Select_Year')])->label('') ?>
+                                    <?= $form->field($modelsExperience, "[{$index}]date_from")->widget(DatePicker::classname(), [
+                                        'options' => ['placeholder' => Yii::t('app', 'Enter_date')],
+                                        'value' => Carbon::now('Asia/Amman')->toDateString(),
+                                        'type' => DatePicker::TYPE_COMPONENT_APPEND,
+                                        'pluginOptions' => [
+                                            'todayHighlight' => true,
+                                            'todayBtn' => true,
+                                            'autoclose' => false,
+                                            'format' => 'yyyy-mm-dd',
+                                        ]
+                                    ]); ?>
                                 </div>
 
                                 <div class="col-md-2">
-                                    <?= $form->field($modelsExperience, "[{$index}]month_to_exp")->dropDownList($month, ['prompt' => Yii::t('app', 'Plz_Select_Month')])->label(Yii::t('app', 'To')) ?>
-                                    <?= $form->field($modelsExperience, "[{$index}]year_to_exp")->dropDownList($year, ['prompt' => Yii::t('app', 'Plz_Select_Year')])->label('') ?>
+                                    <?= $form->field($modelsExperience, "[{$index}]date_to")->widget(DatePicker::classname(), [
+                                        'options' => ['placeholder' => Yii::t('app', 'Enter_date')],
+                                        'value' => Carbon::now('Asia/Amman')->toDateString(),
+                                        'type' => DatePicker::TYPE_COMPONENT_APPEND,
+                                        'pluginOptions' => [
+                                            'todayHighlight' => true,
+                                            'todayBtn' => true,
+                                            'autoclose' => false,
+                                            'format' => 'yyyy-mm-dd',
+                                        ]
+                                    ]); ?>
                                 </div>
                                 <div class="col-md-4">
                                     <?= $form->field($modelsExperience, "[{$index}]facility_name")->textInput(['maxlength' => true]) ?>
                                 </div>
                             </div>
-
-
 
                         </div>
                     </div>

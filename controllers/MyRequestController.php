@@ -98,24 +98,24 @@ class MyRequestController extends BaseController
 
 
                         foreach ($_POST['Experiences'] as $modelsExperience) {
-                            if($modelsExperience['year_from_exp'] != null) {
+                            if($modelsExperience['date_from'] != null){
                                 $model_experiences = new Experiences();
-                                $model_experiences->job_title = $modelsExperience['job_title'];
-                                $model_experiences->month_from_exp = $modelsExperience['month_from_exp'];
-                                $model_experiences->year_from_exp = $modelsExperience['year_from_exp'];
-                                $model_experiences->month_to_exp = $modelsExperience['month_to_exp'];
-                                $model_experiences->year_to_exp = $modelsExperience['year_to_exp'];
+                                $model_experiences->job_title= $modelsExperience['job_title'];
+                                $model_experiences->date_from= $modelsExperience['date_from'];
+                                $model_experiences->date_to= $modelsExperience['date_to'];
                                 $model_experiences->facility_name = $modelsExperience['facility_name'];
+                                $from = Carbon::parse($modelsExperience['date_from']);
+                                $to = Carbon::parse($modelsExperience['date_to']);
+
                                 $experience .=
                                     $modelsExperience['job_title'] . "  " .
-                                    ' من ' . $modelsExperience['month_from_exp'] . '-' . $modelsExperience['year_from_exp'] . "  " .
-                                    ' الى ' . $modelsExperience['month_to_exp'] . '-' . $modelsExperience['year_to_exp'] . "  " .
+                                    ' من ' . $from .' '.
+                                    ' الى ' .  $to  . "  " .
                                     ' في ' . $modelsExperience['facility_name'] .
                                     "<br />";
                                 // format date 2019-10-26 15:48:41
 
-                                $from = Carbon::parse(strval($modelsExperience['year_to_exp']) . '-' . strval($modelsExperience['month_to_exp']) . '-' . '1');
-                                $to = Carbon::parse(strval($modelsExperience['year_from_exp']) . '-' . strval($modelsExperience['month_from_exp']) . '-' . '1');
+
                                 $diff_dayes += $from->diffInDays($to);
 
 
@@ -126,6 +126,7 @@ class MyRequestController extends BaseController
                                     break;
                                 }
                             }
+
                         }
 
                         //________________________________ EducationalAttainment ________________________________
