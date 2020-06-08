@@ -58,10 +58,10 @@ $year = range(1990, date("Y"));
                             ?>
 
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <?= $form->field($modelsExperience, "[{$index}]job_title")->textInput(['maxlength' => true]) ?>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <?= $form->field($modelsExperience, "[{$index}]date_from")->widget(DatePicker::classname(), [
                                         'options' => ['placeholder' => Yii::t('app', 'Enter_date')],
                                         'value' => Carbon::now('Asia/Amman')->toDateString(),
@@ -75,7 +75,7 @@ $year = range(1990, date("Y"));
                                     ]); ?>
                                 </div>
 
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <?= $form->field($modelsExperience, "[{$index}]date_to")->widget(DatePicker::classname(), [
                                         'options' => ['placeholder' => Yii::t('app', 'Enter_date')],
                                         'value' => Carbon::now('Asia/Amman')->toDateString(),
@@ -88,12 +88,9 @@ $year = range(1990, date("Y"));
                                         ]
                                     ]); ?>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <?= $form->field($modelsExperience, "[{$index}]facility_name")->textInput(['maxlength' => true]) ?>
                                 </div>
-                            </div>
-                            <div class="col-md-2">
-                                <input mbsc-input id="demo-desktop" data-input-style="box" placeholder="Please Select..." />
                             </div>
 
                         </div>
@@ -126,26 +123,6 @@ jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1))
 });
 
 
-  mobiscroll.settings = {
-        lang: \'en\',                // Specify language like: lang: \'pl\' or omit setting to use default
-        theme: \'ios\',              // Specify theme like: theme: \'ios\' or omit setting to use default
-        themeVariant: \'light\'  // More info about themeVariant: https://docs.mobiscroll.com/4-10-3/datetime#opt-themeVariant
-    };
-
-    $(function () {
-
-        // Mobiscroll Date & Time initialization
-        $(\'#demo-mobile\').mobiscroll().date({
-            display: \'bubble\'      // Specify display mode like: display: \'bottom\' or omit setting to use default
-        });
-
-        // Mobiscroll Date & Time initialization
-        $(\'#demo-desktop\').mobiscroll().date({
-            display: \'bubble\',     // Specify display mode like: display: \'bottom\' or omit setting to use default
-            touchUi: false         // More info about touchUi: https://docs.mobiscroll.com/4-10-3/datetime#opt-touchUi
-        });
-
-    });
 
 ';
 
