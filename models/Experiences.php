@@ -18,7 +18,9 @@ use Yii;
  */
 class Experiences extends \yii\db\ActiveRecord
 {
-    const  SCENARIO_ADD='add';
+    const  SCENARIO_UPDATE='update';
+    const  SCENARIO_CREATE='create';
+    const SCENARIO_NORMAL='normal';
     /**
      * {@inheritdoc}
      */
@@ -33,8 +35,9 @@ class Experiences extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'job_title','date_from','date_to' ,'facility_name'], 'required', 'on' => self::SCENARIO_ADD],
+            [['user_id', 'job_title','date_from','date_to' ,'facility_name'], 'required', 'on' => self::SCENARIO_NORMAL],
             [['user_id'], 'integer'],
+            [['date_from','date_to'], 'date', 'format' => 'YYYY-MM-DD'],
             [['created_at', 'updated_at'], 'safe'],
             [['job_title', 'facility_name'], 'string', 'max' => 255],
         ];
