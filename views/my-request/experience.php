@@ -58,40 +58,21 @@ $year = range(1990, date("Y"));
                             ?>
 
                             <div class="row">
-                                <div class="col-md-4">
+
+                                <div class="col-md-3">
                                     <?= $form->field($modelsExperience, "[{$index}]job_title")->textInput(['maxlength' => true]) ?>
                                 </div>
-                                <div class="col-md-2">
-                                    <?= $form->field($modelsExperience, "[{$index}]date_from")->widget(DatePicker::classname(), [
-                                        'options' => ['placeholder' => Yii::t('app', 'Enter_date')],
-                                        'value' => Carbon::now('Asia/Amman')->toDateString(),
-                                        'type' => DatePicker::TYPE_COMPONENT_APPEND,
-                                        'pluginOptions' => [
-                                            'todayHighlight' => true,
-                                            'todayBtn' => true,
-                                            'autoclose' => false,
-                                            'format' => 'yyyy-mm-dd',
-                                        ]
-                                    ]); ?>
+                                <div class="col-md-3">
+                                    <?= $form->field($modelsExperience, "[{$index}]date_from")->textInput(['class'=>'date_from form-control']) ?>
                                 </div>
-
-                                <div class="col-md-2">
-                                    <?= $form->field($modelsExperience, "[{$index}]date_to")->widget(DatePicker::classname(), [
-                                        'options' => ['placeholder' => Yii::t('app', 'Enter_date')],
-                                        'value' => Carbon::now('Asia/Amman')->toDateString(),
-                                        'type' => DatePicker::TYPE_COMPONENT_APPEND,
-                                        'pluginOptions' => [
-                                            'todayHighlight' => true,
-                                            'todayBtn' => true,
-                                            'autoclose' => false,
-                                            'format' => 'yyyy-mm-dd',
-                                        ]
-                                    ]); ?>
+                                <div class="col-md-3">
+                                    <?= $form->field($modelsExperience, "[{$index}]date_to")->textInput(['class'=>'date_to form-control']) ?>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <?= $form->field($modelsExperience, "[{$index}]facility_name")->textInput(['maxlength' => true]) ?>
                                 </div>
                             </div>
+
 
 
 
@@ -112,18 +93,44 @@ jQuery(".dynamicform_wrapper_experience").on("afterInsert", function(e, item) {
    
 jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
 jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index + 1))
+mobilscrol();
 });
 });
 
 jQuery(".dynamicform_wrapper_experience").on("afterDelete", function(e) {
 jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
-jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1))
+jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1));
+mobilscrol();
 });
+});
+$(document).ready(function () {
+mobilscrol();
 });
 
+function mobilscrol() {
+        mobiscroll.settings = {
+        lang: \'ar\',                
+        theme: \'mobiscroll\',              
+        themeVariant: \'dark\',
+        dateFormat: \'yy-mm-dd\',
+    };
+    
+        $(\'.date_from\').mobiscroll().date({
+            display: \'bubble\',     
+            touchUi: false         
+        });
+        
+         $(\'.date_to\').mobiscroll().date({
+            display: \'bottom\',     
+            touchUi: false         
+        });
+}
+   
 
 
 ';
 
 $this->registerJs($js);
+
+
 ?>

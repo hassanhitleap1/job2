@@ -96,23 +96,7 @@ jQuery(".dynamicform_wrapper_experience").on("afterInsert", function(e, item) {
    
 jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
 jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index + 1))
- mobiscroll.settings = {
-        lang: \'ar\',                
-        theme: \'mobiscroll\',              
-        themeVariant: \'dark\',
-        dateFormat: \'dd-mm-yy\',
-    };
-    
-        $(\'.date_from\').mobiscroll().date({
-            display: \'bubble\',     
-            touchUi: false         
-        });
-        
-         $(\'.date_to\').mobiscroll().date({
-            display: \'bottom\',     
-            touchUi: false         
-        });
-
+mobilscrol();
 });
 });
 
@@ -124,7 +108,6 @@ mobilscrol();
 });
 $(document).ready(function () {
 mobilscrol();
-
 });
 
 function mobilscrol() {
@@ -132,7 +115,7 @@ function mobilscrol() {
         lang: \'ar\',                
         theme: \'mobiscroll\',              
         themeVariant: \'dark\',
-        dateFormat: \'dd-mm-yy\',
+        dateFormat: \'yy-mm-dd\',
     };
     
         $(\'.date_from\').mobiscroll().date({
