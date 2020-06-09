@@ -102,11 +102,16 @@ jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index + 1))
 jQuery(".dynamicform_wrapper_experience").on("afterDelete", function(e) {
 jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
 jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1));
-jQuery(this).addClass( "myClass yourClass" );
+ mobiscroll.settings = {
+        lang: \'ar\',                
+        theme: \'mobiscroll\',              
+        themeVariant: \'dark\',
+        dateFormat: \'dd-mm-yy\',
+    };
 });
 });
 
-  mobiscroll.settings = {
+    mobiscroll.settings = {
         lang: \'ar\',                
         theme: \'mobiscroll\',              
         themeVariant: \'dark\',
