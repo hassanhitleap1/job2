@@ -61,26 +61,15 @@ $pluginOptions=[
                             ?>
 
                             <div class="row">
+
                                 <div class="col-md-3">
                                     <?= $form->field($modelsExperience, "[{$index}]job_title")->textInput(['maxlength' => true]) ?>
                                 </div>
                                 <div class="col-md-3">
-                                    <?= $form->field($modelsExperience, "[{$index}]date_from")->widget(DatePicker::classname(), [
-                                        'options' => ['placeholder' => Yii::t('app', 'Enter_date')],
-                                        'value' => Carbon::now('Asia/Amman')->toDateString(),
-                                        'type' => DatePicker::TYPE_COMPONENT_APPEND,
-                                        'pluginOptions' => $pluginOptions
-
-                                    ]); ?>
+                                    <?= $form->field($modelsExperience, "[{$index}]date_from")->textInput(['class'=>'date_from form-control']) ?>
                                 </div>
-
                                 <div class="col-md-3">
-                                    <?= $form->field($modelsExperience, "[{$index}]date_to")->widget(DatePicker::classname(), [
-                                        'options' => ['placeholder' => Yii::t('app', 'Enter_date')],
-                                        'value' => Carbon::now('Asia/Amman')->toDateString(),
-                                        'type' => DatePicker::TYPE_COMPONENT_APPEND,
-                                        'pluginOptions' => $pluginOptions
-                                    ]); ?>
+                                    <?= $form->field($modelsExperience, "[{$index}]date_to")->textInput(['class'=>'date_to form-control']) ?>
                                 </div>
                                 <div class="col-md-3">
                                     <?= $form->field($modelsExperience, "[{$index}]facility_name")->textInput(['maxlength' => true]) ?>
@@ -116,6 +105,25 @@ jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1))
 });
 });
 
+  mobiscroll.settings = {
+        lang: \'ar\',                
+        theme: \'ios\',              
+        themeVariant: \'light\',
+        dateFormat: \'dd-mm-yy\',
+    };
+    
+    $(function () {
+      
+        $(\'.date_from\').mobiscroll().date({
+            display: \'bubble\',     
+            touchUi: false         
+        });
+        $(\'.date_to\').mobiscroll().date({
+            display: \'bottom\',     
+            touchUi: false         
+        });
+    });
+    
 
 
 ';
