@@ -101,7 +101,8 @@ jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index + 1))
 
 jQuery(".dynamicform_wrapper_experience").on("afterDelete", function(e) {
 jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
-jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1))
+jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1));
+jQuery(this).addClass( "myClass yourClass" );
 });
 });
 
@@ -112,17 +113,18 @@ jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1))
         dateFormat: \'dd-mm-yy\',
     };
     
-    $(function () {
-      
         $(\'.date_from\').mobiscroll().date({
             display: \'bubble\',     
             touchUi: false         
         });
-        $(\'.date_to\').mobiscroll().date({
+        
+         $(\'.date_to\').mobiscroll().date({
             display: \'bottom\',     
             touchUi: false         
         });
-    });
+
+
+
     
 
 
