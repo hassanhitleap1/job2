@@ -108,8 +108,8 @@ jQuery(this).addClass( "myClass yourClass" );
 
   mobiscroll.settings = {
         lang: \'ar\',                
-        theme: \'ios\',              
-        themeVariant: \'light\',
+        theme: \'mobiscroll\',              
+        themeVariant: \'dark\',
         dateFormat: \'dd-mm-yy\',
     };
     
