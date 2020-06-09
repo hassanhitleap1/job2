@@ -112,8 +112,8 @@ class RequatJobController extends \yii\web\Controller
 
                                 $experience .=
                                     $modelsExperience['job_title'] . "  " .
-                                    ' من ' . $from .' '.
-                                    ' الى ' .  $to  . "  " .
+                                    ' من ' .  Carbon::parse($modelsExperience['date_from'])->toDateString() .' '.
+                                    ' الى ' . Carbon::parse($modelsExperience['date_to'])->toDateString()  . "  " .
                                     ' في ' . $modelsExperience['facility_name'] .
                                     "<br />";
                                 // format date 2019-10-26 15:48:41
@@ -133,16 +133,21 @@ class RequatJobController extends \yii\web\Controller
                         }
                     
                          //________________________________ Experiences ________________________________
-                        foreach ($modelsEducationalAttainment as $modelsEducationalAttainm) {
+                        foreach ($_POST['EducationalAttainment'] as $modelsEducationalAttainm) {
+                            $model_educational_attainment= new EducationalAttainment();
+                            $model_educational_attainment->degree= $modelsEducationalAttainm['degree'];
+                            $model_educational_attainment->specialization = $modelsEducationalAttainm['specialization'];
+                            $model_educational_attainment->university = $modelsEducationalAttainm['university'];
+                            $model_educational_attainment->year_get = $modelsEducationalAttainm['year_get'];
                             $certificate .=
-                                $modelsEducationalAttainm->degree . "  " .
-                                $modelsEducationalAttainm->specialization. "  ".
-                                $modelsEducationalAttainm->university ."  ".
-                                $modelsEducationalAttainm->year_get .
+                                $modelsEducationalAttainm['degree'] . "  " .
+                                $modelsEducationalAttainm['specialization']. "  ".
+                                $modelsEducationalAttainm['university'] ."  ".
+                                $modelsEducationalAttainm['year_get'] .
                                 "<br />";
 
-                            $modelsEducationalAttainm->user_id = $model->id;
-                            if (!($flag = $modelsEducationalAttainm->save(false))) {
+                            $model_educational_attainment->user_id = $model->id;
+                            if (!($flag = $model_educational_attainment->save(false))) {
                                 $transaction->rollBack();
                                 break;
                             }

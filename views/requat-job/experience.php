@@ -112,7 +112,7 @@ mobilscrol();
 
 function mobilscrol() {
         mobiscroll.settings = {
-        lang: \'ar\',                
+        lang: \'en\',                
         theme: \'mobiscroll\',              
         themeVariant: \'dark\',
         dateFormat: \'yy-mm-dd\',

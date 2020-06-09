@@ -162,4 +162,6 @@ return [
     "Date_From"=>"من تاريخ",
     "Date_To"=>"الى اتاريخ",
     'Forgot_Password'=>'نسيت كلمة السر',
+    "I_Agree"=>"اوافق شروط",
+    "Must_Select_Agree"=>"يجب ان توافق عبى الشروط",
 ];

@@ -14,6 +14,7 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
     public  $cv;
     public $confirm_pass;
     public $password;
+    public $i_agree;
     const CREATE='create';
     const UPDATE='update';
 
@@ -76,6 +77,7 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
     {
         return [
             [['name','phone','password' ,'gender','agree','nationality','email', 'governorate','area'], 'required' ,'on' => self::CREATE],
+            [['i_agree'], 'required', 'requiredValue' => 1, 'message' => Yii::t('app', 'Must_Select_Agree'), 'on' => self::CREATE],
             [['name', 'phone',  'gender', 'agree', 'nationality', 'governorate', 'area'], 'required', 'on' => self::UPDATE],
             [['agree', 'phone', 'nationality','governorate','gender'], 'integer'],
             [['email'],'email'],

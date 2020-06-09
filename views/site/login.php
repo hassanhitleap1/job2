@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?= $form->field($model, 'password')->passwordInput()->label(Yii::t('app', 'Password'))  ?>
                             <?= $form->field($model, 'rememberMe')->checkbox()->label(Yii::t('app', 'Remember_Me')) ?>
                                 <div class="form-group">
-                                    <?=Html::a(Yii::t('app','Forgot_Password'), ['site/forget-password'])?>
+                                    <?php //echo Html::a(Yii::t('app','Forgot_Password'), ['site/forget-password'])?>
                                 </div>
                             </div>
                         </div>
