@@ -96,22 +96,7 @@ jQuery(".dynamicform_wrapper_experience").on("afterInsert", function(e, item) {
    
 jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
 jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index + 1))
-});
-});
-
-jQuery(".dynamicform_wrapper_experience").on("afterDelete", function(e) {
-jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
-jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1));
  mobiscroll.settings = {
-        lang: \'ar\',                
-        theme: \'mobiscroll\',              
-        themeVariant: \'dark\',
-        dateFormat: \'dd-mm-yy\',
-    };
-});
-});
-
-    mobiscroll.settings = {
         lang: \'ar\',                
         theme: \'mobiscroll\',              
         themeVariant: \'dark\',
@@ -128,9 +113,39 @@ jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1));
             touchUi: false         
         });
 
+});
+});
 
+jQuery(".dynamicform_wrapper_experience").on("afterDelete", function(e) {
+jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
+jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1));
+mobilscrol();
+});
+});
+$(document).ready(function () {
+mobilscrol();
 
+});
+
+function mobilscrol() {
+        mobiscroll.settings = {
+        lang: \'ar\',                
+        theme: \'mobiscroll\',              
+        themeVariant: \'dark\',
+        dateFormat: \'dd-mm-yy\',
+    };
     
+        $(\'.date_from\').mobiscroll().date({
+            display: \'bubble\',     
+            touchUi: false         
+        });
+        
+         $(\'.date_to\').mobiscroll().date({
+            display: \'bottom\',     
+            touchUi: false         
+        });
+}
+   
 
 
 ';
