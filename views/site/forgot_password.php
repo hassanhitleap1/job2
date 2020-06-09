@@ -11,7 +11,7 @@ use yii\bootstrap\ActiveForm;
 $this->title = Yii::t('app', 'Forgot_Password');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
+<div class="container">
     <div class="row">
         <div class="col-md-7 col-md-offset-3">
             <div class="panel panel-default">

@@ -18,3 +18,8 @@ ALTER TABLE `experiences`
 
 
 ALTER TABLE `experiences` ADD `date_from` DATETIME NOT NULL AFTER `job_title`, ADD `date_to` DATETIME NOT NULL AFTER `date_from`;
+
+
+CREATE TABLE `job`.`forgot_password` ( `id` INT NOT NULL AUTO_INCREMENT , `validate_code` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `user_id` INT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `user` ADD `verification_email` VARCHAR(255) NULL DEFAULT NULL AFTER `communication_skills`;
