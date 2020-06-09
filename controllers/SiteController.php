@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Forgot_Password;
 use app\models\Pages;
 use Yii;
 use yii\filters\AccessControl;
@@ -132,7 +133,7 @@ class SiteController extends Controller
 
     public function actionForgetPassword()
     {
-        $model= new Forgot_Password;
+        $model= new Forgot_Password();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             return $this->render('forgot_password', ['model' => $model]);
         }

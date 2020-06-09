@@ -161,4 +161,5 @@ return [
     "Email_Or_Phone"=>"البريد الاليكتروني أو الهاتف",
     "Date_From"=>"من تاريخ",
     "Date_To"=>"الى اتاريخ",
+    'Forgot_Password'=>'نسيت كلمة السر',
 ];

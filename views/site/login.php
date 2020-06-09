@@ -21,6 +21,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label(Yii::t('app', 'Email_Or_Phone'))  ?>
                             <?= $form->field($model, 'password')->passwordInput()->label(Yii::t('app', 'Password'))  ?>
                             <?= $form->field($model, 'rememberMe')->checkbox()->label(Yii::t('app', 'Remember_Me')) ?>
+                                <div class="form-group">
+                                    <?=Html::a(Yii::t('app','Forgot_Password'), ['site/forget-password'])?>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
