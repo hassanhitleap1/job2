@@ -7,6 +7,9 @@ use yii\bootstrap\Html;
 
 $month = range(1, 12);
 $year = range(1990, date("Y"));
+$pluginOptions=[
+
+];
 
 ?>
 
@@ -66,12 +69,8 @@ $year = range(1990, date("Y"));
                                         'options' => ['placeholder' => Yii::t('app', 'Enter_date')],
                                         'value' => Carbon::now('Asia/Amman')->toDateString(),
                                         'type' => DatePicker::TYPE_COMPONENT_APPEND,
-                                        'pluginOptions' => [
-                                            'todayHighlight' => true,
-                                            'todayBtn' => true,
-                                            'autoclose' => false,
-                                            'format' => 'yyyy-mm-dd',
-                                        ]
+                                        'pluginOptions' => $pluginOptions
+
                                     ]); ?>
                                 </div>
 
@@ -80,12 +79,7 @@ $year = range(1990, date("Y"));
                                         'options' => ['placeholder' => Yii::t('app', 'Enter_date')],
                                         'value' => Carbon::now('Asia/Amman')->toDateString(),
                                         'type' => DatePicker::TYPE_COMPONENT_APPEND,
-                                        'pluginOptions' => [
-                                            'todayHighlight' => true,
-                                            'todayBtn' => true,
-                                            'autoclose' => false,
-                                            'format' => 'yyyy-mm-dd',
-                                        ]
+                                        'pluginOptions' => $pluginOptions
                                     ]); ?>
                                 </div>
                                 <div class="col-md-3">
