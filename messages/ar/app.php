@@ -169,4 +169,10 @@ return [
     "Email_not_found"=>"البريد الاليكتروني غير مسجل",
     "Successfully_Change_Password"=>"تم تغير كلمة السر بنجاح",
     "And"=>"و",
+    'Details' => 'تفاصيل',
+    'Director_Word'=> 'كلمة المدير',
+    'Discounts_Form'=> 'نموذج الخصومات',
+    'Map' =>  'خريطة',
+    'Brochure' =>'بروشور',
+    'Contact_Information' =>  'خريطة',
 ];

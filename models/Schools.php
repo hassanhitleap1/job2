@@ -32,8 +32,10 @@ class Schools extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['logo'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg '],
+            // [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 200],
+            [['details', 'director_word', 'discounts_form', 'map', 'contact_information'], 'string']
         ];
     }
 
@@ -45,6 +47,12 @@ class Schools extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
+            'details'=>Yii::t('app', 'Details'),
+            'director_word' => Yii::t('app', 'Director_Word'),
+            'discounts_form' => Yii::t('app', 'Discounts_Form'),
+            'map' => Yii::t('app', 'Map'),
+            'brochure' => Yii::t('app', 'Brochure'),
+            'contact_information' => Yii::t('app', 'Contact_Information'),
             'created_at' => Yii::t('app', 'Created_At'),
             'updated_at' => Yii::t('app', 'Updated_At'),
         ];

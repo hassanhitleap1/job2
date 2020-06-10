@@ -25,3 +25,29 @@ ALTER TABLE `user` CHANGE `verification_email` `verification_email` SMALLINT NUL
 CREATE TABLE `job`.`forgot_password` ( `id` INT NOT NULL AUTO_INCREMENT , `validate_code` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `user_id` INT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
 ALTER TABLE `user` ADD `verification_email` VARCHAR(255) NULL DEFAULT NULL AFTER `communication_skills`;
+
+
+CREATE TABLE `schools` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `details` longtext CHARACTER SET utf8 NOT NULL,
+  `director_word` longtext CHARACTER SET utf8 NOT NULL,
+  `discounts_form` longtext CHARACTER SET utf8 NOT NULL,
+  `map` longtext CHARACTER SET utf8 NOT NULL,
+  `brochure` longtext CHARACTER SET utf8 NOT NULL,
+  `contact_information` longtext CHARACTER SET utf8 NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+ALTER TABLE `schools`
+  ADD PRIMARY KEY (`id`);
+
+
+ALTER TABLE `schools`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+
+CREATE TABLE `job`.`images_school` ( `id` INT NOT NULL AUTO_INCREMENT , `school_id` INT NOT NULL , `path` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;

@@ -2,12 +2,14 @@
 
 namespace app\controllers;
 
+use app\models\ImagesSchool;
 use Yii;
 use app\models\Schools;
 use app\models\SchoolsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
 
 /**
@@ -67,30 +69,52 @@ class SchoolsController extends BaseController
     {
         $model = new Schools();
         if ($model->load(Yii::$app->request->post()) ) {
-            $insert_id = Yii::app()->db->getLastInsertID();
+
+            // $next_ID=0;
+            $insert_id  = (new \yii\db\Query())
+            ->select(['id'])
+            ->from('schools')
+            ->orderBy([
+                'id' => SORT_DESC 
+            ])->one();
+            if($insert_id==null){
+                $insert_id=0;
+            }else {
+                $insert_id ++;
+            }
             $file = UploadedFile::getInstance($model, 'logo');
             $images_school = UploadedFile::getInstance($model, 'images_school');
-            if(!is_null($file)){
-                $folder_path="schools/logo/$insert_id";
-                mkdir($folder_path);
-                $logo="$folder_path/logo".".". $file->extension;
-                $file->saveAs($logo);
-                $model->logo=$logo;
-            }
-            if(!is_null($images_school)){
-                $folder_path="schools/logo/$insert_id";
-                foreach ($images_school as $image_school) {
-                    $image_school="$folder_path/logo".".". $image_school->extension;
-                    $images_school->saveAs($image_school);
+            if($model->validate()){
+
+                if (!is_null($file)) {
+                    $folder_path = "schools/logo/$insert_id";
+                    FileHelper::createDirectory($folder_path, $mode = 0775, $recursive = true);
+                    $logo = "$folder_path/logo" . "." . $file->extension;
+                    $file->saveAs($logo);
+                    $model->logo = $logo;
+                }
+
+                if (!is_null($images_school)) {
+                    $folder_path = "schools/logo/$insert_id";
+                    $i = 1;
+                    foreach ($images_school as $image_school) {
+                        $modelImagesSchool = new  ImagesSchool();
+                        $folder_path = "schools/logo/$insert_id";
+                        $image_school = $folder_path . $i . "." . $image_school->extension;
+                        $modelImagesSchool->$image_school = $insert_id;
+                        $modelImagesSchool->path = $image_school;
+                        $images_school->saveAs($image_school);
+                        $modelImagesSchool->save(false);
+                        $i++;
+                    }
                 }
             }
-            foreach ($this->imageFiles as $file) {
-                $file->saveAs('uploads/' . $file->baseName . '.' . $file->extension);
-            }
-            if( $model->validate()){
+         
+   
+            
                 $model->save();
                 return $this->redirect(['view', 'id' => $model->id]);
-            }
+        
         }
 
         return $this->render('create', [
@@ -110,16 +134,48 @@ class SchoolsController extends BaseController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
-            $id=$model->id;
+        
+            $insert_id  = $model->id;
             $file = UploadedFile::getInstance($model, 'logo');
-            if(!is_null($file)){
-                $folder_path="schools/logo/$id";
-                rmdir($folder_path);
-                mkdir($folder_path);
-                $logo="$folder_path/logo".".". $file->extension;
-                $file->saveAs($logo);
-                $model->logo=$logo;
+            $images_school = UploadedFile::getInstances($model, 'images_school');
+           // $images_school = UploadedFile::getInstance($model, 'images_school');
+            if ($model->validate()) {
+
+                if (!is_null($file)) {
+                    $folder_path = "schools/logo/$insert_id";
+                    FileHelper::createDirectory($folder_path, $mode = 0775, $recursive = true);
+                    $logo = "$folder_path/logo" . "." . $file->extension;
+                    $file->saveAs($logo);
+                    $model->logo = $logo;
+                }
+
+
+              print_r($images_school)
+
+                // if (!is_null($images_school)) {
+                
+                //     $folder_path = "schools/logo/$insert_id";
+                //     $i = 1;
+                //     foreach ($images_school as $image_school) {
+                       
+                //         $modelImagesSchool = new  ImagesSchool();
+                //         $folder_path = "schools/logo/$insert_id";
+                //         $image_school = "$folder_path/images/$i" . "." . $image_school->extension;
+                        
+                //         $modelImagesSchool->school_id = $insert_id;
+                //         $modelImagesSchool->path = $image_school;
+                //         $images_school->saveAs($image_school);
+                       
+                    
+                //         // $modelImagesSchool->save(false);
+                //         $i++;
+                //     }
+                    
+                // }
             }
+
+            exit;
+         
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
