@@ -1,12 +1,10 @@
 <?php
 
 use app\models\Area;
-use app\models\Categories;
+
 use app\models\Governorate;
 use app\models\Nationality;
 use conquer\select2\Select2Widget;
-
-use wbraganca\dynamicform\DynamicFormWidget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -89,12 +87,12 @@ $this->title = Yii::t('app', 'Requast_Job');
                             'label' => Yii::t('app', 'I_Agree') , 'data-size' => 'small', 'class' => 'bs_switch', 'style' => 'margin-bottom:4px;', 'id' => 'active'
                         ]) ?>
                         <?= Html::a(Yii::t('app', 'Terms_Conditions'), ['/site/terms-conditions']) ?>
+                        <?=Yii::t('app', 'And')?>
                         <?= Html::a(Yii::t('app', 'Privacy_Policy'), ['/site/privacy-policy']) ?>
                     </div>
                 </div>
             </div>
             <div class="row">
-
                 <div class="col-md-2">
                     <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-primary btn-lg ']) ?>
                 </div>
