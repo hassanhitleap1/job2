@@ -120,6 +120,7 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
+        $this->layout = "maintheme";
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
@@ -133,6 +134,7 @@ class SiteController extends Controller
 
     public function actionForgetPassword()
     {
+        $this->layout = "maintheme";
         $model= new Forgot_Password();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             return $this->render('forgot_password', ['model' => $model]);
@@ -143,6 +145,7 @@ class SiteController extends Controller
 
     public function actionNewPassword()
     {
+        $this->layout = "maintheme";
         $model = new NewPassword;
         $session = Yii::$app->session;
         $token=Yii::$app->request->get('token');
@@ -252,6 +255,29 @@ class SiteController extends Controller
         return $this->render('our-responsibility',['page'=>$page]);
     }
 
+    /**
+     * Displays about page.
+     *
+     * @return string
+     */
+    public function actionPrivacyPolicy()
+    {
+        $this->layout = "maintheme";
+        $page=Pages::find()->where(['key'=>'privacy-policy'])->one();
+        return $this->render('privacy-policy',['page'=>$page]);
+    }
+
+    /**
+     * Displays about page.
+     *
+     * @return string
+     */
+    public function actionTermsConditions()
+    {
+        $this->layout = "maintheme";
+        $page=Pages::find()->where(['key'=>'terms-conditions'])->one();
+        return $this->render('terms-conditions',['page'=>$page]);
+    }
 
      /**
      * Signs user up.

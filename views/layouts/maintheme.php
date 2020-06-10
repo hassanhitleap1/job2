@@ -110,7 +110,9 @@ AppAsset::register($this);
                         <li>
                             <?= Html::a(Yii::t('app', 'OurMessage'), ['/site/our-message']) ?>
                         </li>
-
+                        <li>
+                            <?= Html::a(Yii::t('app', 'GrowthStrategies'), ['/site/our-goals']) ?>
+                        </li>
                     </ul>
 
                 </div>
@@ -123,9 +125,7 @@ AppAsset::register($this);
                     <h5 class="text-uppercase">روابط</h5>
 
                     <ul class="list-unstyled">
-                        <li>
-                            <?= Html::a(Yii::t('app', 'GrowthStrategies'), ['/site/our-goals']) ?>
-                        </li>
+
                         <li>
                             <?= Html::a(Yii::t('app', 'RateUs'), ['/site/growth-strategies']) ?>
                         </li>
@@ -135,7 +135,14 @@ AppAsset::register($this);
                         <li>
                             <?= Html::a(Yii::t('app', 'OurResponsibility'), ['/site/our-responsibility']) ?>
                         </li>
+                        <li>
+                            <?= Html::a(Yii::t('app', 'Terms_Conditions'), ['/site/terms-conditions']) ?>
+                        </li>
+                        <li>
+                            <?= Html::a(Yii::t('app', 'Privacy_Policy'), ['/site/privacy-policy']) ?>
+                        </li>
 
+                        
                     </ul>
 
                 </div>

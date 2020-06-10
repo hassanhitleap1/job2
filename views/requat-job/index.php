@@ -88,6 +88,8 @@ $this->title = Yii::t('app', 'Requast_Job');
                         <?= $form->field($model, 'i_agree')->checkBox([
                             'label' => Yii::t('app', 'I_Agree') , 'data-size' => 'small', 'class' => 'bs_switch', 'style' => 'margin-bottom:4px;', 'id' => 'active'
                         ]) ?>
+                        <?= Html::a(Yii::t('app', 'Terms_Conditions'), ['/site/terms-conditions']) ?>
+                        <?= Html::a(Yii::t('app', 'Privacy_Policy'), ['/site/privacy-policy']) ?>
                     </div>
                 </div>
             </div>

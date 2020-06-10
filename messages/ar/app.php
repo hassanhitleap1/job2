@@ -164,4 +164,6 @@ return [
     'Forgot_Password'=>'نسيت كلمة السر',
     "I_Agree"=>"اوافق شروط",
     "Must_Select_Agree"=>"يجب ان توافق عبى الشروط",
+    "Terms_Conditions"=>"الشروط والأحكام",
+    "Privacy_Policy"=>"سياسات واالخصوصية",
 ];
