@@ -142,7 +142,7 @@ AppAsset::register($this);
                             <?= Html::a(Yii::t('app', 'Privacy_Policy'), ['/site/privacy-policy']) ?>
                         </li>
 
-                        
+
                     </ul>
 
                 </div>
