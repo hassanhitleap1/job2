@@ -167,4 +167,5 @@ return [
     "Terms_Conditions"=>"الشروط والأحكام",
     "Privacy_Policy"=>"سياسات واالخصوصية",
     "Email_not_found"=>"البريد الاليكتروني غير مسجل",
+    "Successfully_Change_Password"=>"تم تغير كلمة السر بنجاح",
 ];

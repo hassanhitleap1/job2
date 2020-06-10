@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\Forgot_Password;
+use app\models\ForgotPassword;
+use app\models\NewPassword;
 use app\models\Pages;
 use Yii;
 use yii\filters\AccessControl;

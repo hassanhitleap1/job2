@@ -60,6 +60,7 @@ class RequatJobController extends \yii\web\Controller
             $model->expected_salary=0;
             $model->note='';
             $model->name_company='';
+            $model->verification_email=1;
             $model->subscribe_date=null;
             // validate all models
             $valid = $model->validate() &&

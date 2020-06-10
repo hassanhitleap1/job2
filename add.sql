@@ -19,6 +19,8 @@ ALTER TABLE `experiences`
 
 ALTER TABLE `experiences` ADD `date_from` DATETIME NOT NULL AFTER `job_title`, ADD `date_to` DATETIME NOT NULL AFTER `date_from`;
 
+ALTER TABLE `user` CHANGE `verification_email` `verification_email` SMALLINT NULL DEFAULT NULL;
+
 
 CREATE TABLE `job`.`forgot_password` ( `id` INT NOT NULL AUTO_INCREMENT , `validate_code` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `user_id` INT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
