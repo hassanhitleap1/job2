@@ -8,6 +8,7 @@ use app\models\SchoolsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * SchoolsController implements the CRUD actions for Schools model.
@@ -65,9 +66,31 @@ class SchoolsController extends BaseController
     public function actionCreate()
     {
         $model = new Schools();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) ) {
+            $insert_id = Yii::app()->db->getLastInsertID();
+            $file = UploadedFile::getInstance($model, 'logo');
+            $images_school = UploadedFile::getInstance($model, 'images_school');
+            if(!is_null($file)){
+                $folder_path="schools/logo/$insert_id";
+                mkdir($folder_path);
+                $logo="$folder_path/logo".".". $file->extension;
+                $file->saveAs($logo);
+                $model->logo=$logo;
+            }
+            if(!is_null($images_school)){
+                $folder_path="schools/logo/$insert_id";
+                foreach ($images_school as $image_school) {
+                    $image_school="$folder_path/logo".".". $image_school->extension;
+                    $images_school->saveAs($image_school);
+                }
+            }
+            foreach ($this->imageFiles as $file) {
+                $file->saveAs('uploads/' . $file->baseName . '.' . $file->extension);
+            }
+            if( $model->validate()){
+                $model->save();
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('create', [
@@ -86,7 +109,18 @@ class SchoolsController extends BaseController
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $id=$model->id;
+            $file = UploadedFile::getInstance($model, 'logo');
+            if(!is_null($file)){
+                $folder_path="schools/logo/$id";
+                rmdir($folder_path);
+                mkdir($folder_path);
+                $logo="$folder_path/logo".".". $file->extension;
+                $file->saveAs($logo);
+                $model->logo=$logo;
+            }
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -104,6 +138,8 @@ class SchoolsController extends BaseController
      */
     public function actionDelete($id)
     {
+        $folder_path="schools/logo/$id";
+        rmdir($folder_path);
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

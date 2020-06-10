@@ -15,6 +15,8 @@ use Yii;
  */
 class Schools extends \yii\db\ActiveRecord
 {
+    public $logo;
+    public $images_school;
     /**
      * {@inheritdoc}
      */
