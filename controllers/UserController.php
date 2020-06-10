@@ -2,56 +2,16 @@
 namespace app\controllers;
 use app\models\User;
 use Yii;
+use yii\filters\VerbFilter;
+use yii\web\Controller;
 
-class UserController extends BaseController
+class UserController extends Controller
 {
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                ],
-            ],
-            'access' => [
-                'class' => \yii\filters\AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => ['profile', 'referral', 'edit', 'alarm','verification-email'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'denyCallback' => function ($rule, $action) {
-                            return $this->goBack();
-                        },
-                    ],
-                    [
-                        'actions' => [''],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'denyCallback' => function ($rule, $action) {
-                            return \Yii::$app->getUser()->loginRequired();
-                        },
-                    ],
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'denyCallback' => function ($rule, $action) {
-                            return $this->goHome();
-                        },
-                    ],
-                ],
 
-            ],
-        ];
-    }
 
-    /*
-     *
-     */
     public function actionVerificationEmail(){
         $codeValidate=@$_GET['verification_email'];
+
         if(!empty($codeValidate)){
             if(Yii::$app->user->identity->verification_email == $codeValidate){
                 $model = $this->findModel(Yii::$app->user->id);
@@ -63,6 +23,7 @@ class UserController extends BaseController
         }
         return $this->render('verification-email');
     }
+
 
     /**
      * Finds the Ads model based on its primary key value.

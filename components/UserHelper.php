@@ -3,6 +3,7 @@
 namespace  app\components;
 
 use Yii;
+use yii\base\BaseObject;
 
 
 class UserHelper extends BaseObject
