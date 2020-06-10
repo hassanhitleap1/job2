@@ -166,4 +166,5 @@ return [
     "Must_Select_Agree"=>"يجب ان توافق عبى الشروط",
     "Terms_Conditions"=>"الشروط والأحكام",
     "Privacy_Policy"=>"سياسات واالخصوصية",
+    "Email_not_found"=>"البريد الاليكتروني غير مسجل",
 ];

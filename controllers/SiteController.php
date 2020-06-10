@@ -146,7 +146,7 @@ class SiteController extends Controller
     public function actionNewPassword()
     {
         $this->layout = "maintheme";
-        $model = new NewPassword;
+        $model = new NewPassword();
         $session = Yii::$app->session;
         $token=Yii::$app->request->get('token');
         $tokenRow = ForgotPassword::find()

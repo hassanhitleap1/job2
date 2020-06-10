@@ -42,7 +42,7 @@ class Forgot_Password extends Model
 
         if (!$this->hasErrors()) {
             if (empty($user)) {
-                $this->addError($attribute, Yii::t('app', 'Eemil_not_found'));
+                $this->addError($attribute, Yii::t('app', 'Email_not_found'));
             }else {
                 $validateCode = md5(uniqid(rand(), true));
                 Yii::$app->db->createCommand()
