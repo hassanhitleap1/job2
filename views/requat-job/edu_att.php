@@ -3,6 +3,7 @@
 use app\models\Degrees;
 use conquer\select2\Select2Widget;
 use wbraganca\dynamicform\DynamicFormWidget;
+use yii\bootstrap\Html;
 use yii\helpers\ArrayHelper;
 
 $year = range(1990, date("Y"));

@@ -33,13 +33,14 @@ $this->title = Yii::t('app', 'Requast_Job');
 
                 <div class="row">
                     <div class="col-lg-2">
-                        <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                        <?= $form->field($model, 'name')->textInput(['maxlength' => true])
+                            ->label(Yii::t('app', 'Name') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Name_Example') . '"></span>') ?>
                     </div>
                     <div class="col-md-2">
                         <?= $form->field($model, "gender")->dropDownList([1 => "ذكر", 2 => "انثى"]); ?>
                     </div>
                     <div class="col-lg-2">
-                        <?= $form->field($model, 'agree')->textInput() ?>
+                        <?= $form->field($model, 'agree')->textInput()->label(Yii::t('app', 'Agree') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Agree_Example') . '"></span>')  ?>
                     </div>
                     <div class="col-lg-2">
                         <?= $form->field($model, 'nationality')->widget(
@@ -68,10 +69,10 @@ $this->title = Yii::t('app', 'Requast_Job');
                     </div>
                 </div>
                 <div class="row">
-                    <?php  include('edu_att.php') ?>
+                    <?php include('edu_att.php') ?>
                 </div>
                 <div class="row">
-                    <?php  include('experience.php') ?>
+                    <?php include('experience.php') ?>
                 </div>
                 <div class="row">
                     <?php include('courses.php') ?>
