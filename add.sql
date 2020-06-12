@@ -53,3 +53,7 @@ COMMIT;
 CREATE TABLE `job`.`images_school` ( `id` INT NOT NULL AUTO_INCREMENT , `school_id` INT NOT NULL , `path` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
 ALTER TABLE `experiences` CHANGE `date_from` `date_from` DATE NOT NULL, CHANGE `date_to` `date_to` DATE NOT NULL;
+
+ALTER TABLE `educational_attainment` CHANGE `specialization` `specialization` VARCHAR(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, CHANGE `university` `university` VARCHAR(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
+
+ALTER TABLE `experiences` CHANGE `job_title` `job_title` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, CHANGE `facility_name` `facility_name` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
