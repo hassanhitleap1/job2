@@ -24,6 +24,7 @@ use yii\helpers\Html; ?>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-envelope"></i> <?= Yii::t('app', 'Courses') ?> <?= Yii::t('app', 'IF_Exist') ?>
+                <button type="button" class="pull-right add-item btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i></button>
                 <button type="button" class="pull-right add-item btn btn-success btn-sm"><i class="glyphicon glyphicon-plus"></i> <?= Yii::t('app', 'Add') ?> </button>
                 <div class="clearfix"></div>
             </div>
@@ -47,13 +48,13 @@ use yii\helpers\Html; ?>
 
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <?= $form->field($modelCourse, "[{$index}]name_course")->textInput(['maxlength' => true]) ?>
+                                    <?= $form->field($modelCourse, "[{$index}]name_course")->textInput(['maxlength' => true,'placeholder' => Yii::t('app', 'Name_Course_Example')]) ?>
                                 </div>
                                 <div class="col-sm-4">
-                                    <?= $form->field($modelCourse, "[{$index}]destination")->textInput(['maxlength' => true]) ?>
+                                    <?= $form->field($modelCourse, "[{$index}]destination")->textInput(['maxlength' => true, 'placeholder' => Yii::t('app', 'Destination_Example')]) ?>
                                 </div>
                                 <div class="col-sm-4">
-                                    <?= $form->field($modelCourse, "[{$index}]duration")->textInput(['maxlength' => true]) ?>
+                                    <?= $form->field($modelCourse, "[{$index}]duration")->textInput(['maxlength' => true, 'placeholder' => Yii::t('app', 'Duration_Example')]) ?>
                                 </div>
                             </div><!-- end:row -->
 

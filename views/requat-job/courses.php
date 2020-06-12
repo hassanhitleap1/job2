@@ -33,6 +33,7 @@ use wbraganca\dynamicform\DynamicFormWidget; ?>
                         <!-- widgetBody -->
                         <div class="panel-heading">
                             <span class="panel-title-address"> <?= Yii::t('app', 'Courses') ?> : <?= ($index + 1) ?></span>
+                            <button type="button" class="pull-right add-item btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i></button>
                             <button type="button" class="pull-right remove-item btn btn-danger btn-xs"><i class="glyphicon glyphicon-minus"></i></button>
                             <div class="clearfix"></div>
                         </div>
@@ -46,15 +47,15 @@ use wbraganca\dynamicform\DynamicFormWidget; ?>
 
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <?= $form->field($modelCourse, "[{$index}]name_course")->textInput(['maxlength' => true]) ?>
+                                    <?= $form->field($modelCourse, "[{$index}]name_course")->textInput(['maxlength' => true, 'placeholder' => Yii::t('app', 'Name_Course_Example')]) ?>
                                 </div>
                                 <div class="col-sm-4">
-                                    <?= $form->field($modelCourse, "[{$index}]destination")->textInput(['maxlength' => true]) ?>
+                                    <?= $form->field($modelCourse, "[{$index}]destination")->textInput(['maxlength' => true, 'placeholder' => Yii::t('app', 'Destination_Example')]) ?>
                                 </div>
                                 <div class="col-sm-4">
-                                    <?= $form->field($modelCourse, "[{$index}]duration")->textInput(['maxlength' => true]) ?>
+                                    <?= $form->field($modelCourse, "[{$index}]duration")->textInput(['maxlength' => true, 'placeholder' => Yii::t('app', 'Duration_Example')]) ?>
                                 </div>
-                            </div><!-- end:row -->
+                            </div><!-- end:row -->  
 
 
                         </div>

@@ -175,4 +175,18 @@ return [
     'Map' =>  'خريطة',
     'Brochure' =>'بروشور',
     'Contact_Information' =>  'خريطة',
+    "Phone_Example"=>"مثال 0799263494",
+    "Name_Example"=>"مثال حسن خالد حسن أبوكيوان",
+    "Agree_Example"=> "28 مثال",
+    "Specialization_Example"=>"مثال فيزياء",
+    "University_Example"=>"مثال جامعة الهاشمية",
+    "Job_Title_Example"=> "مثال مدرس فيزياء",
+    "Facility_Name_Example"=>"مدرسة الرضوان",
+    "Email_Example"=>"hasankiwan92@gmail.com مثال",
+    "Name_Course_Example"=>"مثال TOT",
+    "Destination_Example" => "مثال الردواد",
+    "Duration_Example" => "مثال 50 ساعة",
+
+
+
 ];

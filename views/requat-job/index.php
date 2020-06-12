@@ -22,14 +22,14 @@ $this->title = Yii::t('app', 'Requast_Job');
         <div class="panel-body">
             <div class="row">
                 <div class="col-lg-3">
-                    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => Yii::t('app', 'Name_Example')]) ?>
                 </div>
 
                 <div class="col-lg-2">
-                    <?= $form->field($model, 'phone')->textInput() ?>
+                    <?= $form->field($model, 'phone')->textInput(['placeholder'=> Yii::t('app', 'Phone_Example') ]) ?>
                 </div>
                 <div class="col-lg-3">
-                    <?= $form->field($model, 'email')->textInput() ?>
+                    <?= $form->field($model, 'email')->textInput(['placeholder' => Yii::t('app', 'Email_Example')]) ?>
                 </div>
                 <div class="col-lg-2">
                     <?= $form->field($model, 'password')->passwordInput()->label(Yii::t('app', 'Password')) ?>
@@ -43,7 +43,7 @@ $this->title = Yii::t('app', 'Requast_Job');
                     <?= $form->field($model, "gender")->dropDownList([1 => "ذكر", 2 => "انثى"]); ?>
                 </div>
                 <div class="col-lg-2">
-                    <?= $form->field($model, 'agree')->textInput() ?>
+                    <?= $form->field($model, 'agree')->textInput(['placeholder' => Yii::t('app', 'Agree_Example')]) ?>
                 </div>
                 <div class="col-lg-2">
                     <?= $form->field($model, 'nationality')->widget(

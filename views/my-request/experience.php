@@ -45,6 +45,7 @@ $year = range(1990, date("Y"));
                         <!-- widgetBody -->
                         <div class="panel-heading">
                             <span class="panel-title-address"> <?= Yii::t('app', 'Experience') ?> : <?= ($index + 1) ?></span>
+                            <button type="button" class="pull-right add-item btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i></button>
                             <button type="button" class="pull-right remove-item btn btn-danger btn-xs"><i class="glyphicon glyphicon-minus"></i></button>
                             <div class="clearfix"></div>
                         </div>
@@ -60,16 +61,16 @@ $year = range(1990, date("Y"));
                             <div class="row">
 
                                 <div class="col-md-3">
-                                    <?= $form->field($modelsExperience, "[{$index}]job_title")->textInput(['maxlength' => true]) ?>
+                                    <?= $form->field($modelsExperience, "[{$index}]job_title")->textInput(['maxlength' => true, 'placeholder' => Yii::t('app', 'Job_Title_Example')]) ?>
                                 </div>
                                 <div class="col-md-3">
-                                    <?= $form->field($modelsExperience, "[{$index}]date_from")->textInput(['class'=>'date_from form-control']) ?>
+                                    <?= $form->field($modelsExperience, "[{$index}]date_from")->textInput(['class' => 'date_from form-control']) ?>
                                 </div>
                                 <div class="col-md-3">
-                                    <?= $form->field($modelsExperience, "[{$index}]date_to")->textInput(['class'=>'date_to form-control']) ?>
+                                    <?= $form->field($modelsExperience, "[{$index}]date_to")->textInput(['class' => 'date_to form-control']) ?>
                                 </div>
                                 <div class="col-md-3">
-                                    <?= $form->field($modelsExperience, "[{$index}]facility_name")->textInput(['maxlength' => true]) ?>
+                                    <?= $form->field($modelsExperience, "[{$index}]facility_name")->textInput(['maxlength' => true ,'placeholder' => Yii::t('app', 'Facility_Name_Example')]) ?>
                                 </div>
                             </div>
 

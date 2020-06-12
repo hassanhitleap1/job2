@@ -150,7 +150,7 @@ class SchoolsController extends BaseController
                 }
 
 
-              print_r($images_school)
+              print_r($images_school);
 
                 // if (!is_null($images_school)) {
                 

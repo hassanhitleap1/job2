@@ -40,6 +40,7 @@ $year = range(1990, date("Y"));
                         <!-- widgetBody -->
                         <div class="panel-heading">
                             <span class="panel-title-address"> <?= Yii::t('app', 'Educational_Attainment') ?> : <?= ($index + 1) ?></span>
+                            <button type="button" class="pull-right add-item btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i></button>
                             <button type="button" class="pull-right remove-item btn btn-danger btn-xs"><i class="glyphicon glyphicon-minus"></i></button>
                             <div class="clearfix"></div>
                         </div>
@@ -61,10 +62,10 @@ $year = range(1990, date("Y"));
                                     ); ?>
                                 </div>
                                 <div class="col-sm-3">
-                                    <?= $form->field($modelEduAt, "[{$index}]specialization")->textInput(['maxlength' => true]) ?>
+                                    <?= $form->field($modelEduAt, "[{$index}]specialization")->textInput(['maxlength' => true, 'placeholder' => Yii::t('app', 'Specialization_Example')]) ?>
                                 </div>
                                 <div class="col-sm-3">
-                                    <?= $form->field($modelEduAt, "[{$index}]university")->textInput(['maxlength' => true]) ?>
+                                    <?= $form->field($modelEduAt, "[{$index}]university")->textInput(['maxlength' => true, 'placeholder' => Yii::t('app', 'University_Example')]) ?>
                                 </div>
                                 <div class="col-sm-3">
                                     <?= $form->field($modelEduAt, "[{$index}]year_get")->dropDownList($year, ['prompt' => Yii::t('app', 'Plz_Select_Year')]) ?>
