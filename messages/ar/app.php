@@ -154,7 +154,7 @@ return [
     "Plz_Select_Year"=>"ارجو تحديد السنة",
     "Plz_Select_Month"=>"ارجو تحديد الشهر",
     "Add"=>"اضافة",
-    "IF_Exist"=>"املاء ان وجد",
+    "IF_Exist"=>"ان وجد",
     "My_Request"=>"طلبي",
     "Successfuly_Message_Update"=>"تم تعديل بنجاح ",
     "Requast_Job_Form"=> "نموذج نعبئه لوظيفة من  النموذج",

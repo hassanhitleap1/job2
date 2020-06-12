@@ -31,7 +31,6 @@ $year = range(1990, date("Y"));
         <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-envelope"></i> <?= Yii::t('app', 'Educational_Attainment') ?>
-                <button type="button" class="pull-right add-item btn btn-success btn-sm"><i class="glyphicon glyphicon-plus"></i> <?= Yii::t('app', 'Add') ?> </button>
                 <div class="clearfix"></div>
             </div>
             <div class="panel-body container-items">
