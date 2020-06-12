@@ -76,12 +76,10 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name','phone','password' ,'gender','agree','nationality','email', 'governorate','area'], 'required' ,'on' => self::CREATE],
+            [['name','phone','password' ,'gender','agree','nationality', 'governorate','area'], 'required' ,'on' => self::CREATE],
             [['i_agree'], 'required', 'requiredValue' => 1, 'message' => Yii::t('app', 'Must_Select_Agree'), 'on' => self::CREATE],
             [['name', 'phone',  'gender', 'agree', 'nationality', 'governorate', 'area'], 'required', 'on' => self::UPDATE],
             [['agree', 'phone', 'nationality','governorate','gender'], 'integer'],
-            [['email'],'email'],
-            ['email', 'unique', 'targetClass' => '\app\models\User', 'message' =>'This email address has already been taken.',  'on' => self::CREATE],
             [['name'], 'string', 'max' => 255],
             [['phone'], 'isJordanPhone'],
             [['phone'],'unique','message'=>Yii::t('app','Phone_Already_Exist')],

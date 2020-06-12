@@ -60,7 +60,8 @@ $pluginOptions = [];
                             <div class="row">
 
                                 <div class="col-md-3">
-                                    <?= $form->field($modelsExperience, "[{$index}]job_title")->textInput(['maxlength' => true, 'placeholder' => Yii::t('app', 'Job_Title_Example')]) ?>
+                                    <?= $form->field($modelsExperience, "[{$index}]job_title")->textInput(['maxlength' => true])
+                                        ->label(Yii::t('app', 'Job_Title') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Job_Title_Example') . '"></span>')  ?>
                                 </div>
                                 <div class="col-md-3">
                                     <?= $form->field($modelsExperience, "[{$index}]date_from")->textInput(['class' => 'date_from form-control']) ?>
@@ -69,7 +70,8 @@ $pluginOptions = [];
                                     <?= $form->field($modelsExperience, "[{$index}]date_to")->textInput(['class' => 'date_to form-control']) ?>
                                 </div>
                                 <div class="col-md-3">
-                                    <?= $form->field($modelsExperience, "[{$index}]facility_name")->textInput(['maxlength' => true, 'placeholder' => Yii::t('app', 'Facility_Name_Example')]) ?>
+                                    <?= $form->field($modelsExperience, "[{$index}]facility_name")->textInput(['maxlength' => true])
+                                        ->label(Yii::t('app', 'Facility_Name') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Facility_Name_Example') . '"></span>')  ?>
                                 </div>
                             </div>
                         </div>

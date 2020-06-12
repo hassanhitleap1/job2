@@ -1,6 +1,9 @@
 <?php
 
-use wbraganca\dynamicform\DynamicFormWidget; ?>
+use wbraganca\dynamicform\DynamicFormWidget;
+use yii\bootstrap\Html;
+
+?>
 <div class="panel panel-default">
     <div class="panel-body">
         <?php DynamicFormWidget::begin([
@@ -47,13 +50,16 @@ use wbraganca\dynamicform\DynamicFormWidget; ?>
 
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <?= $form->field($modelCourse, "[{$index}]name_course")->textInput(['maxlength' => true, 'placeholder' => Yii::t('app', 'Name_Course_Example')]) ?>
+                                    <?= $form->field($modelCourse, "[{$index}]name_course")->textInput(['maxlength' => true])
+                                        ->label(Yii::t('app', 'Name_Course') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Name_Course_Example') . '"></span>') ?>
                                 </div>
                                 <div class="col-sm-4">
-                                    <?= $form->field($modelCourse, "[{$index}]destination")->textInput(['maxlength' => true, 'placeholder' => Yii::t('app', 'Destination_Example')]) ?>
+                                    <?= $form->field($modelCourse, "[{$index}]destination")->textInput(['maxlength' => true])
+                                        ->label(Yii::t('app', 'Destination') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Destination_Example') . '"></span>')  ?>
                                 </div>
                                 <div class="col-sm-4">
-                                    <?= $form->field($modelCourse, "[{$index}]duration")->textInput(['maxlength' => true, 'placeholder' => Yii::t('app', 'Duration_Example')]) ?>
+                                    <?= $form->field($modelCourse, "[{$index}]duration")->textInput(['maxlength' => true])
+                                        ->label(Yii::t('app', 'Duration') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Duration_Example') . '"></span>')  ?>
                                 </div>
                             </div><!-- end:row -->  
 

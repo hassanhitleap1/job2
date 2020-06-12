@@ -22,19 +22,20 @@ $this->title = Yii::t('app', 'Requast_Job');
         <div class="panel-body">
             <div class="row">
                 <div class="col-lg-3">
-                    <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => Yii::t('app', 'Name_Example')]) ?>
+                    
+                    <?= $form->field($model, 'name')->textInput(['maxlength' => true])
+                        ->label(Yii::t('app', 'Name').'  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="'. Yii::t('app', 'Name_Example').'"></span>') ?>
                 </div>
 
-                <div class="col-lg-2">
-                    <?= $form->field($model, 'phone')->textInput(['placeholder'=> Yii::t('app', 'Phone_Example') ]) ?>
-                </div>
                 <div class="col-lg-3">
-                    <?= $form->field($model, 'email')->textInput(['placeholder' => Yii::t('app', 'Email_Example')]) ?>
+                    <?= $form->field($model, 'phone')->textInput(['placeholder' => Yii::t('app', 'Phone_Example')])
+                        ->label(Yii::t('app', 'Phone') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Phone_Example') . '"></span>') ?>
                 </div>
-                <div class="col-lg-2">
+     
+                <div class="col-lg-3">
                     <?= $form->field($model, 'password')->passwordInput()->label(Yii::t('app', 'Password')) ?>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-3">
                     <?= $form->field($model, 'confirm_pass')->passwordInput()->label(Yii::t('app', 'Conf_Password'))  ?>
                 </div>
             </div>
@@ -43,7 +44,7 @@ $this->title = Yii::t('app', 'Requast_Job');
                     <?= $form->field($model, "gender")->dropDownList([1 => "ذكر", 2 => "انثى"]); ?>
                 </div>
                 <div class="col-lg-2">
-                    <?= $form->field($model, 'agree')->textInput(['placeholder' => Yii::t('app', 'Agree_Example')]) ?>
+                    <?= $form->field($model, 'agree')->textInput()->label(Yii::t('app', 'Agree') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Agree_Example') . '"></span>')  ?>
                 </div>
                 <div class="col-lg-2">
                     <?= $form->field($model, 'nationality')->widget(
@@ -84,10 +85,10 @@ $this->title = Yii::t('app', 'Requast_Job');
                 <div class="col-md-3">
                     <div class="form-group">
                         <?= $form->field($model, 'i_agree')->checkBox([
-                            'label' => Yii::t('app', 'I_Agree') , 'data-size' => 'small', 'class' => 'bs_switch', 'style' => 'margin-bottom:4px;', 'id' => 'active'
+                            'label' => Yii::t('app', 'I_Agree'), 'data-size' => 'small', 'class' => 'bs_switch', 'style' => 'margin-bottom:4px;', 'id' => 'active'
                         ]) ?>
                         <?= Html::a(Yii::t('app', 'Terms_Conditions'), ['/site/terms-conditions']) ?>
-                        <?=Yii::t('app', 'And')?>
+                        <?= Yii::t('app', 'And') ?>
                         <?= Html::a(Yii::t('app', 'Privacy_Policy'), ['/site/privacy-policy']) ?>
                     </div>
                 </div>
@@ -101,3 +102,14 @@ $this->title = Yii::t('app', 'Requast_Job');
         <?php ActiveForm::end(); ?>
     </div>
 </div>
+
+<?php
+$js = '
+$(function(){
+    $(".tooltip-helper").tooltip();
+  
+});
+
+';
+$this->registerJs($js);
+?>
