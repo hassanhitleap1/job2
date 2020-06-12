@@ -22,9 +22,8 @@ ALTER TABLE `experiences` ADD `date_from` DATETIME NOT NULL AFTER `job_title`, A
 ALTER TABLE `user` CHANGE `verification_email` `verification_email` SMALLINT NULL DEFAULT NULL;
 
 
-CREATE TABLE `job`.`forgot_password` ( `id` INT NOT NULL AUTO_INCREMENT , `validate_code` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `user_id` INT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `forgot_password` ( `id` INT NOT NULL AUTO_INCREMENT , `validate_code` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `user_id` INT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
-ALTER TABLE `user` ADD `verification_email` VARCHAR(255) NULL DEFAULT NULL AFTER `communication_skills`;
 
 
 CREATE TABLE `schools` (
@@ -50,7 +49,7 @@ ALTER TABLE `schools`
 COMMIT;
 
 
-CREATE TABLE `job`.`images_school` ( `id` INT NOT NULL AUTO_INCREMENT , `school_id` INT NOT NULL , `path` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `images_school` ( `id` INT NOT NULL AUTO_INCREMENT , `school_id` INT NOT NULL , `path` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
 ALTER TABLE `experiences` CHANGE `date_from` `date_from` DATE NOT NULL, CHANGE `date_to` `date_to` DATE NOT NULL;
 
