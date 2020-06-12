@@ -134,7 +134,7 @@ class RequastJobForm extends \yii\db\ActiveRecord
             'assigns_to'=>Yii::t('app', 'Assigns_To'),
             'assigns_for'=>Yii::t('app', 'Assigns_For'),
             'Created_At' => Yii::t('app', 'Created_At'),
-            'priorities' => Yii::t('app', 'Priorities'),
+            'priorities' => Yii::t('app', 'Courses'),
             'first_payment'=>Yii::t('app', 'First_Payment'),
             'work_tolerance'=>Yii::t('app', 'Work_Tolerance'),
             'teamwork'=>Yii::t('app', 'Teamwork'),
