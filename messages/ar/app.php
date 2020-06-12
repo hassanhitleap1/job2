@@ -162,7 +162,7 @@ return [
     "Date_From"=>"من تاريخ",
     "Date_To"=>"الى اتاريخ",
     'Forgot_Password'=>'نسيت كلمة السر',
-    "I_Agree"=>"اوافق شروط",
+    "I_Agree"=>"اوافق على شروط",
     "Must_Select_Agree"=>"يجب ان توافق على الشروط",
     "Terms_Conditions"=>"الشروط والأحكام",
     "Privacy_Policy"=>"سياسات واالخصوصية",
