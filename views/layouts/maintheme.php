@@ -111,7 +111,7 @@ AppAsset::register($this);
                             <?= Html::a(Yii::t('app', 'OurMessage'), ['/site/our-message']) ?>
                         </li>
                         <li>
-                            <?= Html::a(Yii::t('app', 'GrowthStrategies'), ['/site/our-goals']) ?>
+                            <?= Html::a(Yii::t('app', 'GrowthStrategies'), ['/site/growth-strategies']) ?>
                         </li>
                     </ul>
 
@@ -126,9 +126,6 @@ AppAsset::register($this);
 
                     <ul class="list-unstyled">
 
-                        <li>
-                            <?= Html::a(Yii::t('app', 'RateUs'), ['/site/growth-strategies']) ?>
-                        </li>
                         <li>
                             <?= Html::a(Yii::t('app', 'RateUs'), ['/site/rate-us']) ?>
                         </li>

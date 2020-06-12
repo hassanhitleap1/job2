@@ -4,7 +4,7 @@
 
 use yii\helpers\Html;
 
-$this->title = Yii::t('app', 'OurVision');
+$this->title = Yii::t('app', 'OurRateUs');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container">
