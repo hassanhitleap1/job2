@@ -95,4 +95,10 @@ class Schools extends \yii\db\ActiveRecord
     {
         return new SchoolsQuery(get_called_class());
     }
+
+
+    public function lastInsertId($sequence = null)
+    {
+        return $this->query('SELECT CAST(COALESCE(SCOPE_IDENTITY(), @@IDENTITY) AS bigint)')->fetchColumn();
+    }
 }

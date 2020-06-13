@@ -32,6 +32,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
         
             'name',
+            'details',
+            'director_word',
+            'discounts_form',
+            'map',
+            'brochure',
+            'contact_information',
             'created_at',
             'updated_at',
         ],
