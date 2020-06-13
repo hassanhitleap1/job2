@@ -121,7 +121,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-md-12">
                 <?=$form->field($model, 'user_id')->widget(Select2Widget::classname(),
                     [
-                        'items' => ArrayHelper::map(User::find()->where(['type' => User::NORMAL_USER])->all(), 'id', 'name'),
+                        'items' => ArrayHelper::map(User::find()->where(['type' => User::FORM_APPLAY_USER])->all(), 'id', 'name'),
                         'options' => ['placeholder' => 'Select Phone Number', 'value' =>$user->id ,'id'=>'user-id'],
                     ]);
                 ?>

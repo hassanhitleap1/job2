@@ -160,7 +160,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                 'msgwhatsapp' => function ($url, $model,$key) {
-                    $url="index.php?r=requast-job-not-pay/msgwhatsapp&id=".$model->id;
+                    $url= "index.php?r=requast-job-form/msgwhatsapp&id=".$model->id;
                     return Html::button(' '.Yii::t('app', 'msgwhatsapp') , ['value' => $url,
                         'title' => Yii::t('app', 'msgwhatsapp'),
                         'class' => 'msgwhatsapp btn btn-info glyphicon glyphicon-envelope','data-pjax' => 0]);
