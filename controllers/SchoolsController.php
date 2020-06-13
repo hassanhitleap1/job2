@@ -159,13 +159,13 @@ class SchoolsController extends BaseController
                     $folder_path = "schools/$insert_id";
                     ImagesSchool::deleteAll(['school_id' => $insert_id]);
                     $i = 1;
-                    FileHelper::createDirectory("$folder_path/images", $mode = 0775, $recursive = true);
                     FileHelper::removeDirectory("$folder_path/images");
+                    FileHelper::createDirectory("$folder_path/images", $mode = 0775, $recursive = true);
                      foreach ($images_school as $image_school) {
                         $modelImagesSchool = new  ImagesSchool();
                         $file_path = "$folder_path/images/$i" . "." . $image_school->extension;
                         $modelImagesSchool->school_id = $insert_id;
-                        $modelImagesSchool->path = $image_school;
+                        $modelImagesSchool->path = $file_path;
                         $image_school->saveAs($file_path);
                         $modelImagesSchool->save(false);
                          $i++;

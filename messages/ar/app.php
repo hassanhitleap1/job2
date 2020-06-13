@@ -186,6 +186,8 @@ return [
     "Name_Course_Example"=>"مثال دورة التعزيز الذاتي للطالب",
     "Destination_Example" => "مثال مركز الرواد",
     "Duration_Example" => "كتابة المدة بالساعات مثال 50 ساعة",
+    "Create_Schools"=>"انشاء مدرسة",
+    "Update_Schools: {name}"=> " {name}  تحديث المدرسة ",
 
 
 
