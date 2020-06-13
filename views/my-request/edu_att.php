@@ -6,7 +6,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
-$year = range(1990, date("Y"));
+$year = array_combine(range(1990, date("Y")), range(1990, date("Y")));
 
 ?>
 <div class="panel panel-default">

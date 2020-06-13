@@ -150,18 +150,19 @@ class SchoolsController extends BaseController
                 }
 
 
-              print_r($images_school);
+             
 
-                // if (!is_null($images_school)) {
+                 if (!is_null($images_school)) {
                 
-                //     $folder_path = "schools/logo/$insert_id";
-                //     $i = 1;
-                //     foreach ($images_school as $image_school) {
-                       
-                //         $modelImagesSchool = new  ImagesSchool();
-                //         $folder_path = "schools/logo/$insert_id";
-                //         $image_school = "$folder_path/images/$i" . "." . $image_school->extension;
+                    $folder_path = "schools/logo/$insert_id";
+                    $i = 1;
+                    
+                     foreach ($images_school as $image_school) {
                         
+                        $modelImagesSchool = new  ImagesSchool();
+                        $file_path = "$folder_path/images/$i" . "." . $image_school->extension;
+                        print_r($file_path);
+                        echo "<br />";
                 //         $modelImagesSchool->school_id = $insert_id;
                 //         $modelImagesSchool->path = $image_school;
                 //         $images_school->saveAs($image_school);
@@ -169,9 +170,9 @@ class SchoolsController extends BaseController
                     
                 //         // $modelImagesSchool->save(false);
                 //         $i++;
-                //     }
+                     }
                     
-                // }
+                 }
             }
 
             exit;

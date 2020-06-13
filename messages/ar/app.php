@@ -184,7 +184,7 @@ return [
     "Facility_Name_Example"=>"مثال مدرسة الرضوان",
     "Email_Example"=>"hasankiwan92@gmail.com مثال",
     "Name_Course_Example"=>"مثال دورة التعزيز الذاتي للطالب",
-    "Destination_Example" => "مثال مركز الردواد",
+    "Destination_Example" => "مثال مركز الرواد",
     "Duration_Example" => "كتابة المدة بالساعات مثال 50 ساعة",
 
 
