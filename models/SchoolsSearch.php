@@ -18,7 +18,7 @@ class SchoolsSearch extends Schools
     {
         return [
             [['id'], 'integer'],
-            [['name', 'created_at', 'updated_at'], 'safe'],
+            [['name',  'details', 'director_word', 'discounts_form', 'map', 'brochure', 'contact_information'], 'safe'],
         ];
     }
 
@@ -59,11 +59,17 @@ class SchoolsSearch extends Schools
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            
         ]);
+        //'details', 'director_word', 'discounts_form', 'map', 'brochure', 'contact_information'
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+        ->andFilterWhere(['like', 'director_word', $this->director_word])
+        ->andFilterWhere(['like', 'discounts_form', $this->discounts_form])
+        ->andFilterWhere(['like', 'map', $this->map])
+        ->andFilterWhere(['like', 'brochure', $this->brochure])
+        ->andFilterWhere(['like', 'brochure', $this->brochure])
+        ->andFilterWhere(['like', 'contact_information', $this->contact_information]);
 
         return $dataProvider;
     }
