@@ -78,6 +78,15 @@ class Schools extends \yii\db\ActiveRecord
         }
     }
 
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getImagesSchools()
+    {
+        return $this->hasMany(ImagesSchool::className(), ['school_id' => 'id']);
+    }
+
     /**
      * {@inheritdoc}
      * @return SchoolsQuery the active query used by this AR class.

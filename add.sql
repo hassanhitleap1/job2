@@ -56,3 +56,6 @@ ALTER TABLE `experiences` CHANGE `date_from` `date_from` DATE NOT NULL, CHANGE `
 ALTER TABLE `educational_attainment` CHANGE `specialization` `specialization` VARCHAR(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, CHANGE `university` `university` VARCHAR(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
 
 ALTER TABLE `experiences` CHANGE `job_title` `job_title` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, CHANGE `facility_name` `facility_name` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
+
+ALTER TABLE `schools` ADD `path_logo` VARCHAR(255) NOT NULL AFTER `contact_information`;
+ALTER TABLE `schools` CHANGE `path_logo` `path_logo` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;

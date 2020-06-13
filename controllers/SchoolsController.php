@@ -72,46 +72,48 @@ class SchoolsController extends BaseController
 
             // $next_ID=0;
             $insert_id  = (new \yii\db\Query())
-            ->select(['id'])
+            ->select('id')
             ->from('schools')
             ->orderBy([
                 'id' => SORT_DESC 
-            ])->one();
+            ])->one()['id'];
+                
             if($insert_id==null){
                 $insert_id=0;
             }else {
                 $insert_id ++;
             }
+            
             $file = UploadedFile::getInstance($model, 'logo');
-            $images_school = UploadedFile::getInstance($model, 'images_school');
+            $images_school = UploadedFile::getInstances($model, 'images_school');
+            
             if($model->validate()){
-
                 if (!is_null($file)) {
-                    $folder_path = "schools/logo/$insert_id";
+                    $folder_path = "schools/$insert_id";
                     FileHelper::createDirectory($folder_path, $mode = 0775, $recursive = true);
                     $logo = "$folder_path/logo" . "." . $file->extension;
-                    $file->saveAs($logo);
+                    $model->path_logo= $logo;
+                   $file->saveAs($logo);
                     $model->logo = $logo;
                 }
+            }
 
                 if (!is_null($images_school)) {
-                    $folder_path = "schools/logo/$insert_id";
+                    
+                    $folder_path = "schools/$insert_id"; 
                     $i = 1;
+                    FileHelper::createDirectory("$folder_path/images", $mode = 0775, $recursive = true);
                     foreach ($images_school as $image_school) {
                         $modelImagesSchool = new  ImagesSchool();
-                        $folder_path = "schools/logo/$insert_id";
-                        $image_school = $folder_path . $i . "." . $image_school->extension;
-                        $modelImagesSchool->$image_school = $insert_id;
+                        $file_path = "$folder_path/images/$i" . "." . $image_school->extension;
+                        $modelImagesSchool->school_id = $insert_id;
                         $modelImagesSchool->path = $image_school;
-                        $images_school->saveAs($image_school);
+                        $image_school->saveAs($file_path);
                         $modelImagesSchool->save(false);
                         $i++;
                     }
                 }
-            }
-         
-   
-            
+               
                 $model->save();
                 return $this->redirect(['view', 'id' => $model->id]);
         
@@ -138,15 +140,15 @@ class SchoolsController extends BaseController
             $insert_id  = $model->id;
             $file = UploadedFile::getInstance($model, 'logo');
             $images_school = UploadedFile::getInstances($model, 'images_school');
-           // $images_school = UploadedFile::getInstance($model, 'images_school');
             if ($model->validate()) {
 
                 if (!is_null($file)) {
                     $folder_path = "schools/logo/$insert_id";
+                    FileHelper::removeDirectory($folder_path);
                     FileHelper::createDirectory($folder_path, $mode = 0775, $recursive = true);
                     $logo = "$folder_path/logo" . "." . $file->extension;
                     $file->saveAs($logo);
-                    $model->logo = $logo;
+                    $model->path_logo = $logo;
                 }
 
 
@@ -154,28 +156,24 @@ class SchoolsController extends BaseController
 
                  if (!is_null($images_school)) {
                 
-                    $folder_path = "schools/logo/$insert_id";
+                    $folder_path = "schools/$insert_id";
                     $i = 1;
-                    
+                    FileHelper::createDirectory("$folder_path/images", $mode = 0775, $recursive = true);
+                    FileHelper::removeDirectory("$folder_path/images");
                      foreach ($images_school as $image_school) {
-                        
                         $modelImagesSchool = new  ImagesSchool();
                         $file_path = "$folder_path/images/$i" . "." . $image_school->extension;
-                        print_r($file_path);
-                        echo "<br />";
-                //         $modelImagesSchool->school_id = $insert_id;
-                //         $modelImagesSchool->path = $image_school;
-                //         $images_school->saveAs($image_school);
-                       
-                    
-                //         // $modelImagesSchool->save(false);
-                //         $i++;
+                        $modelImagesSchool->school_id = $insert_id;
+                        $modelImagesSchool->path = $image_school;
+                        $image_school->saveAs($file_path);
+                        $modelImagesSchool->save(false);
+                         $i++;
                      }
                     
                  }
             }
 
-            exit;
+        
          
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
@@ -195,7 +193,7 @@ class SchoolsController extends BaseController
      */
     public function actionDelete($id)
     {
-        $folder_path="schools/logo/$id";
+        $folder_path="schools/$id";
         rmdir($folder_path);
         $this->findModel($id)->delete();
 

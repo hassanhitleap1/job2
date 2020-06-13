@@ -1,28 +1,44 @@
 <?php
 
 use kartik\file\FileInput;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Schools */
-/* @var $form yii\widgets\ActiveForm */
 
-$dataAvatar = [];
+
+$dataLogo = [];
+$dataImages=[];
+
+// print_r(ArrayHelper::map($model->imagesSchools, 'id', 'path'));
+
+
+
 if (!$model->isNewRecord) {
+    $dataLogo = [
+        'initialPreview' => [
+            Yii::getAlias('@web') . '/'. $model->path_logo,
+        ],
+       'initialPreviewAsData' => true,
+        'initialCaption' => Yii::getAlias('@web') . '/' . $model->path_logo,
+        'initialPreviewConfig' => [
+            ['caption' => $model->name],
+        ],
+        'overwriteInitial' => false,
+        
+    ];
+    $dataImages = [
+        'initialPreview' => [
+            Yii::getAlias('@web') . '/' . $model->path_logo,
+        ],
+        'initialPreviewAsData' => true,
+        'initialCaption' => $model->path_logo,
+        'initialPreviewConfig' => [
+            ['caption' => $model->name],
+        ],
+        'overwriteInitial' => false,
 
-    // $dataAvatar = [
-    //     'initialPreview' => [
-    //         Yii::getAlias('@web') . '/schools/'. $model->id.'/index' . $model
-    //     ],
-
-    //     'initialPreviewAsData' => true,
-    //     'initialCaption' => $model->avatar,
-    //     'initialPreviewConfig' => [
-    //         ['caption' => $model->name],
-    //     ],
-    //     'overwriteInitial' => false,
-    // ];
+    ];
 }
 ?>
 
@@ -39,13 +55,13 @@ if (!$model->isNewRecord) {
     <?= $form->field($model, 'contact_information')->textarea(['rows' => 6]) ?>
     <?= $form->field($model, 'logo')->widget(FileInput::classname(), [
         'options' => ['accept' => 'image/*'],
-        'pluginOptions' => $dataAvatar
+        'pluginOptions' => $dataLogo
     ]);
     ?>
 
     <?= $form->field($model, 'images_school[]')->widget(FileInput::classname(), [
         'options' => ['accept' => 'image/*', 'multiple' => true],
-        'pluginOptions' => $dataAvatar
+        'pluginOptions' => $dataImages
     ]);
     ?>
 
