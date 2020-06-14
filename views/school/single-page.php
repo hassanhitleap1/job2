@@ -29,9 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
     }
 </style>
 <div class="container">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1> <?= Yii::t('app', 'School') . ' ' . $model->name ?> </h1>
@@ -43,43 +40,32 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="5000">
                             <!-- Indicators -->
                             <ol class="carousel-indicators carousel-indicators--thumbnails">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active">
-                                    <div class="thumbnail">
-                                        <img src="http://www.fillmurray.com/800/400" class="img-responsive">
-                                    </div>
-                                </li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1">
-                                    <div class="thumbnail">
-                                        <img src="http://www.fillmurray.com/800/401" class="img-responsive">
-                                    </div>
-                                </li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2">
-                                    <div class="thumbnail">
-                                        <img src="http://www.fillmurray.com/800/402" class="img-responsive">
-                                    </div>
-                                </li>
+                                <?php $i = 0 ?>
+                                <?php foreach ($model->imagesSchools as $key => $value) : ?>
+                                    <li data-target="#carousel-example-generic" data-slide-to="<?= $i ?>" class="<?= ($i == 0) ? 'active' : '' ?>">
+                                        <div class="thumbnail">
+                                            <?= Html::img($value->path, ['class' => 'img-responsive']); ?>
+                                        </div>
+                                    </li>
+                                    <?php $i++; ?>
+                                <?php endforeach; ?>
+
                             </ol>
 
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner" role="listbox">
-                                <div class="item active">
-                                    <img src="http://www.fillmurray.com/800/400" width="800" height="400">
-                                    <div class="carousel-caption">
-                                        Slide 1
+                                <?php $i = 0 ?>
+                                <?php foreach ($model->imagesSchools as $key => $value) : ?>
+                                    <div class="item <?= ($i == 0) ? 'active' : '' ?>">
+                                        <?= Html::img($value->path, ['style' => ['width' => '800', 'height' => '400']]); ?>
+                                        <div class="carousel-caption">
+                                            Slide <?= $i ?>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="item">
-                                    <img src="http://www.fillmurray.com/800/401" width="800" height="400">
-                                    <div class="carousel-caption">
-                                        Slide 2
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <img src="http://www.fillmurray.com/800/402" width="800" height="400">
-                                    <div class="carousel-caption">
-                                        Slide 3
-                                    </div>
-                                </div>
+                                    <?php $i++; ?>
+                                <?php endforeach; ?>
+
+
                             </div>
 
                             <!-- Controls -->

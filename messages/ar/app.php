@@ -174,7 +174,7 @@ return [
     'Discounts_Form'=> 'نموذج الخصومات',
     'Map' =>  'خريطة',
     'Brochure' =>'بروشور',
-    'Contact_Information' =>  'خريطة',
+    'Contact_Information' =>  'معلومات الاتصال',
     "Phone_Example"=>"07xxxxxxxx",
     "Name_Example"=>"الاسم من اربع مقاطع",
     "Agree_Example"=> "(29)كتابة العمر برقم صحيح",
