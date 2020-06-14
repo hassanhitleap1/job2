@@ -40,6 +40,7 @@ class SchoolController extends Controller
      */
     public function actionSinglePage($id)
     {
+        $this->layout = "maintheme";
         return $this->render('single-page', [
             'model' => $this->findModel($id),
         ]);

@@ -233,3 +233,8 @@ a.desc:after {
 .logo-index{
     margin: 0 auto;
 }
+.tab-content {
+    padding: 10px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
