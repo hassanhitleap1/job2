@@ -188,6 +188,8 @@ return [
     "Duration_Example" => "كتابة المدة بالساعات مثال 50 ساعة",
     "Create_Schools"=>"انشاء مدرسة",
     "Update_Schools: {name}"=> " {name}  تحديث المدرسة ",
+    "More_Details"=>"المزيد من التفاصيل ",
+    "School"=>"مدرسة",
 
 
 

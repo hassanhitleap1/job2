@@ -6,7 +6,9 @@ use app\models\Forgot_Password;
 use app\models\ForgotPassword;
 use app\models\NewPassword;
 use app\models\Pages;
+use app\models\Schools;
 use Yii;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -71,6 +73,13 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $namepage="index-local";
+        $query =    Schools::find();
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count()]);
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
         if (Yii::$app->user->isGuest) {
             $this->layout = "maintheme";
             $namepage="index";
@@ -78,6 +87,8 @@ class SiteController extends Controller
         $merchants= Merchant::find()->where(['type'=>User::MERCHANT_USER])->all();
         return $this->render($namepage,[
             'merchants' => $merchants,
+            'models' => $models,
+            'pages' => $pages,
         ]);
     }
 

@@ -61,6 +61,19 @@ class SchoolsController extends BaseController
     }
 
     /**
+     * Displays a single Schools model.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionSinglePage($id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    /**
      * Creates a new Schools model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -209,6 +222,7 @@ class SchoolsController extends BaseController
      * @return Schools the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
+
     protected function findModel($id)
     {
         if (($model = Schools::findOne($id)) !== null) {

@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+use yii\widgets\LinkPager;
 
 $this->title = 'home';
 ?>
@@ -41,4 +42,29 @@ $this->title = 'home';
 			<span class="sr-only">Next</span>
 		</a>
 	</div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <?php foreach ($models as $model) : ?>
+            <div class="col-md-3 col-sm-4 ">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <?=Yii::t('app','School') .' '. $model->name?>
+                    </div>
+                    <div class="panel-body">
+                        <?= Html::img($model->path_logo,['class'=>"img-rounded img-responsive center-block"]);?>
+                    </div>
+                    <div class="panel-footer">
+                        <?= Html::a(Yii::t('app','More_Details'), ['/school/single-page','id' =>$model->id],['class' => 'btn btn-primary btn-sm btn-block']) ?>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach;?>
+    </div>
+    <?=
+     LinkPager::widget([
+        'pagination' => $pages,
+    ]);
+    ?>
 </div>
