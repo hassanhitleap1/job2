@@ -36,6 +36,11 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <div class="panel-body">
             <div class="row">
+                <?php if($model->imagesSchools->count()!=0 ):?>
+                    <? foreach ($model->imagesSchools as $key => $value) :?>
+
+                    <?php endforeach;?>
+                <?php endif;?>
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12 col-md-8 col-md-offset-2">
