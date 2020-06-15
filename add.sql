@@ -59,3 +59,6 @@ ALTER TABLE `experiences` CHANGE `job_title` `job_title` VARCHAR(255) CHARACTER 
 
 ALTER TABLE `schools` ADD `path_logo` VARCHAR(255) NOT NULL AFTER `contact_information`;
 ALTER TABLE `schools` CHANGE `path_logo` `path_logo` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
+
+
+ALTER TABLE `user` ADD `action_user` INT NOT NULL DEFAULT '0' AFTER `verification_email`;

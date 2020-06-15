@@ -123,13 +123,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div id="menu4" class="tab-pane fade">
                         <h3><?= Yii::t('app', 'Contact_Information') ?></h3>
                         <p>
-                            <?= $model->contact_information ?>
+                            
                         </p>
                     </div>
                     <div id="menu5" class="tab-pane fade">
                         <h3><?= Yii::t('app', 'Map') ?></h3>
                         <p>
-                            <?= $model->map ?>
+                           
                         </p>
                     </div>
                 </div>

@@ -36,6 +36,9 @@ class RequastJobForm extends \yii\db\ActiveRecord
     public $file;
     public $assigns_to=[];
     public $assigns_for=[];
+    const NOT_INTERVIEWED = 0;
+    const WAS_INTERVIEWED=1;
+    
 
 
     /**
@@ -140,6 +143,7 @@ class RequastJobForm extends \yii\db\ActiveRecord
             'teamwork'=>Yii::t('app', 'Teamwork'),
             'work_permanently'=>Yii::t('app', 'Work_Permanently'),
             'communication_skills'=>Yii::t('app', 'Communication_Skills'),
+            'action_user' => Yii::t('app', 'Action_User'),
            
 
         ];

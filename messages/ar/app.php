@@ -190,6 +190,9 @@ return [
     "Update_Schools: {name}"=> " {name}  تحديث المدرسة ",
     "More_Details"=>"المزيد من التفاصيل ",
     "School"=>"مدرسة",
+    "Action_User"=>"Action User",
+    "NOT_INTERVIEWED"=>"لم يتم مقابلته",
+    "WAS_INTERVIEWED" => "تم مقابلته",
 
 
 

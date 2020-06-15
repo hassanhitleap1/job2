@@ -1,5 +1,6 @@
 <?php
 
+use app\models\RequastJobForm;
 use app\models\User;
 use app\models\UserMessage;
 use Carbon\Carbon;
@@ -34,32 +35,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'rowOptions'=>function($searchModel){
-            if($searchModel->smssend->created_at==null ){
-                return ['class' => 'danger'];
-            }
-            $deff = Carbon::parse(Carbon::now("Asia/Amman"))
-               ->floatDiffInDays($searchModel->smssend->updated_at, false);
-
-            if($searchModel->smssend->count==1 ){
-                if($deff >= 7){
-                    return ['class' => 'danger'];
-                }
-               
-            }elseif ($searchModel->smssend->count == 2) {
-            # code...
-                if ($deff >= 14) {
-                    return ['class' => 'danger'];
-                }
-               
-            }elseif ($searchModel->smssend->count == 3) {
-            # code...
-                if ($deff >= 21) {
-                    return ['class' => 'danger'];
-                }
-                
-            }
             
-                
+            if(RequastJobForm::NOT_INTERVIEWED==0){
+                    return ['class' => 'danger'];
+            }else {
+                    return ['class' => 'success'];
+            }
+              
         },
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
@@ -130,32 +112,53 @@ $this->params['breadcrumbs'][] = $this->title;
                         return ['class' => 'class_num_' . $searchModel->id];
                     }
             ],
+            
+            [
+                'attribute' => 'action_user',
+                'value' => function ($searchModel) {
+                    if (RequastJobForm::NOT_INTERVIEWED == $searchModel->action_user) {
+                        return Yii::t('app', 'NOT_INTERVIEWED')
+                        ."<button type='button' class='btn btn-success'>success</button>";
+                    } else {
+                        return Yii::t('app', 'WAS_INTERVIEWED');
+                    }
+                },
+                'filter' => [
+                    RequastJobForm::NOT_INTERVIEWED  => Yii::t('app', 'NOT_INTERVIEWED'),
+                    RequastJobForm::WAS_INTERVIEWED  => Yii::t('app', 'WAS_INTERVIEWED')
+                ],
+                 
+
+                'format' => 'html',
+            ],
              [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{view} {sendsms} {delete} {Cv} {update} {sendwhatsapp} {plus}{minus} {msgwhatsapp}',  // the default buttons + your custom button
+            'template' => '{view} {delete} {Cv} {update} {sendwhatsapp} {plus}{minus} {msgwhatsapp}',  // the default buttons + your custom button
             'buttons' => [
                   'view' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
                                     'title' => Yii::t('app', 'lead-view'),
-                                    'class' => 'btn btn-info'
+                                    'class' => ''
                         ]);
                     },
 
                     'update' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
                                     'title' => Yii::t('app', 'lead-update'),
-                                    'class' => 'btn btn-info'
+                                    'class' => ''
                         ]);
                     },
                     'delete' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
                                     'title' => Yii::t('app', 'lead-delete'),
-                                    'class' => 'btn btn-info'
+                                    'class' => ''
                         ]);
                     },
                 'Cv' => function($url, $model, $key) {   
                       // render your custom button
-                    return  Html::a('Cv', ['requast-job/show-cv', 'id' => $model->id],['class' => 'btn btn-info glyphicon glyphicon-th', 'data-pjax' => 0]);
+                    return  Html::a('Cv', ['requast-job/show-cv', 'id' => $model->id],
+                        ['class' => 'glyphicon glyphicon-th', 
+                        'data-pjax' => 0]);
                 },
 
 
@@ -163,24 +166,23 @@ $this->params['breadcrumbs'][] = $this->title;
                     $url= "index.php?r=requast-job-form/msgwhatsapp&id=".$model->id;
                     return Html::button(' '.Yii::t('app', 'msgwhatsapp') , ['value' => $url,
                         'title' => Yii::t('app', 'msgwhatsapp'),
-                        'class' => 'msgwhatsapp btn btn-info glyphicon glyphicon-envelope','data-pjax' => 0]);
+                        'class' => 'msgwhatsapp  glyphicon glyphicon-envelope','data-pjax' => 0]);
+                        
                 },
 
-                // 'printcv' => function($url, $model, $key) {     // render your custom button
-                //     return  Html::a('CV', ['requast-job/print-cv', 'id' => $model->id],['class' => 'glyphicon glyphicon-print', 'data-pjax' => 0]);
-                // },
-                'sendsms' => function ($url, $model, $key) {     // render your custom button
-                    return  Html::button('sendsms',  ['target' => '_blank','value'=>Url::to('index.php?r=requast-job/send-single-message&id='.$model->id),'class' => 'btn btn-info glyphicon glyphicon-envelope', 'id'=>"modelbutton",'data-pjax' => 0]);
-                },
+               
                 'sendwhatsapp' => function ($url, $model, $key)use($message) {     // render your custom button
                     $phone=substr($model->phone, 1);;
-                    return  Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=$message", ['target' => '_blank','class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]);
+                    return  Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=$message",
+                     ['target' => '_blank','class' => 'glyphicon glyphicon-envelope', 'data-pjax' => 0]);
                 },
                 'plus' => function ($url, $model, $key) {     // render your custom button
-                    return  Html::button('plus',  ['value' => $model->id, 'class' => 'btn btn-info glyphicon  glyphicon-plus', 'id' => "plusbutton", 'data-pjax' => 1]);
+                    return  Html::button('plus',  
+                    ['value' => $model->id, 'class' => 'glyphicon  glyphicon-plus', 'id' => "plusbutton", 'data-pjax' => 1]);
                 },
                 'minus' => function ($url, $model, $key) {     // render your custom button
-                    return  Html::button('minus',  [ 'value' => $model->id, 'class' => 'btn btn-info glyphicon glyphicon-minus', 'id' => "minusbutton", 'data-pjax' => 1]);
+                    return  Html::button('minus',  
+                    [ 'value' => $model->id, 'class' => 'glyphicon glyphicon-minus', 'id' => "minusbutton", 'data-pjax' => 1]);
                 },
                 
             ]
