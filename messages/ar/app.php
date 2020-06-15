@@ -1,7 +1,7 @@
 <?php
 return [
     'Home'=>'الصفحة الرئيسية',
-    'Requast_Job'=>'نموذج نعبئه لوظيفة',
+    'Requast_Job'=>'نموذج تعبئة وظيفة',
     'Requast_Job_Not_Pay'=>'نموذج نعبئه لوظيفة ( لم يدفع)',
     'Signup'=>'تسجيل',
     'Login'=>'الدخول',
@@ -157,7 +157,7 @@ return [
     "IF_Exist"=>"ان وجد",
     "My_Request"=>"طلبي",
     "Successfuly_Message_Update"=>"تم تعديل بنجاح ",
-    "Requast_Job_Form"=> "نموذج نعبئه لوظيفة من  النموذج",
+    "Requast_Job_Form" => "نموذج تعبئة وظيفة",
     "Email_Or_Phone"=>"البريد الاليكتروني أو الهاتف",
     "Date_From"=>"من تاريخ",
     "Date_To"=>"الى تاريخ",
