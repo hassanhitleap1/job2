@@ -14,6 +14,7 @@ use app\models\SendSmsModel;
 use app\models\User;
 use Carbon\Carbon;
 use ConvertApi\ConvertApi;
+use Exception;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Url;
@@ -318,6 +319,34 @@ class RequastJobFormController extends BaseController
         return ;
     }
 
+
+    /**
+     * Creates a new RequastJob model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionChangeAction($id)
+    {
+        $model = $this->findModel($id);
+        
+        if(isset($_GET)){
+            
+            if(RequastJobForm::NOT_INTERVIEWED == $_GET['action_user']){
+                $model->action_user = RequastJobForm::NOT_INTERVIEWED;
+                
+            }elseif (RequastJobForm::WAS_INTERVIEWED == $_GET['action_user']) {
+                $model->action_user = RequastJobForm::WAS_INTERVIEWED;
+                
+            }
+            $model->save();
+            
+        } 
+        header('Content-Type: application/json');
+        $data["status"] = 201;
+        echo json_encode($data, JSON_PRETTY_PRINT);
+        return;
+    }
+
     /**
      * @param $id
      */
@@ -333,6 +362,21 @@ class RequastJobFormController extends BaseController
             'message'=>$message
         ]);
     }
-    
+
+
+    /**
+     * @param $id
+     */
+    public function  actionAction_user($id)
+    {
+        $model = $this->findModel($id);
+        
+        $dataModel = UserMessage::find()->where(['user_id' => Yii::$app->user->id])->one();
+        $message = ($dataModel == null) ? '' : $dataModel->text;
+        return $this->renderAjax('action_user', [
+            'model' => $model,
+            'message' => $message
+        ]);
+    }
     
 }

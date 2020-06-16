@@ -117,8 +117,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'action_user',
                 'value' => function ($searchModel) {
                     if (RequastJobForm::NOT_INTERVIEWED == $searchModel->action_user) {
-                        return Yii::t('app', 'NOT_INTERVIEWED')
-                        ."<button type='button' class='btn btn-success'>success</button>";
+                        return Yii::t('app', 'NOT_INTERVIEWED');
                     } else {
                         return Yii::t('app', 'WAS_INTERVIEWED');
                     }
@@ -133,7 +132,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
              [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{view} {delete} {Cv} {update} {sendwhatsapp} {plus}{minus} {msgwhatsapp}',  // the default buttons + your custom button
+            'template' => '{view} {delete} {Cv} {update} {sendwhatsapp} {msgwhatsapp}{action_user}',  // the default buttons + your custom button
             'buttons' => [
                   'view' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
@@ -164,26 +163,26 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 'msgwhatsapp' => function ($url, $model,$key) {
                     $url= "index.php?r=requast-job-form/msgwhatsapp&id=".$model->id;
-                    return Html::button(' '.Yii::t('app', 'msgwhatsapp') , ['value' => $url,
+                    return Html::button('' , ['value' => $url,
                         'title' => Yii::t('app', 'msgwhatsapp'),
                         'class' => 'msgwhatsapp  glyphicon glyphicon-envelope','data-pjax' => 0]);
                         
                 },
+                    'action_user' => function ($url, $model, $key) {
+                        $url = "index.php?r=requast-job-form/action_user&id=" . $model->id;
+                        return Html::button('', [
+                            'value' => $url,
+                            'title' => Yii::t('app', 'Action_User'),
+                            'class' => 'action_user  glyphicon glyphicon-cog', 'data-pjax' => 0
+                        ]);
+                    },
 
-               
                 'sendwhatsapp' => function ($url, $model, $key)use($message) {     // render your custom button
                     $phone=substr($model->phone, 1);;
-                    return  Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=$message",
+                    return  Html::a('', "https://api.whatsapp.com/send?phone=962$phone&text=$message",
                      ['target' => '_blank','class' => 'glyphicon glyphicon-envelope', 'data-pjax' => 0]);
                 },
-                'plus' => function ($url, $model, $key) {     // render your custom button
-                    return  Html::button('plus',  
-                    ['value' => $model->id, 'class' => 'glyphicon  glyphicon-plus', 'id' => "plusbutton", 'data-pjax' => 1]);
-                },
-                'minus' => function ($url, $model, $key) {     // render your custom button
-                    return  Html::button('minus',  
-                    [ 'value' => $model->id, 'class' => 'glyphicon glyphicon-minus', 'id' => "minusbutton", 'data-pjax' => 1]);
-                },
+             
                 
             ]
             ],

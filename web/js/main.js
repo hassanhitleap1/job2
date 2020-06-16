@@ -29,6 +29,11 @@ $(document).on("click",".msgwhatsapp",function(){
         .load($(this).attr('value'));
 });
 
+$(document).on("click", ".action_user", function () {
+    $('.modal').modal('show')
+        .find('#modelContent')
+        .load($(this).attr('value'));
+});
 
 $(document).on("click",".suggested-jobs",function(){
     $('.modal').modal('show')
@@ -251,6 +256,10 @@ function diff_time(date){
  
     return diffDays;
 }
+
+
+
+
 
 
 
