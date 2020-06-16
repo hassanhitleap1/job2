@@ -238,3 +238,6 @@ a.desc:after {
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
+.text-requst{
+    color: white !important;
+}

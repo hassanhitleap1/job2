@@ -21,14 +21,23 @@ $this->title = 'home';
 		<div class="carousel-inner">
 			<div class="item active">
 				<img src="https://jctechs.co.uk/images/resume.jpg" alt="Los Angeles">
+				<div class="carousel-caption">
+					<?= Html::a("<h2>" . Yii::t('app', 'Requast_Job') . "</h2>", ['/requat-job/index'], ['class' => 'text-requst']) ?>
+				</div>
 			</div>
 
 			<div class="item">
 				<img src="https://www.saintpats.org/school/wp-content/uploads/2017/08/slider-test-teacher.jpg" alt="Chicago">
+				<div class="carousel-caption">
+					<?= Html::a("<h2>" . Yii::t('app', 'Requast_Job') . "</h2>", ['/requat-job/index'], ['class' => 'text-requst']) ?>
+				</div>
 			</div>
 
 			<div class="item">
 				<img src="https://p18cdn4static.sharpschool.com/UserFiles/Servers/Server_591111/Image/Homepage/Hero%20Slider/IMG_9729%20-%20Cleared%20for%20Use%20-%20cropped.jpg" alt="New York">
+				<div class="carousel-caption">
+					<?= Html::a("<h2>" . Yii::t('app', 'Requast_Job') . "</h2>", ['/requat-job/index'], ['class' => 'text-requst']) ?>
+				</div>
 			</div>
 		</div>
 
@@ -45,26 +54,26 @@ $this->title = 'home';
 </div>
 
 <div class="container">
-    <div class="row">
-        <?php foreach ($models as $model) : ?>
-            <div class="col-md-3 col-sm-4 ">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <?=Yii::t('app','School') .' '. $model->name?>
-                    </div>
-                    <div class="panel-body">
-                        <?= Html::img($model->path_logo,['class'=>"img-rounded img-responsive center-block"]);?>
-                    </div>
-                    <div class="panel-footer">
-                        <?= Html::a(Yii::t('app','More_Details'), ['/school/single-page','id' =>$model->id],['class' => 'btn btn-primary btn-sm btn-block']) ?>
-                    </div>
-                </div>
-            </div>
-        <?php endforeach;?>
-    </div>
-    <?=
-     LinkPager::widget([
-        'pagination' => $pages,
-    ]);
-    ?>
+	<div class="row">
+		<?php foreach ($models as $model) : ?>
+			<div class="col-md-3 col-sm-4 ">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<?= Yii::t('app', 'School') . ' ' . $model->name ?>
+					</div>
+					<div class="panel-body">
+						<?= Html::img($model->path_logo, ['class' => "img-rounded img-responsive center-block"]); ?>
+					</div>
+					<div class="panel-footer">
+						<?= Html::a(Yii::t('app', 'More_Details'), ['/school/single-page', 'id' => $model->id], ['class' => 'btn btn-primary btn-sm btn-block']) ?>
+					</div>
+				</div>
+			</div>
+		<?php endforeach; ?>
+	</div>
+	<?=
+		LinkPager::widget([
+			'pagination' => $pages,
+		]);
+	?>
 </div>
