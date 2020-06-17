@@ -24,6 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="form-group">
             <label class="radio-inline"><input type="radio" name="action_user" id_data=<?= $model->id ?> value=<?= RequastJobForm::NOT_INTERVIEWED ?> <?= (RequastJobForm::NOT_INTERVIEWED == $model->action_user) ? 'checked' : '' ?>> <?= Yii::t('app', 'NOT_INTERVIEWED') ?></label>
             <label class="radio-inline"><input type="radio" name="action_user" id_data=<?= $model->id ?> value=<?= RequastJobForm::WAS_INTERVIEWED ?> <?= (RequastJobForm::WAS_INTERVIEWED == $model->action_user) ? 'checked' : '' ?>><?= Yii::t('app', 'WAS_INTERVIEWED') ?></label>
+            <label class="radio-inline"><input type="radio" name="action_user" id_data=<?= $model->id ?> value=<?= RequastJobForm::IGNORAE ?> <?= (RequastJobForm::IGNORAE == $model->action_user) ? 'checked' : '' ?>><?= Yii::t('app', 'IGNORAE') ?></label>
+            <label class="radio-inline"><input type="radio" name="action_user" id_data=<?= $model->id ?> value=<?= RequastJobForm::BUSY ?> <?= (RequastJobForm::BUSY == $model->action_user) ? 'checked' : '' ?>><?= Yii::t('app', 'BUSY') ?></label>
         </div>
 
 

@@ -116,15 +116,31 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'action_user',
                 'value' => function ($searchModel) {
-                    if (RequastJobForm::NOT_INTERVIEWED == $searchModel->action_user) {
-                        return Yii::t('app', 'NOT_INTERVIEWED');
-                    } else {
-                        return Yii::t('app', 'WAS_INTERVIEWED');
-                    }
+
+                    switch ($searchModel->action_user) {
+                        case RequastJobForm::NOT_INTERVIEWED:
+                            return Yii::t('app', 'NOT_INTERVIEWED');
+                            break;
+                        case RequastJobForm::WAS_INTERVIEWED:
+                            return Yii::t('app', 'WAS_INTERVIEWED');
+                            break;
+                        case RequastJobForm::IGNORAE:
+                            return Yii::t('app', 'IGNORAE');
+                            break;
+                        case RequastJobForm::BUSY:
+                            return Yii::t('app', 'BUSY');
+                            break;
+                        default:
+                            return Yii::t('app', 'NOT_INTERVIEWED');
+                        }
+
+                   
                 },
                 'filter' => [
                     RequastJobForm::NOT_INTERVIEWED  => Yii::t('app', 'NOT_INTERVIEWED'),
-                    RequastJobForm::WAS_INTERVIEWED  => Yii::t('app', 'WAS_INTERVIEWED')
+                    RequastJobForm::WAS_INTERVIEWED  => Yii::t('app', 'WAS_INTERVIEWED'),
+                    RequastJobForm::IGNORAE  => Yii::t('app', 'IGNORAE'),
+                    RequastJobForm::BUSY  => Yii::t('app', 'BUSY'),
                 ],
                  
 

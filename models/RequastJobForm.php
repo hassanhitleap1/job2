@@ -38,6 +38,8 @@ class RequastJobForm extends \yii\db\ActiveRecord
     public $assigns_for=[];
     const NOT_INTERVIEWED = 0;
     const WAS_INTERVIEWED=1;
+    const IGNORAE = 2;
+    const BUSY=3;
     
 
 

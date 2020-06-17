@@ -330,16 +330,25 @@ class RequastJobFormController extends BaseController
         $model = $this->findModel($id);
         
         if(isset($_GET)){
-            
-            if(RequastJobForm::NOT_INTERVIEWED == $_GET['action_user']){
-                $model->action_user = RequastJobForm::NOT_INTERVIEWED;
-                
-            }elseif (RequastJobForm::WAS_INTERVIEWED == $_GET['action_user']) {
-                $model->action_user = RequastJobForm::WAS_INTERVIEWED;
-                
+            switch ($_GET['action_user']) {
+                case RequastJobForm::NOT_INTERVIEWED:
+                    $model->action_user = RequastJobForm::NOT_INTERVIEWED;
+                    break;
+                case RequastJobForm::WAS_INTERVIEWED:
+                    $model->action_user = RequastJobForm::WAS_INTERVIEWED;
+                    break;
+                case RequastJobForm::IGNORAE:
+                    $model->action_user = RequastJobForm::IGNORAE;
+                    break;
+                case RequastJobForm::BUSY:
+                    $model->action_user = RequastJobForm::BUSY;
+                    break;
+                default:
+                    $model->action_user = RequastJobForm::NOT_INTERVIEWED;
             }
 
         }
+        
         $data["status"] = 401;
         if($model->save(false)){
             $data["status"] = 201;
