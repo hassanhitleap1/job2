@@ -32,6 +32,7 @@ AppAsset::register($this);
     <?php $this->beginBody() ?>
     <div class="wrap">
         <?php
+        $menuItemsleft=[];
         NavBar::begin([
             //'brandLabel' => Html::img('@web/images/logo.svg'),
             'brandLabel' => '<div>' . Yii::$app->name . Html::img('@web/images/logo.svg', ['class' => 'logo']) . '</div>',

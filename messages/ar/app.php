@@ -193,6 +193,7 @@ return [
     "Action_User"=>"Action User",
     "NOT_INTERVIEWED"=>"لم يتم مقابلته",
     "WAS_INTERVIEWED" => "تم مقابلته",
+    "Plz_Enter_Email"=>"ارجو ادخال الايميل ان وجد في حال استرجاع حسابك",
 
 
 
