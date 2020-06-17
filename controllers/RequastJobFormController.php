@@ -338,13 +338,15 @@ class RequastJobFormController extends BaseController
                 $model->action_user = RequastJobForm::WAS_INTERVIEWED;
                 
             }
-            $model->save();
-            
-        } 
+
+        }
+        $data["status"] = 401;
+        if($model->save(false)){
+            $data["status"] = 201;
+        }
         header('Content-Type: application/json');
-        $data["status"] = 201;
         echo json_encode($data, JSON_PRETTY_PRINT);
-        return;
+        return ;
     }
 
     /**
