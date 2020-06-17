@@ -31,6 +31,10 @@ AppAsset::register($this);
 
 <body>
 <?php $this->beginBody() ?>
+<php 
+
+
+?>
 <div class="wrap">
         <?php
         NavBar::begin([
