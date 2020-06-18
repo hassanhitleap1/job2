@@ -17,8 +17,8 @@ class EducationalAttainmentSearch extends EducationalAttainment
     public function rules()
     {
         return [
-            [['id', 'user_id', 'year_get'], 'integer'],
-            [['specialization', 'university', 'created_at', 'updated_at'], 'safe'],
+            [['id', 'year_get'], 'integer'],
+            [['specialization', 'university', 'user_id','created_at', 'updated_at'], 'safe'],
         ];
     }
 

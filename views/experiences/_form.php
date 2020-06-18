@@ -25,13 +25,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'job_title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'month_from_exp')->textInput() ?>
+    <?= $form->field($model, "date_from")->textInput(['class' => 'date_from form-control']) ?>
 
-    <?= $form->field($model, 'year_from_exp')->textInput() ?>
-
-    <?= $form->field($model, 'month_to_exp')->textInput() ?>
-
-    <?= $form->field($model, 'year_to_exp')->textInput() ?>
+    <?= $form->field($model, "date_to")->textInput(['class' => 'date_from form-control']) ?>
 
     <?= $form->field($model, 'facility_name')->textInput(['maxlength' => true]) ?>
 
@@ -43,3 +39,34 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php
+
+$js = '
+    $(document).ready(function () {
+mobilscrol();
+});
+function mobilscrol() {
+        mobiscroll.settings = {
+        lang: \'en\',                
+        theme: \'mobiscroll\',              
+        themeVariant: \'dark\',
+        dateFormat: \'yy-mm-dd\',
+    };
+    
+        $(\'.date_from\').mobiscroll().date({
+            display: \'bubble\',     
+            touchUi: false         
+        });
+        
+         $(\'.date_to\').mobiscroll().date({
+            display: \'bottom\',     
+            touchUi: false         
+        });
+}
+   
+
+
+';
+
+$this->registerJs($js);
+?>

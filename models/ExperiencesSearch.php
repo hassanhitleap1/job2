@@ -17,8 +17,8 @@ class ExperiencesSearch extends Experiences
     public function rules()
     {
         return [
-            [['id', 'user_id', 'month_from_exp', 'year_from_exp', 'month_to_exp', 'year_to_exp'], 'integer'],
-            [['job_title', 'facility_name', 'created_at', 'updated_at'], 'safe'],
+            [['id'], 'integer'],
+            [['job_title', 'facility_name', 'user_id','date_from','date_to','created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -60,10 +60,8 @@ class ExperiencesSearch extends Experiences
         $query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'month_from_exp' => $this->month_from_exp,
-            'year_from_exp' => $this->year_from_exp,
-            'month_to_exp' => $this->month_to_exp,
-            'year_to_exp' => $this->year_to_exp,
+            'date_from' => $this->date_from,
+            'date_to' => $this->date_to,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);

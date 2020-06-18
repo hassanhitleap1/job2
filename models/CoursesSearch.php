@@ -17,8 +17,8 @@ class CoursesSearch extends Courses
     public function rules()
     {
         return [
-            [['id', 'user_id'], 'integer'],
-            [['name_course', 'destination', 'duration', 'created_at', 'updated_at'], 'safe'],
+            [['id'], 'integer'],
+            [['name_course', 'destination', 'duration', 'user_id','created_at', 'updated_at'], 'safe'],
         ];
     }
 

@@ -14,10 +14,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Create Educational Attainment'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -28,12 +24,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'user_id',
+            [
+                'attribute' => 'user_id',
+                'value' => function ($searchModel) {
+
+                    return $searchModel->user0["name"] ;
+                }
+            ],
             'specialization',
             'university',
             'year_get',
-            //'created_at',
-            //'updated_at',
+
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
