@@ -261,7 +261,7 @@ function diff_time(date){
 
 
 $(document).on("click", "input[type=radio][name=action_user]", function (e) {
-    var url = "/index.php?r=requast-job-form/change-action&id=" + $(this).attr("id_data");
+    var url = "web/index.php?r=requast-job-form/change-action&id=" + $(this).attr("id_data");
     data = {
         "action_user": $(this).val(),
     }
