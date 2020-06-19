@@ -34,7 +34,7 @@ $this->title = Yii::t('app', 'Requast_Job');
                 <div class="row">
                     <div class="col-lg-2">
                         <?= $form->field($model, 'name')->textInput(['maxlength' => true])
-                            ->label(Yii::t('app', 'Name') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Name_Example') . '"></span>') ?>
+                            ->label(Yii::t('app', 'Name_full') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Name_Example') . '"></span>') ?>
                     </div>
                     <div class="col-md-2">
                         <?= $form->field($model, "gender")->dropDownList([1 => "ذكر", 2 => "انثى"]); ?>
