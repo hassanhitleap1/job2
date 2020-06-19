@@ -55,17 +55,18 @@ class CoursesSearch extends Courses
             // $query->where('0=1');
             return $dataProvider;
         }
+        $query->joinWith('user0');  
 
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'user_id' => $this->user_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name_course', $this->name_course])
             ->andFilterWhere(['like', 'destination', $this->destination])
+            ->andFilterWhere(['like', 'user.name', $this->user_id])
             ->andFilterWhere(['like', 'duration', $this->duration]);
 
         return $dataProvider;

@@ -55,11 +55,10 @@ class ExperiencesSearch extends Experiences
             // $query->where('0=1');
             return $dataProvider;
         }
-
+        $query->joinWith('user0');  
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'user_id' => $this->user_id,
             'date_from' => $this->date_from,
             'date_to' => $this->date_to,
             'created_at' => $this->created_at,
@@ -67,6 +66,7 @@ class ExperiencesSearch extends Experiences
         ]);
 
         $query->andFilterWhere(['like', 'job_title', $this->job_title])
+                ->andFilterWhere(['like', 'user.name', $this->user_id])
             ->andFilterWhere(['like', 'facility_name', $this->facility_name]);
 
         return $dataProvider;

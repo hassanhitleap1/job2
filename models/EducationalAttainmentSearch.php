@@ -56,16 +56,17 @@ class EducationalAttainmentSearch extends EducationalAttainment
             return $dataProvider;
         }
 
+        $query->joinWith('user0');  
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'user_id' => $this->user_id,
             'year_get' => $this->year_get,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'specialization', $this->specialization])
+            ->andFilterWhere(['like', 'user.name', $this->user_id])
             ->andFilterWhere(['like', 'university', $this->university]);
 
         return $dataProvider;
