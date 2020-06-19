@@ -141,6 +141,9 @@ $this->params['breadcrumbs'][] = $this->title;
                  
 
                 'format' => 'html',
+                'contentOptions' => function ($searchModel) {
+                    return ['class' => 'class_action_' . $searchModel->id];
+                }
             ],
              [
             'class' => 'yii\grid\ActionColumn',

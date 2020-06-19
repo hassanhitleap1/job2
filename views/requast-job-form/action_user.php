@@ -16,7 +16,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?php $phone = substr($model->phone, 1); ?>
         <?= Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=شكرا لتعاملكم مع جرس للخدمات الوجستية نود اعلامكم عن توفر وظيفة    '     '  لدى مؤسسة للاستفسار الاتصال على الرقم التالي", ['target' => '_blank', 'class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]); ?>
@@ -32,21 +31,34 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <?= Yii::t('app', 'Name') . ' :-' ?>
             <?= $model->name ?>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <?= Yii::t('app', 'Agree') . ' :-' ?>
             <?= $model->agree ?>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
+            <?= Yii::t('app', 'Gender') . ' :-' ?>
+            <?= ($model->gender == User::MALE) ? "ذكر" : ($model->gender == User::FEMALE) ? "انثى" : 'غير محدد' ?>
+
+        </div>
+        <div class="col-md-2">
             <?= Yii::t('app', 'Phone') . ' :-' ?>
             <?= $model->phone ?>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
+            <?= Yii::t('app', 'Email') . ' :-' ?>
+            <?= $model->email ?>
+        </div>
+        <div class="col-md-2">
             <?= Yii::t('app', 'Governorate') . ' :-' ?>
             <?= $model->governorate0['name_ar'] ?>
+        </div>
+        <div class="col-md-2">
+            <?= Yii::t('app', 'Area') . ' :-' ?>
+            <?= $model->area0['name_ar'] ?>
         </div>
     </div>
     <hr />
@@ -64,52 +76,65 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $model->certificates ?>
         </div>
         <div class="col-md-3">
-            <?= Yii::t('app', 'First_Payment') . ' :-' ?>
-            <?= $model->first_payment ?>
+            <?= Yii::t('app', 'Courses') . ' :-' ?>
+            <?= $model->priorities ?>
         </div>
     </div>
     <hr />
     <div class="row">
         <div class="col-md-3">
-            <?= Yii::t('app', 'Gender') . ' :-' ?>
-            <?= ($model->gender == User::MALE) ? "ذكر" : ($model->gender == User::FEMALE) ? "انثى" : 'غير محدد' ?>
-
+            <?= Yii::t('app', 'Affiliated_To') . ' :-' ?>
+            <?= $model->affiliated_to ?>
         </div>
+
+        <div class="col-md-3">
+            <?= Yii::t('app', 'Affiliated_With') . ' :-' ?>
+            <?= $model->affiliated_with ?>
+        </div>
+
+
+        <div class="col-md-3">
+            <?= Yii::t('app', 'Expected_Salary') . ' :-' ?>
+            <?= $model->expected_salary ?>
+        </div>
+
+
+
+
+        <div class="col-md-3">
+            <?= Yii::t('app', 'Interview_Time') . ' :-' ?>
+            <?= $model->interview_time ?>
+        </div>
+
+
+        <div class="col-md-3">
+            <?= Yii::t('app', 'Teamwork') . ' :-' ?>
+            <?= $model->teamwork ?>
+        </div>
+
+        <div class="col-md-3">
+            <?= Yii::t('app', 'Work_Permanently') . ' :-' ?>
+            <?= $model->work_permanently ?>
+        </div>
+
+        <div class="col-md-3">
+            <?= Yii::t('app', 'Communication_Skills') . ' :-' ?>
+            <?= $model->communication_skills ?>
+        </div>
+
+
+    </div>
+    <hr />
+    <div class="row">
+
         <div class="col-md-3">
             <?= Yii::t('app', 'Note') . ' :-' ?>
             <?= $model->note ?>
         </div>
-        <div class="col-md-3">
-            <?= Yii::t('app', 'Priorities') . ' :-' ?>
-            <?= $model->priorities ?>
-        </div>
+
         <div class="col-md-3">
             <?= Yii::t('app', 'First_Payment') . ' :-' ?>
             <?= $model->first_payment ?>
         </div>
     </div>
 </div>
-
-
-
-<?php
-$script = <<< JS
-
-$(document).on("click", "input[type=radio][name=action_user]", function (e) {
-    var url = "/index.php?r=requast-job-form/change-action&id=" + $(this).attr("id_data");
-    data={
-        "action_user":$(this).val(),
-    }
-    $.ajax({
-        type: "GET",
-        url: url,
-        data: data,
-        success: function (response) {
-          alert("success"); 
-        }
-    });
-});
-
-JS;
-$this->registerJs($script);
-?>

@@ -328,34 +328,42 @@ class RequastJobFormController extends BaseController
     public function actionChangeAction($id)
     {
         $model = $this->findModel($id);
-        
+        $action='';
         if(isset($_GET)){
             switch ($_GET['action_user']) {
                 case RequastJobForm::NOT_INTERVIEWED:
                     $model->action_user = RequastJobForm::NOT_INTERVIEWED;
+                    $action=Yii::t('app', 'NOT_INTERVIEWED');
                     break;
                 case RequastJobForm::WAS_INTERVIEWED:
                     $model->action_user = RequastJobForm::WAS_INTERVIEWED;
+                    $action = Yii::t('app', 'WAS_INTERVIEWED');
                     break;
                 case RequastJobForm::IGNORAE:
                     $model->action_user = RequastJobForm::IGNORAE;
+                    $action = Yii::t('app', 'IGNORAE');
                     break;
                 case RequastJobForm::BUSY:
                     $model->action_user = RequastJobForm::BUSY;
+                    $action = Yii::t('app', 'BUSY');
                     break;
                 default:
                     $model->action_user = RequastJobForm::NOT_INTERVIEWED;
+                    $action = Yii::t('app', 'NOT_INTERVIEWED');
             }
 
         }
         
         $data["status"] = 401;
+        $data["action"]=$action;
+        $data["id"]=$id;
         if($model->save(false)){
             $data["status"] = 201;
         }
-        header('Content-Type: application/json');
-        echo json_encode($data, JSON_PRETTY_PRINT);
-        return ;
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return $data;
+        
+        
     }
 
     /**

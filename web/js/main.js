@@ -260,6 +260,22 @@ function diff_time(date){
 
 
 
+$(document).on("click", "input[type=radio][name=action_user]", function (e) {
+    var url = "/index.php?r=requast-job-form/change-action&id=" + $(this).attr("id_data");
+    data = {
+        "action_user": $(this).val(),
+    }
+    $.ajax({
+        type: "GET",
+        url: url,
+        data: data,
+        success: function (response) {
+            console.log(response);
+            selector = '.class_action_' + response.id;
+            console.log(selector);
 
-
-
+            $(selector).html(response.action)
+            alert("success");
+        }
+    });
+});
