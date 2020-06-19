@@ -1,7 +1,9 @@
 <?php
 
+use Carbon\Carbon;
 use wbraganca\dynamicform\DynamicFormWidget;
 use yii\bootstrap\Html;
+use kartik\date\DatePicker;
 
 $month = range(1, 12);
 $year = range(1990, date("Y"));
@@ -63,10 +65,42 @@ $pluginOptions = [];
                                         ->label(Yii::t('app', 'Job_Title') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Job_Title_Example') . '"></span>')  ?>
                                 </div>
                                 <div class="col-md-3">
-                                    <?= $form->field($modelsExperience, "[{$index}]date_from")->textInput(['class' => 'date_from form-control']) ?>
+                                    <?= $form->field($modelsExperience, "[{$index}]date_from")->widget(DatePicker::classname(), [
+                                        'options' => ['placeholder' => Yii::t('app', 'Enter_date')],
+                                        'value' => Carbon::now('Asia/Amman')->toDateString(),
+                                        'type' => DatePicker::TYPE_COMPONENT_APPEND,
+                                        // 'value'=>Carbon::now('Asia/Amman')->toDateString(),
+                                        // 'pickerIcon' => '<i class=" text-primary"></i>',
+                                        // 'removeIcon' => '<i class="fas fa-trash text-danger"></i>',
+                                        'pluginOptions' => [
+                                            'todayHighlight' => true,
+                                            'todayBtn' => true,
+                                            'autoclose' => false,
+                                            'format' => 'yyyy-mm-dd',
+
+
+                                        ]
+                                    ]); ?>
+
                                 </div>
                                 <div class="col-md-3">
-                                    <?= $form->field($modelsExperience, "[{$index}]date_to")->textInput(['class' => 'date_to form-control']) ?>
+                                    <?= $form->field($modelsExperience, "[{$index}]date_to")->widget(DatePicker::classname(), [
+                                        'options' => ['placeholder' => Yii::t('app', 'Enter_date')],
+                                        'value' => Carbon::now('Asia/Amman')->toDateString(),
+                                        'type' => DatePicker::TYPE_COMPONENT_APPEND,
+                                        // 'value'=>Carbon::now('Asia/Amman')->toDateString(),
+                                        // 'pickerIcon' => '<i class=" text-primary"></i>',
+                                        // 'removeIcon' => '<i class="fas fa-trash text-danger"></i>',
+                                        'pluginOptions' => [
+                                            'todayHighlight' => true,
+                                            'todayBtn' => true,
+                                            'autoclose' => false,
+                                            'format' => 'yyyy-mm-dd',
+
+
+                                        ]
+                                    ]); ?>
+                                   
                                 </div>
                                 <div class="col-md-3">
                                     <?= $form->field($modelsExperience, "[{$index}]facility_name")->textInput(['maxlength' => true])
