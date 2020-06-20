@@ -73,6 +73,7 @@ AppAsset::register($this);
                         ['label' => Yii::t('app', 'Courses'), 'url' => ['/courses/index']],
                         ['label' => Yii::t('app', 'Experiences'), 'url' => ['/experiences/index']],
                         ['label' => Yii::t('app', 'Educational_Attainment'), 'url' => ['/educational-attainment/index']],
+                        ['label' => Yii::t('app', 'Specialties'), 'url' => ['/specialties/index']],
                     ],
                 ];
 
