@@ -196,8 +196,9 @@ return [
     "Plz_Enter_Email"=>"ارجو ادخال الايميل ان وجد في حال استرجاع حسابك",
     "IGNORAE"=>"تجاهل",
     "BUSY" => "مشغول",
-
-
+    "Create_Name_Of_Jobs"=>"انشاء اسم وظيفة ",
+    "Name_Of_Jobs"=>"اسماء الوظائف",
+    'Update_Name_Of_Jobs: {name}'=> " {name} تعديل على وظيفة",
 
 
 ];

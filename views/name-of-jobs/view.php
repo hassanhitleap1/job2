@@ -11,8 +11,8 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Name Of Jobs'), 'url
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="name-of-jobs-view">
-
+<div class="container">
+    <?= Html::a(Yii::t('app', 'Back'), ['index'], ['class' => 'btn btn-info btn-lg btn-left']) ?>
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>

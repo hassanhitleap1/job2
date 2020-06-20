@@ -65,7 +65,7 @@ AppAsset::register($this);
                         ['label' => Yii::t('app', 'Area'), 'url' => ['/area/index']],
                         ['label' => Yii::t('app', 'Pages'), 'url' => ['/pages/index']],
                         ['label' => Yii::t('app', 'Payments'), 'url' => ['/manual-payment-user/index']],
-                        ['label' => Yii::t('app', 'Name_OF_Jobs'), 'url' => ['/name-of-Jobs/index']],
+                        ['label' => Yii::t('app', 'Name_Of_Jobs'), 'url' => ['/name-of-jobs/index']],
                         ['label' => Yii::t('app', 'Requast_Jobs_Google'), 'url' => ['/requast-job-google/index']],
                         ['label' => Yii::t('app', 'Schools'), 'url' => ['/schools/index']],
                         ['label' => Yii::t('app', 'University'), 'url' => ['/university/index']],
