@@ -202,6 +202,9 @@ return [
     "Specialties"=>"التخصصات",
     "Create_Specialties"=>"انشاء تخصص",
     "Update_Specialties"=>"تحديث تخصص",
+    "Contract"=>'العقد',
+    "Download_Contract"=>"تحميل العقد",
+    "Succ_Mess_Cont"=>"تم رفع العقد بنجاح",
 
 
 ];

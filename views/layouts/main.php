@@ -96,6 +96,8 @@ AppAsset::register($this);
                 $menuItems[] = ['label' => Yii::t('app', 'Message'), 'url' => ['/user-message-whatsapp/index']];
             }else{
                 $menuItems[] = ['label' => Yii::t('app', 'My_Request'), 'url' => ['/my-request/index']];
+                $menuItems[] = ['label' => Yii::t('app', 'Contract'), 'url' => ['/documents/index']];
+                
             }
 
 

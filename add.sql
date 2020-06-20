@@ -71,3 +71,6 @@ CREATE TABLE `job`.`specialties`
 SET utf8
 COLLATE utf8_general_ci NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY
 (`id`)) ENGINE = InnoDB;
+ALTER TABLE `user`
+ADD `contract_path` VARCHAR
+(255) NOT NULL AFTER `action_user`;

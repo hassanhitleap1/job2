@@ -17,6 +17,7 @@ Thumbs.db
 /web/cv_form
 /vagrant
 /web/schools
+/web/contracts
 /config/db.php
 
 # composer itself is not needed
