@@ -199,6 +199,9 @@ return [
     "Create_Name_Of_Jobs"=>"انشاء اسم وظيفة ",
     "Name_Of_Jobs"=>"اسماء الوظائف",
     'Update_Name_Of_Jobs: {name}'=> " {name} تعديل على وظيفة",
+    "Specialties"=>"التخصصات",
+    "Create_Specialties"=>"انشاء تخصص",
+    "Update_Specialties"=>"تحديث تخصص",
 
 
 ];

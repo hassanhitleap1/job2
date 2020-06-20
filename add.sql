@@ -64,3 +64,10 @@ ALTER TABLE `schools` CHANGE `path_logo` `path_logo` VARCHAR(255) CHARACTER SET 
 ALTER TABLE `user` ADD `action_user` INT NOT NULL DEFAULT '0' AFTER `verification_email`;
 
 CREATE TABLE `job`.`name_of_jobs` ( `id` INT NOT NULL AUTO_INCREMENT , `name_ar` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+CREATE TABLE `job`.`specialties`
+( `id` INT NOT NULL AUTO_INCREMENT , `name_ar` VARCHAR
+(255) CHARACTER
+SET utf8
+COLLATE utf8_general_ci NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY
+(`id`)) ENGINE = InnoDB;
