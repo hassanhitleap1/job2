@@ -13,23 +13,26 @@ $this->title = Yii::t('app', 'Requast_Job');
 
 
 ?>
-
 <div class="container">
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="jumbotron" style="background-image: url(<?= Yii::getAlias('@web') ?>/images/joumnd.png); background-size: 100%;">
+        <div class="text">
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
+    </div>
+</div>
+<div class="container" style="padding-top: 2px;">
+    <div class="panel panel-default">
         <?php $form = ActiveForm::begin(['id' => 'dynamic-form', 'options' => ['enctype' => 'multipart/form-data']]); ?>
         <div class="panel-body">
             <div class="row">
                 <div class="col-lg-3">
-                    
+
                     <?= $form->field($model, 'name')->textInput(['maxlength' => true])
-                        ->label(Yii::t('app', 'Name_full').'  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="'. Yii::t('app', 'Name_Example').'"></span>') ?>
+                        ->label(Yii::t('app', 'Name_full') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Name_Example') . '"></span>') ?>
 
 
 
-                    <?= $form->field($model, 'name')->widget(\yii\jui\AutoComplete::classname(), [
+                    <?php /* $form->field($model, 'name')->widget(\yii\jui\AutoComplete::classname(), [
 
                         'options' => ['placeholder' => 'Select a color ...', 'class' => 'form-control'],
 
@@ -39,14 +42,14 @@ $this->title = Yii::t('app', 'Requast_Job');
 
                         ],
 
-                    ]) ?>
+                    ]) */ ?>
                 </div>
 
                 <div class="col-lg-3">
                     <?= $form->field($model, 'phone')->textInput(['placeholder' => Yii::t('app', 'Phone_Example')])
                         ->label(Yii::t('app', 'Phone') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Phone_Example') . '"></span>') ?>
                 </div>
-     
+
                 <div class="col-lg-3">
                     <?= $form->field($model, 'password')->passwordInput()->label(Yii::t('app', 'Password')) ?>
                 </div>
