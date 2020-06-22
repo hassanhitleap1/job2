@@ -126,8 +126,10 @@ jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1));
 
 
 function jsRunDateTime(index) {
-    var selector="#experiences-"+index+"-date_from";
-    $(selector).datepicker();
+    var selector_date_from="#experiences-"+index+"-date_from";
+     var selector_date_to="#experiences-"+index+"-date_to";
+    $(selector_date_to).datepicker({ dateFormat: "yy-mm-dd" });
+    $(selector_date_from).datepicker({ dateFormat: "yy-mm-dd" });
 }
    
 
