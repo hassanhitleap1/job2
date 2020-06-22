@@ -112,7 +112,7 @@ $this->registerJs($js);
                     'widgetContainer' => 'dynamicform_wrapper', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
                     'widgetBody' => '.container-items', // required: css class selector
                     'widgetItem' => '.item', // required: css class
-                    'limit' => 4, // the maximum times, an element can be cloned (default 999)
+                    'limit' => 15, // the maximum times, an element can be cloned (default 999)
                     'min' => 1, // 0 or 1 (default 1)
                     'insertButton' => '.add-item', // css class
                     'deleteButton' => '.remove-item', // css class
@@ -122,6 +122,8 @@ $this->registerJs($js);
                         'job_title',
                         'salary_from',
                         'salary_to',
+                        'experience',
+                        'count_employees',
                         'agree_to',
                         'category_id',
                         'agree_from',
@@ -157,10 +159,10 @@ $this->registerJs($js);
                                 }
                                 ?>
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <?= $form->field($modelRequestMerchant, "[{$index}]job_title")->textInput(['maxlength' => true]) ?>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <?= $form->field($modelRequestMerchant, "[{$index}]nationality")->widget(
                                             Select2Widget::className(),
                                             [
@@ -169,14 +171,19 @@ $this->registerJs($js);
                                         );  ?>
                                 </div>
                                 <div class="col-md-2">
+                                    <?= $form->field($modelRequestMerchant, "[{$index}]experience")->textInput() ?>
+
+                                </div>
+                                <div class="col-md-2">
+                                    <?= $form->field($modelRequestMerchant, "[{$index}]count_employees")->textInput() ?>
+                                </div>
+                                <div class="col-md-2">
                                     <?= $form->field($modelRequestMerchant, "[{$index}]category_id")->widget(
                                             Select2Widget::className(),
                                             [
                                                 'items' => ArrayHelper::map(Categories::find()->all(), 'id', 'name_ar')
                                             ]
                                         ); ?>
-
-
 
                                 </div>
                                 <div class="col-md-2">

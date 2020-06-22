@@ -41,6 +41,13 @@ use app\models\User;
 
         </div>
         <div class="col-md-2">
+            <?= $form->field($model, "experience")->textInput() ?>
+
+        </div>
+        <div class="col-md-2">
+            <?= $form->field($model, "count_employees")->textInput() ?>
+        </div>
+        <div class="col-md-2">
             <?= $form->field($model, "number_of_houer")->textInput() ?>
 
         </div>

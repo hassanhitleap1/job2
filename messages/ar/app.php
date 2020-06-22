@@ -205,6 +205,10 @@ return [
     "Contract"=>'العقد',
     "Download_Contract"=>"تحميل العقد",
     "Succ_Mess_Cont"=>"تم رفع العقد بنجاح",
-
+    "Count_Employees"=>"عدد الموظفين",
+    "Create_School_Owners"=>"انشاء صاحب مدرسة",
+    "School_Owners"=>"اصحاب المدارس",
+    "Update_School_Owners"=>"تعديل صاحب المدرسة",
+    "Web_Site"=>"الموقع",
 
 ];

@@ -63,7 +63,7 @@ ALTER TABLE `schools` CHANGE `path_logo` `path_logo` VARCHAR(255) CHARACTER SET 
 
 ALTER TABLE `user` ADD `action_user` INT NOT NULL DEFAULT '0' AFTER `verification_email`;
 
-CREATE TABLE `job`.`name_of_jobs` ( `id` INT NOT NULL AUTO_INCREMENT , `name_ar` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE name_of_jobs ( `id` INT NOT NULL AUTO_INCREMENT , `name_ar` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
 CREATE TABLE `job`.`specialties`
 ( `id` INT NOT NULL AUTO_INCREMENT , `name_ar` VARCHAR
@@ -74,3 +74,7 @@ COLLATE utf8_general_ci NOT NULL , `created_at` DATETIME NOT NULL , `updated_at`
 ALTER TABLE `user`
 ADD `contract_path` VARCHAR
 (255) NOT NULL AFTER `action_user`;
+
+ALTER TABLE `request_merchant` ADD `experience` INT NOT NULL DEFAULT '0' AFTER `updated_at`, ADD `count_employees` INT NOT NULL DEFAULT '1' AFTER `experience`;
+
+CREATE TABLE school_owners ( `id` INT NOT NULL AUTO_INCREMENT , `phone` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `name` VARCHAR(150) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `web_site` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;

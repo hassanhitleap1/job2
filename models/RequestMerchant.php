@@ -97,7 +97,9 @@ class RequestMerchant extends \yii\db\ActiveRecord
             'note' => Yii::t('app', 'Note'),
             'category_id'=>Yii::t('app', 'Category'),
             'user_id' => Yii::t('app', 'Name_Marchant'),
-            'gender' => Yii::t('app', 'Gender')
+            'gender' => Yii::t('app', 'Gender'),
+            'experience' => Yii::t('app', 'Experience'),
+            'count_employees' => Yii::t('app', 'Count_Employees'),
         ];
     }
 
