@@ -2,10 +2,11 @@
 
 namespace app\controllers;
 
+
 use Yii;
 
 use app\models\Document;
-use app\models\User;
+use app\models\RequastJobVisitor;
 use yii\web\UploadedFile;
 use yii\filters\VerbFilter;
 use yii\helpers\FileHelper;
@@ -72,7 +73,7 @@ class DocumentsController extends BaseController
      */
     protected function findModel($id)
     {
-        if (($model = User::findOne($id)) !== null) {
+        if (($model = RequastJobVisitor::findOne($id)) !== null) {
             return $model;
         }
 
