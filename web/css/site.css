@@ -242,10 +242,15 @@ a.desc:after {
     color: white !important;
 }
 .jumbotron{
-    color: black;
-    padding-bottom: 2px;
+    margin-bottom: 0px;
+    padding-top: 71px !important;
 }
 .text{
-    padding-top: 32px;
+    text-align: center;
 }
+.text h1{
+    margin-top: 0px !important;
+    margin-bottom: 0px  !important;
+}
+
 

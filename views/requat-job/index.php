@@ -15,9 +15,9 @@ $this->title = Yii::t('app', 'Requast_Job');
 ?>
 <div class="container">
     <div class="jumbotron" style="background-image: url(<?= Yii::getAlias('@web') ?>/images/joumnd.png); background-size: 100%;">
-        <div class="text">
-            <h1><?= Html::encode($this->title) ?></h1>
-        </div>
+    </div>
+    <div class="text">
+        <h1><?= Html::encode($this->title) ?></h1>
     </div>
 </div>
 <div class="container" style="padding-top: 2px;">
