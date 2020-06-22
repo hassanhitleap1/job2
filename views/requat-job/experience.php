@@ -60,47 +60,34 @@ $pluginOptions = [];
 
                             <div class="row">
 
+
                                 <div class="col-md-3">
                                     <?= $form->field($modelsExperience, "[{$index}]job_title")->textInput(['maxlength' => true])
                                         ->label(Yii::t('app', 'Job_Title') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Job_Title_Example') . '"></span>')  ?>
                                 </div>
                                 <div class="col-md-3">
-                                    <?= $form->field($modelsExperience, "[{$index}]date_from")->widget(DatePicker::classname(), [
-                                        'options' => ['placeholder' => Yii::t('app', 'Enter_date')],
-                                        'value' => Carbon::now('Asia/Amman')->toDateString(),
-                                        'type' => DatePicker::TYPE_COMPONENT_APPEND,
-                                        // 'value'=>Carbon::now('Asia/Amman')->toDateString(),
-                                        // 'pickerIcon' => '<i class=" text-primary"></i>',
-                                        // 'removeIcon' => '<i class="fas fa-trash text-danger"></i>',
-                                        'pluginOptions' => [
-                                            'todayHighlight' => true,
-                                            'todayBtn' => true,
-                                            'autoclose' => false,
-                                            'format' => 'yyyy-mm-dd',
 
-
+                                    <?= $form->field($modelsExperience, "[{$index}]date_from")->widget(\yii\jui\DatePicker::classname(), [
+                                        //'language' => 'ru',
+                                        'dateFormat' => 'yyyy-MM-dd',
+                                        'options' => [
+                                            'class' => 'form-control'
                                         ]
-                                    ]); ?>
+                                    ]) ?>
 
                                 </div>
                                 <div class="col-md-3">
-                                    <?= $form->field($modelsExperience, "[{$index}]date_to")->widget(DatePicker::classname(), [
-                                        'options' => ['placeholder' => Yii::t('app', 'Enter_date')],
-                                        'value' => Carbon::now('Asia/Amman')->toDateString(),
-                                        'type' => DatePicker::TYPE_COMPONENT_APPEND,
-                                        // 'value'=>Carbon::now('Asia/Amman')->toDateString(),
-                                        // 'pickerIcon' => '<i class=" text-primary"></i>',
-                                        // 'removeIcon' => '<i class="fas fa-trash text-danger"></i>',
-                                        'pluginOptions' => [
-                                            'todayHighlight' => true,
-                                            'todayBtn' => true,
-                                            'autoclose' => false,
-                                            'format' => 'yyyy-mm-dd',
+                                    <?= $form->field($modelsExperience, "[{$index}]date_to")->widget(\yii\jui\DatePicker::classname(), [
+                                        //'language' => 'ru',
+                                        'dateFormat' => 'yyyy-MM-dd',
+                                      'options' => [
+                                                'class' => 'form-control'
+                                            ]
+                                        
+                                    ]) ?>
 
+                                
 
-                                        ]
-                                    ]); ?>
-                                   
                                 </div>
                                 <div class="col-md-3">
                                     <?= $form->field($modelsExperience, "[{$index}]facility_name")->textInput(['maxlength' => true])
@@ -127,43 +114,26 @@ jQuery(".dynamicform_wrapper_experience").on("afterInsert", function(e, item) {
    
 jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
 jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index + 1))
-mobilscrol();
+jsRunDateTime(index+1);
 });
 });
 
 jQuery(".dynamicform_wrapper_experience").on("afterDelete", function(e) {
 jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
 jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1));
-mobilscrol();
 });
-});
-$(document).ready(function () {
-mobilscrol();
 });
 
-function mobilscrol() {
-        mobiscroll.settings = {
-        lang: \'en\',                
-        theme: \'mobiscroll\',              
-        themeVariant: \'dark\',
-        dateFormat: \'yy-mm-dd\',
-    };
-    
-        $(\'.date_from\').mobiscroll().date({
-            display: \'bubble\',     
-            touchUi: false         
-        });
-        
-         $(\'.date_to\').mobiscroll().date({
-            display: \'bottom\',     
-            touchUi: false         
-        });
+
+function jsRunDateTime(index) {
+    var selector="#experiences-"+index+"-date_from";
+    $(selector).datepicker();
 }
    
 
 
 ';
-
+//jQuery("#experiences-"+index+"-date_from").datepicker());
 $this->registerJs($js);
 
 
