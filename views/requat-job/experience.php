@@ -71,7 +71,8 @@ $pluginOptions = [];
                                         //'language' => 'ru',
                                         'dateFormat' => 'yyyy-MM-dd',
                                         'options' => [
-                                            'class' => 'form-control'
+                                            'class' => 'form-control',
+                                            'autocomplete'=>"off"
                                         ]
                                     ]) ?>
 
@@ -81,7 +82,8 @@ $pluginOptions = [];
                                         //'language' => 'ru',
                                         'dateFormat' => 'yyyy-MM-dd',
                                       'options' => [
-                                                'class' => 'form-control'
+                                                'class' => 'form-control',
+                                                'autocomplete'=>"off"
                                             ]
                                         
                                     ]) ?>

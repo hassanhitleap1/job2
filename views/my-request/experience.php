@@ -70,7 +70,8 @@ $year = range(1990, date("Y"));
                                         //'language' => 'ru',
                                         'dateFormat' => 'yyyy-MM-dd',
                                         'options' => [
-                                            'class' => 'form-control'
+                                            'class' => 'form-control',
+                                            'autocomplete'=>"off"
                                         ]
                                     ]) ?>
 
@@ -80,7 +81,8 @@ $year = range(1990, date("Y"));
                                         //'language' => 'ru',
                                         'dateFormat' => 'yyyy-MM-dd',
                                         'options' => [
-                                            'class' => 'form-control'
+                                            'class' => 'form-control',
+                                            'autocomplete'=>"off"
                                         ]
 
                                     ]) ?>
