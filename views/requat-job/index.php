@@ -8,7 +8,7 @@ use conquer\select2\Select2Widget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+$floorOptionsArray = ['Basement', 'Ground Floor', 'First floor', 'Second floor', 'Third floor'];
 $this->title = Yii::t('app', 'Requast_Job');
 
 
@@ -27,22 +27,9 @@ $this->title = Yii::t('app', 'Requast_Job');
             <div class="row">
                 <div class="col-lg-3">
 
-                    <?= $form->field($model, 'name')->textInput(['maxlength' => true])
+                    <?= $form->field($model, 'name')->textInput(['maxlength' => true ])
                         ->label(Yii::t('app', 'Name_full') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Name_Example') . '"></span>') ?>
 
-
-
-                    <?php /* $form->field($model, 'name')->widget(\yii\jui\AutoComplete::classname(), [
-
-                        'options' => ['placeholder' => 'Select a color ...', 'class' => 'form-control'],
-
-                        'clientOptions' => [
-
-                            'source' => ['USA', 'RUS'],
-
-                        ],
-
-                    ]) */ ?>
                 </div>
 
                 <div class="col-lg-3">
@@ -122,9 +109,39 @@ $this->title = Yii::t('app', 'Requast_Job');
 </div>
 
 <?php
+
 $js = '
 $(function(){
+var book = json_encode($book, JSON_PRETTY_PRINT) ;
     $(".tooltip-helper").tooltip();
+    
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( ".autocomplete-input-bg-arrow" ).autocomplete({
+      source: availableTags
+    });
   
 });
 
