@@ -69,9 +69,15 @@ $year = range(1990, date("Y"));
                                     <?= $form->field($modelsExperience, "[{$index}]date_from")->widget(\yii\jui\DatePicker::classname(), [
                                         //'language' => 'ru',
                                         'dateFormat' => 'yyyy-MM-dd',
+                                        'clientOptions' => [
+                                            'changeYear'=>true,
+                                            'changeMonth'=>true,
+                                            'changeDay'=>true,
+                                            'yearRange' => '1996:2099',
+                                        ],
                                         'options' => [
                                             'class' => 'form-control',
-                                            'autocomplete'=>"off"
+                                            'autocomplete'=>"off",
                                         ]
                                     ]) ?>
 
@@ -80,9 +86,15 @@ $year = range(1990, date("Y"));
                                     <?= $form->field($modelsExperience, "[{$index}]date_to")->widget(\yii\jui\DatePicker::classname(), [
                                         //'language' => 'ru',
                                         'dateFormat' => 'yyyy-MM-dd',
+                                        'clientOptions' => [
+                                            'changeYear'=>true,
+                                            'changeMonth'=>true,
+                                            'changeDay'=>true,
+                                            'yearRange' => '1996:2099',
+                                        ],
                                         'options' => [
                                             'class' => 'form-control',
-                                            'autocomplete'=>"off"
+                                            'autocomplete'=>"off",
                                         ]
 
                                     ]) ?>
@@ -111,7 +123,6 @@ $year = range(1990, date("Y"));
 <?php
 
 $js = '
-
 jQuery(".dynamicform_wrapper_experience").on("afterInsert", function(e, item) {
    
 jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
@@ -130,10 +141,9 @@ jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1));
 function jsRunDateTime(index) {
     var selector_date_from="#experiences-"+index+"-date_from";
      var selector_date_to="#experiences-"+index+"-date_to";
-    $(selector_date_to).datepicker({ dateFormat: "yy-mm-dd" });
-    $(selector_date_from).datepicker({ dateFormat: "yy-mm-dd" });
-}
-   
+    $(selector_date_to).datepicker({ dateFormat: "yy-mm-dd", changeYear : true,changeMonth : true,changeDay : true });
+    $(selector_date_from).datepicker({ dateFormat: "yy-mm-dd", changeYear : true,changeMonth : true,changeDay : true });
+} 
 
 
 ';
