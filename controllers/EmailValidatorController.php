@@ -2,6 +2,7 @@
 
 
 namespace app\controllers;
+use app\models\RequastJobVisitor;
 use Yii;
 use app\models\EmailValidator;
 use app\models\User;
@@ -23,7 +24,7 @@ class EmailValidatorController extends  BaseController
             \Yii::$app->response->format = Response::FORMAT_JSON;
 
             if($model->validate()){
-                $user=User::findOne(Yii::$app->user->identity->id);
+                $user=RequastJobVisitor::findOne(Yii::$app->user->identity->id);
                 $user->email=$model->email;
                $user->save(false);
                $data['code']=401;
