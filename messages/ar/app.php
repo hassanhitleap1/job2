@@ -211,5 +211,6 @@ return [
     "Update_School_Owners"=>"تعديل صاحب المدرسة",
     "Web_Site"=>"الموقع",
     "Message_Clarification"=>"رسالة توقيع العقد",
+    "Message_School_Owner"=> "رسالة اصحاب المدارس",
 
 ];

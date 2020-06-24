@@ -1,11 +1,10 @@
 <?php
 
-
-use app\models\UserMessageClarification;
+use app\models\MessageSchoolOwners;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
- $dataModel= UserMessageClarification::find()->where(['user_id'=>Yii::$app->user->id])->one();
+ $dataModel= MessageSchoolOwners::find()->where(['user_id'=>Yii::$app->user->id])->one();
 $message=($dataModel==null)?'':$dataModel->text;
 
 
