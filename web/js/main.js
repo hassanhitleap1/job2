@@ -273,8 +273,11 @@ $(document).on("click", "input[type=radio][name=action_user]", function (e) {
             console.log(response);
             selector = '.class_action_' + response.id;
             console.log(selector);
-
             $(selector).html(response.action)
+            if (response.action_id== 1){
+                selectorTr = '#tr_'+response.id;
+                $(selectorTr).remove();
+            }
             alert("success");
         }
     });

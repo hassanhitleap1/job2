@@ -329,26 +329,33 @@ class RequastJobFormController extends BaseController
     {
         $model = $this->findModel($id);
         $action='';
+        $action_id=-1;
         if(isset($_GET)){
             switch ($_GET['action_user']) {
                 case RequastJobForm::NOT_INTERVIEWED:
                     $model->action_user = RequastJobForm::NOT_INTERVIEWED;
+                    $action_id= RequastJobForm::NOT_INTERVIEWED;
                     $action=Yii::t('app', 'NOT_INTERVIEWED');
                     break;
                 case RequastJobForm::WAS_INTERVIEWED:
                     $model->action_user = RequastJobForm::WAS_INTERVIEWED;
+                    $model->type=User::NORMAL_USER;
+                    $action_id = RequastJobForm::WAS_INTERVIEWED;
                     $action = Yii::t('app', 'WAS_INTERVIEWED');
                     break;
                 case RequastJobForm::IGNORAE:
                     $model->action_user = RequastJobForm::IGNORAE;
+                    $action_id = RequastJobForm::IGNORAE;
                     $action = Yii::t('app', 'IGNORAE');
                     break;
                 case RequastJobForm::BUSY:
                     $model->action_user = RequastJobForm::BUSY;
+                    $action_id = RequastJobForm::BUSY;
                     $action = Yii::t('app', 'BUSY');
                     break;
                 default:
                     $model->action_user = RequastJobForm::NOT_INTERVIEWED;
+                    $action_id = RequastJobForm::NOT_INTERVIEWED;
                     $action = Yii::t('app', 'NOT_INTERVIEWED');
             }
 
@@ -356,6 +363,7 @@ class RequastJobFormController extends BaseController
         
         $data["status"] = 401;
         $data["action"]=$action;
+        $data["action_id"]= $action_id;
         $data["id"]=$id;
         if($model->save(false)){
             $data["status"] = 201;
