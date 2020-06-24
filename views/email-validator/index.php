@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= Html::encode($this->title) ?>
         </div>
         <div class="panel-body">
-            <?php $form = ActiveForm::begin(['id' => 'form-email', 'enableClientValidation' => true, 'enableAjaxValidation' => false,
+            <?php $form = ActiveForm::begin(['id' => 'form-email', 'enableClientValidation' => true,
                 'action' => ['/email-validator/index'],
                 'options' => ['enctype' => 'multipart/form-data']]); ?>
             <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
