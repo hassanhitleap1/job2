@@ -80,4 +80,8 @@ ALTER TABLE `request_merchant` ADD `experience` INT NOT NULL DEFAULT '0' AFTER `
 CREATE TABLE school_owners ( `id` INT NOT NULL AUTO_INCREMENT , `phone` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `name` VARCHAR(150) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `web_site` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
 
-CREATE TABLE `job`.`user_message_clarification` ( `id` INT NOT NULL AUTO_INCREMENT , `text` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `user_id` INT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `user_message_clarification` ( `id` INT NOT NULL AUTO_INCREMENT , `text` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `user_id` INT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+
+
+CREATE TABLE `message_school_owners` ( `id` INT NOT NULL AUTO_INCREMENT , `text` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `user_id` INT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;

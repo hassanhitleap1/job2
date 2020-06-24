@@ -59,6 +59,8 @@ AppAsset::register($this);
                     'items' => [
                         ['label' => Yii::t('app', 'Message'), 'url' => ['/user-message/index']],
                         ['label' => Yii::t('app', 'Message_Merchent'), 'url' => ['/user-message-merchant/index']],
+                        ['label' => Yii::t('app', 'Message_Clarification'), 'url' => ['/user-message-clarification/index']],
+                       
                         ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories/index']],
                         ['label' => Yii::t('app', 'Governorate'), 'url' => ['/governorate/index']],
                         ['label' => Yii::t('app', 'Nationality'), 'url' => ['/nationality/index']],

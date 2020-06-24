@@ -45,14 +45,18 @@ if (!(Yii::$app->user->identity->contract_path == null || Yii::$app->user->ident
             <div class="panel-body">
                 <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-md-6 col-lg-6">
                         <?= $form->field($model, 'contract')->widget(FileInput::classname(), [
                             'options' => ['accept' => 'image/*'],
                             'pluginOptions' => $dataDocument
                         ]); ?>
                     </div>
-                    <div class="col-lg-6" style="margin-top: 15px;">
-                        <a class="btn btn-success btn-lg" href="<?=Yii::getAlias('@web')?>/contract_company/contract.pdf" download>
+                    <div class="col-md-6 col-lg-6" style="margin-top: 15px;">
+                        <a class="btn btn-success btn-lg" href="<?= Yii::getAlias('@web') ?>/contract_company/contract.png" download>
+                            <span class="glyphicon glyphicon-arrow-down"></span>
+                            <?= Yii::t('app', 'Download_Contract_Png') ?>
+                        </a>
+                        <a class="btn btn-success btn-lg" href="<?= Yii::getAlias('@web') ?>/contract_company/contract.pdf" download>
                             <span class="glyphicon glyphicon-arrow-down"></span>
                             <?= Yii::t('app', 'Download_Contract') ?>
                         </a>
