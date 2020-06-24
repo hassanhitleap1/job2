@@ -2,6 +2,7 @@
 
 use app\models\RequastJobForm;
 use app\models\User;
+use app\models\UserMessageClarification;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -11,14 +12,15 @@ use yii\widgets\DetailView;
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Requast_Jobs'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-
+$dataModel = UserMessageClarification::find()->where(['user_id' => Yii::$app->user->id])->one();
+ $message = ($dataModel == null) ? '' : $dataModel->text;
 ?>
 <div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <p>
         <?php $phone = substr($model->phone, 1); ?>
-        <?= Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=شكرا لتعاملكم مع جرس للخدمات الوجستية نود اعلامكم عن توفر وظيفة    '     '  لدى مؤسسة للاستفسار الاتصال على الرقم التالي", ['target' => '_blank', 'class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]); ?>
+        <?= Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=$message", ['target' => '_blank', 'class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]); ?>
         <button class="btn btn-info"> الرسائل<span class="massges"> <?= $model->smssend->count ?></span></button>
         <div class="form-group">
             <label class="radio-inline"><input type="radio" name="action_user" id_data=<?= $model->id ?> value=<?= RequastJobForm::NOT_INTERVIEWED ?> <?= (RequastJobForm::NOT_INTERVIEWED == $model->action_user) ? 'checked' : '' ?>> <?= Yii::t('app', 'NOT_INTERVIEWED') ?></label>
