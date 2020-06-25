@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\CountSendSms;
 use app\models\MessageJobUser;
+use app\models\RequastJobForm;
 use app\models\UserMessage;
 use Yii;
 use app\models\RequastJob;
@@ -331,6 +332,76 @@ class RequastJobController extends BaseController
             'message'=>$message
         ]);
     }
-    
-    
+
+    /**
+     * Creates a new RequastJob model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionChangeAction($id)
+    {
+        $model = $this->findModel($id);
+        $action='';
+        $action_id=-1;
+        if(isset($_GET)){
+            switch ($_GET['action_user']) {
+                case RequastJobForm::NOT_INTERVIEWED:
+                    $model->action_user = RequastJobForm::NOT_INTERVIEWED;
+                    $action_id= RequastJobForm::NOT_INTERVIEWED;
+                    $action=Yii::t('app', 'NOT_INTERVIEWED');
+                    break;
+                case RequastJobForm::WAS_INTERVIEWED:
+                    $model->action_user = RequastJobForm::WAS_INTERVIEWED;
+                    $model->type=User::NORMAL_USER;
+                    $action_id = RequastJobForm::WAS_INTERVIEWED;
+                    $action = Yii::t('app', 'WAS_INTERVIEWED');
+                    break;
+                case RequastJobForm::IGNORAE:
+                    $model->action_user = RequastJobForm::IGNORAE;
+                    $action_id = RequastJobForm::IGNORAE;
+                    $action = Yii::t('app', 'IGNORAE');
+                    break;
+                case RequastJobForm::BUSY:
+                    $model->action_user = RequastJobForm::BUSY;
+                    $action_id = RequastJobForm::BUSY;
+                    $action = Yii::t('app', 'BUSY');
+                    break;
+                default:
+                    $model->action_user = RequastJobForm::NOT_INTERVIEWED;
+                    $action_id = RequastJobForm::NOT_INTERVIEWED;
+                    $action = Yii::t('app', 'NOT_INTERVIEWED');
+            }
+
+        }
+
+        $data["status"] = 401;
+        $data["action"]=$action;
+        $data["action_id"]= $action_id;
+        $data["id"]=$id;
+        if($model->save(false)){
+            $data["status"] = 201;
+        }
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return $data;
+
+
+    }
+
+
+    /**
+     * @param $id
+     */
+    public function  actionAction_user($id)
+    {
+        $model = $this->findModel($id);
+
+        $dataModel = UserMessage::find()->where(['user_id' => Yii::$app->user->id])->one();
+        $message = ($dataModel == null) ? '' : $dataModel->text;
+        return $this->renderAjax('action_user', [
+            'model' => $model,
+            'message' => $message
+        ]);
+    }
+
+
 }

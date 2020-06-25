@@ -40,6 +40,7 @@ class RequastJobForm extends \yii\db\ActiveRecord
     const WAS_INTERVIEWED=1;
     const IGNORAE = 2;
     const BUSY=3;
+    const CCONTRACT_WAS_SIGNED=4;
     
 
 

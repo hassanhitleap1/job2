@@ -212,5 +212,6 @@ return [
     "Web_Site"=>"الموقع",
     "Message_Clarification"=>"رسالة توقيع العقد",
     "Message_School_Owner"=> "رسالة اصحاب المدارس",
+    "CCONTRACT_WAS_SIGNED"=>"تم توقيع العقد",
 
 ];

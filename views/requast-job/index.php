@@ -63,10 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
         },
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            // 'id',
             'name',
-            // 'first_payment',
             'agree',
             [
                 'attribute' => 'gender',
@@ -107,31 +104,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => 'governorate0.name_ar',
 
             ],
-          
-           
-            
-            // 'expected_salary',
+
             [
                 'attribute' => 'subscribe_date',
                 'value' => 'subscribe_date',
-                // 'filter' =>
-                //     DatePicker::widget([
-                //         'name' => 'subscribe_date',
-
-                //         'pluginOptions' => [
-                //             'autoclose'=>true,
-                //             'format' => 'yyyy-mm-dd',
-                            
-                //         ]
-                //     ]),
-
                 'format' => 'html',
             ],
             'certificates:ntext',
             'experience:ntext',
             'priorities:ntext',
-
-            // 'note:ntext',
+            'note:ntext',
             [
                 'attribute' => 'created_at',
                 'label'=> Yii::t('app', 'Created_At'),
@@ -140,30 +122,7 @@ $this->params['breadcrumbs'][] = $this->title;
                      $date = Carbon::parse(Carbon::parse($searchModel->created_at));
                     $mess="";
                     $def=$date->diffInDays($now);
-                    if($def == 0){
-                      return " registered (today)  must be during 48h " ;  
-                     }else{
-                         
-                         if($def==7 || $def== 14 || $def== 21 || $def==30){
-                            $mess = " must be send message today";
-                         }else{
-                             if( $def >= 7  && $def < 14){
-                                 $conct= $def - 7;
-                                $mess = " must be send message after " .(string) $conct; 
-                             }elseif( $def >= 14  && $def < 21){
-                                $conct = $def - 14;
-                                $mess = " must be send message after " . (string) $conct;; 
-                             } elseif ($def >= 21  && $def < 30) {
-                             $conct = $def - 21;
-                                 $mess = " must be send message after " . (string) $conct;; 
-                            }
-
-                         }
-                        
-                     }
-                     
-                    return "registered befor ". $def . " days --". $mess;
-                    
+                    return "registered befor ". $def ;
                 }
             ],
             [
@@ -176,7 +135,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
              [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{view} {sendsms} {delete} {Cv} {update} {sendwhatsapp} {plus}{minus} {msgwhatsapp}',  // the default buttons + your custom button
+            'template' => '{view} {delete} {Cv} {update} {sendwhatsapp} {msgwhatsapp}{action_user}',  // the default buttons + your custom button
             'buttons' => [
                   'view' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
@@ -188,44 +147,37 @@ $this->params['breadcrumbs'][] = $this->title;
                     'update' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
                                     'title' => Yii::t('app', 'lead-update'),
-                                    'class' => 'btn btn-info'
                         ]);
                     },
                     'delete' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
                                     'title' => Yii::t('app', 'lead-delete'),
-                                    'class' => 'btn btn-info'
                         ]);
                     },
-                'Cv' => function($url, $model, $key) {   
-                      // render your custom button
-                    return  Html::a('Cv', ['requast-job/show-cv', 'id' => $model->id],['class' => 'btn btn-info glyphicon glyphicon-th', 'data-pjax' => 0]);
+                    'Cv' => function($url, $model, $key) {
+                          // render your custom button
+                        return  Html::a('Cv', ['requast-job/show-cv', 'id' => $model->id],['class' => 'btn btn-info glyphicon glyphicon-th', 'data-pjax' => 0]);
+                    },
+                    'msgwhatsapp' => function ($url, $model,$key) {
+                        $url="index.php?r=requast-job-not-pay/msgwhatsapp&id=".$model->id;
+                        return Html::button(' '.Yii::t('app', 'msgwhatsapp') , ['value' => $url,
+                            'title' => Yii::t('app', 'msgwhatsapp'),
+                            'class' => 'glyphicon glyphicon-envelope','data-pjax' => 0]);
+                    },
+
+                    'sendwhatsapp' => function ($url, $model, $key)use($message) {     // render your custom button
+                        $phone=substr($model->phone, 1);;
+                        return  Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=$message", ['target' => '_blank','class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]);
+                    },
+                'action_user' => function ($url, $model, $key) {
+                    $url = "index.php?r=requast-job/action_user&id=" . $model->id;
+                    return Html::button('', [
+                        'value' => $url,
+                        'title' => Yii::t('app', 'Action_User'),
+                        'class' => 'action_user  glyphicon glyphicon-cog', 'data-pjax' => 0
+                    ]);
                 },
 
-
-                'msgwhatsapp' => function ($url, $model,$key) {
-                    $url="index.php?r=requast-job-not-pay/msgwhatsapp&id=".$model->id;
-                    return Html::button(' '.Yii::t('app', 'msgwhatsapp') , ['value' => $url,
-                        'title' => Yii::t('app', 'msgwhatsapp'),
-                        'class' => 'msgwhatsapp btn btn-info glyphicon glyphicon-envelope','data-pjax' => 0]);
-                },
-
-                // 'printcv' => function($url, $model, $key) {     // render your custom button
-                //     return  Html::a('CV', ['requast-job/print-cv', 'id' => $model->id],['class' => 'glyphicon glyphicon-print', 'data-pjax' => 0]);
-                // },
-                'sendsms' => function ($url, $model, $key) {     // render your custom button
-                    return  Html::button('sendsms',  ['target' => '_blank','value'=>Url::to('index.php?r=requast-job/send-single-message&id='.$model->id),'class' => 'btn btn-info glyphicon glyphicon-envelope', 'id'=>"modelbutton",'data-pjax' => 0]);
-                },
-                'sendwhatsapp' => function ($url, $model, $key)use($message) {     // render your custom button
-                    $phone=substr($model->phone, 1);;
-                    return  Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=$message", ['target' => '_blank','class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]);
-                },
-                'plus' => function ($url, $model, $key) {     // render your custom button
-                    return  Html::button('plus',  ['value' => $model->id, 'class' => 'btn btn-info glyphicon  glyphicon-plus', 'id' => "plusbutton", 'data-pjax' => 1]);
-                },
-                'minus' => function ($url, $model, $key) {     // render your custom button
-                    return  Html::button('minus',  [ 'value' => $model->id, 'class' => 'btn btn-info glyphicon glyphicon-minus', 'id' => "minusbutton", 'data-pjax' => 1]);
-                },
                 
             ]
             ],
