@@ -112,37 +112,8 @@ $this->title = Yii::t('app', 'Requast_Job');
 
 $js = '
 $(function(){
-var book = json_encode($book, JSON_PRETTY_PRINT) ;
     $(".tooltip-helper").tooltip();
-    
-    var availableTags = [
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];
-    $( ".autocomplete-input-bg-arrow" ).autocomplete({
-      source: availableTags
-    });
-  
+      
 });
 
 ';
