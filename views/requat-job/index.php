@@ -112,8 +112,7 @@ $this->title = Yii::t('app', 'Requast_Job');
 
 $js = '
 $(function(){
-    $(".tooltip-helper").tooltip();
-      
+    $(".tooltip-helper").tooltip(); 
 });
 
 ';

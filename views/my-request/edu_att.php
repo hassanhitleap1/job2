@@ -1,13 +1,16 @@
 <?php
 
 use app\models\Degrees;
+use app\models\Specialties;
 use conquer\select2\Select2Widget;
 use wbraganca\dynamicform\DynamicFormWidget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Json;
 
 $year = array_combine(range(1990, date("Y")), range(1990, date("Y")));
-
+$specialties =ArrayHelper::getColumn(Specialties::find()->all(),'name_ar');
+$specialties=Json::encode($specialties);
 ?>
 <div class="panel panel-default">
     <div class="panel-body">
@@ -85,7 +88,9 @@ $year = array_combine(range(1990, date("Y")), range(1990, date("Y")));
         <?php DynamicFormWidget::end(); ?>
     </div>
 </div>
-
+    <script type="text/javascript">
+        var specialties = <?= $specialties?>;
+    </script>
 <?php
 $js = '
 
@@ -93,6 +98,7 @@ jQuery(".dynamicform_wrapper_edu").on("afterInsert", function(e, item) {
    
 jQuery(".dynamicform_wrapper_edu .panel-title-address").each(function(index) {
 jQuery(this).html("' . Yii::t('app', 'Educational_Attainment') . ': " + (index + 1))
+autoCom()
 });
 });
 
@@ -102,6 +108,14 @@ jQuery(this).html("' . Yii::t('app', 'Educational_Attainment') . ': " + (index -
 });
 });
 
+$(function(){
+   autoCom()
+ });
+function autoCom(){
+   $( ".specialization_aut_com" ).autocomplete({
+      source: specialties
+    });
+}
 
 ';
 

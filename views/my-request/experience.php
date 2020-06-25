@@ -1,13 +1,15 @@
 <?php
 
-use Carbon\Carbon;
-use kartik\date\DatePicker;
+use app\models\NameOfJobs;
 use wbraganca\dynamicform\DynamicFormWidget;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Json;
 
 $month = range(1, 12);
 $year = range(1990, date("Y"));
-
+$jobsName =ArrayHelper::getColumn(NameOfJobs::find()->all(),'name_ar');
+$jobsName=Json::encode($jobsName);
 ?>
 
 <div class="panel panel-default">
@@ -108,9 +110,6 @@ $year = range(1990, date("Y"));
                                 </div>
                             </div>
 
-
-
-
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -119,22 +118,25 @@ $year = range(1990, date("Y"));
         <?php DynamicFormWidget::end(); ?>
     </div>
 </div>
-
+    <script type="text/javascript">
+        var jobsName = <?= $jobsName?>;
+    </script>
 <?php
 
 $js = '
+
 jQuery(".dynamicform_wrapper_experience").on("afterInsert", function(e, item) {
    
 jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
-jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index + 1))
-jsRunDateTime(index+1);
-});
+    jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index + 1))
+        jsRunDateTime(index+1);
+    });
 });
 
 jQuery(".dynamicform_wrapper_experience").on("afterDelete", function(e) {
-jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
-jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1));
-});
+    jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
+        jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1));
+    });
 });
 
 
@@ -143,7 +145,17 @@ function jsRunDateTime(index) {
      var selector_date_to="#experiences-"+index+"-date_to";
     $(selector_date_to).datepicker({ dateFormat: "yy-mm-dd", changeYear : true,changeMonth : true,changeDay : true });
     $(selector_date_from).datepicker({ dateFormat: "yy-mm-dd", changeYear : true,changeMonth : true,changeDay : true });
-} 
+}
+
+$(function(){
+   autoCom()
+ });
+ 
+function autoCom(){
+   $( ".job_title_aut_com" ).autocomplete({
+      source: jobsName
+    });
+}
 
 
 ';

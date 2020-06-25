@@ -11,9 +11,8 @@ use yii\helpers\Json;
 $month = range(1, 12);
 $year = range(1990, date("Y"));
 $pluginOptions = [];
-$jobsName= ArrayHelper::map(NameOfJobs::find()->all(), 'id', 'name_ar');
 $jobsName =ArrayHelper::getColumn(NameOfJobs::find()->all(),'name_ar');
-$jobsName=Json::encode($jobsName)
+$jobsName=Json::encode($jobsName);
 ?>
 
 <div class="panel panel-default">
@@ -134,15 +133,15 @@ $js = '
 jQuery(".dynamicform_wrapper_experience").on("afterInsert", function(e, item) {
    
 jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
-jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index + 1))
-jsRunDateTime(index+1);
-});
+    jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index + 1))
+        jsRunDateTime(index+1);
+    });
 });
 
 jQuery(".dynamicform_wrapper_experience").on("afterDelete", function(e) {
-jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
-jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1));
-});
+    jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
+        jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index - 1));
+    });
 });
 
 
@@ -154,9 +153,11 @@ function jsRunDateTime(index) {
 }
 
 $(function(){
-   autoCom()
+   autoCom();
  });
+ 
 function autoCom(){
+  
    $( ".job_title_aut_com" ).autocomplete({
       source: jobsName
     });
