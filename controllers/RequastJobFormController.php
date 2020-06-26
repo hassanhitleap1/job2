@@ -3,6 +3,9 @@
 namespace app\controllers;
 
 use app\models\CountSendSms;
+use app\models\Courses;
+use app\models\EducationalAttainment;
+use app\models\Experiences;
 use app\models\MessageJobUser;
 use app\models\RequastJobForm;
 use app\models\RequastJobFormSearch;
@@ -149,6 +152,22 @@ class RequastJobFormController extends BaseController
      */
     public function actionDelete($id)
     {
+        \Yii::$app
+        ->db
+            ->createCommand()
+            ->delete('experiences', ['user_id' => $id])
+            ->execute();
+        \Yii::$app
+        ->db
+            ->createCommand()
+            ->delete('educational_attainment', ['user_id' => $id])
+            ->execute();
+        \Yii::$app
+        ->db
+            ->createCommand()
+            ->delete('courses', ['user_id' => $id])
+            ->execute();
+      
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
