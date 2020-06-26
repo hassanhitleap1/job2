@@ -53,7 +53,7 @@ class DocumentsController extends BaseController
                 $contract = "$folder_path/contract" . "." . $model->contract->extension;
                 $model->contract->saveAs($contract);
                 $user->contract_path = $contract;
-                $user->action_user=RequastJobForm::CCONTRACT_WAS_SIGNED;
+                $user->action_user=RequastJobForm::CONTRACT_WAS_SIGNED;
                 $user->save(false);
                 Yii::$app->session->set('message', Yii::t('app', 'Succ_Mess_Cont'));
             }

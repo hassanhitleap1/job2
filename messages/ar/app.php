@@ -213,5 +213,6 @@ return [
     "Message_Clarification"=>"رسالة توقيع العقد",
     "Message_School_Owner"=> "رسالة اصحاب المدارس",
     "CONTRACT_WAS_SIGNED"=>"تم توقيع العقد",
+    "Download_Contract_Png"=>"تحميل العقد كصورة"
 
 ];
