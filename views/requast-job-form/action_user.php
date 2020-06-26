@@ -13,7 +13,7 @@ $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Requast_Jobs'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $dataModel = UserMessageClarification::find()->where(['user_id' => Yii::$app->user->id])->one();
- $message = ($dataModel == null) ? '' : $dataModel->text;
+$message = ($dataModel == null) ? '' : $dataModel->text;
 ?>
 <div class="container">
 
@@ -27,6 +27,7 @@ $dataModel = UserMessageClarification::find()->where(['user_id' => Yii::$app->us
             <label class="radio-inline"><input type="radio" name="action_user" id_data=<?= $model->id ?> value=<?= RequastJobForm::WAS_INTERVIEWED ?> <?= (RequastJobForm::WAS_INTERVIEWED == $model->action_user) ? 'checked' : '' ?>><?= Yii::t('app', 'WAS_INTERVIEWED') ?></label>
             <label class="radio-inline"><input type="radio" name="action_user" id_data=<?= $model->id ?> value=<?= RequastJobForm::IGNORAE ?> <?= (RequastJobForm::IGNORAE == $model->action_user) ? 'checked' : '' ?>><?= Yii::t('app', 'IGNORAE') ?></label>
             <label class="radio-inline"><input type="radio" name="action_user" id_data=<?= $model->id ?> value=<?= RequastJobForm::BUSY ?> <?= (RequastJobForm::BUSY == $model->action_user) ? 'checked' : '' ?>><?= Yii::t('app', 'BUSY') ?></label>
+            <label class="radio-inline"><input type="radio" name="action_user" id_data=<?= $model->id ?> value=<?= RequastJobForm::CONTRACT_WAS_SIGNED ?> <?= (RequastJobForm::CONTRACT_WAS_SIGNED == $model->action_user) ? 'checked' : '' ?>><?= Yii::t('app', 'CONTRACT_WAS_SIGNED') ?></label>
         </div>
 
 

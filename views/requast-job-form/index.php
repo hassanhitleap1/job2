@@ -126,6 +126,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         case RequastJobForm::BUSY:
                             return Yii::t('app', 'BUSY');
                             break;
+                        case RequastJobForm::CONTRACT_WAS_SIGNED:
+                            return Yii::t('app', 'CONTRACT_WAS_SIGNED');
+                            break;
                         default:
                             return Yii::t('app', 'NOT_INTERVIEWED');
                         }
@@ -137,6 +140,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     RequastJobForm::WAS_INTERVIEWED  => Yii::t('app', 'WAS_INTERVIEWED'),
                     RequastJobForm::IGNORAE  => Yii::t('app', 'IGNORAE'),
                     RequastJobForm::BUSY  => Yii::t('app', 'BUSY'),
+                    RequastJobForm::CONTRACT_WAS_SIGNED  => Yii::t('app', 'CONTRACT_WAS_SIGNED'),
+                    
                 ],
                  
 

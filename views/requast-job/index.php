@@ -1,5 +1,6 @@
 <?php
 
+use app\models\RequastJobForm;
 use app\models\User;
 use app\models\UserMessage;
 use Carbon\Carbon;
@@ -34,30 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'rowOptions'=>function($searchModel){
-            if($searchModel->smssend->created_at==null ){
-                return ['class' => 'danger'];
-            }
             $deff = Carbon::parse(Carbon::now("Asia/Amman"))
                ->floatDiffInDays($searchModel->smssend->updated_at, false);
-
-            if($searchModel->smssend->count==1 ){
-                if($deff >= 7){
-                    return ['class' => 'danger'];
-                }
-               
-            }elseif ($searchModel->smssend->count == 2) {
-            # code...
-                if ($deff >= 14) {
-                    return ['class' => 'danger'];
-                }
-               
-            }elseif ($searchModel->smssend->count == 3) {
-            # code...
-                if ($deff >= 21) {
-                    return ['class' => 'danger'];
-                }
-                
-            }
             
                 
         },
@@ -93,11 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => 'nationality0.name_ar',
 
             ],
-            [
-                'attribute' => 'category_id',
-                'value' => 'category0.name_ar',
-
-            ],
+    
             
             [
                 'attribute' => 'governorate',
@@ -105,14 +80,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ],
 
-            [
-                'attribute' => 'subscribe_date',
-                'value' => 'subscribe_date',
-                'format' => 'html',
-            ],
             'certificates:ntext',
             'experience:ntext',
-            'priorities:ntext',
+            [
+                'attribute' => 'priorities',
+                'value' => 'priorities',
+                'format' => 'html',
+                'label'=>Yii::t('app', 'Courses')
+            ],
+            
             'note:ntext',
             [
                 'attribute' => 'created_at',
@@ -132,6 +108,44 @@ $this->params['breadcrumbs'][] = $this->title;
                     {
                         return ['class' => 'class_num_' . $searchModel->id];
                     }
+            ],
+            [
+                'attribute' => 'action_user',
+                'value' => function ($searchModel) {
+
+                    switch ($searchModel->action_user) {
+                        case RequastJobForm::NOT_INTERVIEWED:
+                            return Yii::t('app', 'NOT_INTERVIEWED');
+                            break;
+                        case RequastJobForm::WAS_INTERVIEWED:
+                            return Yii::t('app', 'WAS_INTERVIEWED');
+                            break;
+                        case RequastJobForm::IGNORAE:
+                            return Yii::t('app', 'IGNORAE');
+                            break;
+                        case RequastJobForm::BUSY:
+                            return Yii::t('app', 'BUSY');
+                            break;
+                        case RequastJobForm::CONTRACT_WAS_SIGNED:
+                            return Yii::t('app', 'CONTRACT_WAS_SIGNED');
+                            break;
+                        default:
+                            return Yii::t('app', 'NOT_INTERVIEWED');
+                    }
+                },
+                'filter' => [
+                    RequastJobForm::NOT_INTERVIEWED  => Yii::t('app', 'NOT_INTERVIEWED'),
+                    RequastJobForm::WAS_INTERVIEWED  => Yii::t('app', 'WAS_INTERVIEWED'),
+                    RequastJobForm::IGNORAE  => Yii::t('app', 'IGNORAE'),
+                    RequastJobForm::BUSY  => Yii::t('app', 'BUSY'),
+                    RequastJobForm::CONTRACT_WAS_SIGNED  => Yii::t('app', 'CONTRACT_WAS_SIGNED'),
+                ],
+
+
+                'format' => 'html',
+                'contentOptions' => function ($searchModel) {
+                    return ['class' => 'class_action_' . $searchModel->id];
+                }
             ],
              [
             'class' => 'yii\grid\ActionColumn',

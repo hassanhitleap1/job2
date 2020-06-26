@@ -353,6 +353,11 @@ class RequastJobFormController extends BaseController
                     $action_id = RequastJobForm::BUSY;
                     $action = Yii::t('app', 'BUSY');
                     break;
+                case RequastJobForm::CONTRACT_WAS_SIGNED:
+                    $model->action_user = RequastJobForm::CONTRACT_WAS_SIGNED;
+                    $action_id = RequastJobForm::CONTRACT_WAS_SIGNED;
+                    $action = Yii::t('app', 'CONTRACT_WAS_SIGNED');
+                    break;
                 default:
                     $model->action_user = RequastJobForm::NOT_INTERVIEWED;
                     $action_id = RequastJobForm::NOT_INTERVIEWED;
