@@ -14,8 +14,8 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Requast_Jobs'), 'url
 $this->params['breadcrumbs'][] = $this->title;
 $dataModel = UserMessageClarification::find()->where(['user_id' => Yii::$app->user->id])->one();
 $message = ($dataModel == null) ? '' : $dataModel->text;
-$path = Yii::getAlias('@webroot') . '/' . Yii::$app->user->identity->contract_path;
-$path_web = Yii::getAlias('@web') . '/' . Yii::$app->user->identity->contract_path;
+$path = Yii::getAlias('@webroot') . '/' . $model->contract_path;
+$path_web = Yii::getAlias('@web') . '/' . $model->contract_path;
 ?>
 <div class="container">
 
@@ -143,7 +143,19 @@ $path_web = Yii::getAlias('@web') . '/' . Yii::$app->user->identity->contract_pa
         </div>
     </div>
     <hr />
+
     <?php if (file_exists($path)) : ?>
-        <?= Html::img($path_web, ['class' => "img-rounded img-responsive center-block", 'style' => ['width' => '200px', 'hight' => '200px']]); ?>
+        <div class="row">
+            <div class="col-md-3">
+                <a class="btn btn-success btn-lg" href="<?= $path_web?>" download>
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                    <?= Yii::t('app', 'Download_Contract') ?>
+                </a>
+            </div>
+            <div class="col-md-9">
+                <?= Html::img($path_web, ['class' => "img-rounded img-responsive center-block", 'style' => ['width' => '200px', 'hight' => '200px']]); ?>
+            </div>
+        </div>
+
     <?php endif; ?>
 </div>
