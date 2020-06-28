@@ -195,7 +195,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         $url="index.php?r=requast-job-not-pay/msgwhatsapp&id=".$model->id;
                         return Html::button(' '.Yii::t('app', 'msgwhatsapp') , ['value' => $url,
                             'title' => Yii::t('app', 'msgwhatsapp'),
-                            'class' => 'glyphicon glyphicon-envelope','data-pjax' => 0]);
+                            'class' => 'msgwhatsapp glyphicon glyphicon-envelope','data-pjax' => 0]);
                     },
 
                     'sendwhatsapp' => function ($url, $model, $key)use($message) {     // render your custom button
