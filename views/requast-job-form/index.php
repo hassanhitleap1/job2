@@ -216,6 +216,16 @@ $this->params['breadcrumbs'][] = $this->title;
                     return  Html::a('', "https://api.whatsapp.com/send?phone=962$phone&text=$message",
                      ['target' => '_blank','class' => 'glyphicon glyphicon-envelope', 'data-pjax' => 0]);
                 },
+                'forgot-password' => function ($url, $model) {
+                    return Html::a('<span class="glyphicon glyphicon-lock"></span>', $url, [
+                        'title' => Yii::t('app', 'lead-delete'),
+                        'class' => '',
+                        'data' => [
+                            'confirm' => 'are you sure to change password ro 123456789.',
+                            'method' => 'post',
+                        ],
+                    ]);
+                },
              
                 
             ]

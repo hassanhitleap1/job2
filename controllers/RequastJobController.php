@@ -34,6 +34,7 @@ class RequastJobController extends BaseController
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    'forgot-password' => ['POST'],
                 ],
             ],
         ];
@@ -401,6 +402,14 @@ class RequastJobController extends BaseController
             'model' => $model,
             'message' => $message
         ]);
+    }
+
+
+    public function actionForgotPassword($id){
+        $model=$this->findModel($id);
+        $model->password_hash=\Yii::$app->security->generatePasswordHash('123456789');
+        $model->save(false);
+        return $this->redirect(['index']);
     }
 
 
