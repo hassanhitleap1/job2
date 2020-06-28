@@ -20,7 +20,7 @@ $message = ($dataModel == null) ? '' : $dataModel->text;
     <h1><?= Html::encode($this->title) ?></h1>
     <p>
         <?php $phone = substr($model->phone, 1); ?>
-        <?= Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=$message", ['target' => '_blank', 'class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]); ?>
+        <?= Html::a(Yii::t('app', 'Message_Clarification'), "https://api.whatsapp.com/send?phone=962$phone&text=$message", ['target' => '_blank', 'class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]); ?>
         <button class="btn btn-info"> الرسائل<span class="massges"> <?= $model->smssend->count ?></span></button>
         <div class="form-group">
             <label class="radio-inline"><input type="radio" name="action_user" id_data=<?= $model->id ?> value=<?= RequastJobForm::NOT_INTERVIEWED ?> <?= (RequastJobForm::NOT_INTERVIEWED == $model->action_user) ? 'checked' : '' ?>> <?= Yii::t('app', 'NOT_INTERVIEWED') ?></label>
