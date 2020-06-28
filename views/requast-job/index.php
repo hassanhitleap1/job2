@@ -154,7 +154,7 @@ $this->params['breadcrumbs'][] = $this->title;
                   'view' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
                                     'title' => Yii::t('app', 'lead-view'),
-                                    'class' => 'btn btn-info'
+                                    'class' => ''
                         ]);
                     },
 
@@ -170,7 +170,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     },
                     'Cv' => function($url, $model, $key) {
                           // render your custom button
-                        return  Html::a('Cv', ['requast-job/show-cv', 'id' => $model->id],['class' => 'btn btn-info glyphicon glyphicon-th', 'data-pjax' => 0]);
+                        return  Html::a('Cv', ['requast-job/show-cv', 'id' => $model->id],['class' => 'glyphicon glyphicon-th', 'data-pjax' => 0]);
                     },
                     'msgwhatsapp' => function ($url, $model,$key) {
                         $url="index.php?r=requast-job-not-pay/msgwhatsapp&id=".$model->id;
@@ -181,7 +181,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     'sendwhatsapp' => function ($url, $model, $key)use($message) {     // render your custom button
                         $phone=substr($model->phone, 1);;
-                        return  Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=$message", ['target' => '_blank','class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]);
+                        return  Html::a('', "https://api.whatsapp.com/send?phone=962$phone&text=$message", ['target' => '_blank','class' => 'glyphicon glyphicon-envelope', 'data-pjax' => 0]);
                     },
                 'action_user' => function ($url, $model, $key) {
                     $url = "index.php?r=requast-job/action_user&id=" . $model->id;
@@ -189,6 +189,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         'value' => $url,
                         'title' => Yii::t('app', 'Action_User'),
                         'class' => 'action_user  glyphicon glyphicon-cog', 'data-pjax' => 0
+                    ]);
+                },
+                'forgot-password' => function ($url, $model) {
+                    return Html::a('<span class="glyphicon glyphicon-lock"></span>', $url, [
+                        'title' => Yii::t('app', 'lead-delete'),
+                        'class' => '',
+                        'data' => [
+                            'confirm' => 'are you sure to change password ro 123456789.',
+                            'method' => 'post',
+                        ],
                     ]);
                 },
 
