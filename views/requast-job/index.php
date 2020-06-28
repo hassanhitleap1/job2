@@ -84,16 +84,31 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ],
 
-            'certificates:ntext',
-            'experience:ntext',
+            [
+                'attribute' => 'certificates',
+                'value' => 'certificates',
+                'format' => 'html',
+
+            ],
+            [
+                'attribute' => 'experience',
+                'value' => 'experience',
+                'format' => 'html',
+
+            ],
             [
                 'attribute' => 'priorities',
                 'value' => 'priorities',
                 'format' => 'html',
                 'label'=>Yii::t('app', 'Courses')
             ],
-            
-            'note:ntext',
+
+            [
+                'attribute' => 'note',
+                'value' => 'note',
+                'format' => 'html',
+
+            ],
             [
                 'attribute' => 'created_at',
                 'label'=> Yii::t('app', 'Created_At'),
