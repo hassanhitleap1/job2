@@ -10,7 +10,7 @@ use Carbon\Carbon;
 /**
  * RequastJobSearch represents the model behind the search form of `app\models\RequastJob`.
  */
-class RequastJobSearch extends RequastJobVisitor
+class RequastJobSearch extends RequastJob
 {
     /**
      * {@inheritdoc}
@@ -70,7 +70,8 @@ class RequastJobSearch extends RequastJobVisitor
     //    ]);
         $query->joinWith('nationality0');
         $query->joinWith('governorate0');  
-        $query->joinWith('category0');  
+        $query->joinWith('category0');
+        $query->joinWith('area0');  
 
         // grid filtering conditions
         $query->andFilterWhere([
@@ -88,7 +89,7 @@ class RequastJobSearch extends RequastJobVisitor
             ->andFilterWhere(['like', 'certificates', $this->certificates])
             ->andFilterWhere(['like', 'experience', $this->experience])
             ->andFilterWhere(['like', 'priorities', $this->priorities])
-            ->andFilterWhere(['like', 'area', $this->area])
+            ->andFilterWhere(['like', 'area.name_ar', $this->area])
             ->andFilterWhere(['like', 'nationality.name_ar', $this->nationality])
             ->andFilterWhere(['like', 'governorate.name_ar', $this->governorate])
             ->andFilterWhere(['like', 'categories.name_ar', $this->category_id])

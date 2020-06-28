@@ -64,9 +64,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'phone',
             [
                 'attribute' => 'area',
-                'value' => 'area',
-
+                'value' => function ($searchModel) {
+                    return $searchModel->area0['name_ar'];
+                  
+                },
+                
             ],
+        
             [
                 'attribute' => 'nationality',
                 'value' => 'nationality0.name_ar',
