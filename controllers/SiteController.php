@@ -6,6 +6,7 @@ use app\models\Forgot_Password;
 use app\models\ForgotPassword;
 use app\models\NewPassword;
 use app\models\Pages;
+use app\models\RequastJobVisitor;
 use app\models\Schools;
 use Yii;
 use yii\data\Pagination;
@@ -172,7 +173,7 @@ class SiteController extends Controller
         }
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($tokenRow->validate_code == $token){
-                $user = User::findOne($tokenRow->user_id);
+                $user = RequastJobVisitor::findOne($tokenRow->user_id);
                 $user->password_hash = Yii::$app->security->generatePasswordHash($model->password);
                 $user->save(false);
                 $session->set('create_password', 1);
