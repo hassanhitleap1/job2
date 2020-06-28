@@ -152,7 +152,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
              [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{view}  {Cv}{delete} {update} {sendwhatsapp} {msgwhatsapp}{action_user}',  // the default buttons + your custom button
+            'template' => '{view}  {Cv}{delete} {update} {sendwhatsapp} {msgwhatsapp}{action_user} {forgot-password}',  // the default buttons + your custom button
             'buttons' => [
                   'view' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
@@ -177,6 +177,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                     ],
                         ]);
                     },
+                'forgot-password' => function ($url, $model) {
+                    return Html::a('<span class="glyphicon glyphicon-lock"></span>', $url, [
+                        'title' => Yii::t('app', 'lead-delete'),
+                        'class' => '',
+                        'data' => [
+                            'confirm' => 'are you sure to change password ro 123456789.',
+                            'method' => 'post',
+                        ],
+                    ]);
+                },
                 'Cv' => function($url, $model, $key) {   
                       // render your custom button
                     return  Html::a('Cv', ['requast-job/show-cv', 'id' => $model->id],
