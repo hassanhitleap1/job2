@@ -87,7 +87,7 @@ if (!$model->isNewRecord && $model->avatar != "") {
             <?= $form->field($model, 'area')->widget(
                 Select2Widget::className(),
                 [
-                    'items' => ArrayHelper::map(Area::find()->all(), 'name_ar', 'name_ar')
+                    'items' => ArrayHelper::map(Area::find()->all(), 'id', 'name_ar')
                 ]
             ); ?>
         </div>
