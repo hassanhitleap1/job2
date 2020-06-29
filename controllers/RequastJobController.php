@@ -24,6 +24,7 @@ use yii\base\Model;
  */
 class RequastJobController extends BaseController
 {
+    // use rapidweb\googlecontacts\factories\ContactFactory;
     /**
      * {@inheritdoc}
      */
@@ -46,6 +47,18 @@ class RequastJobController extends BaseController
      */
     public function actionIndex()
     {
+       // $contact = ContactFactory::getBySelfURL($_GET['selfURL']);
+
+//        var_dump($contact);
+//
+//        $contact->name = 'Test';
+//        $contact->phoneNumber = '07812363789';
+//        $contact->email = 'test@example.com';
+//        $contact->content = 'Note for example';
+//
+//        $contactAfterUpdate = ContactFactory::submitUpdates($contact);
+//
+//        var_dump($contactAfterUpdate);
         $searchModel = new RequastJobSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
