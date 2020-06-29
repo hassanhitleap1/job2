@@ -130,6 +130,9 @@ jQuery(".dynamicform_wrapper_experience").on("afterInsert", function(e, item) {
 jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
     jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index + 1))
         jsRunDateTime(index+1);
+            $( ".job_title_aut_com" ).autocomplete({
+              source: jobsName
+            });
     });
 });
 
@@ -151,7 +154,10 @@ function jsRunDateTime(index) {
 }
 
 $(function(){
-   autoCom()
+     $( ".job_title_aut_com" ).autocomplete({
+      source: jobsName
+    });
+   
  });
  
 function autoCom(){
@@ -159,7 +165,6 @@ function autoCom(){
       source: jobsName
     });
 }
-
 
 ';
 

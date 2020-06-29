@@ -98,7 +98,9 @@ jQuery(".dynamicform_wrapper_edu").on("afterInsert", function(e, item) {
    
 jQuery(".dynamicform_wrapper_edu .panel-title-address").each(function(index) {
 jQuery(this).html("' . Yii::t('app', 'Educational_Attainment') . ': " + (index + 1))
-autoCom()
+    $( ".specialization_aut_com" ).autocomplete({
+        source: specialties
+    });
 });
 });
 
@@ -109,7 +111,9 @@ jQuery(this).html("' . Yii::t('app', 'Educational_Attainment') . ': " + (index -
 });
 
 $(function(){
-   autoCom()
+   $( ".specialization_aut_com" ).autocomplete({
+      source: specialties
+    });
  });
 function autoCom(){
    $( ".specialization_aut_com" ).autocomplete({
