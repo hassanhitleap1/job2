@@ -1,15 +1,15 @@
 <?php
 
 use app\models\NameOfJobs;
-use Carbon\Carbon;
+
 use wbraganca\dynamicform\DynamicFormWidget;
 use yii\bootstrap\Html;
-use kartik\date\DatePicker;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 
 $month = range(1, 12);
 $year = range(1990, date("Y"));
+$yearRange= '1970:'. date("Y");
 $pluginOptions = [];
 $jobsName =ArrayHelper::getColumn(NameOfJobs::find()->all(),'name_ar');
 $jobsName=Json::encode($jobsName);
@@ -78,7 +78,7 @@ $jobsName=Json::encode($jobsName);
                                             'changeYear'=>true,
                                             'changeMonth'=>true,
                                             'changeDay'=>true,
-                                            'yearRange' => '1996:2099',
+                                            'yearRange' => $yearRange,
                                         ],
                                         'options' => [
                                             'class' => 'form-control',
@@ -95,7 +95,7 @@ $jobsName=Json::encode($jobsName);
                                             'changeYear'=>true,
                                             'changeMonth'=>true,
                                             'changeDay'=>true,
-                                            'yearRange' => '1996:2099',
+                                            'yearRange' => $yearRange,
                                         ],
                                       'options' => [
                                                 'class' => 'form-control',
@@ -146,10 +146,13 @@ jQuery(".dynamicform_wrapper_experience").on("afterDelete", function(e) {
 
 
 function jsRunDateTime(index) {
+    let current_datetime = new Date()
+    let formatted_date = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate();
+    let yearRange="1970:"+current_datetime.getFullYear() ;
     var selector_date_from="#experiences-"+index+"-date_from";
      var selector_date_to="#experiences-"+index+"-date_to";
-    $(selector_date_to).datepicker({ dateFormat: "yy-mm-dd", changeYear : true,changeMonth : true,changeDay : true });
-    $(selector_date_from).datepicker({ dateFormat: "yy-mm-dd", changeYear : true,changeMonth : true,changeDay : true });
+    $(selector_date_to).datepicker({ dateFormat: "yy-mm-dd", changeYear : true,changeMonth : true,changeDay : true ,yearRange: yearRange,defaultDate:formatted_date });
+    $(selector_date_from).datepicker({ dateFormat: "yy-mm-dd", changeYear : true,changeMonth : true,changeDay : true,yearRange: yearRange, defaultDate:formatted_date});
 }
 
 $(function(){

@@ -8,8 +8,9 @@ use yii\helpers\Json;
 
 $month = range(1, 12);
 $year = range(1990, date("Y"));
-$jobsName =ArrayHelper::getColumn(NameOfJobs::find()->all(),'name_ar');
-$jobsName=Json::encode($jobsName);
+$yearRange = '1970:' . date("Y");
+$jobsName = ArrayHelper::getColumn(NameOfJobs::find()->all(), 'name_ar');
+$jobsName = Json::encode($jobsName);
 ?>
 
 <div class="panel panel-default">
@@ -58,12 +59,11 @@ $jobsName=Json::encode($jobsName);
                                 echo Html::activeHiddenInput($modelsExperience, "[{$index}]id");
                             }
                             ?>
-
                             <div class="row">
 
 
                                 <div class="col-md-3">
-                                    <?= $form->field($modelsExperience, "[{$index}]job_title")->textInput(['maxlength' => true])
+                                    <?= $form->field($modelsExperience, "[{$index}]job_title")->textInput(['maxlength' => true, 'class' => 'form-control job_title_aut_com']) //
                                         ->label(Yii::t('app', 'Job_Title') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Job_Title_Example') . '"></span>')  ?>
                                 </div>
                                 <div class="col-md-3">
@@ -72,14 +72,14 @@ $jobsName=Json::encode($jobsName);
                                         //'language' => 'ru',
                                         'dateFormat' => 'yyyy-MM-dd',
                                         'clientOptions' => [
-                                            'changeYear'=>true,
-                                            'changeMonth'=>true,
-                                            'changeDay'=>true,
-                                            'yearRange' => '1996:2099',
+                                            'changeYear' => true,
+                                            'changeMonth' => true,
+                                            'changeDay' => true,
+                                            'yearRange' => $yearRange,
                                         ],
                                         'options' => [
                                             'class' => 'form-control',
-                                            'autocomplete'=>"off",
+                                            'autocomplete' => "off",
                                         ]
                                     ]) ?>
 
@@ -89,14 +89,14 @@ $jobsName=Json::encode($jobsName);
                                         //'language' => 'ru',
                                         'dateFormat' => 'yyyy-MM-dd',
                                         'clientOptions' => [
-                                            'changeYear'=>true,
-                                            'changeMonth'=>true,
-                                            'changeDay'=>true,
-                                            'yearRange' => '1996:2099',
+                                            'changeYear' => true,
+                                            'changeMonth' => true,
+                                            'changeDay' => true,
+                                            'yearRange' => $yearRange,
                                         ],
                                         'options' => [
                                             'class' => 'form-control',
-                                            'autocomplete'=>"off",
+                                            'autocomplete' => "off",
                                         ]
 
                                     ]) ?>
@@ -118,9 +118,9 @@ $jobsName=Json::encode($jobsName);
         <?php DynamicFormWidget::end(); ?>
     </div>
 </div>
-    <script type="text/javascript">
-        var jobsName = <?= $jobsName?>;
-    </script>
+<script type="text/javascript">
+    var jobsName = <?= $jobsName ?>;
+</script>
 <?php
 
 $js = '
@@ -141,10 +141,13 @@ jQuery(".dynamicform_wrapper_experience").on("afterDelete", function(e) {
 
 
 function jsRunDateTime(index) {
+    let current_datetime = new Date()
+    let formatted_date = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate();
+    let yearRange="1970:"+current_datetime.getFullYear() ;
     var selector_date_from="#experiences-"+index+"-date_from";
      var selector_date_to="#experiences-"+index+"-date_to";
-    $(selector_date_to).datepicker({ dateFormat: "yy-mm-dd", changeYear : true,changeMonth : true,changeDay : true });
-    $(selector_date_from).datepicker({ dateFormat: "yy-mm-dd", changeYear : true,changeMonth : true,changeDay : true });
+    $(selector_date_to).datepicker({ dateFormat: "yy-mm-dd", changeYear : true,changeMonth : true,changeDay : true ,yearRange: yearRange,defaultDate:formatted_date });
+    $(selector_date_from).datepicker({ dateFormat: "yy-mm-dd", changeYear : true,changeMonth : true,changeDay : true,yearRange: yearRange, defaultDate:formatted_date});
 }
 
 $(function(){
