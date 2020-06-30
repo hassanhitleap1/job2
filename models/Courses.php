@@ -37,6 +37,10 @@ class Courses extends \yii\db\ActiveRecord
 //            [['user_id'], 'integer'],
 //            [['created_at', 'updated_at'], 'safe'],
 //            [['name_course', 'destination', 'duration'], 'string', 'max' => 255],
+
+//            [['name_course'], 'validate_name_course'],
+//            [['destination'], 'validate_destination'],
+//            [['duration'], 'validate_duration'],
         ];
     }
 

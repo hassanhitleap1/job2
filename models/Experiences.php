@@ -40,6 +40,11 @@ class Experiences extends \yii\db\ActiveRecord
             [['date_from','date_to'], 'date', 'format' => 'yyyy-mm-dd'],
             [['created_at', 'updated_at'], 'safe'],
             [['job_title', 'facility_name'], 'string', 'max' => 255],
+
+//            [['job_title'], 'validate_job_title'],
+//            [['date_from'], 'validate_date_from'],
+//            [['date_to'], 'validate_date_to'],
+//            [['facility_name'], 'validate_facility_name'],
         ];
     }
 
