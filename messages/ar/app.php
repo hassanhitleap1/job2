@@ -216,5 +216,6 @@ return [
     "Download_Contract_Png"=>"تحميل العقد كصورة",
     "Old_Password"=>"كلمة السر القديمة",
     "New_Password"=>"كلمة السر الجديده",
+    "Message_Zoom"=>"ؤسالة zoom",
 
 ];

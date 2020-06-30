@@ -3,6 +3,7 @@
 use app\models\RequastJobForm;
 use app\models\User;
 use app\models\UserMessageClarification;
+use app\models\UserMessageZoom;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -14,6 +15,8 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Requast_Jobs'), 'url
 $this->params['breadcrumbs'][] = $this->title;
 $dataModel = UserMessageClarification::find()->where(['user_id' => Yii::$app->user->id])->one();
 $message = ($dataModel == null) ? '' : $dataModel->text;
+$dataModelZoom = UserMessageZoom::find()->where(['user_id' => Yii::$app->user->id])->one();
+$message_zoom = ($dataModelZoom == null) ? '' : $dataModelZoom->text;
 ?>
 <div class="container">
 
@@ -21,6 +24,7 @@ $message = ($dataModel == null) ? '' : $dataModel->text;
     <p>
         <?php $phone = substr($model->phone, 1); ?>
         <?= Html::a(Yii::t('app', 'Message_Clarification'), "https://api.whatsapp.com/send?phone=962$phone&text=$message", ['target' => '_blank', 'class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]); ?>
+        <?= Html::a(Yii::t('app', 'Message_Zoom'), "https://api.whatsapp.com/send?phone=962$phone&text=$message_zoom", ['target' => '_blank', 'class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]); ?>
         <button class="btn btn-info"> الرسائل<span class="massges"> <?= $model->smssend->count ?></span></button>
         <div class="form-group">
             <label class="radio-inline"><input type="radio" name="action_user" id_data=<?= $model->id ?> value=<?= RequastJobForm::NOT_INTERVIEWED ?> <?= (RequastJobForm::NOT_INTERVIEWED == $model->action_user) ? 'checked' : '' ?>> <?= Yii::t('app', 'NOT_INTERVIEWED') ?></label>

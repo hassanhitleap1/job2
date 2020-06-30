@@ -60,6 +60,7 @@ AppAsset::register($this);
                         ['label' => Yii::t('app', 'Message'), 'url' => ['/user-message/index']],
                         ['label' => Yii::t('app', 'Message_Merchent'), 'url' => ['/user-message-merchant/index']],
                         ['label' => Yii::t('app', 'Message_Clarification'), 'url' => ['/user-message-clarification/index']],
+                        ['label' => Yii::t('app', 'Message_Zoom'), 'url' => ['/user-message-zoom/index']],
                         ['label' => Yii::t('app', 'Message_School_Owner'), 'url' => ['/message-school-owners/index']],
                         
                         ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories/index']],
