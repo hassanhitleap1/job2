@@ -81,7 +81,7 @@ $jobsName=Json::encode($jobsName);
                                             'yearRange' => $yearRange,
                                         ],
                                         'options' => [
-                                            'class' => 'form-control',
+                                            'class' => 'form-control date_from',
                                             'autocomplete'=>"off",
                                         ]
                                     ]) ?>
@@ -98,7 +98,7 @@ $jobsName=Json::encode($jobsName);
                                             'yearRange' => $yearRange,
                                         ],
                                       'options' => [
-                                                'class' => 'form-control',
+                                                'class' => 'form-control date_to',
                                                 'autocomplete'=>"off",
                                             ]
                                         
@@ -134,6 +134,7 @@ jQuery(".dynamicform_wrapper_experience").on("afterInsert", function(e, item) {
    
 jQuery(".dynamicform_wrapper_experience .panel-title-address").each(function(index) {
     jQuery(this).html("' . Yii::t('app', 'Experience') . ': " + (index + 1))
+        
         jsRunDateTime(index+1);
             $( ".job_title_aut_com" ).autocomplete({
               source: jobsName
@@ -152,10 +153,8 @@ function jsRunDateTime(index) {
     let current_datetime = new Date()
     let formatted_date = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate();
     let yearRange="1970:"+current_datetime.getFullYear() ;
-    var selector_date_from="#experiences-"+index+"-date_from";
-     var selector_date_to="#experiences-"+index+"-date_to";
-    $(selector_date_to).datepicker({ dateFormat: "yy-mm-dd", changeYear : true,changeMonth : true,changeDay : true ,yearRange: yearRange,defaultDate:formatted_date });
-    $(selector_date_from).datepicker({ dateFormat: "yy-mm-dd", changeYear : true,changeMonth : true,changeDay : true,yearRange: yearRange, defaultDate:formatted_date});
+     $(".date_from").datepicker({ dateFormat: "yy-mm-dd", changeYear : true,changeMonth : true,changeDay : true ,yearRange: yearRange,defaultDate:formatted_date });
+     $(".date_to").datepicker({ dateFormat: "yy-mm-dd", changeYear : true,changeMonth : true,changeDay : true ,yearRange: yearRange,defaultDate:formatted_date });
 }
 
 $(function(){
