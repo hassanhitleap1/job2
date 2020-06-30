@@ -40,6 +40,21 @@ class Courses extends \yii\db\ActiveRecord
         ];
     }
 
+    public function validate_name_course($attribute, $params){
+        if($this->name_course ==null && ($this->destination !==null || $this->duration != null  )){
+            $this->addError($attribute, Yii::t('app', 'Required'));
+        }
+    }
+    public function validate_destination($attribute, $params){
+        if($this->destination ==null && ($this->name_course !==null || $this->duration != null  )){
+            $this->addError($attribute, Yii::t('app', 'Required'));
+        }
+    }
+    public function validate_duration($attribute, $params){
+        if($this->duration ==null && ($this->destination !==null || $this->name_course != null   )){
+            $this->addError($attribute, Yii::t('app', 'Required'));
+        }
+    }
     /**
      * {@inheritdoc}
      */

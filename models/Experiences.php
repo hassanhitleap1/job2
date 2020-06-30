@@ -44,6 +44,29 @@ class Experiences extends \yii\db\ActiveRecord
     }
 
 
+    public function validate_date_from($attribute, $params){
+        if($this->date_from ==null && ($this->job_title !==null || $this->facility_name != null  ||  $this->date_to!=null )){
+            $this->addError($attribute, Yii::t('app', 'Required'));
+        }
+    }
+
+    public function validate_date_to($attribute, $params){
+        if($this->date_to ==null && ($this->job_title !==null || $this->facility_name != null  ||  $this->date_from!=null )){
+            $this->addError($attribute, Yii::t('app', 'Required'));
+        }
+    }
+    public function validate_job_title($attribute, $params){
+        if($this->job_title ==null && ($this->date_from !==null || $this->facility_name != null  ||  $this->date_to!=null )){
+            $this->addError($attribute, Yii::t('app', 'Required'));
+        }
+    }
+    public function validate_facility_name($attribute, $params){
+        if($this->facility_name ==null && ($this->job_title !==null || $this->date_from != null  ||  $this->date_to!=null )){
+            $this->addError($attribute, Yii::t('app', 'Required'));
+        }
+    }
+
+
     /**
      * @return \yii\db\ActiveQuery
      */
