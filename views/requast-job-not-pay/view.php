@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a(Yii::t('app', 'Create_Request_Merchant'), ['create'], ['class' => 'btn btn-success']) ?>
         <?= Html::a(Yii::t('app', 'Back'), ['index'], ['class' => 'btn btn-info']) ?>
         <?php $phone = substr($model->phone, 1); ?>
-        <?= Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=شكرا لتعاملكم مع جرس للخدمات الوجستية نود اعلامكم عن توفر وظيفة    '     '  لدى مؤسسة للاستفسار الاتصال على الرقم التالي", ['target' => '_blank', 'class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]); ?>
+        <?= Html::a('whatsapp', "https://web.whatsapp.com/send?phone=962$phone&text=شكرا لتعاملكم مع جرس للخدمات الوجستية نود اعلامكم عن توفر وظيفة    '     '  لدى مؤسسة للاستفسار الاتصال على الرقم التالي", ['target' => '_blank', 'class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]); ?>
         <?= Html::button('plus',  ['value' => $model->id, 'class' => 'btn btn-info glyphicon  glyphicon-plus', 'id' => "plusbutton", 'data-pjax' => 1]); ?>
         <?= Html::button('minus',  ['value' => $model->id, 'class' => 'btn btn-info glyphicon glyphicon-minus', 'id' => "minusbutton", 'data-pjax' => 1]); ?>
     </p>

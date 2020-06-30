@@ -160,7 +160,7 @@ $(document).on("click","#send-message",function(e){
     var phone=$("#phone-user").html();
     phone=phone.trim();
     var message=$("#message-text").val();
-    url= 'https://api.whatsapp.com/send?phone=962'+phone+'&text='+message
+    url= 'https://web.whatsapp.com/send?phone=962'+phone+'&text='+message
     window.open(url, '_blank');
    
 
@@ -176,7 +176,7 @@ $(document).on("click",".send-message-suggested",function(e){
     phone=phone.trim();
     var message=$("#message-text").val();
 
-    url= 'https://api.whatsapp.com/send?phone=962'+phone+'&text='+message
+    url = 'https://web.whatsapp.com/send?phone=962'+phone+'&text='+message
     window.open(url, '_blank');
 
 });

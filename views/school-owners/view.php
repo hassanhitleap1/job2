@@ -17,7 +17,7 @@ $phone = $model->phone;
 ?>
 <div class="container">
     <p>
-        <?= Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=$message", ['target' => '_blank', 'class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]); ?>
+        <?= Html::a('whatsapp', "https://web.whatsapp.com/send?phone=962$phone&text=$message", ['target' => '_blank', 'class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]); ?>
     </p>
     <h1><?= Html::encode($this->title) ?></h1>
 

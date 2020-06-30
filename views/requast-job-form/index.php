@@ -213,7 +213,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 'sendwhatsapp' => function ($url, $model, $key)use($message) {     // render your custom button
                     $phone=substr($model->phone, 1);;
-                    return  Html::a('', "https://api.whatsapp.com/send?phone=962$phone&text=$message",
+                    return  Html::a('', "https://web.whatsapp.com/send?phone=962$phone&text=$message",
                      ['target' => '_blank','class' => 'glyphicon glyphicon-envelope', 'data-pjax' => 0]);
                 },
 

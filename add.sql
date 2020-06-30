@@ -85,3 +85,11 @@ CREATE TABLE `user_message_clarification` ( `id` INT NOT NULL AUTO_INCREMENT , `
 
 
 CREATE TABLE `message_school_owners` ( `id` INT NOT NULL AUTO_INCREMENT , `text` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `user_id` INT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+
+CREATE TABLE `user_message_zoom`
+( `id` INT NOT NULL AUTO_INCREMENT , `text` TEXT CHARACTER
+SET utf8
+COLLATE utf8_general_ci NOT NULL , `user_id` INT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY
+(`id`)) ENGINE = InnoDB;
+

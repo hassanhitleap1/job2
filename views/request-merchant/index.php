@@ -119,7 +119,7 @@ $message=($dataModel==null)?'':$dataModel->text;
                 'buttons' => [
                     'sendwhatsapp' => function ($url, $model, $key)use($message) {     // render your custom button
                         $phone=substr($model->user0['phone'], 1);
-                        return  Html::a('whatsapp', "https://api.whatsapp.com/send?phone=962$phone&text=$message", ['target' => '_blank','class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]);
+                        return  Html::a('whatsapp', "https://web.whatsapp.com/send?phone=962$phone&text=$message", ['target' => '_blank','class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]);
                     },
                     'suggestedjobs' => function ($url, $model,$key) {
                         $url="index.php?r=request-merchant/suggested-jobs&id=".$model->id;
