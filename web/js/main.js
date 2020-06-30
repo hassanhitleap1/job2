@@ -282,3 +282,26 @@ $(document).on("click", "input[type=radio][name=action_user]", function (e) {
         }
     });
 });
+
+////////////////////////////// action user //////////////////////////
+$(document).on("keyup", "#jq_note-action-user,#jq_affiliated_with-action-user", function (e) {
+    $("#save-note-affiliated").removeClass("hidden");
+});
+
+$(document).on("click", "#save-note-affiliated", function (e) {
+    let id = $("#user_id").val();
+    var url = "web/index.php?r=requast-job-form/save-note-affiliated&id=" + id;
+    data = {
+        "note": $("#jq_note-action-user").val(),
+        "affiliated_with": $("#jq_affiliated_with-action-user").val()
+    }
+    
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        success: function (response) {
+            alert("success");
+        }
+    });
+});

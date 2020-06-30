@@ -26,6 +26,7 @@ $message_zoom = ($dataModelZoom == null) ? '' : $dataModelZoom->text;
         <?= Html::a(Yii::t('app', 'Message_Clarification'), "https://web.whatsapp.com/send?phone=962$phone&text=$message", ['target' => '_blank', 'class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]); ?>
         <?= Html::a(Yii::t('app', 'Message_Zoom'), "https://web.whatsapp.com/send?phone=962$phone&text=$message_zoom", ['target' => '_blank', 'class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]); ?>
         <button class="btn btn-info"> الرسائل<span class="massges"> <?= $model->smssend->count ?></span></button>
+        <button id="save-note-affiliated" class="btn btn-primary float-right hidden"><?= Yii::t('app', 'Save') ?></button>
         <div class="form-group">
             <label class="radio-inline"><input type="radio" name="action_user" id_data=<?= $model->id ?> value=<?= RequastJobForm::NOT_INTERVIEWED ?> <?= (RequastJobForm::NOT_INTERVIEWED == $model->action_user) ? 'checked' : '' ?>> <?= Yii::t('app', 'NOT_INTERVIEWED') ?></label>
             <label class="radio-inline"><input type="radio" name="action_user" id_data=<?= $model->id ?> value=<?= RequastJobForm::WAS_INTERVIEWED ?> <?= (RequastJobForm::WAS_INTERVIEWED == $model->action_user) ? 'checked' : '' ?>><?= Yii::t('app', 'WAS_INTERVIEWED') ?></label>
@@ -33,11 +34,22 @@ $message_zoom = ($dataModelZoom == null) ? '' : $dataModelZoom->text;
             <label class="radio-inline"><input type="radio" name="action_user" id_data=<?= $model->id ?> value=<?= RequastJobForm::BUSY ?> <?= (RequastJobForm::BUSY == $model->action_user) ? 'checked' : '' ?>><?= Yii::t('app', 'BUSY') ?></label>
             <label class="radio-inline"><input type="radio" name="action_user" id_data=<?= $model->id ?> value=<?= RequastJobForm::CONTRACT_WAS_SIGNED ?> <?= (RequastJobForm::CONTRACT_WAS_SIGNED == $model->action_user) ? 'checked' : '' ?>><?= Yii::t('app', 'CONTRACT_WAS_SIGNED') ?></label>
         </div>
+        <div class="row">
+            <input type="hidden" value="<?= $model->id ?>" id="user_id" />
+            <div class="col-md-8">
+                <label for="jq_note-action-user"><?= Yii::t('app', 'Note') ?></label>
+                <input type="text" class="form-control" id="jq_note-action-user" value="<?= $model->note ?>" />
+            </div>
+            <div class="col-md-4">
+                <label for="jq_affiliated_with-action-user"><?= Yii::t('app', 'Affiliated_With') ?></label>
+                <input type="text" class="form-control" id="jq_affiliated_with-action-user" value="<?= $model->affiliated_with ?>" />
+            </div>
+        </div>
 
 
     </p>
 
-    <div class="row">
+    <div class=" row">
         <div class="col-md-2">
             <?= Yii::t('app', 'Name') . ' :-' ?>
             <?= $model->name ?>

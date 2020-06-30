@@ -436,5 +436,23 @@ class RequastJobFormController extends BaseController
             'message' => $message
         ]);
     }
-    
+
+
+    /**
+     * Creates a new RequastJob model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionSaveNoteAffiliated($id)
+    {
+        $model = $this->findModel($id) ;
+        $model->note=$_POST["note"];
+        $model->affiliated_with = $_POST["affiliated_with"];
+        $model->save(false);
+        
+        header('Content-Type: application/json');
+        $data["status"] = 201;
+        echo json_encode($data, JSON_PRETTY_PRINT);
+        return;
+    }
 }
