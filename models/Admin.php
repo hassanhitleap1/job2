@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Carbon\Carbon;
+
 use Yii;
 
 /**
@@ -84,31 +85,7 @@ class Admin extends \yii\db\ActiveRecord
             if ($this->isNewRecord) {
                 $this->created_at = $today;
                 $this->updated_at = $today;
-               
-                $message_zoom= UserMessageZoom::find()->select('text')->column()[0];
-                $msss_zoom_model=new UserMessageZoom();
-                $msss_zoom_model->text=$message_zoom;
-                $msss_zoom_model->user_id= Yii::$app->user->identity->id;
 
-                $message_merchant= UserMessageMerchant::find()->select('text')->column()[0];
-                $message_merchant_model=new UserMessageMerchant();
-                $message_merchant_model->text=$message_merchant;
-                $message_merchant_model->user_id= Yii::$app->user->identity->id;
-
-                $message_clarification= UserMessageClarification::find()->select('text')->column()[0];
-                $msss_clarification_model=new UserMessageClarification();
-                $msss_clarification_model->text=$message_clarification;
-                $msss_clarification_model->user_id= Yii::$app->user->identity->id;
-
-                $message_user= UserMessage::find()->select('text')->column()[0];
-                $message_user_model=new UserMessage();
-                $message_user_model->text=$message_user;
-                $message_user_model->user_id= Yii::$app->user->identity->id;
-
-                $msss_zoom_model->save(false);
-                $message_merchant_model->save(false);
-                $msss_clarification_model->save(false);
-                $message_user_model->save(false);
             } else {
                 $this->updated_at =$today;
             }
