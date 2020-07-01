@@ -372,7 +372,8 @@ class RequastJobController extends BaseController
                     break;
                 case RequastJobForm::IGNORAE:
                     $model->action_user = RequastJobForm::IGNORAE;
-                    $action_id = RequastJobForm::IGNORAE;
+                    $model->type=User::NORMAL_USER_IGNORAE;
+                    $action_id = RequastJobForm::WAS_INTERVIEWED;
                     $action = Yii::t('app', 'IGNORAE');
                     break;
                 case RequastJobForm::BUSY:

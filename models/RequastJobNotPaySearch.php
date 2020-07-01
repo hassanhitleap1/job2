@@ -62,8 +62,8 @@ class RequastJobNotPaySearch extends RequastJob
             //
         $subQuery=CountSendSms::find()->where('count > 3')->select('user_id');
         //
-        $query->where(['type' => User::NORMAL_USER]);
-        $query->andWhere(['pay_service' => User::NOT_PAY_SERVICE]);
+        $query->where(['type' => User::NORMAL_USER_IGNORAE]);
+//        $query->andWhere(['pay_service' => User::NOT_PAY_SERVICE]);
     //     $query->andWhere(['and',
     //         ['not in', 'user.id', $subQuery],
     //         ['>=','created_at',Carbon::now("Asia/Amman")->subDays(30)->toDateString()]
