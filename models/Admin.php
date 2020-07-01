@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Carbon\Carbon;
 use Yii;
 
 /**
@@ -71,6 +72,54 @@ class Admin extends \yii\db\ActiveRecord
             [['phone'],'unique','message'=>Yii::t('app','Phone_Already_Exist')],
         ];
     }
+
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        $today=Carbon::now("Asia/Amman");
+        if (parent::beforeSave($insert)) {
+            // Place your custom code here
+            if ($this->isNewRecord) {
+                $this->created_at = $today;
+                $this->updated_at = $today;
+
+                $message_zoom= UserMessageZoom::find()->one()->text;
+                $msss_zoom_model=new UserMessageZoom();
+                $msss_zoom_model->text=$message_zoom;
+                $msss_zoom_model->user_id=Yii::app()->user->id;
+
+                $message_merchant= UserMessageMerchant::find()->one()->text;
+                $message_merchant_model=new UserMessageMerchant();
+                $message_merchant_model->text=$message_merchant;
+                $message_merchant_model->user_id=Yii::app()->user->id;
+
+                $message_clarification= UserMessageClarification::find()->one()->text;
+                $msss_clarification_model=new UserMessageClarification();
+                $msss_clarification_model->text=$message_clarification;
+                $msss_clarification_model->user_id=Yii::app()->user->id;
+
+                $message_user= UserMessage::find()->one()->text;
+                $message_user_model=new UserMessage();
+                $message_user_model->text=$message_user;
+                $message_user_model->user_id=Yii::app()->user->id;
+
+                $msss_zoom_model->save(false);
+                $message_merchant_model->save(false);
+                $msss_clarification_model->save(false);
+                $message_user_model->save(false);
+            } else {
+                $this->updated_at =$today;
+            }
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     /**
      * {@inheritdoc}
