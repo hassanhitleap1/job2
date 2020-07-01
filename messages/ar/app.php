@@ -218,6 +218,6 @@ return [
     "New_Password"=>"كلمة السر الجديده",
     "Message_Zoom"=>"ؤسالة zoom",
     "Admins"=>"المدرا",
-
+    "Create_Admin"=>"انشاء مدير",
 
 ];
