@@ -62,7 +62,7 @@ AppAsset::register($this);
                         ['label' => Yii::t('app', 'Message_Clarification'), 'url' => ['/user-message-clarification/index']],
                         ['label' => Yii::t('app', 'Message_Zoom'), 'url' => ['/user-message-zoom/index']],
                         ['label' => Yii::t('app', 'Message_School_Owner'), 'url' => ['/message-school-owners/index']],
-                        
+                        ['label' => Yii::t('app', 'Admins'), 'url' => ['/admin/index']],
                         ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories/index']],
                         ['label' => Yii::t('app', 'Governorate'), 'url' => ['/governorate/index']],
                         ['label' => Yii::t('app', 'Nationality'), 'url' => ['/nationality/index']],
@@ -98,8 +98,27 @@ AppAsset::register($this);
                         ['label' => Yii::t('app', 'Requast_Job_Not_Pay'), 'url' => ['/requast-job-not-pay/index']]
                     ],
                 ];
-
                 $menuItems[] = ['label' => Yii::t('app', 'Message'), 'url' => ['/user-message-whatsapp/index']];
+
+            }elseif (Yii::$app->user->identity->type == User::NORMAL_ADMIN){
+                $menuItems[] = [
+                    'label' =>Yii::t('app', 'Merchants') ,
+                    'items' => [
+                        ['label' => Yii::t('app', 'Merchants'), 'url' => ['/merchant/index']],
+                        ['label' => Yii::t('app', 'Request_Merchant'), 'url' => ['/request-merchant/index']]
+                    ],
+                ];
+
+                $menuItems[] = [
+                    'label' =>Yii::t('app', 'Requast_Job') ,
+                    'items' => [
+                        ['label' => Yii::t('app', 'Requast_Job_Form'), 'url' => ['/requast-job-form/index']],
+                        ['label' => Yii::t('app', 'Requast_Job_Pay'), 'url' => ['/requast-job/index']],
+                        ['label' => Yii::t('app', 'Requast_Job_Not_Pay'), 'url' => ['/requast-job-not-pay/index']]
+                    ],
+                ];
+                $menuItems[] = ['label' => Yii::t('app', 'Message'), 'url' => ['/user-message-whatsapp/index']];
+
             }else{
                 $menuItems[] = ['label' => Yii::t('app', 'My_Request'), 'url' => ['/my-request/index']];
                 $menuItems[] = ['label' => Yii::t('app', 'Contract'), 'url' => ['/documents/index']];

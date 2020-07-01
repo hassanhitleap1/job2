@@ -10,7 +10,7 @@ use yii\widgets\Pjax;
 $this->title = Yii::t('app', 'Admins');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="admin-index">
+<div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -26,49 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'username',
             'name',
-            'auth_key',
-            'password_hash',
-            //'password_reset_token',
-            //'email:email',
-            //'status',
-            //'agree',
-            //'phone',
-            //'nationality',
-            //'certificates:ntext',
-            //'experience:ntext',
-            //'governorate',
-            //'area',
-            //'expected_salary',
-            //'note:ntext',
-            //'type',
-            //'name_company',
-            //'auth_token',
-            //'subscribe_date',
-            //'avatar',
-            //'gender',
-            //'affiliated_to',
-            //'affiliated_with',
-            //'interview_time',
-            //'year_of_experience',
-            //'created_at',
-            //'updated_at',
-            //'verification_token',
-            //'category_id',
-            //'pay_service',
-            //'priorities:ntext',
-            //'first_payment',
-            //'work_tolerance',
-            //'teamwork',
-            //'work_permanently',
-            //'communication_skills',
-            //'verification_email:email',
-            //'action_user',
-            //'contract_path',
-
+            'phone',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

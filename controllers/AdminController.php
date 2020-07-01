@@ -70,7 +70,7 @@ class AdminController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $model->status= User::STATUS_ACTIVE;
             $model->type=User::NORMAL_ADMIN;
-            $model->password_hash=123;
+            $model->password_hash=\Yii::$app->security->generatePasswordHash(123456789);
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
