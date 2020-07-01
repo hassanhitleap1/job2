@@ -219,6 +219,10 @@ return [
     "Message_Zoom"=>" رسالة شرح  zoom",
     "Admins"=>"المدراء",
     "Create_Admin"=>"انشاء مدير",
-    "Custum_Massage"=>"تثبيت الرسائل"
+    "Custum_Massage"=>"تثبيت الرسائل",
+    "Change_Password"=>"تغير كلمة السر",
+    "Delete_User"=>"حذف مسستخدم",
+    "Update_User"=>"تحديث مستخدم",
+    "Change_Note_To"=>"تغير الملاحظة الى",
 
 ];

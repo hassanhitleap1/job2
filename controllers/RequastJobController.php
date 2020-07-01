@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\ActionAdmin;
 use app\models\CountSendSms;
 use app\models\MessageJobUser;
 use app\models\RequastJobForm;
@@ -141,6 +142,11 @@ class RequastJobController extends BaseController
                 }
                
                if($model->save()){
+                   $model_action= new ActionAdmin();
+                   $model_action->user_id=$id;
+                   $model_action->admin_id=Yii::$app->user->identity->id;
+                   $model_action->action=Yii::t('app','Update_User');
+                   $model_action->save(false);
                     return $this->redirect(['view', 'id' => $model->id]);
                }
 
@@ -389,6 +395,11 @@ class RequastJobController extends BaseController
 
         }
 
+        $model_action= new ActionAdmin();
+        $model_action->user_id=$id;
+        $model_action->admin_id=Yii::$app->user->identity->id;
+        $model_action->action=$action;
+        $model_action->save(false);
         $data["status"] = 401;
         $data["action"]=$action;
         $data["action_id"]= $action_id;
@@ -423,6 +434,11 @@ class RequastJobController extends BaseController
         $model=$this->findModel($id);
         $model->password_hash=\Yii::$app->security->generatePasswordHash('123456789');
         $model->save(false);
+        $model_action= new ActionAdmin();
+        $model_action->user_id=$id;
+        $model_action->admin_id=Yii::$app->user->identity->id;
+        $model_action->action=Yii::t('app',"Change_Password");
+        $model_action->save(false);
         return $this->redirect(['index']);
     }
 
