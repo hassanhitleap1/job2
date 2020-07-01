@@ -96,7 +96,7 @@ class RequastJobSearch extends RequastJob
             ->andFilterWhere(['>=', 'subscribe_date', $this->subscribe_date])
             ->andFilterWhere(['like', 'note', $this->note]);
         $query->orderBy([
-            'created_at' => SORT_DESC //specify sort order ASC for ascending DESC for descending      
+            'update_at' => SORT_DESC //specify sort order ASC for ascending DESC for descending
         ]);
 
         return $dataProvider;
