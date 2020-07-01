@@ -224,5 +224,5 @@ return [
     "Delete_User"=>"حذف مسستخدم",
     "Update_User"=>"تحديث مستخدم",
     "Change_Note_To"=>"تغير الملاحظة الى",
-
+    "Action_Admins"=>"حركات المدراء",
 ];
