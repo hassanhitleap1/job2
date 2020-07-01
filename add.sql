@@ -93,3 +93,5 @@ SET utf8
 COLLATE utf8_general_ci NOT NULL , `user_id` INT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY
 (`id`)) ENGINE = InnoDB;
 
+
+CREATE TABLE `action_admin` ( `id` INT NOT NULL AUTO_INCREMENT , `user_id` INT NOT NULL , `admin_id` INT NOT NULL , `action` VARCHAR(400) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `date` DATETIME NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
