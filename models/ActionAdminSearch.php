@@ -17,8 +17,8 @@ class ActionAdminSearch extends ActionAdmin
     public function rules()
     {
         return [
-            [['id', 'user_id', 'admin_id'], 'integer'],
-            [['action', 'date', 'created_at', 'updated_at'], 'safe'],
+            [['id'], 'integer'],
+            [['action', 'user_id', 'admin_id','date'], 'safe'],
         ];
     }
 
@@ -50,7 +50,7 @@ class ActionAdminSearch extends ActionAdmin
 
         $this->load($params);
         $query->joinWith('user0');
-        $query->joinWith('admin0');
+        $query->joinWith('admin0 as admins');
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -61,14 +61,14 @@ class ActionAdminSearch extends ActionAdmin
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'user_id' => $this->user_id,
-            'admin_id' => $this->admin_id,
             'date' => $this->date,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'action', $this->action]);
+        $query->andFilterWhere(['like', 'action', $this->action])
+        ->andFilterWhere(['like', 'user.name', $this->user_id])
+        ->andFilterWhere(['like', 'admins.name', $this->admin_id]);
 
         return $dataProvider;
     }

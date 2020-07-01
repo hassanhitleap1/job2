@@ -5,7 +5,6 @@ namespace app\controllers;
 use Carbon\Carbon;
 use Yii;
 use app\models\UserMessageZoom;
-use app\models\UserMessageZoomSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 

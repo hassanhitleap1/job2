@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * ActionAdminController implements the CRUD actions for ActionAdmin model.
  */
-class ActionAdminController extends Controller
+class ActionAdminController extends BaseController
 {
     /**
      * {@inheritdoc}

@@ -18,7 +18,7 @@ use yii\filters\VerbFilter;
 /**
  * AdminController implements the CRUD actions for Admin model.
  */
-class AdminController extends Controller
+class AdminController extends BaseController
 {
     /**
      * {@inheritdoc}
