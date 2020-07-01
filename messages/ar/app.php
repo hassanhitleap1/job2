@@ -2,7 +2,7 @@
 return [
     'Home'=>'الصفحة الرئيسية',
     'Requast_Job'=>'نموذج تعبئة وظيفة',
-    'Requast_Job_Not_Pay'=>'نموذج نعبئه لوظيفة ( لم يدفع)',
+    'Requast_Job_Not_Pay'=>'متقدم لوظيفة مهمل',
     'Signup'=>'تسجيل',
     'Login'=>'الدخول',
     'Governorate'=>'المحافظة',
@@ -141,7 +141,7 @@ return [
     "Experiences"=>"الخبرات",
     "Educational_Attainment"=>"التحصيل العلمي ",
     "Year_Get"=>"سنه التخرج",
-    "Requast_Job_Pay"=>"متقدم لوظيقة دفع",
+    "Requast_Job_Pay"=>"متقدم لوظيقة تم مقابلته",
     "Month_From_Exp"=>"الشهر من",
     "Year_From_Exp"=>"السنه من ",
     "Month_To_Exp"=>"الشهر الى",
@@ -157,7 +157,7 @@ return [
     "IF_Exist"=>"ان وجد",
     "My_Request"=>"طلبي",
     "Successfuly_Message_Update"=>"تم تعديل بنجاح ",
-    "Requast_Job_Form" => "نموذج تعبئة وظيفة",
+    "Requast_Job_Form" => "متقدم لوظيفة",
     "Email_Or_Phone"=>"البريد الاليكتروني أو الهاتف",
     "Date_From"=>"من تاريخ",
     "Date_To"=>"الى تاريخ",
@@ -216,8 +216,9 @@ return [
     "Download_Contract_Png"=>"تحميل العقد كصورة",
     "Old_Password"=>"كلمة السر القديمة",
     "New_Password"=>"كلمة السر الجديده",
-    "Message_Zoom"=>"ؤسالة zoom",
-    "Admins"=>"المدرا",
+    "Message_Zoom"=>" رسالة شرح  zoom",
+    "Admins"=>"المدراء",
     "Create_Admin"=>"انشاء مدير",
+    "Custum_Massage"=>"تثبيت الرسائل"
 
 ];

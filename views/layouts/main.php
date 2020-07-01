@@ -57,11 +57,7 @@ AppAsset::register($this);
                 $menuItems[] = [
                     'label' =>Yii::t('app', 'Additional') ,
                     'items' => [
-                        ['label' => Yii::t('app', 'Message'), 'url' => ['/user-message/index']],
-                        ['label' => Yii::t('app', 'Message_Merchent'), 'url' => ['/user-message-merchant/index']],
-                        ['label' => Yii::t('app', 'Message_Clarification'), 'url' => ['/user-message-clarification/index']],
-                        ['label' => Yii::t('app', 'Message_Zoom'), 'url' => ['/user-message-zoom/index']],
-                        ['label' => Yii::t('app', 'Message_School_Owner'), 'url' => ['/message-school-owners/index']],
+
                         ['label' => Yii::t('app', 'Admins'), 'url' => ['/admin/index']],
                         ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories/index']],
                         ['label' => Yii::t('app', 'Governorate'), 'url' => ['/governorate/index']],
@@ -79,6 +75,18 @@ AppAsset::register($this);
                         ['label' => Yii::t('app', 'Educational_Attainment'), 'url' => ['/educational-attainment/index']],
                         ['label' => Yii::t('app', 'Specialties'), 'url' => ['/specialties/index']],
                         ['label' => Yii::t('app', 'School_Owners'), 'url' => ['/school-owners/index']],
+                    ],
+                ];
+
+
+                $menuItems[] = [
+                    'label' =>Yii::t('app', 'Custum_Massage') ,
+                    'items' => [
+                        ['label' => Yii::t('app', 'Message'), 'url' => ['/user-message/index']],
+                        ['label' => Yii::t('app', 'Message_Merchent'), 'url' => ['/user-message-merchant/index']],
+                        ['label' => Yii::t('app', 'Message_Clarification'), 'url' => ['/user-message-clarification/index']],
+                        ['label' => Yii::t('app', 'Message_Zoom'), 'url' => ['/user-message-zoom/index']],
+                        ['label' => Yii::t('app', 'Message_School_Owner'), 'url' => ['/message-school-owners/index']],
                     ],
                 ];
 
@@ -101,6 +109,16 @@ AppAsset::register($this);
                 $menuItems[] = ['label' => Yii::t('app', 'Message'), 'url' => ['/user-message-whatsapp/index']];
 
             }elseif (Yii::$app->user->identity->type == User::NORMAL_ADMIN){
+                $menuItems[] = [
+                    'label' =>Yii::t('app', 'Custum_Massage') ,
+                    'items' => [
+                        ['label' => Yii::t('app', 'Message'), 'url' => ['/user-message/index']],
+                        ['label' => Yii::t('app', 'Message_Merchent'), 'url' => ['/user-message-merchant/index']],
+                        ['label' => Yii::t('app', 'Message_Clarification'), 'url' => ['/user-message-clarification/index']],
+                        ['label' => Yii::t('app', 'Message_Zoom'), 'url' => ['/user-message-zoom/index']],
+                        ['label' => Yii::t('app', 'Message_School_Owner'), 'url' => ['/message-school-owners/index']],
+                    ],
+                ];
                 $menuItems[] = [
                     'label' =>Yii::t('app', 'Merchants') ,
                     'items' => [
