@@ -31,8 +31,9 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
  
         <?php $form = ActiveForm::begin() ?>
+
         <div class="row">
-        
+            <input id="timepicker" class="icon" width="276" />
             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                 <div class="form-group">
                         <a href="#" class="btn btn-primary" id="send-message"><?= Yii::t('app', 'Send')?></a>
@@ -159,3 +160,6 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
     </div>
+<script>
+    $('#timepicker').timepicker();
+</script>
