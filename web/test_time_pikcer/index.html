@@ -1,0 +1,18 @@
+<div class="form-line float-left">
+    <input type="text" class="timepicker1 form-control"   name="start_time" />
+</div>
+
+<script>
+    setTimeout(function () {
+        var time= $('.timepicker2').bootstrapMaterialDatePicker({
+            time :true,
+            format: 'HH:mm',
+            clearButton: true,
+            date: false,
+            shortTime:true,
+        });
+        time.bind( "change", function() {
+            $(".timepicker2").val(tConvert($(".timepicker2").val()));
+        });
+    },500);
+</script>
