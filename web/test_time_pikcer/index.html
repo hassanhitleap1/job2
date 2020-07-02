@@ -1,18 +1,15 @@
-<div class="form-line float-left">
-    <input type="text" class="timepicker1 form-control"   name="start_time" />
-</div>
-
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Timepicker example</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<input id="timepicker" width="276" />
 <script>
-    setTimeout(function () {
-        var time= $('.timepicker2').bootstrapMaterialDatePicker({
-            time :true,
-            format: 'HH:mm',
-            clearButton: true,
-            date: false,
-            shortTime:true,
-        });
-        time.bind( "change", function() {
-            $(".timepicker2").val(tConvert($(".timepicker2").val()));
-        });
-    },500);
+    $('#timepicker').timepicker();
 </script>
+</body>
+</html>
