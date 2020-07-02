@@ -14,6 +14,7 @@ use yii\helpers\Html;
 $this->title = $user->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Requast_Jobs'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+$dayes_of_week=Yii::$app->params['day_of_weeck'];
 
 
 ?>
@@ -34,13 +35,22 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php $form = ActiveForm::begin() ?>
         <div class="row">
 <!--            //class="glyphicon glyphicon-time"-->
-            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-12">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <div class="form-group">
                     <p class="wrapper">
                         <input id="timepicker" class="icon" width="276"   />
                     </p>
                 </div>
             </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+                <?=$form->field($model, 'user_id')->widget(Select2Widget::classname(),
+                    [
+                        'items' => $dayes_of_week,
+                        'options' => ['placeholder' => 'Select day'],
+                    ])->label('');?>
+            </div>
+
             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                 <div class="form-group">
                         <a href="#" class="btn btn-primary" id="send-message"><?= Yii::t('app', 'Send')?></a>

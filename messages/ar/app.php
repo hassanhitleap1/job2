@@ -225,4 +225,12 @@ return [
     "Update_User"=>"تحديث مستخدم",
     "Change_Note_To"=>"تغير الملاحظة الى",
     "Action_Admins"=>"حركات المدراء",
+    "Monday"=>"الاثنين",
+    "Tuesday"=>"الثلاثاء",
+    "Wednesday"=>"الأربعاء",
+    "Thursday"=>"الخميس",
+    "Friday"=>"الجمعة",
+    "Saturday"=>"السبت",
+    "Sunday"=>"الأحد",
+
 ];
