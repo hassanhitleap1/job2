@@ -39,6 +39,7 @@ class UserMessageZoomController extends BaseController
             $dataModel=UserMessageZoom::find()->where(['user_id'=>Yii::$app->user->id])->one();
             if($dataModel == null){
                 $model->user_id=Yii::$app->user->id;
+                $dataModel->text=$model->text;
                 $model->created_at=Carbon::now('Asia/Amman');
                 $model->save();
             }else{
