@@ -120,13 +120,7 @@ AppAsset::register($this);
                         ['label' => Yii::t('app', 'Message_School_Owner'), 'url' => ['/message-school-owners/index']],
                     ],
                 ];
-                $menuItems[] = [
-                    'label' =>Yii::t('app', 'Merchants') ,
-                    'items' => [
-                        ['label' => Yii::t('app', 'Merchants'), 'url' => ['/merchant/index']],
-                        ['label' => Yii::t('app', 'Request_Merchant'), 'url' => ['/request-merchant/index']]
-                    ],
-                ];
+   
 
                 $menuItems[] = [
                     'label' =>Yii::t('app', 'Requast_Job') ,
