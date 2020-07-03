@@ -75,7 +75,7 @@ $this->registerJs($js);
             <?= $form->field($model, 'phone')->textInput() ?>
         </div>
         <div class="col-md-2">
-            <?= $form->field($model, 'location')->textInput() ?>
+            <?= $form->field($model, 'localtion')->textInput() ?>
         </div>
         <div class="col-md-2">
             <?= $form->field($model, 'governorate')->widget(

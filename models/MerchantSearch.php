@@ -18,7 +18,7 @@ class MerchantSearch extends Merchant
     {
         return [
             [[ 'phone'], 'integer'],
-            [['governorate', 'name', 'area', 'note', 'name_company'], 'safe'],
+            [['governorate', 'name', 'area', 'note', 'name_company', 'location'], 'safe'],
         ];
     }
 
@@ -71,6 +71,7 @@ class MerchantSearch extends Merchant
             ->andFilterWhere(['like', 'area.name_ar', $this->area])
             ->andFilterWhere(['like', 'governorate.name_ar', $this->governorate])
             ->andFilterWhere(['like', 'note', $this->note])
+            ->andFilterWhere(['like', 'location', $this->location])
             ->andFilterWhere(['like', 'name_company', $this->name_company])
           ;
 
