@@ -145,6 +145,7 @@ $(document).on("click",".custom-message",function(e){
             message = message.replace("time", time);
             message = message.replace("day", day);
             message = message.replace("name_company", data.marchent.name_company);
+            message = message.replace("localtion", data.marchent.localtion);
              message = message.replace("phone",data.marchent.phone);
              message = message.replace("job",data.requst_marchent.job_title);
              document.getElementById("message-text").value =message;
