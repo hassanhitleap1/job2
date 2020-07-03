@@ -14,7 +14,16 @@ use yii\helpers\Html;
 $this->title = $user->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Requast_Jobs'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-$dayes_of_week=Yii::$app->params['day_of_weeck'];
+
+$dayes_of_week = [
+            0 => Yii::t('app', 'Saturday'),
+            1 => Yii::t('app', 'Sunday'),
+            2 => Yii::t('app', 'Monday'),
+            3 => Yii::t('app', 'Tuesday'),
+            4 => Yii::t('app', 'Wednesday'),
+            5 => Yii::t('app', 'Thursday'),
+            6 => Yii::t('app', 'Friday')
+        ];
 
 
 ?>
@@ -47,7 +56,8 @@ $dayes_of_week=Yii::$app->params['day_of_weeck'];
                 <?=$form->field($model, 'user_id')->widget(Select2Widget::classname(),
                     [
                         'items' => $dayes_of_week,
-                        'options' => ['placeholder' => 'Select day'],
+                        'options' => ['placeholder' => 'Select day',
+                        'id'=>'day_metting'],
                     ])->label('');?>
             </div>
 

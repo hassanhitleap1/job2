@@ -139,7 +139,11 @@ $(document).on("click",".custom-message",function(e){
         dataType: 'JSON',
         success: function (data) {
             document.getElementById("message-text").value ='';
-            var message=$(".message").attr('message');
+            let time = $("#timepicker").val();
+            let day = $("#day_metting").val();
+            var message = $(".message").attr('message');
+            message = message.replace("time", time);
+            message = message.replace("day", day);
              message = message.replace("phone",data.marchent.phone);
              message = message.replace("job",data.requst_marchent.job_title);
              document.getElementById("message-text").value =message;

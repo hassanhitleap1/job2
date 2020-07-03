@@ -10,13 +10,5 @@ return [
         'ar'=>'Arabic',
         'en'=>'English'
     ],
-    'day_of_weeck'=>[
-        0=>Yii::t('app','Saturday'),
-        1=>Yii::t('app','Sunday'),
-        2=>Yii::t('app','Monday'),
-        3=>Yii::t('app','Tuesday'),
-        4=>Yii::t('app','Wednesday'),
-       5=>Yii::t('app','Thursday'),
-       6=>Yii::t('app','Friday')
-],
+ 
 ];
