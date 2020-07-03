@@ -15,7 +15,7 @@ $this->title = $user->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Requast_Jobs'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-$day_of_weeck = [
+$dayes_of_week = [
     0 => Yii::t('app', 'Saturday'),
     1 => Yii::t('app', 'Sunday'),
     2 => Yii::t('app', 'Monday'),
@@ -25,7 +25,10 @@ $day_of_weeck = [
     6 => Yii::t('app', 'Friday')
 ];
 
+date_default_timezone_set('Asia/Amman');
+$timestamp = date('H:i');
 ?>
+
 
 <div class="">
     <div class="users"></div>
@@ -40,12 +43,12 @@ $day_of_weeck = [
     </div>
 
     <?php $form = ActiveForm::begin() ?>
-
     <div class="row">
+        <!--            //class="glyphicon glyphicon-time"-->
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <div class="form-group">
                 <p class="wrapper">
-                    <input id="timepicker" class="icon" width="276" />
+                    <input id="timepicker" class="icon" width="276" value="<?= $timestamp ?>" />
                 </p>
             </div>
         </div>
@@ -56,12 +59,12 @@ $day_of_weeck = [
                 [
                     'items' => $dayes_of_week,
                     'options' => [
-                        'placeholder' => 'Select day',
                         'id' => 'day_metting'
                     ],
                 ]
             )->label(''); ?>
         </div>
+
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
             <div class="form-group">
                 <a href="#" class="btn btn-primary" id="send-message"><?= Yii::t('app', 'Send') ?></a>
@@ -151,7 +154,7 @@ $day_of_weeck = [
             <?= $form->field($model, 'user_id')->widget(
                 Select2Widget::classname(),
                 [
-                    'items' => ArrayHelper::map(User::find()->where(['type' => User::NORMAL_USER])->all(), 'id', 'name'),
+                    'items' => ArrayHelper::map(User::find()->where(['type' => User::FORM_APPLAY_USER])->all(), 'id', 'name'),
                     'options' => ['placeholder' => 'Select Phone Number', 'value' => $user->id, 'id' => 'user-id'],
                 ]
             );

@@ -1,3 +1,14 @@
+let SiteUrl = getSiteUrl() ;
+ 
+
+
+function getSiteUrl() {
+    let site_url=window.location.host;
+    if (site_url='localhost:8080'){
+        return site_url;
+    }
+    return site_url+'/web';
+}
 $(document).ready(function () {
     $("#btn-print-cv").click(function (e) { 
         e.preventDefault();
@@ -48,7 +59,7 @@ $(document).on("click",".suggested-jobs",function(){
 
 $(document).on("keyup","#message-text",function(e){
   
-    url="/web/index.php?r=request-merchant/filter";
+    url=SiteUrl+"/index.php?r=request-merchant/filter";
     if(this.value != null && this.value != ''){
         url+="&search="+this.value;
     }
@@ -57,6 +68,7 @@ $(document).on("keyup","#message-text",function(e){
         type: 'GET',
         dataType: 'JSON',
         success: function (data) {
+            data = JSON.parse(data);
             var html="";
             var index=1;
             $(".suggesstion-box").html(html);
@@ -88,12 +100,13 @@ $(document).on("keyup","#message-text",function(e){
 
 $(document).on("change","#user-id",function(e){
     var user_id=$(this).val();
-    var url="/web/index.php?r=user-info&id="+user_id;
+    var url = SiteUrl +"/index.php?r=user-info&id="+user_id;
     $.ajax({
         url: url ,
         type: 'GET',
         dataType: 'JSON',
         success: function (data) {
+            data = JSON.parse(data);
             $("#user-name").html(data.user.name);
             $("#phone-for").attr('phone',data.user.phone);
             $("#priorities").html(data.user.priorities);
@@ -132,7 +145,7 @@ $(document).on("click",".custom-message",function(e){
     var id=$(this).attr('id');
     var message=$(".message").attr('message');
 
-    var url="/web/index.php?r=request-merchant/get-request&id="+id;
+    var url = SiteUrl +"/index.php?r=request-merchant/get-request&id="+id;
     $.ajax({
         url: url ,
         type: 'GET',
@@ -198,7 +211,7 @@ $(document).on("click",".save-message-suggested",function(e){
         text:$("#message-text").val(),
     }
 
-    var url="/web/index.php?r=user-message-whatsapp/save-message";
+    var url = SiteUrl +"/index.php?r=user-message-whatsapp/save-message";
     $.ajax({
         type: "POST",
         url: url,
@@ -230,7 +243,7 @@ $(document).on("click","#save-message",function(e){
         text:$("#message-text").val(),
     }
 
-    var url="/web/index.php?r=user-message-whatsapp/save-message";
+    var url = SiteUrl +"/index.php?r=user-message-whatsapp/save-message";
     $.ajax({
         type: "POST",
         url: url,
@@ -267,7 +280,7 @@ function diff_time(date){
 
 
 $(document).on("click", "input[type=radio][name=action_user]", function (e) {
-    var url = "web/index.php?r=requast-job-form/change-action&id=" + $(this).attr("id_data");
+    var url = SiteUrl +"/index.php?r=requast-job-form/change-action&id=" + $(this).attr("id_data");
     data = {
         "action_user": $(this).val(),
     }
@@ -296,7 +309,7 @@ $(document).on("keyup", "#jq_note-action-user,#jq_affiliated_with-action-user", 
 
 $(document).on("click", "#save-note-affiliated", function (e) {
     let id = $("#user_id").val();
-    var url = "web/index.php?r=requast-job-form/save-note-affiliated&id=" + id;
+    var url = SiteUrl +"/index.php?r=requast-job-form/save-note-affiliated&id=" + id;
     data = {
         "note": $("#jq_note-action-user").val(),
         "affiliated_with": $("#jq_affiliated_with-action-user").val()
