@@ -75,7 +75,7 @@ $this->registerJs($js);
             <?= $form->field($model, 'phone')->textInput() ?>
         </div>
         <div class="col-md-2">
-            <?= $form->field($model, 'localtion')->textInput() ?>
+            <?= $form->field($model, 'location')->textInput() ?>
         </div>
         <div class="col-md-2">
             <?= $form->field($model, 'governorate')->widget(
@@ -99,11 +99,7 @@ $this->registerJs($js);
             <?= $form->field($model, 'note')->textarea(['rows' => 6]) ?>
         </div>
         <div class="col-md-4">
-            <?= $form->field($model, 'file')->widget(FileInput::classname(), [
-                'options' => ['accept' => 'image/*'],
-                'pluginOptions' => $dataAvatar
-            ]);
-            ?>
+            <?= $form->field($model, 'address')->textInput() ?>
         </div>
     </div>
     <div class="row">
@@ -174,11 +170,11 @@ $this->registerJs($js);
                                             ]
                                         );  ?>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-1">
                                         <?= $form->field($modelRequestMerchant, "[{$index}]experience")->textInput() ?>
 
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-1">
                                         <?= $form->field($modelRequestMerchant, "[{$index}]count_employees")->textInput() ?>
                                     </div>
                                     <div class="col-md-2">
@@ -215,16 +211,16 @@ $this->registerJs($js);
                                             ]
                                         ); ?>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-1">
                                         <?= $form->field($modelRequestMerchant, "[{$index}]agree_from")->textInput() ?>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-1">
                                         <?= $form->field($modelRequestMerchant, "[{$index}]agree_to")->textInput() ?>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-1">
                                         <?= $form->field($modelRequestMerchant, "[{$index}]salary_from")->textInput() ?>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-1">
                                         <?= $form->field($modelRequestMerchant, "[{$index}]salary_to")->textInput() ?>
                                     </div>
                                 </div>
@@ -247,6 +243,15 @@ $this->registerJs($js);
 
 
 
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <?= $form->field($model, 'file')->widget(FileInput::classname(), [
+                'options' => ['accept' => 'image/*'],
+                'pluginOptions' => $dataAvatar
+            ]);
+            ?>
+        </div>
     </div>
     <div class="row">
         <div class="form-group">
