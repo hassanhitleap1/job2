@@ -157,6 +157,7 @@ $(document).on("click",".custom-message",function(e){
             var message = $(".message").attr('message');
             message = message.replace("time", time);
             message = message.replace("day", day);
+            message = message.replace("address", data.marchent.address);
             message = message.replace("name_company", data.marchent.name_company);
             message = message.replace("localtion", data.marchent.localtion);
              message = message.replace("phone",data.marchent.phone);
