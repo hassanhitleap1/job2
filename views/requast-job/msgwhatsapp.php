@@ -16,13 +16,13 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Requast_Jobs'), 'url
 $this->params['breadcrumbs'][] = $this->title;
 
 $dayes_of_week = [
-    0 => Yii::t('app', 'Saturday'),
-    1 => Yii::t('app', 'Sunday'),
-    2 => Yii::t('app', 'Monday'),
-    3 => Yii::t('app', 'Tuesday'),
-    4 => Yii::t('app', 'Wednesday'),
-    5 => Yii::t('app', 'Thursday'),
-    6 => Yii::t('app', 'Friday')
+    Yii::t('app', 'Saturday') => Yii::t('app', 'Saturday'),
+    Yii::t('app', 'Sunday') => Yii::t('app', 'Sunday'),
+    Yii::t('app', 'Monday') => Yii::t('app', 'Monday'),
+    Yii::t('app', 'Tuesday') => Yii::t('app', 'Tuesday'),
+    Yii::t('app', 'Wednesday') => Yii::t('app', 'Wednesday'),
+    Yii::t('app', 'Thursday') => Yii::t('app', 'Thursday'),
+    Yii::t('app', 'Friday') => Yii::t('app', 'Friday')
 ];
 
 date_default_timezone_set('Asia/Amman');
@@ -32,7 +32,7 @@ $timestamp = date('H:i');
 
 <div class="">
     <div class="users"></div>
-    <button id="save-message" class="btn btn-primary float-right hidden"><?= Yii::t('app', 'Save') ?></button>
+
     <h3 id="marchent_id"></h3>
     <h3 id="user-name"><?= Html::encode($this->title) ?></h3>
     <div class="alert alert-success" id="success_message" style="display: none;" role="alert">
@@ -45,14 +45,15 @@ $timestamp = date('H:i');
     <?php $form = ActiveForm::begin() ?>
     <div class="row">
         <!--            //class="glyphicon glyphicon-time"-->
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
             <div class="form-group">
                 <p class="wrapper">
-                    <input id="timepicker" class="icon" width="276" value="<?= $timestamp ?>" />
+                    <label for="timepicker"><?= Yii::t('app', 'Time') ?></label>
+                    <input id="timepicker" class="icon form-control" width="276" value="<?= $timestamp ?>" />
                 </p>
             </div>
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 
             <?= $form->field($model, 'user_id')->widget(
                 Select2Widget::classname(),
@@ -62,95 +63,100 @@ $timestamp = date('H:i');
                         'id' => 'day_metting'
                     ],
                 ]
-            )->label(''); ?>
+            )->label(Yii::t('app', 'Day')); ?>
         </div>
 
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
             <div class="form-group">
                 <a href="#" class="btn btn-primary" id="send-message"><?= Yii::t('app', 'Send') ?></a>
             </div>
         </div>
-
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            <h3><?= Yii::t('app', 'Priorities') ?></h3>
-            <div id="priorities">
-                <?= $user->priorities    ?>
+            <div class="form-group">
+                <button id="save-message" class="btn btn-primary float-right hidden"><?= Yii::t('app', 'Save') ?></button>
             </div>
         </div>
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-            <h3><?= Yii::t('app', 'Area') ?></h3>
-            <div id="area-user">
-                <?= $user->area    ?>
-            </div>
-        </div>
-        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            <h3><?= Yii::t('app', 'Experience') ?></h3>
-            <div id="experience-user">
-                <?= $user->experience    ?>
-            </div>
-        </div>
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-            <h3><?= Yii::t('app', 'Nationality') ?></h3>
-            <div id="nationality-user">
-                <?= $user->nationality0->name_ar    ?>
-            </div>
-        </div>
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-            <h3><?= Yii::t('app', 'Gender') ?></h3>
-            <div id="gender-user">
-                <?php
-                if ($user->gender == User::MALE) {
-                    echo "ذكر";
-                } elseif ($user->gender == User::FEMALE) {
-                    # code...
-                    echo "انثى";
-                } else {
-                    echo 'غير محدد';
-                }
-                ?>
-            </div>
-        </div>
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-            <h3><?= Yii::t('app', 'Coun_Send_Sms') ?></h3>
-            <div id="coun-send-sms-user">
-                <?= $user->smssend->count    ?>
-            </div>
-        </div>
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-            <h3><?= Yii::t('app', 'Agree') ?></h3>
-            <div id="agree-user">
-                <?= $user->agree    ?>
-            </div>
-        </div>
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-            <h3><?= Yii::t('app', 'Created_At') ?></h3>
-            <div id="created-at-user">
-                <?php
-                $now = Carbon::now("Asia/Amman");
-                $date = Carbon::parse(Carbon::parse($user->created_at));
-                $def = $date->diffInDays($now);
-                echo  "سجلت قبل " . $def . " يوم";
-                ?>
-            </div>
-        </div>
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-            <h3><?= Yii::t('app', 'Phone') ?></h3>
-            <div id="phone-user">
-                <?= $user->phone    ?>
-            </div>
-        </div>
-
-
-
 
 
     </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"><?= Yii::t('app', 'Priorities') ?></th>
+                        <th scope="col"><?= Yii::t('app', 'Area') ?></th>
+                        <th scope="col"><?= Yii::t('app', 'Experience') ?></th>
+                        <th scope="col"><?= Yii::t('app', 'Nationality') ?></th>
+                        <th scope="col"><?= Yii::t('app', 'Gender') ?></th>
+                        <th scope="col"><?= Yii::t('app', 'Coun_Send_Sms') ?></th>
+                        <th scope="col"><?= Yii::t('app', 'Agree') ?></th>
+                        <th scope="col"> <?= Yii::t('app', 'Created_At') ?></th>
+                        <th scope="col"><?= Yii::t('app', 'Phone') ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="priorities">
+                            <?= $user->priorities    ?>
+                        </td>
+
+                        <td id="area-user">
+                            <?= $user->area    ?>
+                        </td>
+
+                        <td id="experience-user">
+                            <?= $user->experience    ?>
+                        </td>
+                        <td id="nationality-user">
+                            <?= $user->nationality0->name_ar    ?>
+                        </td>
+                        <td id="gender-user">
+                            <?php
+                            if ($user->gender == User::MALE) {
+                                echo "ذكر";
+                            } elseif ($user->gender == User::FEMALE) {
+                                # code...
+                                echo "انثى";
+                            } else {
+                                echo 'غير محدد';
+                            }
+                            ?>
+                        </td>
+                        <td id="coun-send-sms-user">
+                            <?= $user->smssend->count    ?>
+                        </td>
+
+                        <td id="agree-user">
+                            <?= $user->agree    ?>
+                        </td>
+                        <td id="created-at-user">
+                            <?php
+                            $now = Carbon::now("Asia/Amman");
+                            $date = Carbon::parse(Carbon::parse($user->created_at));
+                            $def = $date->diffInDays($now);
+                            echo  "سجلت قبل " . $def . " يوم";
+                            ?>
+                        </td>
+                        <td id="phone-user">
+                            <?= $user->phone    ?>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
     <div class="message" message="<?= $message ?>"></div>
 
     <div id="phone-for" phone="<?= $user->phone ?>"></div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-4">
             <?= $form->field($model, 'user_id')->widget(
                 Select2Widget::classname(),
                 [
@@ -159,13 +165,15 @@ $timestamp = date('H:i');
                 ]
             );
             ?>
+
+        </div>
+        <div class="col-md-8">
+            <?= $form->field($model, 'text')->textarea(['maxlength' => true, 'id' => 'message-text']) ?>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
-            <?= $form->field($model, 'text')->textarea(['maxlength' => true, 'id' => 'message-text']) ?>
-
             <table class="table">
                 <thead>
                     <tr>

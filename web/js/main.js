@@ -5,7 +5,7 @@ let SiteUrl = getSiteUrl() ;
 function getSiteUrl() {
     let site_url=window.location.host;
     if (site_url='localhost:8080'){
-        return site_url;
+        return '';
     }
     return site_url+'/web';
 }
@@ -68,7 +68,6 @@ $(document).on("keyup","#message-text",function(e){
         type: 'GET',
         dataType: 'JSON',
         success: function (data) {
-            data = JSON.parse(data);
             var html="";
             var index=1;
             $(".suggesstion-box").html(html);
@@ -106,7 +105,6 @@ $(document).on("change","#user-id",function(e){
         type: 'GET',
         dataType: 'JSON',
         success: function (data) {
-            data = JSON.parse(data);
             $("#user-name").html(data.user.name);
             $("#phone-for").attr('phone',data.user.phone);
             $("#priorities").html(data.user.priorities);
@@ -152,6 +150,7 @@ $(document).on("click",".custom-message",function(e){
         dataType: 'JSON',
         success: function (data) {
             document.getElementById("message-text").value ='';
+            console.log("sssss");
             let time = $("#timepicker").val();
             let day = $("#day_metting").val();
             var message = $(".message").attr('message');
