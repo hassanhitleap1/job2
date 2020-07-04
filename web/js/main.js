@@ -4,7 +4,7 @@ let SiteUrl = getSiteUrl() ;
 
 function getSiteUrl() {
     let site_url=window.location.host;
-    if (site_url='localhost:8080'){
+    if (site_url=='localhost:8080'){
         return '';
     }
     return site_url+'/web';
@@ -63,6 +63,7 @@ $(document).on("keyup","#message-text",function(e){
     if(this.value != null && this.value != ''){
         url+="&search="+this.value;
     }
+
     $.ajax({
         url: url ,
         type: 'GET',
