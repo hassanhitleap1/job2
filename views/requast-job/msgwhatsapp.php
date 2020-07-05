@@ -160,11 +160,13 @@ $timestamp = date('H:i');
             <?= $form->field($model, 'user_id')->widget(
                 Select2Widget::classname(),
                 [
-                    'items' => ArrayHelper::map(User::find()->where(['type' => User::FORM_APPLAY_USER])->all(), 'id', 'name'),
+                    'items' => ArrayHelper::map(User::find()->where(['type' => User::FORM_APPLAY_USER])
+                        ->orWhere(['type' => User::NORMAL_USER])->all(), 'id', 'name'),
                     'options' => ['placeholder' => 'Select Phone Number', 'value' => $user->id, 'id' => 'user-id'],
                 ]
-            );
+            )->label(Yii::t('app', 'Name'));
             ?>
+
 
         </div>
         <div class="col-md-8">
