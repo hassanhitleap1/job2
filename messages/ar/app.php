@@ -232,5 +232,6 @@ return [
     "Friday"=>"الجمعة",
     "Saturday"=>"السبت",
     "Sunday"=>"الأحد",
+    "Text"=>"النص",
 
 ];

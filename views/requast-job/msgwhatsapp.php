@@ -170,7 +170,7 @@ $timestamp = date('H:i');
 
         </div>
         <div class="col-md-8">
-            <?= $form->field($model, 'text')->textarea(['maxlength' => true, 'id' => 'message-text']) ?>
+            <?= $form->field($model, 'text')->textarea(['maxlength' => true, 'id' => 'message-text'])->label(Yii::t('app', 'Text')); ?>
         </div>
     </div>
 
