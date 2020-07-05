@@ -366,23 +366,24 @@ class RequastJobFormController extends BaseController
     public function actionChangeAction($id)
     {
         $model = $this->findModel($id);
-        $action='';
-        $action_id=-1;
-        if(isset($_GET)){
+        $action = '';
+        $action_id = -1;
+        if (isset($_GET)) {
             switch ($_GET['action_user']) {
                 case RequastJobForm::NOT_INTERVIEWED:
                     $model->action_user = RequastJobForm::NOT_INTERVIEWED;
-                    $action_id= RequastJobForm::NOT_INTERVIEWED;
-                    $action=Yii::t('app', 'NOT_INTERVIEWED');
+                    $action_id = RequastJobForm::NOT_INTERVIEWED;
+                    $action = Yii::t('app', 'NOT_INTERVIEWED');
                     break;
                 case RequastJobForm::WAS_INTERVIEWED:
                     $model->action_user = RequastJobForm::WAS_INTERVIEWED;
-                    $model->type=User::NORMAL_USER;
+                    $model->type = User::NORMAL_USER;
                     $action_id = RequastJobForm::WAS_INTERVIEWED;
                     $action = Yii::t('app', 'WAS_INTERVIEWED');
                     break;
                 case RequastJobForm::IGNORAE:
                     $model->action_user = RequastJobForm::IGNORAE;
+                    $model->type = User::NORMAL_USER_IGNORAE;
                     $action_id = RequastJobForm::IGNORAE;
                     $action = Yii::t('app', 'IGNORAE');
                     break;
@@ -391,35 +392,27 @@ class RequastJobFormController extends BaseController
                     $action_id = RequastJobForm::BUSY;
                     $action = Yii::t('app', 'BUSY');
                     break;
-                case RequastJobForm::CONTRACT_WAS_SIGNED:
-                    $model->action_user = RequastJobForm::CONTRACT_WAS_SIGNED;
-                    $action_id = RequastJobForm::CONTRACT_WAS_SIGNED;
-                    $action = Yii::t('app', 'CONTRACT_WAS_SIGNED');
-                    break;
                 default:
                     $model->action_user = RequastJobForm::NOT_INTERVIEWED;
                     $action_id = RequastJobForm::NOT_INTERVIEWED;
                     $action = Yii::t('app', 'NOT_INTERVIEWED');
             }
-
         }
-        $model_action= new ActionAdmin();
-        $model_action->user_id=$id;
-        $model_action->admin_id=Yii::$app->user->identity->id;
-        $model_action->action=$action;
-        $model_action->save(false);
 
+        $model_action = new ActionAdmin();
+        $model_action->user_id = $id;
+        $model_action->admin_id = Yii::$app->user->identity->id;
+        $model_action->action = $action;
+        $model_action->save(false);
         $data["status"] = 401;
-        $data["action"]=$action;
-        $data["action_id"]= $action_id;
-        $data["id"]=$id;
-        if($model->save(false)){
+        $data["action"] = $action;
+        $data["action_id"] = $action_id;
+        $data["id"] = $id;
+        if ($model->save(false)) {
             $data["status"] = 201;
         }
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return $data;
-        
-        
     }
 
     /**

@@ -293,8 +293,9 @@ $(document).on("click", "input[type=radio][name=action_user]", function (e) {
             console.log(response);
             selector = '.class_action_' + response.id;
             console.log(selector);
+            console.log(response.action_id);
             $(selector).html(response.action)
-            if (response.action_id== 1){
+            if (response.action_id == 1 || response.action_id == 2  ){
                 selectorTr = '#tr_'+response.id;
                 $(selectorTr).remove();
             }

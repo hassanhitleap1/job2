@@ -42,7 +42,7 @@ class RequastJobNotPaySearch extends RequastJob
     public function search($params)
     {
     
-        $query = RequastJob::find();
+        $query = RequastJobNotPay::find();
         // print_r($query->createCommand()->queryAll() );
         // exit;
         // add conditions that should always apply here
