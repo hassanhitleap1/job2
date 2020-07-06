@@ -52,6 +52,20 @@ $this->title = 'home';
 		</a>
 	</div>
 </div>
+<div class="container">
+    <div class="row">
+
+		<iframe id="existing-iframe-example"
+          width="640" height="360"
+		  src="https://www.youtube.com/embed/etsK0cPajCQ?autoplay=1&enablejsapi=1"
+		  allow="accelerometer; autoplay; encrypted-media; 
+            gyroscope; picture-in-picture"
+          frameborder="0"
+          style="border: solid 4px #37474F"
+          ></iframe>
+				
+    </div>
+</div>
 
 <div class="container">
 	<div class="row">
