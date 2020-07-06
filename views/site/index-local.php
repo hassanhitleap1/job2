@@ -13,16 +13,11 @@ $this->title = 'home';
 
 <div class="container">
     <div class="row">
-    <iframe id="existing-iframe-example"
-          width="640" height="360"
-		  src="https://www.youtube.com/embed/etsK0cPajCQ?autoplay=1&enablejsapi=1"
-		  allow="accelerometer; autoplay; encrypted-media; 
-            gyroscope; picture-in-picture"
-          frameborder="0"
-          style="border: solid 4px #37474F"
-          ></iframe>
+        <iframe class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="existing-iframe-example" width="50%" height="360" src="https://www.youtube.com/embed/etsK0cPajCQ?autoplay=1&enablejsapi=1" allow="accelerometer; autoplay; encrypted-media; 
+            gyroscope; picture-in-picture" frameborder="0" style="border: solid 4px #37474F"></iframe>
     </div>
 </div>
+
 <div class="container">
     <div class="row">
         <?php foreach ($models as $model) : ?>
@@ -42,15 +37,15 @@ $this->title = 'home';
         <?php endforeach; ?>
     </div>
     <?=
-    LinkPager::widget([
-        'pagination' => $pages,
-    ]);
+        LinkPager::widget([
+            'pagination' => $pages,
+        ]);
     ?>
 </div>
 
 <?php
 
-if(is_null(Yii::$app->user->identity->email) || empty(Yii::$app->user->identity->email)){
+if (is_null(Yii::$app->user->identity->email) || empty(Yii::$app->user->identity->email)) {
     $script = <<< JS
 
 $( document ).ready(function() {
@@ -64,7 +59,6 @@ function show_model_email(){
 
 JS;
     $this->registerJs($script);
-
 }
 
 
