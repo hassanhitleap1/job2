@@ -73,7 +73,7 @@ $jobsName=Json::encode($jobsName);
 
                                     <?= $form->field($modelsExperience, "[{$index}]date_from")->widget(\yii\jui\DatePicker::classname(), [
                                         //'language' => 'ru',
-                                        'dateFormat' => 'yyyy-MM-dd',
+                                        'dateFormat' => 'yyyy-mm-dd',
                                         'clientOptions' => [
                                             'changeYear'=>true,
                                             'changeMonth'=>true,

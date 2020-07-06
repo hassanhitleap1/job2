@@ -28,7 +28,9 @@ $dayes_of_week = [
 date_default_timezone_set('Asia/Amman');
 $timestamp = date('H:i');
 ?>
-
+<link href="<?= Yii::getAlias('@web') ?>/css/gijgo.min.css" rel="stylesheet" />
+<script src="<?= Yii::getAlias('@web') ?>/js/gijgo.min.js">
+</script>
 
 <div class="">
     <div class="users"></div>
@@ -164,7 +166,7 @@ $timestamp = date('H:i');
                         ->orWhere(['type' => User::NORMAL_USER])->all(), 'id', 'name'),
                     'options' => ['placeholder' => 'Select Phone Number', 'value' => $user->id, 'id' => 'user-id'],
                 ]
-            )->label(Yii::t('app','Name'));
+            )->label(Yii::t('app', 'Name'));
             ?>
 
         </div>
