@@ -134,7 +134,9 @@ class RequestMerchantController extends BaseController
                 if(isset($_GET['search'])){
                     $search=$_GET['search'];
                     $query->where(['like', 'job_title', '%'.$search . '%', false])
-                        ->orWhere(['like', 'desc_job','%'.$search . '%', false]);
+                        ->orWhere(['like', 'desc_job','%'.$search . '%', false])
+                        ->orWhere(['like', 'user.name','%'.$search . '%', false])
+                        ->orWhere(['like', 'area.name_ar', '%' . $search . '%', false]);
 
                 }
                 $query->orderBy(['request_merchant.created_at'=>SORT_DESC])->limit(20);

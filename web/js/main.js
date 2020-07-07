@@ -152,26 +152,33 @@ $(document).on("click",".custom-message",function(e){
         success: function (data) {
             document.getElementById("message-text").value ='';
             console.log("sssss");
+            console.log(data.marchent.location);
             let time = $("#timepicker").val();
             let day = $("#day_metting").val();
             var message = $(".message").attr('message');
+            console.log(data.marchent.location);
             message = message.replace("time", time);
             message = message.replace("day", day);
 
             message = message.replace("name_company", data.marchent.name_company);
-            if(data.marchent.location!= null){
+            console.log(message);
+            if (data.marchent.location != null){
                 message = message.replace("location", data.marchent.location);
             }else {
                 message = message.replace("location", '');
             }
-            if(data.marchent.address != null){
+            if (data.marchent.address != null){
                 message = message.replace("address", data.marchent.address);
             }else {
                 message = message.replace("address", '');
             }
+            console.log(message);
              message = message.replace("phone",data.marchent.phone);
              message = message.replace("job",data.requst_marchent.job_title);
+            $("#message-text").val(message) ;
+            console.log(message);
              document.getElementById("message-text").value =message;
+             
              $("#marchent_id").attr("marchent_id",data.marchent.id);
              $("#marchent_id").html(" التنسيب الى "  +data.marchent.name + " - " +data.requst_marchent.job_title);
         },
@@ -184,6 +191,7 @@ $(document).on("click",".custom-message",function(e){
 
 
 $(document).on("click","#send-message",function(e){
+    e.preventDefault()
     var url='';
     $("#save-message").removeClass("hidden");
     var phone=$("#phone-user").html();
