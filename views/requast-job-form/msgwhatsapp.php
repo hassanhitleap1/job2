@@ -176,7 +176,7 @@ $timestamp = date('H:i');
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" style="overflow-y:auto;height: 200px;">
             <table class="table">
                 <thead>
                     <tr>
