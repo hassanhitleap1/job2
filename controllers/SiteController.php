@@ -21,6 +21,7 @@ use app\models\SignupForm;
 use app\models\PasswordResetRequestForm;
 use app\models\ResetPasswordForm;
 use app\models\User;
+use Google_Client;
 
 class SiteController extends Controller
 {
@@ -68,11 +69,17 @@ class SiteController extends Controller
 
     /**
      * Displays homepage.
-     *
+     *Client ID
+     * 1094087368258-c0f75jeiiur1oc1r61mev0rmjg0le593.apps.googleusercontent.com
+     * Client Secret
+     * Ft9G-VwkpHaT1C0TiuzvfDZ1
      * @return string
      */
     public function actionIndex()
     {
+//        $client = new Google_Client();
+//        $client->setApplicationName("Client_Library_Examples");
+//        $client->setDeveloperKey("YOUR_APP_KEY");
         $namepage="index-local";
         $query =    Schools::find();
         $countQuery = clone $query;
