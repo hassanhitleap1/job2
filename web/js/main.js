@@ -254,6 +254,7 @@ $(document).on("click",".save-message-suggested",function(e){
 
 
 $(document).on("click","#save-message",function(e){
+    e.preventDefault();
     $(this).addClass("hidden");
     data={
         user_id:$("#user-id").val(),
