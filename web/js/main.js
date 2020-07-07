@@ -157,9 +157,18 @@ $(document).on("click",".custom-message",function(e){
             var message = $(".message").attr('message');
             message = message.replace("time", time);
             message = message.replace("day", day);
-            message = message.replace("address", data.marchent.address);
+
             message = message.replace("name_company", data.marchent.name_company);
-            message = message.replace("localtion", data.marchent.localtion);
+            if(data.marchent.location!= null){
+                message = message.replace("location", data.marchent.location);
+            }else {
+                message = message.replace("location", '');
+            }
+            if(data.marchent.address != null){
+                message = message.replace("address", data.marchent.address);
+            }else {
+                message = message.replace("address", '');
+            }
              message = message.replace("phone",data.marchent.phone);
              message = message.replace("job",data.requst_marchent.job_title);
              document.getElementById("message-text").value =message;
