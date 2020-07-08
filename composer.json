@@ -32,7 +32,8 @@
         "coderius/yii2-pell-widget": "~1.0",
         "google/auth": "^1.7",
         "google/apiclient": "^2.0",
-        "yiisoft/yii2-jui": "^2.0"
+        "yiisoft/yii2-jui": "^2.0",
+        "vimeo/vimeo-api": "^3.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
