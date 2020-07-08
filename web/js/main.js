@@ -330,8 +330,9 @@ $(document).on("keyup", "#jq_note-action-user,#jq_affiliated_with-action-user", 
 $(document).on("click", "#save-note-affiliated", function (e) {
     let id = $("#user_id").val();
     var url = SiteUrl +"/index.php?r=requast-job-form/save-note-affiliated&id=" + id;
+    let note = $("#jq_note-action-user").val()
     data = {
-        "note": $("#jq_note-action-user").val(),
+        "note": note ,
         "affiliated_with": $("#jq_affiliated_with-action-user").val()
     }
     
@@ -340,7 +341,9 @@ $(document).on("click", "#save-note-affiliated", function (e) {
         url: url,
         data: data,
         success: function (response) {
+            $(".class_note_" + id).text(note)
             alert("success");
+
         }
     });
 });

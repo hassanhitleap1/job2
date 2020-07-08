@@ -33,9 +33,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'rowOptions'=>function($searchModel){
             
             if(RequastJobForm::NOT_INTERVIEWED==0){
-                    return ['class' => 'danger','id'=> 'tr_' . $searchModel->id];
+                    return ['id'=> 'tr_' . $searchModel->id];
             }else {
-                    return ['class' => 'success', 'id' =>'tr_'. $searchModel->id];
+                    return [ 'id' =>'tr_'. $searchModel->id];
             }
               
         },
@@ -66,7 +66,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'phone',
             [
                 'attribute' => 'area',
-                'value' => 'area0.name_ar',
+                'value' => function ($searchModel) {
+                    return $searchModel->area0['name_ar'];
+                },
 
             ],
             [
