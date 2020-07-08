@@ -101,6 +101,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'html',
 
             ],
+            [
+                'attribute' => 'note',
+                'value' => 'note',
+                'format' => 'html',
+                'contentOptions' => function ($searchModel) {
+                    return ['class' => 'class_note_' . $searchModel->id];
+                }
+
+            ],
 
             [
                 'attribute' => 'counsendsms',   
