@@ -368,6 +368,7 @@ class RequastJobFormController extends BaseController
         $model = $this->findModel($id);
         $action = '';
         $action_id = -1;
+        
         if (isset($_GET)) {
             switch ($_GET['action_user']) {
                 case RequastJobForm::NOT_INTERVIEWED:
@@ -391,6 +392,11 @@ class RequastJobFormController extends BaseController
                     $model->action_user = RequastJobForm::BUSY;
                     $action_id = RequastJobForm::BUSY;
                     $action = Yii::t('app', 'BUSY');
+                    break;
+                case RequastJobForm::CONTRACT_WAS_SIGNED;
+                    $model->action_user = RequastJobForm::CONTRACT_WAS_SIGNED;
+                    $action_id = RequastJobForm::CONTRACT_WAS_SIGNED;
+                    $action = Yii::t('app', 'CONTRACT_WAS_SIGNED');
                     break;
                 default:
                     $model->action_user = RequastJobForm::NOT_INTERVIEWED;
