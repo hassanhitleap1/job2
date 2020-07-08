@@ -53,7 +53,7 @@ AppAsset::register($this);
         ]);
         $menuItemsLeft=array();
         if (Yii::$app->user->isGuest) {
-          $menuItems[] =['label' => Yii::t('app', 'Home'), 'url' => ['/site/index']];
+             $menuItems[] =['label' => Yii::t('app', 'Home'), 'url' => ['/site/index']];
            // $menuItems[] = ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/signup']];
             $menuItems[] = ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
             $menuItems[] = ['label' => Yii::t('app', 'Requast_Job'), 'url' => ['/requat-job/index']];
@@ -141,6 +141,7 @@ AppAsset::register($this);
             }else{
                 $menuItems[] = ['label' => Yii::t('app', 'My_Request'), 'url' => ['/my-request/index']];
                 $menuItems[] = ['label' => Yii::t('app', 'Contract'), 'url' => ['/documents/index']];
+                $menuItems[] = ['label' => Yii::t('app', 'Change_Password'), 'url' => ['/change-password/index']];
                 
             }
 
