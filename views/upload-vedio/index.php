@@ -4,19 +4,19 @@ use kartik\file\FileInput;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = Yii::t('app', 'Contract');
+$this->title = Yii::t('app', 'Upload_Video_Me');
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Area */
 /* @var $form yii\widgets\ActiveForm */
-$dataDocument = [];
-$is_uploaded = false;
-if (!($model->path == null || $model->path == '')) {
+$dataVedio = [];
+
+if (! is_null($model)) {
     $path = Yii::getAlias('@webroot') . '/' .  $model->path;
     $path_web = Yii::getAlias('@web') . '/' .  $model->path;
     if (file_exists($path)) {
         $is_uploaded = true;
-        $dataDocument = [
+        $dataVedio = [
             'initialPreview' => [
                 $path_web,
             ],
@@ -45,10 +45,13 @@ if (!($model->path == null || $model->path == '')) {
             <div class="panel-body">
                 <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
                 <div class="row">
+                    <div class="col-md-2 col-lg-2">
+                        <?=  $form->field($model,'status')->checkBox( ["id"=>"status_vedio_user"]);?>
+                    </div>
                     <div class="col-md-6 col-lg-6">
                         <?= $form->field($model, 'file')->widget(FileInput::classname(), [
                             'options' => ['accept' => 'vedio/*'],
-                            'pluginOptions' => $dataDocument
+                            'pluginOptions' => $dataVedio
                         ]); ?>
                     </div>
                 </div>

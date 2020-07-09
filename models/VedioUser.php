@@ -42,7 +42,8 @@ class VedioUser extends \yii\db\ActiveRecord
             [['video_id', 'title'], 'string', 'max' => 250],
             [['desc'], 'string', 'max' => 500],
             [['path'], 'string', 'max' => 100],
-            ['file', 'file', 'extensions' => 'webm,mkv,flv,vob,ogv,ogg,mov,wmv,rm,amv,avi,mp4,m4p', 'maxSize' => 512000, 'tooBig' => 'Limit is 500KB'],
+            [['file'],'required'],
+            ['file', 'file', 'extensions' => 'webm,mkv,flv,vob,ogv,ogg,mov,wmv,rm,amv,avi,mp4,m4p', 'maxSize' => 1024 * 1024 * 20 , 'tooBig' => 'Limit is 20MB'],
            // [['file'], 'vedio', 'skipOnEmpty' => true, 'extensions' => 'webm,mkv,flv,vob,ogv,ogg,mov,wmv,rm,amv,avi,mp4,m4p '],
         ];
     }
@@ -61,9 +62,18 @@ class VedioUser extends \yii\db\ActiveRecord
             'from' => Yii::t('app', 'From'),
             'path' => Yii::t('app', 'Path'),
             'status' => Yii::t('app', 'Status'),
+            'file'=>Yii::t('app', 'File'),
             'created_at' => Yii::t('app', 'Created_At'),
             'updated_at' => Yii::t('app', 'Updated_At'),
         ];
+    }
+
+
+    public function afterFind()
+    {
+        if($this->status==1) $this->status=true;
+        if($this->status==0) $this->status=false;
+        return parent::afterFind();
     }
 
     /**
