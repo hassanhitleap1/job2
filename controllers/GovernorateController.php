@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Governorate;
 use app\models\GovernorateSearch;
+use app\models\User;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -13,6 +14,15 @@ use yii\filters\VerbFilter;
  */
 class GovernorateController extends BaseController
 {
+    /**
+     * init controller
+     */
+    public function init()
+    {
+        if (Yii::$app->user->identity->type != User::ADMIN_USER) {
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        }
+    }
     /**
      * {@inheritdoc}
      */

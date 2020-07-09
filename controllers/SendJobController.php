@@ -21,6 +21,16 @@ use yii\helpers\ArrayHelper;
 class SendJobController extends BaseController
 {
     /**
+     * init controller
+     */
+    public function init()
+    {
+        if (Yii::$app->user->identity->type != User::ADMIN_USER) {
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        }
+    }
+    
+    /**
      * {@inheritdoc}
      */
     public function behaviors()

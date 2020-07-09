@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Distributor;
 use app\models\DistributorSearch;
+use app\models\User;
 use Carbon\Carbon;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -15,6 +16,16 @@ use yii\filters\VerbFilter;
  */
 class DistributorController extends Controller
 {
+
+    /**
+     * init controller
+     */
+    public function init()
+    {
+        if (Yii::$app->user->identity->type != User::ADMIN_USER) {
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        }
+    }
     /**
      * {@inheritdoc}
      */

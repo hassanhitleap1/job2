@@ -11,6 +11,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Model;
 use app\models\User;
+use Exception;
 use yii\helpers\ArrayHelper;
 use yii\web\UploadedFile;
 
@@ -19,6 +20,16 @@ use yii\web\UploadedFile;
  */
 class MerchantController extends BaseController
 {
+
+    /**
+     * init controller
+     */
+    public function init()
+    {
+        if (Yii::$app->user->identity->type != User::ADMIN_USER) {
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        }
+    }
     /**
      * {@inheritdoc}
      */

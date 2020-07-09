@@ -6,6 +6,7 @@ use app\models\ImagesSchool;
 use Yii;
 use app\models\Schools;
 use app\models\SchoolsSearch;
+use app\models\User;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -17,6 +18,8 @@ use yii\web\UploadedFile;
  */
 class SchoolController extends Controller
 {
+  
+    
     /**
      * {@inheritdoc}
      */

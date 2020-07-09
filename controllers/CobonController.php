@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Cobon;
 use app\models\CobonSearch;
+use app\models\User;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -12,8 +13,18 @@ use yii\filters\VerbFilter;
 /**
  * CobonController implements the CRUD actions for Cobon model.
  */
-class CobonController extends Controller
+class CobonController extends BaseController
 {
+
+    /**
+     * init controller
+     */
+    public function init()
+    {
+        if (Yii::$app->user->identity->type != User::ADMIN_USER) {
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        }
+    }
     /**
      * {@inheritdoc}
      */
