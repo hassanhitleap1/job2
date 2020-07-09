@@ -1,5 +1,6 @@
 <?php
 
+use app\models\VedioUser;
 use kartik\file\FileInput;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -9,24 +10,35 @@ $this->title = Yii::t('app', 'Upload_Video_Me');
 /* @var $this yii\web\View */
 /* @var $model app\models\Area */
 /* @var $form yii\widgets\ActiveForm */
-$dataVedio = [];
 
-if (! is_null($model)) {
+$pluginOptions=[
+    'overwriteInitial'=>true,
+    'showUpload' =>false,
+    'allowedFileExtensions'=>['mp4'],
+    'initialPreviewAsData'=>true,
+    'initialPreviewFileType'=> 'video',
+    'initialPreviewConfig'=> [
+        ['filetype'=> "video/mp4"]
+    ],
+];
+$is_uploaded=false;
+
+if (! $model->isNewRecord) {
     $path = Yii::getAlias('@webroot') . '/' .  $model->path;
     $path_web = Yii::getAlias('@web') . '/' .  $model->path;
     if (file_exists($path)) {
+      
         $is_uploaded = true;
-        $dataVedio = [
-            'initialPreview' => [
-                $path_web,
+        $pluginOptions= [
+            'initialPreview'=>$path_web,
+            'overwriteInitial'=>true,
+            'showUpload' =>false,
+            'allowedFileExtensions'=>['mp4'],
+            'initialPreviewAsData'=>true,
+            'initialPreviewFileType'=> 'video',
+            'initialPreviewConfig'=> [
+                ['filetype'=> "video/mp4"]
             ],
-            'initialPreviewAsData' => true,
-            'initialCaption' => Yii::$app->user->identity->name,
-            'initialPreviewConfig' => [
-                ['caption' => Yii::$app->user->identity->name],
-            ],
-            'overwriteInitial' => false,
-
         ];
     }
 }
@@ -49,10 +61,16 @@ if (! is_null($model)) {
                         <?=  $form->field($model,'status')->checkBox( ["id"=>"status_vedio_user"]);?>
                     </div>
                     <div class="col-md-6 col-lg-6">
-                        <?= $form->field($model, 'file')->widget(FileInput::classname(), [
-                            'options' => ['accept' => 'vedio/*'],
-                            'pluginOptions' => $dataVedio
-                        ]); ?>
+                        <?=
+                        $form->field($model, 'file')->widget(FileInput::class, [
+                            'options'=>[
+                                'multiple'=>false,
+                                'accept'=>'video/*'
+                            ],
+                            'pluginOptions' => $pluginOptions,
+                        ]);
+                        ?>
+
                     </div>
                 </div>
                 <div class="row">
