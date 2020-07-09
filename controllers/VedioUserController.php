@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * VedioUserController implements the CRUD actions for VedioUser model.
  */
-class VedioUserController extends Controller
+class VedioUserController extends BaseController
 {
     /**
      * {@inheritdoc}
@@ -53,6 +53,20 @@ class VedioUserController extends Controller
     public function actionView($id)
     {
         return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+
+    /**
+     * Displays a single VedioUser model.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionViewVedio($id)
+    {
+        return $this->render('view-vedio', [
             'model' => $this->findModel($id),
         ]);
     }

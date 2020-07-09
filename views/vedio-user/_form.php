@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="vedio-user-form">
+<div class="container">
 
     <?php $form = ActiveForm::begin(); ?>
 

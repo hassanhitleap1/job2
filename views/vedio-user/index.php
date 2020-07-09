@@ -10,7 +10,7 @@ use yii\widgets\Pjax;
 $this->title = Yii::t('app', 'Vedio Users');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="vedio-user-index">
+<div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
