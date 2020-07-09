@@ -235,6 +235,14 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getVedio()
+    {
+        return $this->hasOne(VedioUser::className(), ['id' => 'user_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getNationality0()
     {
         return $this->hasOne(Nationality::className(), ['id' => 'nationality']);
