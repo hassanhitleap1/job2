@@ -14,6 +14,7 @@ use app\models\SendSmsModel;
 use app\models\User;
 use Carbon\Carbon;
 use ConvertApi\ConvertApi;
+use Exception;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Url;
@@ -386,6 +387,13 @@ class RequastJobController extends BaseController
                     $model->action_user = RequastJobForm::BUSY;
                     $action_id = RequastJobForm::BUSY;
                     $action = Yii::t('app', 'BUSY');
+                    break;
+                case RequastJobForm::CONTRACT_WAS_SIGNED;
+                    $model->action_user = RequastJobForm::CONTRACT_WAS_SIGNED;
+                    $action_id = RequastJobForm::CONTRACT_WAS_SIGNED;
+                    $action = Yii::t('app', 'CONTRACT_WAS_SIGNED');
+                    echo "dsds";
+                    exit;
                     break;
                 default:
                     $model->action_user = RequastJobForm::NOT_INTERVIEWED;

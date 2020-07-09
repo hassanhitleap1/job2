@@ -147,7 +147,14 @@ class RequastJobNotPay extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Nationality::className(), ['id' => 'nationality']);
     }
-    
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getArea0()
+    {
+        return $this->hasOne(Area::className(), ['id' => 'area']);
+    }
         /**
      * @return \yii\db\ActiveQuery
      */

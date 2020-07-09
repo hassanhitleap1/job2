@@ -103,8 +103,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'area',
-                'value' => 'area',
-                           
+                'value' => function ($searchModel) {
+                    return $searchModel->area0['name_ar'];
+                },
+
             ],
            
             
