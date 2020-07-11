@@ -8,6 +8,7 @@ use Yii;
 
 use app\models\Document;
 use app\models\RequastJobVisitor;
+use app\models\User;
 use yii\web\UploadedFile;
 use yii\filters\VerbFilter;
 use yii\helpers\FileHelper;
@@ -54,6 +55,7 @@ class DocumentsController extends BaseController
                 $model->contract->saveAs($contract);
                 $user->contract_path = $contract;
                 $user->action_user=RequastJobForm::CONTRACT_WAS_SIGNED;
+                $user->type = User::NORMAL_USER;
                 $user->save(false);
                 Yii::$app->session->set('message', Yii::t('app', 'Succ_Mess_Cont'));
             }

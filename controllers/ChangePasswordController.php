@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use app\models\ChangePassword;
 use Yii;
-
+use yii\filters\VerbFilter;
 
 /**
  * AreaController implements the CRUD actions for Area model.

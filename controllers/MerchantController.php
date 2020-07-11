@@ -40,6 +40,7 @@ class MerchantController extends BaseController
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    'forgot-password' => ['POST'],
                 ],
             ],
         ];
@@ -93,6 +94,7 @@ class MerchantController extends BaseController
             if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
                 $model->type = User::MERCHANT_USER;
+                $model->password_hash = \Yii::$app->security->generatePasswordHash('123456789');
                 $file = UploadedFile::getInstance($model, 'file');
                 if (!is_null($file)) {
                     $imagename = 'images/avatar/' . md5(uniqid(rand(), true)) . '.' . $file->extension;
@@ -245,6 +247,14 @@ class MerchantController extends BaseController
         return $this->redirect(['index']);
     }
 
+
+    public function actionForgotPassword($id)
+    {
+        $model = $this->findModel($id);
+        $model->password_hash = \Yii::$app->security->generatePasswordHash('123456789');
+        $model->save(false);
+        return $this->redirect(['index']);
+    }
     /**
      * Finds the Merchant model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

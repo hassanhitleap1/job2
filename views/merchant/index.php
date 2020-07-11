@@ -48,11 +48,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{view}{delete} {update} {sendwhatsapp} ',  // the default buttons + your custom button
+                'template' => '{view}{delete} {update} {sendwhatsapp} {forgot-password}',  // the default buttons + your custom button
                 'buttons' => [
                     'sendwhatsapp' => function ($url, $model, $key)use($message) {     // render your custom button
                         $phone=substr($model['phone'], 1);
                         return  Html::a('whatsapp', "https://web.whatsapp.com/send?phone=962$phone&text=$message", ['target' => '_blank','class' => 'btn btn-info glyphicon glyphicon-envelope', 'data-pjax' => 0]);
+                    },
+                    'forgot-password' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-lock"></span>', $url, [
+                            'title' => Yii::t('app', 'lead-delete'),
+                            'class' => '',
+                            'data' => [
+                                'confirm' => 'are you sure to change password ro 123456789.',
+                                'method' => 'post',
+                            ],
+                        ]);
                     },
 
 
