@@ -12,6 +12,7 @@ use app\models\UserMessage;
 use app\models\RequastJob;
 use app\models\SendSmsModel;
 use app\models\User;
+use app\models\VedioUser;
 use Carbon\Carbon;
 use ConvertApi\ConvertApi;
 use Exception;
@@ -471,5 +472,28 @@ class UsersController extends BaseController
         $data["status"] = 201;
         echo json_encode($data, JSON_PRETTY_PRINT);
         return;
+    }
+
+
+
+    /**
+     * Displays a single VedioUser model.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionViewVedio($id)
+    {
+        
+        if (($model = VedioUser::find()->where(['user_id' => $id])->one()) !== null) {
+            return $this->renderAjax('view-vedio', [
+                'model' => $model,
+            ]);
+        }
+
+        return $this->renderAjax('view-vedio-not-found', [
+            'model' => RequastJobForm::findOne($id),
+        ]);
+       
     }
 }

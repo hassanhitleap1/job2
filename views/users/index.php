@@ -96,15 +96,25 @@ $this->params['breadcrumbs'][] = $this->title;
         
              [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{view}  {Cv}',  // the default buttons + your custom button
+            'template' => '{view}  {Cv}{vedio}',  // the default buttons + your custom button
             'buttons' => [
                  
                 'Cv' => function($url, $model, $key) {   
                       // render your custom button
-                    return  Html::a('Cv', ['requast-job/show-cv', 'id' => $model->id],
+                    return  Html::a('Cv', ['users/show-cv', 'id' => $model->id],
                         ['class' => 'glyphicon glyphicon-th', 
                         'data-pjax' => 0]);
                 },
+
+                'vedio' => function ($url, $model, $key) {
+                        $url = "index.php?r=users/view-vedio&id=" . $model->id;
+                        return Html::button('', [
+                            'value' => $url,
+                            'title' => Yii::t('app', 'View_Vedio'),
+                            'class' => 'view_vedio  glyphicon glyphicon-play-circle', 'data-pjax' => 0
+                        ]);
+
+                    },
 
              
                 
@@ -116,42 +126,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php Pjax::end(); ?>
  
-    <?php
-$script = <<< JS
-$(document).on('click', '#modelbutton', function(){
-    url=$(this).attr('value');
-    $('#model').load(url).modal({ show: true });;
-});
-
-$(document).on('click', '#show', function(){
-    url=$(this).attr('value');
-    $('#model').load(url).modal({ show: true });;
-});
-
-$(document).on('click', '#plusbutton', function(){
-    id=$(this).attr('value');
-    $.get("index.php?r=requast-job-form/plus&id="+id, function(data, status){
-        var data = jQuery.parseJSON( data );
-        $(".class_num_"+id).text( data.count );
-    });
-});
-
-$(document).on('click', '#minusbutton', function(){
-    id=$(this).attr('value');
-    
-    $.get("index.php?r=requast-job-form/minus&id="+id, function(data, status){
-        var data = jQuery.parseJSON( data );
-        $(".class_num_"+id).text( data.count );
-    });
-});
-
-
-
-
-
-JS;
-$this->registerJs($script);
-?>
+  
 
     <?php
 
