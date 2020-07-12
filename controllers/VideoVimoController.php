@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * VideoVimoController implements the CRUD actions for VideoVimo model.
  */
-class VideoVimoController extends Controller
+class VideoVimoController extends BaseController
 {
     /**
      * {@inheritdoc}

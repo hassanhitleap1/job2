@@ -6,14 +6,13 @@ use Yii;
 use app\models\SchoolOwners;
 use app\models\SchoolOwnersSearch;
 use app\models\User;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * SchoolOwnersController implements the CRUD actions for SchoolOwners model.
  */
-class SchoolOwnersController extends Controller
+class SchoolOwnersController extends BaseController
 {
     /**
      * init controller

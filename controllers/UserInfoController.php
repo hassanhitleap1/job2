@@ -5,7 +5,7 @@ namespace app\controllers;
 use app\models\User;
 use yii\base\Response;
 
-class UserInfoController extends \yii\web\Controller
+class UserInfoController extends BaseController
 {
     public function actionIndex()
     {

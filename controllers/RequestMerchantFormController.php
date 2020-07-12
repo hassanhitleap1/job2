@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\User;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
@@ -12,6 +13,16 @@ use app\models\RequestMerchantSearch;
 
 class RequestMerchantFormController extends BaseController
 {
+
+    /**
+     * init controller
+     */
+    public function init()
+    {
+        if (Yii::$app->user->identity->type != User::ADMIN_USER  ) {
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        }
+    }
      /**
      * Lists all RequestMerchant models.
      * @return mixed

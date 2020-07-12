@@ -1,6 +1,7 @@
 <?php
 namespace app\controllers;
 
+use app\models\User;
 use app\models\UserMessageMerchant;
 use Yii;
 use app\models\UserMessage;
@@ -14,8 +15,18 @@ use yii\filters\VerbFilter;
 /**
  * UserMessageController implements the CRUD actions for UserMessage model.
  */
-class UserMessageMerchantController extends Controller
+class UserMessageMerchantController extends BaseController
 {
+
+    /**
+     * init controller
+     */
+    public function init()
+    {
+        if (Yii::$app->user->identity->type != User::ADMIN_USER || Yii::$app->user->identity->type != User::NORMAL_ADMIN ) {
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        }
+    }
     /**
      * {@inheritdoc}
      */

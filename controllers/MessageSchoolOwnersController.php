@@ -2,6 +2,7 @@
 namespace app\controllers;
 
 use app\models\MessageSchoolOwners;
+use app\models\User;
 use Yii;
 use Carbon\Carbon;
 use yii\web\Controller;
@@ -14,6 +15,16 @@ use yii\filters\VerbFilter;
  */
 class MessageSchoolOwnersController extends Controller
 {
+
+    /**
+     * init controller
+     */
+    public function init()
+    {
+        if (Yii::$app->user->identity->type != User::ADMIN_USER || Yii::$app->user->identity->type != User::NORMAL_ADMIN ) {
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        }
+    }
     /**
      * {@inheritdoc}
      */

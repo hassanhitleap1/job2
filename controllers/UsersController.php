@@ -27,6 +27,19 @@ use yii\web\UploadedFile;
  */
 class UsersController extends BaseController
 {
+
+    /**
+     * init controller
+     */
+    public function init()
+    {
+        if (Yii::$app->user->identity->type != User::ADMIN_USER ||
+            Yii::$app->user->identity->type != User::NORMAL_ADMIN ||
+            Yii::$app->user->identity->type != User::MERCHANT_USER
+        ) {
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        }
+    }
     /**
      * {@inheritdoc}
      */

@@ -11,7 +11,7 @@ use yii\base\Controller;
 use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
 
-class UploadVedioController extends  Controller
+class UploadVedioController extends  BaseController
 {
     /**
      * @vewi and upload vedio to site in local

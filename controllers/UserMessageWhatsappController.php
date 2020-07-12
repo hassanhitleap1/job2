@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\CountSendSms;
+use app\models\User;
 use Yii;
 use app\models\UserMessageWhatsapp;
 use app\models\UserMessageWhatsappSearch;
@@ -14,8 +15,18 @@ use yii\filters\VerbFilter;
 /**
  * UserMessageWhatsappController implements the CRUD actions for UserMessageWhatsapp model.
  */
-class UserMessageWhatsappController extends Controller
+class UserMessageWhatsappController extends BaseController
 {
+
+    /**
+     * init controller
+     */
+    public function init()
+    {
+        if (Yii::$app->user->identity->type != User::ADMIN_USER || Yii::$app->user->identity->type != User::NORMAL_ADMIN ) {
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        }
+    }
     /**
      * {@inheritdoc}
      */
