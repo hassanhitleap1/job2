@@ -33,34 +33,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'rowOptions'=>function($searchModel){
-            if($searchModel->smssend->created_at==null ){
-                return ['class' => 'danger'];
-            }
-            $deff = Carbon::parse(Carbon::now("Asia/Amman"))
-               ->floatDiffInDays($searchModel->smssend->updated_at, false);
-
-            if($searchModel->smssend->count==1 ){
-                if($deff >= 7){
-                    return ['class' => 'danger'];
-                }
-               
-            }elseif ($searchModel->smssend->count == 2) {
-            # code...
-                if ($deff >= 14) {
-                    return ['class' => 'danger'];
-                }
-               
-            }elseif ($searchModel->smssend->count == 3) {
-            # code...
-                if ($deff >= 21) {
-                    return ['class' => 'danger'];
-                }
-                
-            }
-            
-                
-        },
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -127,43 +99,43 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 'format' => 'html',
             ],
-            'certificates:ntext',
-            'experience:ntext',
-            'priorities:ntext',
+            [
+                'attribute' => 'certificates',
+                'value' => 'certificates',
+                'format' => 'html',
 
-            // 'note:ntext',
+            ],
+
+
+            [
+                'attribute' => 'experience',
+                'value' => 'experience',
+                'format' => 'html',
+
+            ],
+
+            [
+                'attribute' => 'priorities',
+                'value' => 'priorities',
+                'format' => 'html',
+
+            ],
+
+            [
+                'attribute' => 'note',
+                'value' => 'note',
+                'format' => 'html',
+
+            ],
+
             [
                 'attribute' => 'created_at',
                 'label'=> Yii::t('app', 'Created_At'),
                 'value'=> function($searchModel){
                     $now = Carbon::now("Asia/Amman");
                      $date = Carbon::parse(Carbon::parse($searchModel->created_at));
-                    $mess="";
                     $def=$date->diffInDays($now);
-                    if($def == 0){
-                      return " registered (today)  must be during 48h " ;  
-                     }else{
-                         
-                         if($def==7 || $def== 14 || $def== 21 || $def==30){
-                            $mess = " must be send message today";
-                         }else{
-                             if( $def >= 7  && $def < 14){
-                                 $conct= $def - 7;
-                                $mess = " must be send message after " .(string) $conct; 
-                             }elseif( $def >= 14  && $def < 21){
-                                $conct = $def - 14;
-                                $mess = " must be send message after " . (string) $conct;; 
-                             } elseif ($def >= 21  && $def < 30) {
-                             $conct = $def - 21;
-                                 $mess = " must be send message after " . (string) $conct;; 
-                            }
-
-                         }
-                        
-                     }
-                     
-                    return "registered befor ". $def . " days --". $mess;
-                    
+                    return "registered befor ". $def ;
                 }
             ],
             [
