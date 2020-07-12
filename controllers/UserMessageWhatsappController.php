@@ -23,7 +23,7 @@ class UserMessageWhatsappController extends BaseController
      */
     public function init()
     {
-        if (Yii::$app->user->identity->type != User::ADMIN_USER || Yii::$app->user->identity->type != User::NORMAL_ADMIN ) {
+        if (!(Yii::$app->user->identity->type != User::ADMIN_USER || Yii::$app->user->identity->type != User::NORMAL_ADMIN)) {
             throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
         }
     }

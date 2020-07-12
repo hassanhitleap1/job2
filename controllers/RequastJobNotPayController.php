@@ -13,6 +13,7 @@ use app\models\User;
 use app\models\UserMessage;
 use Carbon\Carbon;
 use ConvertApi\ConvertApi;
+use Exception;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Url;
@@ -28,9 +29,9 @@ class RequastJobNotPayController extends BaseController
     /**
      * init controller
      */
-    public function init()
+     public function init()
     {
-        if (Yii::$app->user->identity->type != User::ADMIN_USER || Yii::$app->user->identity->type != User::NORMAL_ADMIN ) {
+        if (!(Yii::$app->user->identity->type != User::ADMIN_USER || Yii::$app->user->identity->type != User::NORMAL_ADMIN )) {
             throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
         }
     }
@@ -247,7 +248,8 @@ class RequastJobNotPayController extends BaseController
         if($savedFiles){
             return $this->redirect(['index']);   
         }
-          throw new Exception("لم يطبع السيره الذاتية", 1);
+          throw new Exception();
+       
                      
                
     }

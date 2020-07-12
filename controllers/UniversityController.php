@@ -5,7 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\University;
 use app\models\UniversitySearch;
-use yii\web\Controller;
+use app\models\User;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 

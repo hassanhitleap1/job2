@@ -15,6 +15,8 @@ use yii\filters\VerbFilter;
  */
 class ManualPaymentUserController extends Controller
 {
+
+    
     /**
      * {@inheritdoc}
      */
