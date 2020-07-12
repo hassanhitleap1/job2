@@ -203,7 +203,7 @@ return [
     "Create_Specialties"=>"انشاء تخصص",
     "Update_Specialties"=>"تحديث تخصص",
     "Contract"=>'العقد',
-    "Download_Contract"=>"تحميل العقد",
+    "Download_Contract"=>"تحميل العقد كملف ",
     "Succ_Mess_Cont"=>"تم رفع العقد بنجاح",
     "Count_Employees"=>"عدد الموظفين",
     "Create_School_Owners"=>"انشاء صاحب مدرسة",
@@ -240,5 +240,12 @@ return [
     "Is_Not_Old"=>"كلمة السر القديمه ليست هية",
     "Users"=>"المستخدمين",
     "Vedio_Not_Found"=>"لا يوجد لديه فيديو",
+    "Create_Admin"=>"انشاء مدير",
+    "Update_Admin"=>"تعديل المدير",
+    "Update_Area"=>"تعديل منطقة",
+    "Update_Category"=>"تعديل الصنف",
+    "Create_Degrees"=>"انشاء شهادة",
+    "Update_Degrees"=>"تعديل شهادة",
+    "Update_Governorate"=>"تعديل محافظة"
 
 ];

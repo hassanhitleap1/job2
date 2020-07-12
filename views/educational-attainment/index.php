@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\EducationalAttainmentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Educational Attainments');
+$this->title = Yii::t('app', 'Educational_Attainment');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container">

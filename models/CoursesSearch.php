@@ -60,8 +60,6 @@ class CoursesSearch extends Courses
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name_course', $this->name_course])
