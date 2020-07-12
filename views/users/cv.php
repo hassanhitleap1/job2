@@ -36,7 +36,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="cal-md-12">
                     
                     <ul style="font-size: 20px;">
-                        <li> هاتف :- <?= $model->phone ?> </li>
                         <li> العمر:- <?= $model->agree ?> سنين </li>
                         <li> الجنسية :- <?= $model->nationality0->name_ar ?> </li>
                         <li> الجنس :- <?= ($model->gender == 1)? 'ذكر' : ($model->gender==2) ? 'انثى' :'غير محدد';?> </li>
