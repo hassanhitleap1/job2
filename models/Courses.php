@@ -38,24 +38,24 @@ class Courses extends \yii\db\ActiveRecord
 //            [['created_at', 'updated_at'], 'safe'],
 //            [['name_course', 'destination', 'duration'], 'string', 'max' => 255],
 
-//            [['name_course'], 'validate_name_course'],
-//            [['destination'], 'validate_destination'],
-//            [['duration'], 'validate_duration'],
+           [['name_course'], 'validate_name_course' ,'skipOnEmpty' => false, 'skipOnError' => false],
+           [['destination'],'validate_destination', 'skipOnEmpty' => false, 'skipOnError' => false],
+            [['duration'],'validate_duration', 'skipOnEmpty' => false, 'skipOnError' => false],
         ];
     }
 
     public function validate_name_course($attribute, $params){
-        if($this->name_course ==null && ($this->destination !==null || $this->duration != null  )){
+        if($this->name_course =='' && ($this->destination !='' || $this->duration != ''  )){
             $this->addError($attribute, Yii::t('app', 'Required'));
         }
     }
     public function validate_destination($attribute, $params){
-        if($this->destination ==null && ($this->name_course !==null || $this->duration != null  )){
+        if($this->destination =='' && ($this->name_course !='' || $this->duration != ''  )){
             $this->addError($attribute, Yii::t('app', 'Required'));
         }
     }
     public function validate_duration($attribute, $params){
-        if($this->duration ==null && ($this->destination !==null || $this->name_course != null   )){
+        if($this->duration =='' && ($this->destination !='' || $this->name_course != ''   )){
             $this->addError($attribute, Yii::t('app', 'Required'));
         }
     }

@@ -35,38 +35,39 @@ class Experiences extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'job_title','date_from','date_to' ,'facility_name'], 'required', 'on' => self::SCENARIO_NORMAL],
-            [['user_id'], 'integer'],
-            [['date_from','date_to'], 'date', 'format' => 'yyyy-mm-dd'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['job_title', 'facility_name'], 'string', 'max' => 255],
+            // [['user_id', 'job_title','date_from','date_to' ,'facility_name'], 'required', 'on' => self::SCENARIO_NORMAL],
+            // [['user_id'], 'integer'],
+            // [['date_from','date_to'], 'date', 'format' => 'yyyy-mm-dd'],
+            // [['created_at', 'updated_at'], 'safe'],
+            // [['job_title', 'facility_name'], 'string', 'max' => 255],
 
-//            [['job_title'], 'validate_job_title'],
-//            [['date_from'], 'validate_date_from'],
-//            [['date_to'], 'validate_date_to'],
-//            [['facility_name'], 'validate_facility_name'],
+           [['job_title'],'validate_job_title', 'skipOnEmpty' => false, 'skipOnError' => false],
+           [['date_from'],'validate_date_from','skipOnEmpty' => false, 'skipOnError' => false],
+           [['date_to'], 'validate_date_to','skipOnEmpty' => false, 'skipOnError' => false],
+           [['facility_name'],'validate_facility_name','skipOnEmpty' => false, 'skipOnError' => false],
         ];
     }
 
 
     public function validate_date_from($attribute, $params){
-        if($this->date_from ==null && ($this->job_title !==null || $this->facility_name != null  ||  $this->date_to!=null )){
+       
+        if($this->date_from =='' && ($this->job_title !='' || $this->facility_name != ''  ||  $this->date_to!='' )){
             $this->addError($attribute, Yii::t('app', 'Required'));
         }
     }
 
     public function validate_date_to($attribute, $params){
-        if($this->date_to ==null && ($this->job_title !==null || $this->facility_name != null  ||  $this->date_from!=null )){
+        if($this->date_to =='' && ($this->job_title !='' || $this->facility_name != ''  ||  $this->date_from!='' )){
             $this->addError($attribute, Yii::t('app', 'Required'));
         }
     }
     public function validate_job_title($attribute, $params){
-        if($this->job_title ==null && ($this->date_from !==null || $this->facility_name != null  ||  $this->date_to!=null )){
+        if($this->job_title =='' && ($this->date_from !='' || $this->facility_name != ''  ||  $this->date_to!='' )){
             $this->addError($attribute, Yii::t('app', 'Required'));
         }
     }
     public function validate_facility_name($attribute, $params){
-        if($this->facility_name ==null && ($this->job_title !==null || $this->date_from != null  ||  $this->date_to!=null )){
+        if($this->facility_name =='' && ($this->job_title !='' || $this->date_from != ''  ||  $this->date_to!='' )){
             $this->addError($attribute, Yii::t('app', 'Required'));
         }
     }
