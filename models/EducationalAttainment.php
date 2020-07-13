@@ -43,8 +43,37 @@ class EducationalAttainment extends \yii\db\ActiveRecord
     public function is_all_required($attribute,$params)
     {
         $this->addError($attribute, Yii::t('app','Check_Phone'));
+    }
 
+    public function clientValidateAttribute($model, $attribute, $view)
+    {
+        $statuses = json_encode(Self::find()->select('id')->asArray()->column());
+        $message = json_encode($this->message, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+        return <<<JS
+        if ($.inArray(value, $statuses) === -1) {
+            messages.push($message);
+        }
+JS;
+    }
 
+    public function clientValidateAttribute2($model, $attribute, $view)
+    {
+        return <<<JS
+        deferred.add(function(def) {
+            var img = new Image();
+            img.onload = function() {
+                if (this.width > 150) {
+                    messages.push('Image too wide!!');
+                }
+                def.resolve();
+            }
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                img.src = reader.result;
+            }
+            reader.readAsDataURL(file);
+        });
+JS;
     }
 
 
