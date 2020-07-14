@@ -246,6 +246,7 @@ return [
     "Update_Category"=>"تعديل الصنف",
     "Create_Degrees"=>"انشاء شهادة",
     "Update_Degrees"=>"تعديل شهادة",
-    "Update_Governorate"=>"تعديل محافظة"
+    "Update_Governorate"=>"تعديل محافظة",
+    "Required"=>"هذا الحقل مطلوب",
 
 ];

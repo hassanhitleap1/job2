@@ -37,7 +37,7 @@ class Experiences extends \yii\db\ActiveRecord
         return [
             // [['user_id', 'job_title','date_from','date_to' ,'facility_name'], 'required', 'on' => self::SCENARIO_NORMAL],
             // [['user_id'], 'integer'],
-            // [['date_from','date_to'], 'date', 'format' => 'yyyy-mm-dd'],
+             [['date_from','date_to'], 'date', 'format' => 'yyyy-mm-dd'],
             // [['created_at', 'updated_at'], 'safe'],
             // [['job_title', 'facility_name'], 'string', 'max' => 255],
 

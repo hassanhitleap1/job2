@@ -78,6 +78,7 @@ $jobsName=Json::encode($jobsName);
                                             'changeYear'=>true,
                                             'changeMonth'=>true,
                                             'changeDay'=>true,
+                                            'language' => 'en',
                                             'yearRange' => $yearRange,
                                         ],
                                         'options' => [
@@ -95,6 +96,7 @@ $jobsName=Json::encode($jobsName);
                                             'changeYear'=>true,
                                             'changeMonth'=>true,
                                             'changeDay'=>true,
+                                            'language' => 'en',
                                             'yearRange' => $yearRange,
                                         ],
                                       'options' => [
