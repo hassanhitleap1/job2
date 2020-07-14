@@ -52,7 +52,10 @@ class MyRequestController extends BaseController
             $deleted_educationalAttainmentIDs = EducationalAttainment::find()->select('id')->where(['user_id'=>Yii::$app->user->identity->id])->asArray()->all();
 
 
-            $valid = $model->validate() && Model::validateMultiple($modelsEducationalAttainment);
+            $valid = $model->validate() &&
+                     Model::validateMultiple($modelsEducationalAttainment) && 
+                    Model::validateMultiple($modelsExperiences) &&
+                    Model::validateMultiple( $modelsCourses);
           
             if ($valid) {
 

@@ -19,7 +19,7 @@ $jobsName = Json::encode($jobsName);
             'widgetContainer' => 'dynamicform_wrapper_experience', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
             'widgetBody' => '.container-items', // required: css class selector
             'widgetItem' => '.item', // required: css class
-            'limit' => 4, // the maximum times, an element can be cloned (default 999)
+            'limit' => 15, // the maximum times, an element can be cloned (default 999)
             'min' => 1, // 0 or 1 (default 1)
             'insertButton' => '.add-item', // css class
             'deleteButton' => '.remove-item', // css class
@@ -75,10 +75,11 @@ $jobsName = Json::encode($jobsName);
                                             'changeYear' => true,
                                             'changeMonth' => true,
                                             'changeDay' => true,
+                                            'language' => 'en',
                                             'yearRange' => $yearRange,
                                         ],
                                         'options' => [
-                                            'class' => 'form-control date_from' ,
+                                            'class' => 'form-control date_from',
                                             'autocomplete' => "off",
                                         ]
                                     ]) ?>
@@ -92,6 +93,7 @@ $jobsName = Json::encode($jobsName);
                                             'changeYear' => true,
                                             'changeMonth' => true,
                                             'changeDay' => true,
+                                            'language' => 'en',
                                             'yearRange' => $yearRange,
                                         ],
                                         'options' => [
@@ -109,7 +111,6 @@ $jobsName = Json::encode($jobsName);
                                         ->label(Yii::t('app', 'Facility_Name') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Facility_Name_Example') . '"></span>')  ?>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 <?php endforeach; ?>
