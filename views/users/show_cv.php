@@ -28,13 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="about-text">
                 <div class="row text_right">
                         <div class="col-md-12">
-                            <address>
-                                           
-                                        <strong>هاتف</strong>
-                                            <br>
-                                                <?=$model->phone ?> 
-                                       
-                                        </address>
+                           
                                                                     <address>
                                         <strong>العمر</strong><br>
                                         <?=$model->agree ?>

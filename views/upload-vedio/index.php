@@ -57,10 +57,8 @@ if (! $model->isNewRecord) {
             <div class="panel-body">
                 <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
                 <div class="row">
-                    <div class="col-md-2 col-lg-2">
-                        <?=  $form->field($model,'status')->checkBox( ["id"=>"status_vedio_user"]);?>
-                    </div>
-                    <div class="col-md-6 col-lg-6">
+                    
+                    <div class="col-md-12 col-lg-12">
                         <?=
                         $form->field($model, 'file')->widget(FileInput::class, [
                             'options'=>[

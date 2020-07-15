@@ -142,6 +142,7 @@ AppAsset::register($this);
                 $menuItems[] = ['label' => Yii::t('app', 'Users'), 'url' => ['/users/index']];
                 $menuItems[] = ['label' => Yii::t('app', 'Change_Password'), 'url' => ['/change-password/index']];
             }else{
+                $menuItems[] = ['label' => Yii::t('app', 'Upload_Vedio'), 'url' => ['/upload-vedio/index']];
                 $menuItems[] = ['label' => Yii::t('app', 'My_Request'), 'url' => ['/my-request/index']];
                 $menuItems[] = ['label' => Yii::t('app', 'Contract'), 'url' => ['/documents/index']];
                 $menuItems[] = ['label' => Yii::t('app', 'Change_Password'), 'url' => ['/change-password/index']];
