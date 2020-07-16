@@ -248,5 +248,6 @@ return [
     "Update_Degrees"=>"تعديل شهادة",
     "Update_Governorate"=>"تعديل محافظة",
     "Required"=>"هذا الحقل مطلوب",
-    "Upload_Vedio"=>"تحميل فيديو"
+    "Upload_Vedio"=>"تحميل فيديو",
+    "Date_To_Not_Valid"=> "الى تاريخ يجب ان اكون من التاريخ",
 ];

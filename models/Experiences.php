@@ -41,7 +41,8 @@ class Experiences extends \yii\db\ActiveRecord
             // [['created_at', 'updated_at'], 'safe'],
             // [['job_title', 'facility_name'], 'string', 'max' => 255],
 
-           [['job_title'],'validate_job_title', 'skipOnEmpty' => false, 'skipOnError' => false],
+            ['date_to', 'compareDates'],
+            [['job_title'],'validate_job_title', 'skipOnEmpty' => false, 'skipOnError' => false],
            [['date_from'],'validate_date_from','skipOnEmpty' => false, 'skipOnError' => false],
            [['date_to'], 'validate_date_to','skipOnEmpty' => false, 'skipOnError' => false],
            [['facility_name'],'validate_facility_name','skipOnEmpty' => false, 'skipOnError' => false],
@@ -49,6 +50,16 @@ class Experiences extends \yii\db\ActiveRecord
     }
 
 
+    public function compareDates()
+    {
+        $date_to = strtotime($this->date_to);
+        $date_from = strtotime($this->date_from);
+        if (!$this->hasErrors() && $date_from > $date_to) {
+            $this->addError('date_to', 'Date_To_Not_Valid');
+        }
+    }
+
+    
     public function validate_date_from($attribute, $params){
        
         if($this->date_from =='' && ($this->job_title !='' || $this->facility_name != ''  ||  $this->date_to!='' )){
@@ -56,6 +67,7 @@ class Experiences extends \yii\db\ActiveRecord
         }
     }
 
+  
     public function validate_date_to($attribute, $params){
         if($this->date_to =='' && ($this->job_title !='' || $this->facility_name != ''  ||  $this->date_from!='' )){
             $this->addError($attribute, Yii::t('app', 'Required'));
