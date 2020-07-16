@@ -22,6 +22,7 @@ use Yii;
 class VedioUser extends \yii\db\ActiveRecord
 {
     public $file;
+    public $specialtie_id;
     const SCENARIO_DEFAULT ="SCENARIO_DEFAULT";
     const SCENARIO_UPLOAD_USER ="SCENARIO_UPLOAD_USER";
     /**
@@ -63,6 +64,7 @@ class VedioUser extends \yii\db\ActiveRecord
             'from' => Yii::t('app', 'From'),
             'path' => Yii::t('app', 'Path'),
             'status' => Yii::t('app', 'Status'),
+            'specialtie_id'=> Yii::t('app', 'Specialties'),
             'file'=>Yii::t('app', 'File'),
             'created_at' => Yii::t('app', 'Created_At'),
             'updated_at' => Yii::t('app', 'Updated_At'),

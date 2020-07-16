@@ -37,6 +37,7 @@ class UploadVedioController extends  BaseController
                 $model->user_id=$id;
                 $model->file->saveAs($path);
                 $model->path = $path;
+                $model->specialtie_id=$model->specialtie_id;
                 $model->save(false);
                 Yii::$app->session->set('message', Yii::t('app', 'Succ_Mess_Cont'));
             }
