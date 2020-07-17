@@ -106,3 +106,7 @@ CREATE TABLE `video_vimo` ( `id` INT NOT NULL AUTO_INCREMENT , `video_id` VARCHA
 CREATE TABLE `vedio_user` ( `id` INT NOT NULL AUTO_INCREMENT , `video_id` VARCHAR(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL , `title` VARCHAR(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `desc` VARCHAR(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL , `user_id` INT NOT NULL , `from` SMALLINT NOT NULL , `path` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `status` SMALLINT NOT NULL , `created_at` DATETIME NULL DEFAULT NULL , `updated_at` DATETIME NULL DEFAULT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
 ALTER TABLE `video_vimo` ADD `specialtie_id` INT NULL DEFAULT NULL AFTER `user_id`;
+
+
+ALTER TABLE `vedio_user`
+ADD `specialtie_id` INT NULL DEFAULT NULL AFTER `user_id`;

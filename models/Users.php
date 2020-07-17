@@ -34,6 +34,7 @@ use Yii;
 class Users extends \yii\db\ActiveRecord
 {
     public $file;
+    public $specialtie_id;
 
     /**
      * {@inheritdoc}
@@ -81,6 +82,7 @@ class Users extends \yii\db\ActiveRecord
             'work_permanently'=>Yii::t('app', 'Work_Permanently'),
             'communication_skills'=>Yii::t('app', 'Communication_Skills'),
             'action_user' => Yii::t('app', 'Action_User'),
+            'specialtie_id'=> Yii::t('app', 'Specialties'),
            
 
         ];
@@ -103,8 +105,25 @@ class Users extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Governorate::className(), ['id' => 'governorate']);
     }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    // public function getSpecialtie()
+    // {
+    //     return $this->hasOne(VedioUser::className(), ['' => 'specialtie_id']);
+    // }
+    public function getVedio()
+    {
+        return $this->hasOne(VedioUser::className(), ['id' => 'user_id']);
+    }
 
-  
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSpecialtie()
+    {
+        return $this->hasOne(VedioUser::className(), ['user_id' => 'id']);
+    }
 
     /**
      * @return \yii\db\ActiveQuery

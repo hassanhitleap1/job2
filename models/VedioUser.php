@@ -22,7 +22,6 @@ use Yii;
 class VedioUser extends \yii\db\ActiveRecord
 {
     public $file;
-    public $specialtie_id;
     const SCENARIO_DEFAULT ="SCENARIO_DEFAULT";
     const SCENARIO_UPLOAD_USER ="SCENARIO_UPLOAD_USER";
     /**
@@ -108,6 +107,16 @@ class VedioUser extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
+
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSpecialtie()
+    {
+        return $this->hasOne(User::className(), ['id' => 'specialtie_id']);
+    }
+
     /**
      * {@inheritdoc}
      * @return VedioUserQuery the active query used by this AR class.
