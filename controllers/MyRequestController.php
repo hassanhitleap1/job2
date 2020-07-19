@@ -104,26 +104,38 @@ class MyRequestController extends BaseController
                             if ($modelsExperience['date_from'] != null) {
                                 $model_experiences = new Experiences();
                                 $model_experiences->job_title = $modelsExperience['job_title'];
-                                $model_experiences->date_from = $modelsExperience['date_from'];
-                                $model_experiences->date_to = $modelsExperience['date_to'];
-                                $model_experiences->facility_name = $modelsExperience['facility_name'];
-                                $from = Carbon::parse($modelsExperience['date_from']);
-                                $to = Carbon::parse($modelsExperience['date_to']);
+                                $date_from= $this->changeFormatDate($modelsExperience['date_from']);
+                                $date_to= $this->changeFormatDate($modelsExperience['date_to']);
+                                
+                                $model_experiences->date_from = $date_from;
+                                $model_experiences->date_to = $date_to;
 
+                                $model_experiences->facility_name = $modelsExperience['facility_name'];
+                                $from = Carbon::parse($date_from);
+                                $to = Carbon::parse($date_to);
+                                
                                 $experience .=
                                     $modelsExperience['job_title'] . "  " .
-                                    ' من ' .  Carbon::parse($modelsExperience['date_from'])->toDateString() . ' ' .
-                                    ' الى ' . Carbon::parse($modelsExperience['date_to'])->toDateString()  . "  " .
+                                    ' من ' .  Carbon::parse($date_from)->toDateString() . ' ' .
+                                    ' الى ' . Carbon::parse($date_to)->toDateString()  . "  " .
                                     ' في ' . $modelsExperience['facility_name'] .
                                     "<br />";
                                 // format date 2019-10-26 15:48:41
-
+                               
 
                                 $diff_dayes += $from->diffInDays($to);
 
-
+                                
                                 $model_experiences->user_id = $model->id;
+
+                                // Yii::$app->db
+                                // ->createCommand()
+                                //     ->batchInsert('nationality', ['name_ar'], $this->data)
+                                //     ->execute();
                                 if (!($flag = $model_experiences->save(false))) {
+                                    // echo $model_experiences->date_from;
+                                    // echo $model_experiences->date_to;
+                                    // exit;
                                     $transaction->rollBack();
 
                                     break;
@@ -224,4 +236,11 @@ class MyRequestController extends BaseController
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
 
+    private function changeFormatDate($current_date)
+    {
+        $standard = array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+        $eastern_arabic_symbols = array("٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩");
+        return  str_replace($eastern_arabic_symbols, $standard, $current_date);
+    }
 }
+
