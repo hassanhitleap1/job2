@@ -12,7 +12,6 @@ use app\models\Model;
 use app\models\RequastJobVisitor;
 use Carbon\Carbon;
 use Exception;
-use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 
 
@@ -141,7 +140,7 @@ class MyRequestController extends BaseController
                             }
                         }
 
-                        
+
                         $flag = Yii::$app->db
                             ->createCommand()
                             ->batchInsert('experiences', ['job_title', 'date_from', 'date_to', 'facility_name', 'user_id'], $data)
