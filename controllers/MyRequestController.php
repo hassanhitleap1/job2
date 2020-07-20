@@ -70,24 +70,37 @@ class MyRequestController extends BaseController
                         if (!empty($deleted_coursesIDs)) {
                             Courses::deleteAll(['id' => $deleted_coursesIDs]);
                         }
+
+                        $data=[];
+
                         foreach ($_POST['Courses'] as $modelCourse) {
-                            $model_course = new Courses();
-                            $model_course->name_course = $modelCourse['name_course'];
-                            $model_course->destination = $modelCourse['destination'];
-                            $model_course->duration = $modelCourse['duration'];
-                            // if($modelCourse->name_course != null){
+
+                            $data[] = [
+                                'name_course' => $modelCourse['name_course'],
+                                'destination' =>$modelCourse['destination'],
+                                'duration' => $modelCourse['duration'],
+                                'user_id' => $model->id
+                            ];
+
                             $priorities .=
                                 $modelCourse['name_course'] . "  " .
                                 $modelCourse['destination'] . "  " .
                                 $modelCourse['duration'] .
                                 "<br />";
-                            $model_course->user_id = $model->id;
-                            if (!($flag = $model_course->save(false))) {
-                                $transaction->rollBack();
-                                break;
-                            }
-                            // }
+                        }
 
+                        $flag = Yii::$app->db
+                            ->createCommand()
+                            ->batchInsert(
+                                'courses',
+                                ['name_course', 'destination', 'duration', 'user_id'],
+                                $data
+                            )
+                            ->execute();
+
+                        if (!$flag) {
+                            $transaction->rollBack();
+                            exit;
                         }
 
 
@@ -99,18 +112,21 @@ class MyRequestController extends BaseController
                             Experiences::deleteAll(['id' => $deleted_experiencesIDs]);
                         }
 
+                        $data=[];
 
                         foreach ($_POST['Experiences'] as $modelsExperience) {
                             if ($modelsExperience['date_from'] != null) {
-                                $model_experiences = new Experiences();
-                                $model_experiences->job_title = $modelsExperience['job_title'];
-                                $date_from= $this->changeFormatDate($modelsExperience['date_from']);
-                                $date_to= $this->changeFormatDate($modelsExperience['date_to']);
-                                
-                                $model_experiences->date_from = $date_from;
-                                $model_experiences->date_to = $date_to;
+                                $date_from = $this->changeFormatDate($modelsExperience['date_from']);
+                                $date_to = $this->changeFormatDate($modelsExperience['date_to']);
+                                $data[]=[
+                                    'job_title'=> $modelsExperience['job_title'],
+                                    'date_from' => $date_from,
+                                    'date_to' => $date_to ,
+                                    'facility_name'=>$modelsExperience['facility_name'],
+                                    'user_id' => $model->id
 
-                                $model_experiences->facility_name = $modelsExperience['facility_name'];
+                                ];
+
                                 $from = Carbon::parse($date_from);
                                 $to = Carbon::parse($date_to);
                                 
@@ -120,27 +136,20 @@ class MyRequestController extends BaseController
                                     ' الى ' . Carbon::parse($date_to)->toDateString()  . "  " .
                                     ' في ' . $modelsExperience['facility_name'] .
                                     "<br />";
-                                // format date 2019-10-26 15:48:41
-                               
-
-                                $diff_dayes += $from->diffInDays($to);
-
-                                
-                                $model_experiences->user_id = $model->id;
-
-                                // Yii::$app->db
-                                // ->createCommand()
-                                //     ->batchInsert('nationality', ['name_ar'], $this->data)
-                                //     ->execute();
-                                if (!($flag = $model_experiences->save(false))) {
-                                    // echo $model_experiences->date_from;
-                                    // echo $model_experiences->date_to;
-                                    // exit;
-                                    $transaction->rollBack();
-
-                                    break;
-                                }
+                            
+                                $diff_dayes += $from->diffInDays($to);                               
                             }
+                        }
+
+                        
+                        $flag = Yii::$app->db
+                            ->createCommand()
+                            ->batchInsert('experiences', ['job_title', 'date_from', 'date_to', 'facility_name', 'user_id'], $data)
+                            ->execute();
+
+                        if (!$flag) {
+                            $transaction->rollBack();
+                            exit;
                         }
 
                         //________________________________ EducationalAttainment ________________________________
@@ -149,14 +158,17 @@ class MyRequestController extends BaseController
                             EducationalAttainment::deleteAll(['id' => $deleted_educationalAttainmentIDs]);
                         }
 
-                    
+                        $data = [];
                         foreach ($_POST['EducationalAttainment'] as $modelsEducationalAttainm) {
-                            $model_educational_attainment = new EducationalAttainment();
-                            $model_educational_attainment->degree = $modelsEducationalAttainm['degree'];
-                            $model_educational_attainment->specialization = $modelsEducationalAttainm['specialization'];
-                            $model_educational_attainment->university = $modelsEducationalAttainm['university'];
-                            $model_educational_attainment->year_get = $modelsEducationalAttainm['year_get'];
 
+                            $data[] = [
+                                'degree' => $modelsEducationalAttainm['degree'],
+                                'specialization' =>$modelsEducationalAttainm['specialization'],
+                                'university' =>$modelsEducationalAttainm['university'],
+                                'year_get' => $modelsEducationalAttainm['year_get'],
+                                'user_id' => $model->id
+
+                            ];
 
                             $certificate .=
                             $modelsEducationalAttainm['degree'] . "  " .
@@ -164,11 +176,17 @@ class MyRequestController extends BaseController
                                 $modelsEducationalAttainm['university'] . "  " .
                                 $modelsEducationalAttainm['year_get'] .
                                 "<br />";
-                            $model_educational_attainment->user_id = $model->id;
-                            if (!($flag = $model_educational_attainment->save(false))) {
-                                $transaction->rollBack();
-                                break;
-                            }
+                            
+                        }
+
+                        $flag = Yii::$app->db
+                            ->createCommand()
+                            ->batchInsert(
+                            'educational_attainment', ['degree','specialization','university','year_get','user_id'],$data)->execute();
+
+                        if (!$flag) {
+                            $transaction->rollBack();
+                            exit;
                         }
                     }
 
@@ -178,7 +196,7 @@ class MyRequestController extends BaseController
                     if($diff_dayes !=0){
                         $count_experience= round($diff_dayes / 360, 1);
                     }else {
-                        # code...
+                        
                         $count_experience= $diff_dayes;
                     }
 
