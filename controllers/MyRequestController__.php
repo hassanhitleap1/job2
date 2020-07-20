@@ -121,7 +121,7 @@ class MyRequestController extends BaseController
                                 $diff_dayes += $from->diffInDays($to);
 
                             }
-                            
+
                             $flag= Yii::$app->db
                                 ->createCommand()
                                 ->batchInsert('experiences', ['job_title','date_from','date_to','facility_name','user_id'], $experiences_array)
