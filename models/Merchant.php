@@ -79,6 +79,8 @@ class Merchant extends \yii\db\ActiveRecord
             'name_company' => Yii::t('app', 'Name_Company'),
             'file' => Yii::t('app', 'Avatar'),
             'location' => Yii::t('app', 'Location'),
+            'address' => Yii::t('app', 'Address'),
+
             
         ];
     }
