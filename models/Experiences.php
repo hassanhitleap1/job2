@@ -55,7 +55,7 @@ class Experiences extends \yii\db\ActiveRecord
         $date_to = strtotime($this->date_to);
         $date_from = strtotime($this->date_from);
         if (!$this->hasErrors() && $date_from > $date_to) {
-            $this->addError('date_to', 'Date_To_Not_Valid');
+            $this->addError('date_to', Yii::t('app','Date_To_Not_Valid'));
         }
     }
 
