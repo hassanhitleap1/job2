@@ -37,7 +37,7 @@ class Experiences extends \yii\db\ActiveRecord
         return [
             // [['user_id', 'job_title','date_from','date_to' ,'facility_name'], 'required', 'on' => self::SCENARIO_NORMAL],
             // [['user_id'], 'integer'],
-            [['date_from','date_to'], 'date', 'format' => 'yyyy-mm-dd'],
+          //  [['date_from','date_to'], 'date', 'format' => 'yyyy-mm-dd'],
             // [['created_at', 'updated_at'], 'safe'],
             // [['job_title', 'facility_name'], 'string', 'max' => 255],
 
@@ -49,17 +49,17 @@ class Experiences extends \yii\db\ActiveRecord
         ];
     }
 
-    public function beforeValidate(){
-        $this->date_from=$this->changeFormatDate($this->date_from);
-        $this->date_to=$this->changeFormatDate($this->date_to);
-    }
-
-    private function changeFormatDate($current_date)
-    {
-        $standard = array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
-        $eastern_arabic_symbols = array("٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩");
-        return  str_replace($eastern_arabic_symbols, $standard, $current_date);
-    }
+//    public function beforeValidate(){
+//        $this->date_from=$this->changeFormatDate($this->date_from);
+//        $this->date_to=$this->changeFormatDate($this->date_to);
+//    }
+//
+//    private function changeFormatDate($current_date)
+//    {
+//        $standard = array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+//        $eastern_arabic_symbols = array("٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩");
+//        return  str_replace($eastern_arabic_symbols, $standard, $current_date);
+//    }
 
     public function compareDates()
     {

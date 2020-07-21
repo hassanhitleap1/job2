@@ -66,13 +66,10 @@ $jobsName=Json::encode($jobsName);
                             ?>
 
                             <div class="row">
-
-
                                 <div class="col-md-3">
                                     <?= $form->field($modelsExperience, "[{$index}]job_title")->textInput(['maxlength' => true ,'class'=>'form-control job_title_aut_com']) //
                                         ->label(Yii::t('app', 'Job_Title') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Job_Title_Example') . '"></span>')  ?>
                                 </div>
-
                                 <div class="col-md-3">
                                     <?= $form->field($modelsExperience, "[{$index}]date_to")->input('date')?>
 

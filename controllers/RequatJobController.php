@@ -40,7 +40,7 @@ class RequatJobController extends \yii\web\Controller
         $priorities='';
         $modelsCourses= [new Courses];
         $modelsExperiences= [new Experiences];
-        $modelsEducationalAttainment= [new EducationalAttainment(['scenario' => EducationalAttainment::SCENARIO_REGISTER])];
+        $modelsEducationalAttainment= [new EducationalAttainment];
 
 
         if ($model->load(Yii::$app->request->post())) {
@@ -67,7 +67,7 @@ class RequatJobController extends \yii\web\Controller
                 Model::validateMultiple($modelsEducationalAttainment) &&
                 Model::validateMultiple($modelsExperiences) &&
                 Model::validateMultiple($modelsCourses) ;
-            
+
             
             if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
