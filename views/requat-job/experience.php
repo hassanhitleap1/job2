@@ -2,13 +2,11 @@
 
 use app\models\NameOfJobs;
 
-use Carbon\Carbon;
-use kartik\date\DatePicker;
 use wbraganca\dynamicform\DynamicFormWidget;
 use yii\bootstrap\Html;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
-use yii\web\JsExpression;
+
 
 $month = range(1, 12);
 $year = range(1990, date("Y"));
@@ -71,45 +69,11 @@ $jobsName=Json::encode($jobsName);
                                         ->label(Yii::t('app', 'Job_Title') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Job_Title_Example') . '"></span>')  ?>
                                 </div>
                                 <div class="col-md-3">
-                                    <?= $form->field($modelsExperience, "[{$index}]date_to")->input('date')?>
-
-                                    <?php /* $form->field($modelsExperience, "[{$index}]date_from")->widget(\yii\jui\DatePicker::classname(), [
-                                        'language' => 'en',
-                                        'dateFormat' => 'yyyy-MM-dd',
-                                        'clientOptions' => [
-                                            'changeYear'=>true,
-                                            'changeMonth'=>true,
-                                            'changeDay'=>true,
-                                            'yearRange' => $yearRange,
-                                        ],
-                                        'options' => [
-                                            'class' => 'form-control date_from',
-                                            'autocomplete'=>"off",
-                                        ]
-                                    ]) */?>
+                                    <?= $form->field($modelsExperience, "[{$index}]date_from")->input('date')?>
 
                                 </div>
                                 <div class="col-md-3">
                                     <?= $form->field($modelsExperience, "[{$index}]date_to")->input('date')?>
-
-                                    <?php /* $form->field($modelsExperience, "[{$index}]date_to")->widget(\yii\jui\DatePicker::classname(), [
-                                        'language' => 'en',
-                                        'dateFormat' => 'yyyy-MM-dd',
-                                        'clientOptions' => [
-                                            'changeYear'=>true,
-                                            'changeMonth'=>true,
-                                            'changeDay'=>true,
-                                            'yearRange' => $yearRange,
-                                        ],
-                                      'options' => [
-                                                'class' => 'form-control date_to',
-                                                'autocomplete'=>"off",
-                                            ]
-                                        
-                                    ]) ;*/?>
-
-                                
-
                                 </div>
                                 <div class="col-md-3">
                                     <?= $form->field($modelsExperience, "[{$index}]facility_name")->textInput(['maxlength' => true])

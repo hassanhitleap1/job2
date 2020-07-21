@@ -114,27 +114,26 @@ class MyRequestController extends BaseController
                         $data=[];
 
                         foreach ($_POST['Experiences'] as $modelsExperience) {
+                            $from = Carbon::parse($modelsExperience['date_from'])->format('Y-m-d');
+                            $to = Carbon::parse($modelsExperience['date_to'])->format('Y-m-d');
+                            $data[]=[
+                                'job_title'=> $modelsExperience['job_title'],
+                                'date_from' => $from,
+                                'date_to' => $to ,
+                                'facility_name'=>$modelsExperience['facility_name'],
+                                'user_id' => $model->id
 
-                                $from = Carbon::parse($modelsExperience['date_from'])->format('Y-m-d');
-                                $to = Carbon::parse($modelsExperience['date_to'])->format('Y-m-d');
-                                $data[]=[
-                                    'job_title'=> $modelsExperience['job_title'],
-                                    'date_from' => $from,
-                                    'date_to' => $to ,
-                                    'facility_name'=>$modelsExperience['facility_name'],
-                                    'user_id' => $model->id
-
-                                ];
-
-
-                                $experience .=
-                                    $modelsExperience['job_title'] . "  " .
-                                    ' من ' .  Carbon::parse($from)->toDateString() . ' ' .
-                                    ' الى ' . Carbon::parse($to)->toDateString()  . "  " .
-                                    ' في ' . $modelsExperience['facility_name'] .
-                                    "<br />";
-                            
-                                $diff_dayes += $from->diffInDays($to);                               
+                            ];
+                            $experience .=
+                                $modelsExperience['job_title'] . "  " .
+                                ' من ' .  $from .' '.
+                                ' الى ' . $to . "  " .
+                                ' في ' . $modelsExperience['facility_name'] .
+                                "<br />";
+                            // format date 2019-10-26 15:48:41
+                            $def_from=Carbon::parse($from);
+                            $def_to=Carbon::parse($to);
+                            $diff_dayes += $def_from->diffInDays($def_to);
 
                         }
 

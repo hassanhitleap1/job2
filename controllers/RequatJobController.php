@@ -76,6 +76,72 @@ class RequatJobController extends \yii\web\Controller
                 try {
                 
                     if ($flag = $model->save(false)) {
+                         //________________________________ EducationalAttainment  ________________________________
+                        $data = [];
+                        foreach ($_POST['EducationalAttainment'] as $modelsEducationalAttainm) {
+                            $data[] = [
+                                'degree' => $modelsEducationalAttainm['degree'],
+                                'specialization' =>$modelsEducationalAttainm['specialization'],
+                                'university' =>$modelsEducationalAttainm['university'],
+                                'year_get' => $modelsEducationalAttainm['year_get'],
+                                'user_id' => $model->id
+
+                            ];
+                            $certificate .=
+                                $modelsEducationalAttainm['degree'] . "  " .
+                                $modelsEducationalAttainm['specialization']. "  ".
+                                $modelsEducationalAttainm['university'] ."  ".
+                                $modelsEducationalAttainm['year_get'] .
+                                "<br />";
+
+                        }
+
+                        $flag = Yii::$app->db
+                            ->createCommand()
+                            ->batchInsert(
+                                'educational_attainment', ['degree','specialization','university','year_get','user_id'],$data)->execute();
+
+                        if (!$flag) {
+                            $transaction->rollBack();
+                            exit;
+                        }
+
+
+                        //________________________________ Experiences ________________________________
+                        $data=[];
+                        foreach ($_POST['Experiences'] as $modelsExperience) {
+                            $from = Carbon::parse($modelsExperience['date_from'])->format('Y-m-d');
+                            $to = Carbon::parse($modelsExperience['date_to'])->format('Y-m-d');
+                            $data[]=[
+                                'job_title'=> $modelsExperience['job_title'],
+                                'date_from' => $from,
+                                'date_to' => $to ,
+                                'facility_name'=>$modelsExperience['facility_name'],
+                                'user_id' => $model->id
+
+                            ];
+                            $experience .=
+                                $modelsExperience['job_title'] . "  " .
+                                ' من ' .  $from .' '.
+                                ' الى ' . $to . "  " .
+                                ' في ' . $modelsExperience['facility_name'] .
+                                "<br />";
+                            // format date 2019-10-26 15:48:41
+                            $def_from=Carbon::parse($from);
+                            $def_to=Carbon::parse($to);
+                            $diff_dayes += $def_from->diffInDays($def_to);
+
+                        }
+
+                        $flag = Yii::$app->db
+                            ->createCommand()
+                            ->batchInsert('experiences', ['job_title', 'date_from', 'date_to', 'facility_name', 'user_id'], $data)
+                            ->execute();
+
+                        if (!$flag) {
+                            $transaction->rollBack();
+                            exit;
+                        }
 
 
                         //________________________________Courses ________________________________
@@ -111,77 +177,6 @@ class RequatJobController extends \yii\web\Controller
                             exit;
                         }
 
-
-
-                        
-                        //________________________________ Experiences ________________________________
-                        $data=[];
-                        foreach ($_POST['Experiences'] as $modelsExperience) {
-
-                            $from = Carbon::parse($modelsExperience['date_from'])->format('Y-m-d');
-                            $to = Carbon::parse($modelsExperience['date_to'])->format('Y-m-d');
-                            $data[]=[
-                                'job_title'=> $modelsExperience['job_title'],
-                                'date_from' => $from,
-                                'date_to' => $to ,
-                                'facility_name'=>$modelsExperience['facility_name'],
-                                'user_id' => $model->id
-
-                            ];
-                                $experience .=
-                                    $modelsExperience['job_title'] . "  " .
-                                    ' من ' .  Carbon::parse($from)->toDateString() .' '.
-                                    ' الى ' . Carbon::parse($from)->toDateString()  . "  " .
-                                    ' في ' . $modelsExperience['facility_name'] .
-                                    "<br />";
-                                // format date 2019-10-26 15:48:41
-                                $diff_dayes += $from->diffInDays($to);
-
-
-                        }
-
-                        $flag = Yii::$app->db
-                            ->createCommand()
-                            ->batchInsert('experiences', ['job_title', 'date_from', 'date_to', 'facility_name', 'user_id'], $data)
-                            ->execute();
-
-                        if (!$flag) {
-                            $transaction->rollBack();
-                            exit;
-                        }
-                    
-                         //________________________________ Experiences ________________________________
-
-                        $data = [];
-
-                        foreach ($_POST['EducationalAttainment'] as $modelsEducationalAttainm) {
-                            $data[] = [
-                                'degree' => $modelsEducationalAttainm['degree'],
-                                'specialization' =>$modelsEducationalAttainm['specialization'],
-                                'university' =>$modelsEducationalAttainm['university'],
-                                'year_get' => $modelsEducationalAttainm['year_get'],
-                                'user_id' => $model->id
-
-                            ];
-
-                            $certificate .=
-                                $modelsEducationalAttainm['degree'] . "  " .
-                                $modelsEducationalAttainm['specialization']. "  ".
-                                $modelsEducationalAttainm['university'] ."  ".
-                                $modelsEducationalAttainm['year_get'] .
-                                "<br />";
-
-                        }
-
-                        $flag = Yii::$app->db
-                            ->createCommand()
-                            ->batchInsert(
-                                'educational_attainment', ['degree','specialization','university','year_get','user_id'],$data)->execute();
-
-                        if (!$flag) {
-                            $transaction->rollBack();
-                            exit;
-                        }
                     }
 
                     

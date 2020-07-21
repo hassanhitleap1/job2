@@ -60,59 +60,23 @@ $jobsName = Json::encode($jobsName);
                             }
                             ?>
                             <div class="row">
-
-
                                 <div class="col-md-3">
-                                    <?= $form->field($modelsExperience, "[{$index}]job_title")->textInput(['maxlength' => true, 'class' => 'form-control job_title_aut_com']) //
-                                        ->label(Yii::t('app', 'Job_Title') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Job_Title_Example') . '"></span>')  ?>
+                                    <?= $form->field($modelsExperience, "[{$index}]job_title")->textInput(['maxlength' => true ,'class'=>'form-control job_title_aut_com']) //
+                                    ->label(Yii::t('app', 'Job_Title') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Job_Title_Example') . '"></span>')  ?>
                                 </div>
                                 <div class="col-md-3">
-
-                                    <?= $form->field($modelsExperience, "[{$index}]date_from")->widget(\yii\jui\DatePicker::classname(), [
-                                        'language' => 'en',
-                                        'dateFormat' => 'yyyy-MM-dd',
-                                        'clientOptions' => [
-                                            'changeYear' => true,
-                                            'changeMonth' => true,
-                                            'changeDay' => true,
-                                            'language' => 'en',
-                                            'source' => ['USA', 'RUS'],
-                                            'yearRange' => $yearRange,
-                                        ],
-                                        'options' => [
-                                            'class' => 'form-control date_from',
-                                            'autocomplete' => "off",
-                                        ]
-                                    ]) ?>
+                                    <?= $form->field($modelsExperience, "[{$index}]date_from")->input('date')?>
 
                                 </div>
                                 <div class="col-md-3">
-                                    <?= $form->field($modelsExperience, "[{$index}]date_to")->widget(\yii\jui\DatePicker::classname(), [
-                                        'language' => 'en',
-                                        'dateFormat' => 'yyyy-MM-dd',
-                                        'clientOptions' => [
-                                            'changeYear' => true,
-                                            'changeMonth' => true,
-                                            'changeDay' => true,
-                                            'language' => 'en',
-                                            'source' => ['USA', 'RUS'],
-                                            'yearRange' => $yearRange,
-                                        ],
-                                        'options' => [
-                                            'class' => 'form-control date_to',
-                                            'autocomplete' => "off",
-                                        ]
-
-                                    ]) ?>
-
-
-
+                                    <?= $form->field($modelsExperience, "[{$index}]date_to")->input('date')?>
                                 </div>
                                 <div class="col-md-3">
                                     <?= $form->field($modelsExperience, "[{$index}]facility_name")->textInput(['maxlength' => true])
                                         ->label(Yii::t('app', 'Facility_Name') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Facility_Name_Example') . '"></span>')  ?>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 <?php endforeach; ?>
