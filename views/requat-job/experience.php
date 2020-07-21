@@ -8,6 +8,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
 use yii\bootstrap\Html;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
+use yii\web\JsExpression;
 
 $month = range(1, 12);
 $year = range(1990, date("Y"));
@@ -71,24 +72,9 @@ $jobsName=Json::encode($jobsName);
                                     <?= $form->field($modelsExperience, "[{$index}]job_title")->textInput(['maxlength' => true ,'class'=>'form-control job_title_aut_com']) //
                                         ->label(Yii::t('app', 'Job_Title') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Job_Title_Example') . '"></span>')  ?>
                                 </div>
-                                <?php
-                                /*$form->field($modelsExperience, "[{$index}]date_from")->widget(DatePicker::classname(), [
-                                       'options' => ['placeholder' => Yii::t('app', 'date_from'),
-                                            'class' => 'form-control date_from',
-                                            'autocomplete'=>"off",
-                                        ],
-                                    'language' => 'en',
-                                    'value' => Carbon::now('Asia/Amman')->toDateString(),
-                                    'pluginOptions' => [
-                                        'todayHighlight' =>true,
-                                        'todayBtn' => true,
-                                        'autoclose' => false,
-                                        'format' => 'yyyy-mm-dd',
-                                        'language' => 'en',
-                                    ]
-                                ]); */
-                                ?>
+
                                 <div class="col-md-3">
+                                    <?= $form->field($modelsExperience, "[{$index}]date_from",['type'=>'date']) ?>
 
                                     <?= $form->field($modelsExperience, "[{$index}]date_from")->widget(\yii\jui\DatePicker::classname(), [
                                         'language' => 'en',
@@ -107,6 +93,7 @@ $jobsName=Json::encode($jobsName);
 
                                 </div>
                                 <div class="col-md-3">
+                                    <?= $form->field($modelsExperience, "[{$index}]date_to",['type'=>'date']) ?>
                                     <?= $form->field($modelsExperience, "[{$index}]date_to")->widget(\yii\jui\DatePicker::classname(), [
                                         'language' => 'en',
                                         'dateFormat' => 'yyyy-MM-dd',
