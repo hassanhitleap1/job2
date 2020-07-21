@@ -62,6 +62,7 @@ class RequatJobController extends \yii\web\Controller
             $model->name_company='';
             $model->verification_email=1;
             $model->subscribe_date=null;
+            $now= Carbon::now("Asia/Amman");
             // validate all models
             $valid = $model->validate() &&
                 Model::validateMultiple($modelsEducationalAttainment) &&
@@ -84,7 +85,9 @@ class RequatJobController extends \yii\web\Controller
                                 'specialization' =>$modelsEducationalAttainm['specialization'],
                                 'university' =>$modelsEducationalAttainm['university'],
                                 'year_get' => $modelsEducationalAttainm['year_get'],
-                                'user_id' => $model->id
+                                'user_id' => $model->id,
+                                'created_at' =>$now,
+                                'updated_at' => $now,
 
                             ];
                             $certificate .=
@@ -117,7 +120,9 @@ class RequatJobController extends \yii\web\Controller
                                 'date_from' => $from,
                                 'date_to' => $to ,
                                 'facility_name'=>$modelsExperience['facility_name'],
-                                'user_id' => $model->id
+                                'user_id' => $model->id,
+                                'created_at' => $now,
+                                'updated_at' => $now,
 
                             ];
                             $experience .=
@@ -153,7 +158,9 @@ class RequatJobController extends \yii\web\Controller
                                 'name_course' => $modelCourse['name_course'],
                                 'destination' =>$modelCourse['destination'],
                                 'duration' => $modelCourse['duration'],
-                                'user_id' => $model->id
+                                'user_id' => $model->id,
+                                'created_at' => $now,
+                                'updated_at' => $now,
                             ];
 
                             $priorities .=

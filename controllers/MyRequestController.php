@@ -32,7 +32,7 @@ class MyRequestController extends BaseController
         $diff_dayes=0;
         $certificate='';
         $priorities='';
-
+        $now = Carbon::now("Asia/Amman");
         if ($model->load(Yii::$app->request->post())) {
             //_________________________________________________________________________
             $modelsCourses = Model::createMultiple(Courses::classname(),$modelsCourses);
@@ -78,7 +78,9 @@ class MyRequestController extends BaseController
                                 'name_course' => $modelCourse['name_course'],
                                 'destination' =>$modelCourse['destination'],
                                 'duration' => $modelCourse['duration'],
-                                'user_id' => $model->id
+                                'user_id' => $model->id,
+                                'created_at' => $now,
+                                'updated_at' => $now,
                             ];
 
                             $priorities .=
@@ -121,7 +123,9 @@ class MyRequestController extends BaseController
                                 'date_from' => $from,
                                 'date_to' => $to ,
                                 'facility_name'=>$modelsExperience['facility_name'],
-                                'user_id' => $model->id
+                                'user_id' => $model->id,
+                                'created_at' => $now,
+                                'updated_at' => $now,
 
                             ];
                             $experience .=
@@ -162,7 +166,9 @@ class MyRequestController extends BaseController
                                 'specialization' =>$modelsEducationalAttainm['specialization'],
                                 'university' =>$modelsEducationalAttainm['university'],
                                 'year_get' => $modelsEducationalAttainm['year_get'],
-                                'user_id' => $model->id
+                                'user_id' => $model->id,
+                                'created_at' => $now,
+                                'updated_at' => $now,
 
                             ];
 
