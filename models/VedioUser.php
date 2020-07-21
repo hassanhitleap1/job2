@@ -41,7 +41,7 @@ class VedioUser extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'user_id', 'from', 'path', 'status'], 'required' , 'on' =>Self::SCENARIO_DEFAULT],
-            [['user_id', 'from', 'status'], 'integer'],
+            [['user_id', 'from', 'name_of_jobs_id','status'], 'integer'],
             [['video_id', 'title'], 'string', 'max' => 250],
             [['desc'], 'string', 'max' => 500],
             [['path'], 'string', 'max' => 100],

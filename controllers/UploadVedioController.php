@@ -24,7 +24,7 @@ class UploadVedioController extends  BaseController
         if($model == null){
             $model =new VedioUser();
         }
-        
+
         if ($model->load(Yii::$app->request->post())) {
             $model->file = UploadedFile::getInstance($model, 'file');
             if ($model->validate()) {
@@ -36,6 +36,7 @@ class UploadVedioController extends  BaseController
                 $path = "$folder_path/index" . "." . $model->file->extension;
                 $model->user_id=$id;
                 $model->status=VedioUser::ACTIVE;
+                $model->name_of_jobs_id=$model->name_of_jobs_id;
                 $model->file->saveAs($path);
                 $model->path = $path;
                 $model->save(false);
