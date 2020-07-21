@@ -24,6 +24,8 @@ class VedioUser extends \yii\db\ActiveRecord
     public $file;
     const SCENARIO_DEFAULT ="SCENARIO_DEFAULT";
     const SCENARIO_UPLOAD_USER ="SCENARIO_UPLOAD_USER";
+    const ACTIVE=1;
+    const DISACTIVE=1;
     /**
      * {@inheritdoc}
      */
@@ -63,7 +65,7 @@ class VedioUser extends \yii\db\ActiveRecord
             'from' => Yii::t('app', 'From'),
             'path' => Yii::t('app', 'Path'),
             'status' => Yii::t('app', 'Status'),
-            'specialtie_id'=> Yii::t('app', 'Specialties'),
+            'name_of_jobs_id'=> Yii::t('app', 'Name_Of_Jobs'),
             'file'=>Yii::t('app', 'File'),
             'created_at' => Yii::t('app', 'Created_At'),
             'updated_at' => Yii::t('app', 'Updated_At'),
