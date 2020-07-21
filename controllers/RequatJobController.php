@@ -10,20 +10,14 @@ use app\models\Experiences;
 use app\models\Governorate;
 use app\models\LoginForm;
 use app\models\Model;
-use app\models\Nationality;
-use app\models\RequastJob;
-use app\models\RequastJobGoogle;
-use app\models\RequastJobNotPay;
+
 use app\models\User;
 use Carbon\Carbon;
 use Yii;
-use yii\web\Controller;
+
 use app\models\RequastJobVisitor;
 use Exception;
-use yii\helpers\FileHelper;
-use yii\web\Response;
-use yii\web\UploadedFile;
-use  yii\web\Session;
+
 
 class RequatJobController extends \yii\web\Controller
 {
@@ -62,7 +56,7 @@ class RequatJobController extends \yii\web\Controller
             $model->name_company='';
             $model->verification_email=1;
             $model->subscribe_date=null;
-            $now= Carbon::now("Asia/Amman");
+            $now= Carbon::now("Asia/Amman")->toDateTimeString();
             // validate all models
             $valid = $model->validate() &&
                 Model::validateMultiple($modelsEducationalAttainment) &&
@@ -102,7 +96,7 @@ class RequatJobController extends \yii\web\Controller
                         $flag = Yii::$app->db
                             ->createCommand()
                             ->batchInsert(
-                                'educational_attainment', ['degree','specialization','university','year_get','user_id'],$data)->execute();
+                                'educational_attainment', ['degree','specialization','university','year_get','user_id', 'created_at', 'updated_at'],$data)->execute();
 
                         if (!$flag) {
                             $transaction->rollBack();
@@ -140,7 +134,7 @@ class RequatJobController extends \yii\web\Controller
 
                         $flag = Yii::$app->db
                             ->createCommand()
-                            ->batchInsert('experiences', ['job_title', 'date_from', 'date_to', 'facility_name', 'user_id'], $data)
+                            ->batchInsert('experiences', ['job_title', 'date_from', 'date_to', 'facility_name', 'user_id', 'created_at', 'updated_at'], $data)
                             ->execute();
 
                         if (!$flag) {
@@ -174,7 +168,7 @@ class RequatJobController extends \yii\web\Controller
                             ->createCommand()
                             ->batchInsert(
                                 'courses',
-                                ['name_course', 'destination', 'duration', 'user_id'],
+                                ['name_course', 'destination', 'duration', 'user_id', 'created_at', 'updated_at'],
                                 $data
                             )
                             ->execute();

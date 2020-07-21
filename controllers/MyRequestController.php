@@ -32,7 +32,7 @@ class MyRequestController extends BaseController
         $diff_dayes=0;
         $certificate='';
         $priorities='';
-        $now = Carbon::now("Asia/Amman");
+        $now = Carbon::now("Asia/Amman")->toDateTimeString();
         if ($model->load(Yii::$app->request->post())) {
             //_________________________________________________________________________
             $modelsCourses = Model::createMultiple(Courses::classname(),$modelsCourses);
@@ -94,7 +94,7 @@ class MyRequestController extends BaseController
                             ->createCommand()
                             ->batchInsert(
                                 'courses',
-                                ['name_course', 'destination', 'duration', 'user_id'],
+                                ['name_course', 'destination', 'duration', 'user_id', 'created_at', 'updated_at'],
                                 $data
                             )
                             ->execute();
@@ -144,7 +144,7 @@ class MyRequestController extends BaseController
 
                         $flag = Yii::$app->db
                             ->createCommand()
-                            ->batchInsert('experiences', ['job_title', 'date_from', 'date_to', 'facility_name', 'user_id'], $data)
+                            ->batchInsert('experiences', ['job_title', 'date_from', 'date_to', 'facility_name', 'user_id', 'created_at', 'updated_at'], $data)
                             ->execute();
 
                         if (!$flag) {
@@ -184,7 +184,7 @@ class MyRequestController extends BaseController
                         $flag = Yii::$app->db
                             ->createCommand()
                             ->batchInsert(
-                            'educational_attainment', ['degree','specialization','university','year_get','user_id'],$data)->execute();
+                            'educational_attainment', ['degree','specialization','university','year_get','user_id', 'created_at', 'updated_at'],$data)->execute();
 
                         if (!$flag) {
                             $transaction->rollBack();
