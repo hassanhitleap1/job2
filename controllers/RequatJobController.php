@@ -105,17 +105,16 @@ class RequatJobController extends \yii\web\Controller
                         foreach ($_POST['Experiences'] as $modelsExperience) {
                             if($modelsExperience['date_from'] != null){
                                 $model_experiences = new Experiences();
+                                $from = Carbon::parse($modelsExperience['date_from'])->format('Y-m-d');
+                                $to = Carbon::parse($modelsExperience['date_to'])->format('Y-m-d');
                                 $model_experiences->job_title= $modelsExperience['job_title'];
-                                $model_experiences->date_from= $modelsExperience['date_from'];
-                                $model_experiences->date_to= $modelsExperience['date_to'];
+                                $model_experiences->date_from=$from;
+                                $model_experiences->date_to= $to;
                                 $model_experiences->facility_name = $modelsExperience['facility_name'];
-                                $from = Carbon::parse($modelsExperience['date_from']);
-                                $to = Carbon::parse($modelsExperience['date_to']);
-
                                 $experience .=
                                     $modelsExperience['job_title'] . "  " .
-                                    ' من ' .  Carbon::parse($modelsExperience['date_from'])->toDateString() .' '.
-                                    ' الى ' . Carbon::parse($modelsExperience['date_to'])->toDateString()  . "  " .
+                                    ' من ' .  Carbon::parse($modelsExperience['date_from'])->format('Y-m-d')->toDateString() .' '.
+                                    ' الى ' . Carbon::parse($modelsExperience['date_to'])->format('Y-m-d')->toDateString()  . "  " .
                                     ' في ' . $modelsExperience['facility_name'] .
                                     "<br />";
                                 // format date 2019-10-26 15:48:41
