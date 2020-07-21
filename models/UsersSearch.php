@@ -12,6 +12,7 @@ use app\models\Users;
  */
 class UsersSearch extends Users
 {
+
     /**
      * {@inheritdoc}
      */
@@ -55,7 +56,7 @@ class UsersSearch extends Users
         $query->joinWith('category0');
         $query->joinWith('area0');
        // $query->joinWith('specialtie');
-        $query->leftJoin('nameOfjob');
+        $query->joinWith('nameOfjob');
         //$query->leftJoin('vedio_user', 'vedio_user.user_id = user.id');
         
         
