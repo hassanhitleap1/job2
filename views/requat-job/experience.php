@@ -72,13 +72,14 @@ $jobsName=Json::encode($jobsName);
                                 <div class="col-md-3">
 
                                     <?= $form->field($modelsExperience, "[{$index}]date_from")->widget(\yii\jui\DatePicker::classname(), [
-                                        //'language' => 'ru',
+                                        'language' => 'en',
                                         'dateFormat' => 'yyyy-MM-dd',
                                         'clientOptions' => [
                                             'changeYear'=>true,
                                             'changeMonth'=>true,
                                             'changeDay'=>true,
                                             'language' => 'en',
+                                            'source' => ['USA', 'RUS'],
                                             'yearRange' => $yearRange,
                                         ],
                                         'options' => [
@@ -90,13 +91,14 @@ $jobsName=Json::encode($jobsName);
                                 </div>
                                 <div class="col-md-3">
                                     <?= $form->field($modelsExperience, "[{$index}]date_to")->widget(\yii\jui\DatePicker::classname(), [
-                                        //'language' => 'ru',
+                                        'language' => 'en',
                                         'dateFormat' => 'yyyy-MM-dd',
                                         'clientOptions' => [
                                             'changeYear'=>true,
                                             'changeMonth'=>true,
                                             'changeDay'=>true,
                                             'language' => 'en',
+                                            'source' => ['USA', 'RUS'],
                                             'yearRange' => $yearRange,
                                         ],
                                       'options' => [
