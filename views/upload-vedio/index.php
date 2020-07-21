@@ -1,5 +1,6 @@
 <?php
 
+use app\models\NameOfJobs;
 use app\models\Specialties;
 use app\models\VedioUser;
 use conquer\select2\Select2Widget;
@@ -61,10 +62,10 @@ if (!$model->isNewRecord) {
             <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
             <div class="row">
                 <div class="col-md-12 col-lg-12">
-                    <?= $form->field($model, 'specialtie_id')->widget(
+                    <?= $form->field($model, 'name_of_jobs_id')->widget(
                         Select2Widget::className(),
                         [
-                            'items' => ArrayHelper::map(Specialties::find()->all(), 'id', 'name_ar')
+                            'items' => ArrayHelper::map(NameOfJobs::find()->all(), 'id', 'name_ar')
                         ]
                     ); ?>
                 </div>

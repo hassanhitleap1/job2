@@ -1,5 +1,6 @@
 <?php
 
+use app\models\NameOfJobs;
 use app\models\Specialties;
 use conquer\select2\Select2Widget;
 use yii\helpers\ArrayHelper;
@@ -21,10 +22,10 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'specialtie_id')->widget(
+    <?= $form->field($model, 'name_of_jobs_id')->widget(
         Select2Widget::className(),
         [
-            'items' => ArrayHelper::map(Specialties::find()->all(), 'id', 'name_ar')
+            'items' => ArrayHelper::map(NameOfJobs::find()->all(), 'id', 'name_ar')
         ]
     ); ?>
 

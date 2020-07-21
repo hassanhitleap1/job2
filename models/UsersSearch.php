@@ -18,7 +18,7 @@ class UsersSearch extends Users
     public function rules()
     {
         return [
-            [['id', 'agree', 'phone',  'specialtie_id','expected_salary',"gender", "action_user","first_payment"], 'integer'],
+            [['id', 'agree', 'phone',  'name_of_jobs_id','expected_salary',"gender", "action_user","first_payment"], 'integer'],
             [['name', 'certificates', 'experience','area' ,'nationality', 'governorate','category_id','subscribe_date','note','priorities'], 'safe'],
         ];
     }
@@ -54,7 +54,8 @@ class UsersSearch extends Users
         $query->joinWith('governorate0');  
         $query->joinWith('category0');
         $query->joinWith('area0');
-        $query->joinWith('specialtie');
+       // $query->joinWith('specialtie');
+        $query->leftJoin('nameOfjob');
         //$query->leftJoin('vedio_user', 'vedio_user.user_id = user.id');
         
         
@@ -74,7 +75,7 @@ class UsersSearch extends Users
             ->andFilterWhere(['like', 'experience', $this->experience])
             ->andFilterWhere(['like', 'priorities', $this->priorities])
             ->andFilterWhere(['like', 'area.name_ar', $this->area])
-            ->andFilterWhere(['=', 'vedio_user.specialtie_id', $this->specialtie_id])
+            ->andFilterWhere(['=', 'vedio_user.name_of_jobs_id', $this->name_of_jobs_id])
             ->andFilterWhere(['like', 'nationality.name_ar', $this->nationality])
             ->andFilterWhere(['like', 'governorate.name_ar', $this->governorate])
             ->andFilterWhere(['like', 'categories.name_ar', $this->category_id])
