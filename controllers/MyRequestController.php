@@ -114,30 +114,28 @@ class MyRequestController extends BaseController
                         $data=[];
 
                         foreach ($_POST['Experiences'] as $modelsExperience) {
-                            if ($modelsExperience['date_from'] != null) {
-                                $date_from = $this->changeFormatDate($modelsExperience['date_from']);
-                                $date_to = $this->changeFormatDate($modelsExperience['date_to']);
+
+                                $from = Carbon::parse($modelsExperience['date_from'])->format('Y-m-d');
+                                $to = Carbon::parse($modelsExperience['date_to'])->format('Y-m-d');
                                 $data[]=[
                                     'job_title'=> $modelsExperience['job_title'],
-                                    'date_from' => $date_from,
-                                    'date_to' => $date_to ,
+                                    'date_from' => $from,
+                                    'date_to' => $to ,
                                     'facility_name'=>$modelsExperience['facility_name'],
                                     'user_id' => $model->id
 
                                 ];
 
-                                $from = Carbon::parse($date_from);
-                                $to = Carbon::parse($date_to);
-                                
+
                                 $experience .=
                                     $modelsExperience['job_title'] . "  " .
-                                    ' من ' .  Carbon::parse($date_from)->toDateString() . ' ' .
-                                    ' الى ' . Carbon::parse($date_to)->toDateString()  . "  " .
+                                    ' من ' .  Carbon::parse($from)->toDateString() . ' ' .
+                                    ' الى ' . Carbon::parse($to)->toDateString()  . "  " .
                                     ' في ' . $modelsExperience['facility_name'] .
                                     "<br />";
                             
                                 $diff_dayes += $from->diffInDays($to);                               
-                            }
+
                         }
 
 
