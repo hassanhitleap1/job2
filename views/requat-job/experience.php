@@ -74,9 +74,9 @@ $jobsName=Json::encode($jobsName);
                                 </div>
 
                                 <div class="col-md-3">
-                                    <?= $form->field($modelsExperience, "[{$index}]date_from",['type'=>'date']) ?>
+                                    <?= $form->field($modelsExperience, "[{$index}]date_to")->input('date')?>
 
-                                    <?= $form->field($modelsExperience, "[{$index}]date_from")->widget(\yii\jui\DatePicker::classname(), [
+                                    <?php /* $form->field($modelsExperience, "[{$index}]date_from")->widget(\yii\jui\DatePicker::classname(), [
                                         'language' => 'en',
                                         'dateFormat' => 'yyyy-MM-dd',
                                         'clientOptions' => [
@@ -89,12 +89,13 @@ $jobsName=Json::encode($jobsName);
                                             'class' => 'form-control date_from',
                                             'autocomplete'=>"off",
                                         ]
-                                    ]) ?>
+                                    ]) */?>
 
                                 </div>
                                 <div class="col-md-3">
-                                    <?= $form->field($modelsExperience, "[{$index}]date_to",['type'=>'date']) ?>
-                                    <?= $form->field($modelsExperience, "[{$index}]date_to")->widget(\yii\jui\DatePicker::classname(), [
+                                    <?= $form->field($modelsExperience, "[{$index}]date_to")->input('date')?>
+
+                                    <?php /* $form->field($modelsExperience, "[{$index}]date_to")->widget(\yii\jui\DatePicker::classname(), [
                                         'language' => 'en',
                                         'dateFormat' => 'yyyy-MM-dd',
                                         'clientOptions' => [
@@ -108,7 +109,7 @@ $jobsName=Json::encode($jobsName);
                                                 'autocomplete'=>"off",
                                             ]
                                         
-                                    ]) ?>
+                                    ]) ;*/?>
 
                                 
 
