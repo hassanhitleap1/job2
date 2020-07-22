@@ -115,3 +115,8 @@ ADD `specialtie_id` INT NULL DEFAULT NULL AFTER `user_id`;
 ALTER TABLE `vedio_user` CHANGE `specialtie_id` `name_of_jobs_id` INT(11) NULL DEFAULT NULL;
 
 ALTER TABLE `video_vimo` CHANGE `specialtie_id` `name_of_jobs_id` INT(11) NULL DEFAULT NULL;
+
+
+ALTER TABLE `vedio_user` CHANGE `title` `title` VARCHAR(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL, CHANGE `from` `from` SMALLINT(6) NULL DEFAULT NULL;
+
+
