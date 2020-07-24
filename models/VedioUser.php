@@ -46,7 +46,7 @@ class VedioUser extends \yii\db\ActiveRecord
             [['desc'], 'string', 'max' => 500],
             [['path'], 'string', 'max' => 100],
             [['file'],'required'],
-            ['file', 'file', 'extensions' => 'webm,mkv,flv,vob,ogv,ogg,mov,wmv,avchd,mov,wmv,rm,amv,avi,mp4,m4p', 'maxSize' => 1024 * 1024 * 30 , 'tooBig' => 'Limit is 20MB'],
+            ['file', 'file', 'extensions' => 'webm,mkv,flv,vob,ogv,ogg,mov,wmv,avchd,mov,wmv,rm,amv,avi,mp4,m4p', 'maxSize' => 1024 * 1024 * 30 , 'tooBig' => 'Limit is 30MB'],
            // [['file'], 'vedio', 'skipOnEmpty' => true, 'extensions' => 'webm,mkv,flv,vob,ogv,ogg,mov,wmv,rm,amv,avi,mp4,m4p '],
         ];
     }

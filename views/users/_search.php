@@ -22,16 +22,21 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'name_of_jobs_id')->widget(
-        Select2Widget::className(),
-        [
-            'items' => ArrayHelper::map(NameOfJobs::find()->all(), 'id', 'name_ar')
-        ]
-    ); ?>
+
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-outline-secondary']) ?>
+        <div class="row">
+            <div class="col-md-8">
+                <?= $form->field($model, 'name_of_jobs_id')->widget(
+                    Select2Widget::className(),
+                    [
+                        'items' => ArrayHelper::map(NameOfJobs::find()->all(), 'id', 'name_ar')
+                    ]
+                ); ?>
+                <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
+            </div>
+        
+        </div>
     </div>
 
     <?php
