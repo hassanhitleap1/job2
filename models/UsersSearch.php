@@ -50,6 +50,7 @@ class UsersSearch extends Users
         
            
         $query->where(['type' => User::FORM_APPLAY_USER]);
+        $query->orwhere(['type' => User::NORMAL_USER]);
     
         $query->joinWith('nationality0');
         $query->joinWith('governorate0');  
