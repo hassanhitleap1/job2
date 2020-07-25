@@ -8,6 +8,7 @@ use conquer\select2\Select2Widget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
 $floorOptionsArray = ['Basement', 'Ground Floor', 'First floor', 'Second floor', 'Third floor'];
 $this->title = Yii::t('app', 'Requast_Job');
 
@@ -27,7 +28,7 @@ $this->title = Yii::t('app', 'Requast_Job');
             <div class="row">
                 <div class="col-lg-3">
 
-                    <?= $form->field($model, 'name')->textInput(['maxlength' => true ])
+                    <?= $form->field($model, 'name')->textInput(['maxlength' => true])
                         ->label(Yii::t('app', 'Name_full') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Name_Example') . '"></span>') ?>
 
                 </div>
@@ -59,7 +60,7 @@ $this->title = Yii::t('app', 'Requast_Job');
                         ]
                     ); ?>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <?= $form->field($model, 'governorate')->widget(
                         Select2Widget::className(),
                         [
@@ -68,13 +69,16 @@ $this->title = Yii::t('app', 'Requast_Job');
                     ); ?>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <?= $form->field($model, 'area')->widget(
                         Select2Widget::className(),
                         [
                             'items' => ArrayHelper::map(Area::find()->where(['<>', 'id', 1])->all(), 'id', 'name_ar')
                         ]
                     ); ?>
+                </div>
+                <div class="col-md-2">
+                    <?= $form->field($model, "year_of_experience")->textInput(); ?>
                 </div>
             </div>
             <div class="row">

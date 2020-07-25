@@ -28,8 +28,7 @@ class MyRequestController extends BaseController
         $modelsExperiences= $model->experiences;
         $modelsEducationalAttainment= $model->educationalAttainment;
         $experience='';
-        $count_experience=0;
-        $diff_dayes=0;
+        
         $certificate='';
         $priorities='';
         $now = Carbon::now("Asia/Amman")->toDateTimeString();
@@ -135,10 +134,7 @@ class MyRequestController extends BaseController
                                 ' في ' . $modelsExperience['facility_name'] .
                                 "<br />";
                             // format date 2019-10-26 15:48:41
-                            $def_from=Carbon::parse($from);
-                            $def_to=Carbon::parse($to);
-                            $diff_dayes += $def_from->diffInDays($def_to);
-
+                          
                         }
 
 
@@ -193,16 +189,6 @@ class MyRequestController extends BaseController
                     }
 
 
-
-                    
-                    if($diff_dayes !=0){
-                        $count_experience= round($diff_dayes / 360, 1);
-                    }else {
-                        
-                        $count_experience= $diff_dayes;
-                    }
-
-                    $model->year_of_experience= $count_experience;
                     $model->experience= $experience;
                     $model->certificates=$certificate;
                     $model->priorities= $priorities;

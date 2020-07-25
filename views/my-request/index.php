@@ -67,6 +67,9 @@ $this->title = Yii::t('app', 'Requast_Job');
                             ]
                         ); ?>
                     </div>
+                    <div class="col-md-2">
+                        <?= $form->field($model, "year_of_experience")->textInput(); ?>
+                    </div>
                 </div>
                 <div class="row">
                     <?php include('edu_att.php') ?>

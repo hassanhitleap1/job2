@@ -28,8 +28,6 @@ class RequatJobController extends \yii\web\Controller
         $model = new RequastJobVisitor();
         $model->scenario  = RequastJobVisitor::CREATE;
         $experience='';
-        $count_experience=0;
-        $diff_dayes=0;
         $certificate='';
         $priorities='';
         $modelsCourses= [new Courses];
@@ -126,9 +124,7 @@ class RequatJobController extends \yii\web\Controller
                                 ' في ' . $modelsExperience['facility_name'] .
                                 "<br />";
                             // format date 2019-10-26 15:48:41
-                            $def_from=Carbon::parse($from);
-                            $def_to=Carbon::parse($to);
-                            $diff_dayes += $def_from->diffInDays($def_to);
+                            
 
                         }
 
@@ -181,15 +177,8 @@ class RequatJobController extends \yii\web\Controller
                     }
 
                     
-                    //________________________ some calcuclaclate ____________________
-                    if($diff_dayes !=0){
-                        $count_experience= round($diff_dayes / 360, 1);
-                    }else {
-                        # code...
-                        $count_experience= $diff_dayes;
-                    }
-                     
-                    $model->year_of_experience= $count_experience;
+                    
+          
                     $model->experience= $experience;
                     $model->certificates=$certificate;
                     $model->priorities= $priorities;

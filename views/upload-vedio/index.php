@@ -66,7 +66,12 @@ if (!$model->isNewRecord) {
                         Select2Widget::className(),
                         [
                             'items' => ArrayHelper::map(NameOfJobs::find()->all(), 'id', 'name_ar')
+                        ],[
+                            'options' => [
+                                'placeholder' => 'Select items ...',
+                            ],
                         ]
+                        
                     ); ?>
                 </div>
                 <div class="col-md-12 col-lg-12">
