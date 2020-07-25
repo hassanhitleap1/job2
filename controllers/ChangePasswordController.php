@@ -34,7 +34,7 @@ class ChangePasswordController extends BaseController
     {
         $model = new ChangePassword();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            Yii::$app->session->set('message', Yii::t('app', 'Succ_Mess_Cont'));
+            Yii::$app->session->set('message', Yii::t('app', 'Succ_Mess_Pass'));
             return $this->render('index', ['model' => $model]);
         }
 

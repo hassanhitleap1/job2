@@ -251,4 +251,5 @@ return [
     "Upload_Vedio"=>"تحميل فيديو",
     "Date_To_Not_Valid"=> "الى تاريخ يجب ان اكون من التاريخ",
     "Succ_Mess_Vedio"=>"تم رفع الفيديو بنجاح",
+    "Succ_Mess_Pass"=>"تم تغير كلمة السر بنجاح",
 ];
