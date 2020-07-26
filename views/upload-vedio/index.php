@@ -1,10 +1,9 @@
 <?php
 
 use app\models\NameOfJobs;
-use app\models\Specialties;
-use app\models\VedioUser;
-use conquer\select2\Select2Widget;
+
 use kartik\file\FileInput;
+use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -62,17 +61,13 @@ if (!$model->isNewRecord) {
             <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
             <div class="row">
                 <div class="col-md-12 col-lg-12">
-                    <?= $form->field($model, 'name_of_jobs_id')->widget(
-                        Select2Widget::className(),
-                        [
-                            'items' => ArrayHelper::map(NameOfJobs::find()->all(), 'id', 'name_ar')
-                        ],[
-                            'options' => [
-                                'placeholder' => 'Select items ...',
-                            ],
-                        ]
-                        
-                    ); ?>
+                 
+                    <?= $form->field($model, 'name_of_jobs_id')->widget(Select2::classname(), [
+                        'data' =>  ArrayHelper::map(NameOfJobs::find()->all(), 'id', 'name_ar'),
+                        'language' => 'ar',
+                        'options' => ['placeholder' =>Yii::t('app',"Plz_Select_Name_Of_Jobs")],
+                       
+                    ]); ?>
                 </div>
                 <div class="col-md-12 col-lg-12">
                     <?=

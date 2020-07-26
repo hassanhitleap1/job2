@@ -40,12 +40,12 @@ class VedioUser extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'user_id', 'from', 'path', 'status'], 'required' , 'on' =>Self::SCENARIO_DEFAULT],
+            [['title', 'user_id', 'from', 'name_of_jobs_id', 'path', 'status'], 'required' , 'on' =>Self::SCENARIO_DEFAULT],
             [['user_id', 'from', 'name_of_jobs_id','status'], 'integer'],
             [['video_id', 'title'], 'string', 'max' => 250],
             [['desc'], 'string', 'max' => 500],
             [['path'], 'string', 'max' => 100],
-            [['file'],'required'],
+            [['file', 'name_of_jobs_id'],'required'],
             ['file', 'file', 'extensions' => 'webm,mkv,flv,vob,ogv,ogg,mov,wmv,avchd,mov,wmv,rm,amv,avi,mp4,m4p', 'maxSize' => 1024 * 1024 * 35 , 'tooBig' => 'Limit is 30MB'],
            // [['file'], 'vedio', 'skipOnEmpty' => true, 'extensions' => 'webm,mkv,flv,vob,ogv,ogg,mov,wmv,rm,amv,avi,mp4,m4p '],
         ];
