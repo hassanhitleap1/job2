@@ -17,7 +17,7 @@ class LoginForm extends Model
     public $password;
     public $rememberMe = true;
 
-    private $_user = false;
+    private $_user = null;
 
 
     /**
@@ -81,16 +81,15 @@ class LoginForm extends Model
      */
     public function getUser()
     {
-        if ($this->_user === false) {
+        if ($this->_user === null) {
             if(is_numeric($this->username)){
                 $this->_user = User::findByPhone($this->username);
             }else{
                 $this->_user = User::findByUsername($this->username);
-                if(  $this->_user ==null ){
+                if(  $this->_user === null ){
                     $this->_user = User::findByEmail($this->username);
                 }
             }
-
         }
 
         return $this->_user;
