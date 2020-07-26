@@ -95,6 +95,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'html',
 
             ],
+            'year_of_experience',
             [
                 'attribute' => 'priorities',
                 'value' => 'priorities',

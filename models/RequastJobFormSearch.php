@@ -18,7 +18,7 @@ class RequastJobFormSearch extends RequastJobForm
     public function rules()
     {
         return [
-            [['id', 'agree', 'phone',  'expected_salary',"gender", "action_user","first_payment"], 'integer'],
+            [['id', 'agree', 'phone',  'expected_salary',"gender", "action_user","first_payment", "year_of_experience"], 'integer'],
             [['name', 'certificates', 'experience','area' ,'nationality', 'governorate','category_id','subscribe_date','note','priorities'], 'safe'],
         ];
     }
@@ -70,6 +70,7 @@ class RequastJobFormSearch extends RequastJobForm
             "gender"=>$this->gender,
             "action_user"=> $this->action_user, 
             "first_payment"=>$this->first_payment,
+            "year_of_experience"=>$this->year_of_experience,
             // 'nationality' => $this->nationality,
             // 'governorate' => $this->governorate,
             'expected_salary' => $this->expected_salary,

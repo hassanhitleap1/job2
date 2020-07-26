@@ -79,6 +79,7 @@ class RequastJobVisitorSearch extends RequastJob
             'phone' => $this->phone,
             "gender"=>$this->gender,
             "first_payment"=>$this->first_payment,
+            
             // 'nationality' => $this->nationality,
             // 'governorate' => $this->governorate,
             'expected_salary' => $this->expected_salary,
