@@ -42,7 +42,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ],
             'agree',
-            'phone',
             [
                 'format' => 'raw',
                 'name' => 'governorate',
