@@ -10,7 +10,7 @@ use app\models\RequestMerchantSearch;
 use yii\db\Query;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\Controller;
+
 
 /**
  * RequestMerchantController implements the CRUD actions for RequestMerchant model.

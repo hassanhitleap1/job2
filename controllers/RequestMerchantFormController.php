@@ -6,8 +6,6 @@ use app\models\User;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
-use yii\web\Response;
-use yii\widgets\ActiveForm;
 use app\base\Model;
 use app\models\RequestMerchantSearch;
 

@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use app\models\User;
-use yii\base\Response;
+
 
 class UserInfoController extends BaseController
 {

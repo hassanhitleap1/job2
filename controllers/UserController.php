@@ -1,8 +1,9 @@
 <?php
 namespace app\controllers;
+
+use app\components\UserHelper;
 use app\models\User;
 use Yii;
-use yii\filters\VerbFilter;
 use yii\web\Controller;
 
 class UserController extends Controller

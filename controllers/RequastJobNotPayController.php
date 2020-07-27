@@ -18,7 +18,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Url;
 use yii\web\UploadedFile;
-use yii\base\Model;
+
 
 /**
  * RequastJobController implements the CRUD actions for RequastJob model.

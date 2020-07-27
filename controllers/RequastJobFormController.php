@@ -4,16 +4,12 @@ namespace app\controllers;
 
 use app\models\ActionAdmin;
 use app\models\CountSendSms;
-use app\models\Courses;
-use app\models\EducationalAttainment;
-use app\models\Experiences;
 use app\models\MessageJobUser;
 use app\models\RequastJobForm;
 use app\models\RequastJobFormSearch;
 use app\models\UserMessage;
 use Yii;
 use app\models\RequastJob;
-use app\models\RequastJobSearch;
 use app\models\SendSmsModel;
 use app\models\User;
 use Carbon\Carbon;
