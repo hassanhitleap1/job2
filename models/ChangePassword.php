@@ -25,7 +25,7 @@ class ChangePassword extends Model
             [['old_password','new_password','confirm_pass'], 'required'],
             [['old_password'],'isOld'],
             [['new_password'], 'string', 'min' => 6],
-            ['new_password', 'compare', 'compareAttribute' => 'confirm_pass', 'message' => Yii::t('app','Pass_Dont_match')],
+            ['confirm_pass', 'compare', 'compareAttribute' => 'new_password', 'message' => Yii::t('app','Pass_Dont_match')],
         ];
     }
 

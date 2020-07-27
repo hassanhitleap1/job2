@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\ChangePassword;
+use app\models\RequastJobForm;
 use Yii;
 use yii\filters\VerbFilter;
 
@@ -34,6 +35,9 @@ class ChangePasswordController extends BaseController
     {
         $model = new ChangePassword();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $user=RequastJobForm::findOne(Yii::$app->user->identity->id);
+            $user->password_hash= Yii::$app->security->generatePasswordHash($model->new_password);
+            $user->save(false);
             Yii::$app->session->set('message', Yii::t('app', 'Succ_Mess_Pass'));
             return $this->render('index', ['model' => $model]);
         }
