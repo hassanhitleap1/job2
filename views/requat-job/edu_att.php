@@ -2,15 +2,15 @@
 
 use app\models\Degrees;
 use app\models\Specialties;
-use conquer\select2\Select2Widget;
+use kartik\select2\Select2;
 use wbraganca\dynamicform\DynamicFormWidget;
 use yii\bootstrap\Html;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 
-$year = array_combine(range(1990, date("Y")) ,range(1990, date("Y")));
-$specialties =ArrayHelper::getColumn(Specialties::find()->all(),'name_ar');
-$specialties=Json::encode($specialties);
+$year = array_combine(range(1990, date("Y")), range(1990, date("Y")));
+$specialties = ArrayHelper::getColumn(Specialties::find()->all(), 'name_ar');
+$specialties = Json::encode($specialties);
 ?>
 <div class="panel panel-default">
     <div class="panel-body">
@@ -57,15 +57,15 @@ $specialties=Json::encode($specialties);
 
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <?= $form->field($modelEduAt, "[{$index}]degree")->widget(
-                                        Select2Widget::className(),
-                                        [
-                                            'items' => ArrayHelper::map(Degrees::find()->all(), 'name', 'name')
-                                        ]
-                                    ); ?>
+                                    <?= $form->field($modelEduAt, "[{$index}]degree")->widget(Select2::classname(), [
+                                        'data' =>  ArrayHelper::map(Degrees::find()->all(), 'name', 'name'),
+                                        'language' => 'ar',
+                                        'options' => ['placeholder' => Yii::t('app', "Plz_Select_Degree")],
+
+                                    ]); ?>
                                 </div>
                                 <div class="col-sm-3">
-                                    <?= $form->field($modelEduAt, "[{$index}]specialization")->textInput(['maxlength' => true,'class'=>'form-control specialization_aut_com'])
+                                    <?= $form->field($modelEduAt, "[{$index}]specialization")->textInput(['maxlength' => true, 'class' => 'form-control specialization_aut_com'])
                                         ->label(Yii::t('app', 'Specialization') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Specialization_Example') . '"></span>') ?>
                                 </div>
                                 <div class="col-sm-3">
@@ -86,9 +86,9 @@ $specialties=Json::encode($specialties);
         <?php DynamicFormWidget::end(); ?>
     </div>
 </div>
-    <script type="text/javascript">
-        var specialties = <?= $specialties?>;
-    </script>
+<script type="text/javascript">
+    var specialties = <?= $specialties ?>;
+</script>
 
 <?php
 $js = '

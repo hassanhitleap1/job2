@@ -150,7 +150,7 @@ class MerchantController extends BaseController
         $modelsRequestMerchant = $model->requasts;
 
         if ($model->load(Yii::$app->request->post())) {
-      
+        
             $oldIDs = ArrayHelper::map($modelsRequestMerchant, 'id', 'id');
             $modelsRequestMerchant = Model::createMultiple(RequestMerchant::classname(), $modelsRequestMerchant);
             Model::loadMultiple($modelsRequestMerchant, Yii::$app->request->post());

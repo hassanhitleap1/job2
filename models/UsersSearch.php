@@ -19,7 +19,7 @@ class UsersSearch extends Users
     public function rules()
     {
         return [
-            [['id', 'agree', 'phone',  'name_of_jobs_id','expected_salary',"gender", "action_user","first_payment"], 'integer'],
+            [['id', 'agree', 'phone',  'name_of_jobs_id','expected_salary',"gender", "year_of_experience", "action_user","first_payment"], 'integer'],
             [['name', 'certificates', 'experience','area' ,'nationality', 'governorate','category_id','subscribe_date','note','priorities'], 'safe'],
         ];
     }
@@ -67,7 +67,8 @@ class UsersSearch extends Users
             'agree' => $this->agree,
             'phone' => $this->phone,
             "gender"=>$this->gender,
-            "action_user"=> $this->action_user, 
+            "action_user"=> $this->action_user,
+            "year_of_experience"=>$this->year_of_experience,
             "first_payment"=>$this->first_payment,
             'expected_salary' => $this->expected_salary,
         ]);

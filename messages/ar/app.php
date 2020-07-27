@@ -252,4 +252,7 @@ return [
     "Date_To_Not_Valid"=> "الى تاريخ يجب ان اكون من التاريخ",
     "Succ_Mess_Vedio"=>"تم رفع الفيديو بنجاح",
     "Succ_Mess_Pass"=>"تم تغير كلمة السر بنجاح",
+    "Plz_Select_Name_Of_Jobs"=>"ارجو اختيار اسم الوظيفة",
+    "Plz_Select_Degree"=>"ارجو اختيارالدرجه العلمية",
+    "Year_Of_Experience_Example"=>"2",
 ];

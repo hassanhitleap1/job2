@@ -58,7 +58,7 @@ class Merchant extends \yii\db\ActiveRecord
         return [
             [['file'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg '],
             [[ 'phone',  'governorate','area'], 'integer'],
-            [['name_company', 'name', 'note', 'location'], 'string'],
+            [['name_company', 'name', 'note', 'location', 'address'], 'string'],
             [['name','name_company','phone'], 'required'],   
             [['phone'], 'isJordanPhone'],
             [['phone'],'unique','message'=>Yii::t('app','Phone_Already_Exist')],  

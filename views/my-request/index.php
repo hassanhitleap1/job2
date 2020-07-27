@@ -68,7 +68,8 @@ $this->title = Yii::t('app', 'Requast_Job');
                         ); ?>
                     </div>
                     <div class="col-md-2">
-                        <?= $form->field($model, "year_of_experience")->textInput(); ?>
+                        <?= $form->field($model, "year_of_experience")->textInput()
+                            ->label(Yii::t('app', 'Year_Of_Experience') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Year_Of_Experience_Example') . '"></span>'); ?>
                     </div>
                 </div>
                 <div class="row">

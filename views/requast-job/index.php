@@ -4,8 +4,6 @@ use app\models\RequastJobForm;
 use app\models\User;
 use app\models\UserMessage;
 use Carbon\Carbon;
-use kartik\date\DatePicker;
-use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -96,6 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'html',
 
             ],
+                'year_of_experience',
             [
                 'attribute' => 'priorities',
                 'value' => 'priorities',

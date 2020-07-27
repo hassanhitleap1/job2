@@ -10,6 +10,7 @@ use app\models\UserMessage;
 use app\models\UserMessageClarification;
 use app\models\UserMessageMerchant;
 use app\models\UserMessageZoom;
+use Carbon\Carbon;
 use Exception;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -84,6 +85,7 @@ class AdminController extends BaseController
         $model = new Admin();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $today = Carbon::now("Asia/Amman");
             $model->status= User::STATUS_ACTIVE;
             $model->type=User::NORMAL_ADMIN;
             $model->password_hash=\Yii::$app->security->generatePasswordHash(123456789);
@@ -93,22 +95,30 @@ class AdminController extends BaseController
             $msss_zoom_model = new UserMessageZoom();
             $msss_zoom_model->text = $message_zoom;
             $msss_zoom_model->user_id = $model->id;
+            $msss_zoom_model->created_at = $today;
+            $msss_zoom_model->updated_at = $today;
 
 
             $message_merchant = UserMessageMerchant::find()->select('text')->column()[0];
             $message_merchant_model = new UserMessageMerchant();
             $message_merchant_model->text = $message_merchant;
             $message_merchant_model->user_id = $model->id;
+            $message_merchant_model->created_at = $today;
+            $message_merchant_model->updated_at = $today;
 
             $message_clarification = UserMessageClarification::find()->select('text')->column()[0];
             $msss_clarification_model = new UserMessageClarification();
             $msss_clarification_model->text = $message_clarification;
             $msss_clarification_model->user_id =$model->id;
+            $msss_clarification_model->created_at = $today;
+            $msss_clarification_model->updated_at = $today;
 
             $message_user = UserMessage::find()->select('text')->column()[0];
             $message_user_model = new UserMessage();
             $message_user_model->text = $message_user;
             $message_user_model->user_id =$model->id;
+            $message_user_model->created_at = $today;
+            $message_user_model->updated_at = $today;
 
             
             $msss_zoom_model->save(false) ;
