@@ -57,12 +57,11 @@ $specialties = Json::encode($specialties);
 
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <?= $form->field($modelEduAt, "[{$index}]degree")->widget(Select2::classname(), [
-                                        'data' =>  ArrayHelper::map(Degrees::find()->all(), 'name', 'name'),
-                                        'language' => 'ar',
-                                        'options' => ['placeholder' => Yii::t('app', "Plz_Select_Degree")],
-
-                                    ]); ?>
+                                    <?= $form->field($modelEduAt, "[{$index}]degree")
+                                        ->dropDownList(
+                                            ArrayHelper::map(Degrees::find()->all(), 'name', 'name'),
+                                            ['prompt' => Yii::t('app', "Plz_Select_Degree")]    // options
+                                        ); ?>
                                 </div>
                                 <div class="col-sm-3">
                                     <?= $form->field($modelEduAt, "[{$index}]specialization")->textInput(['maxlength' => true])
