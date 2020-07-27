@@ -139,7 +139,7 @@ AppAsset::register($this);
                 $menuItems[] = ['label' => Yii::t('app', 'Message'), 'url' => ['/user-message-whatsapp/index']];
                 $menuItems[] = ['label' => Yii::t('app', 'Change_Password'), 'url' => ['/change-password/index']];
             }elseif (Yii::$app->user->identity->type == User::MERCHANT_USER){
-                $menuItems[] = ['label' => Yii::t('app', 'Users'), 'url' => ['/users/index']];
+                $menuItems[] = ['label' => Yii::t('app', 'Requast_Job_Form'), 'url' => ['/users/index']];
                 $menuItems[] = ['label' => Yii::t('app', 'Change_Password'), 'url' => ['/change-password/index']];
             }else{
                 $menuItems[] = ['label' => Yii::t('app', 'Upload_Vedio'), 'url' => ['/upload-vedio/index']];

@@ -2,14 +2,12 @@
 
 use app\models\RequastJobForm;
 use app\models\User;
-use app\models\UserMessage;
-
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
 
-$this->title = Yii::t('app', 'Requast_Jobs');
+$this->title = Yii::t('app', 'Requast_Job_Form');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container">
