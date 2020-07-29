@@ -26,6 +26,8 @@ class VedioUser extends \yii\db\ActiveRecord
     const SCENARIO_UPLOAD_USER ="SCENARIO_UPLOAD_USER";
     const ACTIVE=1;
     const DISACTIVE=1;
+    public $ext="3g2,3gp,avi,flv,h264,m4v,webm,mkv,mov,mp4,mpg,mpeg,rm,swf,vob,wmv,qt,ogv,avchd,amv,m4p";
+
     /**
      * {@inheritdoc}
      */
@@ -46,7 +48,7 @@ class VedioUser extends \yii\db\ActiveRecord
             [['desc'], 'string', 'max' => 500],
             [['path'], 'string', 'max' => 100],
             [['file', 'name_of_jobs_id'],'required'],
-            ['file', 'file', 'extensions' => 'webm,mkv,flv,vob,ogv,ogg,mov,wmv,avchd,mov,wmv,rm,amv,avi,mp4,m4p', 'maxSize' => 1024 * 1024 * 70 , 'tooBig' => 'Limit is 30MB'],
+            ['file', 'file', 'extensions' => $this->ext , 'maxSize' => 1024 * 1024 * 70 , 'tooBig' => 'Limit is 30MB'],
            // [['file'], 'vedio', 'skipOnEmpty' => true, 'extensions' => 'webm,mkv,flv,vob,ogv,ogg,mov,wmv,rm,amv,avi,mp4,m4p '],
         ];
     }
