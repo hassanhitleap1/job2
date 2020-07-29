@@ -26,6 +26,9 @@ if (!(Yii::$app->user->identity->contract_path == null || Yii::$app->user->ident
                 ['caption' => Yii::$app->user->identity->name],
             ],
             'overwriteInitial' => false,
+            'showUpload' => false,
+            'showRemove' => false,
+
 
         ];
     }
