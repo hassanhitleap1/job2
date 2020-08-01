@@ -115,37 +115,38 @@ class MyRequestController extends BaseController
                         $data=[];
 
                         foreach ($_POST['Experiences'] as $modelsExperience) {
-                            $from = Carbon::parse($modelsExperience['date_from'])->format('Y-m-d');
-                            $to = Carbon::parse($modelsExperience['date_to'])->format('Y-m-d');
-                            $data[]=[
-                                'job_title'=> $modelsExperience['job_title'],
-                                'date_from' => $from,
-                                'date_to' => $to ,
-                                'facility_name'=>$modelsExperience['facility_name'],
-                                'user_id' => $model->id,
-                                'created_at' => $now,
-                                'updated_at' => $now,
+                            if ($modelsExperience['date_from'] != '' && $modelsExperience['date_to'] != '') {
+                                $from = Carbon::parse($modelsExperience['date_from'])->format('Y-m-d');
+                                $to = Carbon::parse($modelsExperience['date_to'])->format('Y-m-d');
+                                $data[] = [
+                                    'job_title' => $modelsExperience['job_title'],
+                                    'date_from' => $from,
+                                    'date_to' => $to,
+                                    'facility_name' => $modelsExperience['facility_name'],
+                                    'user_id' => $model->id,
+                                    'created_at' => $now,
+                                    'updated_at' => $now,
 
-                            ];
-                            $experience .=
+                                ];
+                                $experience .=
                                 $modelsExperience['job_title'] . "  " .
-                                ' من ' .  $from .' '.
-                                ' الى ' . $to . "  " .
-                                ' في ' . $modelsExperience['facility_name'] .
-                                "<br />";
-                            // format date 2019-10-26 15:48:41
-                          
+                                    ' من ' .  $from . ' ' .
+                                    ' الى ' . $to . "  " .
+                                    ' في ' . $modelsExperience['facility_name'] .
+                                    "<br />";
+                                // format date 2019-10-26 15:48:41
+                            }
                         }
 
-
-                        $flag = Yii::$app->db
-                            ->createCommand()
-                            ->batchInsert('experiences', ['job_title', 'date_from', 'date_to', 'facility_name', 'user_id', 'created_at', 'updated_at'], $data)
-                            ->execute();
-
-                        if (!$flag) {
-                            $transaction->rollBack();
-                            exit;
+                        if (count($data)) {
+                            $flag = Yii::$app->db
+                                ->createCommand()
+                                ->batchInsert('experiences', ['job_title', 'date_from', 'date_to', 'facility_name', 'user_id', 'created_at', 'updated_at'], $data)
+                                ->execute();
+                            if (!$flag) {
+                                $transaction->rollBack();
+                                exit;
+                            }
                         }
 
                         //________________________________ EducationalAttainment ________________________________
