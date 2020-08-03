@@ -260,3 +260,6 @@ a.desc:after {
 .green{
        background-color: green;
 }
+.audio, canvas, progress, video{
+        height: fit-content;
+}
