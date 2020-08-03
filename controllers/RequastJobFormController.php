@@ -19,20 +19,26 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Url;
 use yii\web\UploadedFile;
-use yii\base\Model;
+
 
 /**
  * RequastJobController implements the CRUD actions for RequastJob model.
  */
 class RequastJobFormController extends BaseController
 {
+
+    public $allow = [
+        User::ADMIN_USER,
+        User::NORMAL_ADMIN,
+        User::MERCHANT_USER
+    ];
     /**
      * init controller
      */
     public function init()
     {
         if (!Yii::$app->user->isGuest) {
-            if (!(Yii::$app->user->identity->type != User::ADMIN_USER || Yii::$app->user->identity->type != User::NORMAL_ADMIN )) {
+            if (!in_array(Yii::$app->user->identity->type, $this->allow)) {
                 throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
             }
         }
