@@ -113,7 +113,7 @@ class Users extends \yii\db\ActiveRecord
     // }
     public function getVedio()
     {
-        return $this->hasOne(VedioUser::className(), ['id' => 'user_id']);
+        return $this->hasOne(VedioUser::className(), ['user_id' => 'id']);
     }
 
     /**

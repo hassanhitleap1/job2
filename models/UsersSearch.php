@@ -56,6 +56,7 @@ class UsersSearch extends Users
         $query->joinWith('governorate0');  
         $query->joinWith('category0');
         $query->joinWith('area0');
+        $query->joinWith('vedio');
        // $query->joinWith('specialtie');
         $query->joinWith('nameOfjob');
         //$query->leftJoin('vedio_user', 'vedio_user.user_id = user.id');

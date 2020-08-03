@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <div class="panel-body">
 
-                        <video controls crossorigin playsinline controlsList="nodownload" data-poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg" id="player">
+                        <video controls crossorigin playsinline controlsList="nodownload" data-poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg" id="player" width="100%">
                                 <!-- Video files -->
                                 <source src="<?= $path_web ?>" type="video/mp4" size="576" />
                                 <source src="<?= $path_web ?>" type="video/mp4" size="720" />

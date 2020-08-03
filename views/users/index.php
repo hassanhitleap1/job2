@@ -2,6 +2,7 @@
 
 use app\models\RequastJobForm;
 use app\models\User;
+use app\models\VedioUser;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -106,11 +107,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
 
                 'vedio' => function ($url, $model, $key) {
+                    $is_upload_vedio='red';
+                    if($model->vedio !== null){
+                            $is_upload_vedio='green';  
+                    }
+                       
                         $url = "index.php?r=users/view-vedio&id=" . $model->id;
                         return Html::button('', [
                             'value' => $url,
                             'title' => Yii::t('app', 'View_Vedio'),
-                            'class' => 'view_vedio  glyphicon glyphicon-play-circle', 'data-pjax' => 0
+                            'class' => "view_vedio $is_upload_vedio  glyphicon glyphicon-play-circle", 'data-pjax' => 0
                         ]);
 
                     },
