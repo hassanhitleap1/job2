@@ -29,8 +29,7 @@ class RequastJobNotPayController extends BaseController
 
     public $allow = [
         User::ADMIN_USER,
-        User::NORMAL_ADMIN,
-        User::MERCHANT_USER
+        User::NORMAL_ADMIN
     ];
     /**
      * init controller

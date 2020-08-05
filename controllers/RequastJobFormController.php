@@ -30,7 +30,6 @@ class RequastJobFormController extends BaseController
     public $allow = [
         User::ADMIN_USER,
         User::NORMAL_ADMIN,
-        User::MERCHANT_USER
     ];
     /**
      * init controller
