@@ -93,7 +93,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'html',
 
             ],
-        
+            [
+                'attribute' => 'is_upload',
+                'value' => function($searchModel){
+                   if($searchModel->vedio !== null) {
+                       return "لم يتم ارفع";
+                   } else {
+                        return 'تم الرفع';
+                    }
+
+                },
+                'filter' =>[0=>"لم يتم الرفع",1=>"تم الرفع"],
+                'format' => 'html',
+            ] ,
              [
             'class' => 'yii\grid\ActionColumn',
             'template' => '{view}  {Cv}{vedio}',  // the default buttons + your custom button

@@ -19,8 +19,8 @@ class UsersSearch extends Users
     public function rules()
     {
         return [
-            [['id', 'agree', 'phone',  'name_of_jobs_id','expected_salary',"gender", "year_of_experience", "action_user","first_payment"], 'integer'],
-            [['name', 'certificates', 'experience','area' ,'nationality', 'governorate','category_id','subscribe_date','note','priorities'], 'safe'],
+            [['id', 'agree', 'phone', 'name_of_jobs_id','expected_salary',"gender", "year_of_experience", "action_user","first_payment"], 'integer'],
+            [['name', 'certificates', 'is_upload','experience','area' ,'nationality', 'governorate','category_id','subscribe_date','note','priorities'], 'safe'],
         ];
     }
 
