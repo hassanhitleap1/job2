@@ -47,7 +47,7 @@ class UsersSearch extends Users
         if (!$this->validate()) {
             return $dataProvider;
         }
-        
+
            
         $query->where(['type' => User::FORM_APPLAY_USER]);
         $query->orwhere(['type' => User::NORMAL_USER]);
@@ -60,7 +60,7 @@ class UsersSearch extends Users
        // $query->joinWith('specialtie');
         $query->joinWith('nameOfjob');
         //$query->leftJoin('vedio_user', 'vedio_user.user_id = user.id');
-        
+
         
         // grid filtering conditions
         $query->andFilterWhere([
@@ -85,6 +85,16 @@ class UsersSearch extends Users
             ->andFilterWhere(['like', 'categories.name_ar', $this->category_id])
             ->andFilterWhere(['>=', 'subscribe_date', $this->subscribe_date])
           ;
+
+
+        if($this->is_upload != null){
+            $subQuery = VedioUser::find()->select('user_id');
+            if($this->is_upload==1){
+                $subQuery = VedioUser::find()->select('user_id');
+            }else{
+                $query->andWhere(['not in', 'id', $subQuery]);
+            }
+        }
         $query->orderBy([
             'created_at' => SORT_DESC //specify sort order ASC for ascending DESC for descending      
         ]);
