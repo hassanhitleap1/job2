@@ -26,7 +26,7 @@ class VedioUser extends \yii\db\ActiveRecord
     const SCENARIO_UPLOAD_USER ="SCENARIO_UPLOAD_USER";
     const ACTIVE=1;
     const DISACTIVE=1;
-    public $ext="3g2,3gp,avi,flv,h264,m4v,webm,mkv,mov,mp4,mpg,mpeg,rm,swf,vob,wmv,qt,ogv,avchd,amv,m4p";
+    public $ext="3g2,3gp,avi,flv,h264,m4v,webm,mkv,mov,mp4,mpg,mpeg,rm,swf,vob,wmv,qt,ogv,avchd,amv,m4p,MOV";
 
     /**
      * {@inheritdoc}
