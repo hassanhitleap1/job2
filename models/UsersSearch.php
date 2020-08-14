@@ -90,9 +90,9 @@ class UsersSearch extends Users
         if($this->is_upload != null){
             $subQuery = VedioUser::find()->select('user_id');
             if($this->is_upload==1){
-                $subQuery = VedioUser::find()->select('user_id');
+                $query->andWhere(['in', 'user.id', $subQuery]);
             }else{
-                $query->andWhere(['not in', 'id', $subQuery]);
+                $query->andWhere(['not in', 'user.id', $subQuery]);
             }
         }
         $query->orderBy([

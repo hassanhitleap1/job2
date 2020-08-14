@@ -97,9 +97,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'is_upload',
                 'value' => function($searchModel){
                    if($searchModel->vedio !== null) {
-                       return "لم يتم ارفع";
-                   } else {
+                        
                         return 'تم الرفع';
+                   } else {
+                       
+                        return "لم يتم ارفع";
+                        
                     }
 
                 },
