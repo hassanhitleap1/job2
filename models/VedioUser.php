@@ -48,7 +48,7 @@ class VedioUser extends \yii\db\ActiveRecord
             [['desc'], 'string', 'max' => 500],
             [['path'], 'string', 'max' => 100],
             [['file', 'name_of_jobs_id'],'required'],
-            ['file', 'file', 'extensions' => $this->ext , 'maxSize' => 1024 * 1024 * 130 , 'tooBig' => 'Limit is 130MB'],
+            ['file', 'file', 'extensions' => $this->ext , 'maxSize' => 1024 * 1024 * 350 , 'tooBig' => 'Limit is 350MB'],
            // [['file'], 'vedio', 'skipOnEmpty' => true, 'extensions' => 'webm,mkv,flv,vob,ogv,ogg,mov,wmv,rm,amv,avi,mp4,m4p '],
         ];
     }
