@@ -1,7 +1,7 @@
 <?php
 
 use app\models\NameOfJobs;
-
+use app\models\VedioUser;
 use kartik\file\FileInput;
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
@@ -9,6 +9,8 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 $this->title = Yii::t('app', 'Upload_Video_Me');
+$ext=['3g2','3gp','avi','flv','h264','m4v','webm','mkv','mov','mp4','mpg','mpeg','rm',
+'swf','vob','wmv','qt','ogv','avchd','amv','m4p','MOV'];
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Area */
@@ -17,7 +19,7 @@ $this->title = Yii::t('app', 'Upload_Video_Me');
 $pluginOptions = [
     'overwriteInitial' => true,
     'showUpload' => false,
-    'allowedFileExtensions' => ['mp4'],
+    'allowedFileExtensions' =>$ext,
     'initialPreviewAsData' => true,
     'initialPreviewFileType' => 'video',
     'initialPreviewConfig' => [
@@ -36,7 +38,7 @@ if (!$model->isNewRecord) {
             'initialPreview' => $path_web,
             'overwriteInitial' => true,
             'showUpload' => false,
-            'allowedFileExtensions' => ['mp4'],
+            'allowedFileExtensions' => $ext,
             'initialPreviewAsData' => true,
             'initialPreviewFileType' => 'video',
             'initialPreviewConfig' => [
@@ -61,7 +63,7 @@ if (!$model->isNewRecord) {
             <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
             <div class="row">
                 <div class="col-md-12 col-lg-12">
-                 
+                <?=  $form->field($model, 'status')->hiddenInput(['value'=> VedioUser::ACTIVE])->label(false); ?>
                     <?= $form->field($model, 'name_of_jobs_id')->widget(Select2::classname(), [
                         'data' =>  ArrayHelper::map(NameOfJobs::find()->all(), 'id', 'name_ar'),
                         'language' => 'ar',
@@ -85,9 +87,9 @@ if (!$model->isNewRecord) {
             <div class="row">
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                     <div class="form-group">
-                        <?php if (!$is_uploaded) : ?>
+                    
                             <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-primary btn-lg btn-block']) ?>
-                        <?php endif; ?>
+                    
                     </div>
                 </div>
             </div>
