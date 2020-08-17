@@ -216,7 +216,7 @@ a.desc:after {
     width: 80% !important;
 }
 #model{
-    width: 110% !important;
+    width: 100% !important;
 }
 .heddin{
     display: none;
@@ -261,5 +261,5 @@ a.desc:after {
        background-color: green;
 }
 .audio, canvas, progress, video{
-        height: fit-content;
+        height: 400px;
 }
