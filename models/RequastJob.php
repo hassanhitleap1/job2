@@ -155,6 +155,10 @@ class RequastJob extends \yii\db\ActiveRecord
         return $this->hasOne(Area::className(), ['id' => 'area']);
     }
 
+    public function getVedio()
+    {
+        return $this->hasOne(VedioUser::className(), ['user_id' => 'id']);
+    }
     /**
      * @return \yii\db\ActiveQuery
      */

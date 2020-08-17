@@ -125,6 +125,11 @@ class RequastJobNotPay extends \yii\db\ActiveRecord
 
 
 
+    public function getVedio()
+    {
+        return $this->hasOne(VedioUser::className(), ['user_id' => 'id']);
+    }
+    
     /**
      * @return \yii\db\ActiveQuery
      */

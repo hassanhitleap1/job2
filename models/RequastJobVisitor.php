@@ -61,6 +61,12 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
         }
     }
 
+
+    public function getVedio()
+    {
+        return $this->hasOne(VedioUser::className(), ['user_id' => 'id']);
+    }
+
     /**
      * {@inheritdoc}
      */

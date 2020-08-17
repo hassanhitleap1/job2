@@ -170,7 +170,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
              [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{view} {delete} {Cv} {update} {sendwhatsapp} {msgwhatsapp}{action_user} {forgot-password}',  // the default buttons + your custom button
+            'template' => '{view} {delete} {Cv} {update} {sendwhatsapp} {msgwhatsapp}{action_user} {forgot-password} {vedio}',  // the default buttons + your custom button
             'buttons' => [
                   'view' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
@@ -222,7 +222,20 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                     ]);
                 },
+                'vedio' => function ($url, $model, $key) {
+                    $is_upload_vedio='red';
+                    if($model->vedio !== null){
+                            $is_upload_vedio='green';  
+                    }
+                       
+                        $url = "index.php?r=users/view-vedio&id=" . $model->id;
+                        return Html::button('', [
+                            'value' => $url,
+                            'title' => Yii::t('app', 'View_Vedio'),
+                            'class' => "view_vedio $is_upload_vedio  glyphicon glyphicon-play-circle", 'data-pjax' => 0
+                        ]);
 
+                    },
                 
             ]
             ],
