@@ -391,3 +391,8 @@ $(function(){
         encrypt($("#code").val())
     });
 });
+
+
+$("#model").on('hidden.bs.modal', function(){
+    $("#modelContent").html('')
+});
