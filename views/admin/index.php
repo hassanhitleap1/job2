@@ -28,7 +28,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'name',
-            'phone',
+            [
+                'attribute' => 'phone',
+                'value' => function ($searchModel) {
+                    return '<a href="tel:'.$searchModel->phone.'">'.$searchModel->phone.'</a>';
+                },
+                'format' => 'html',
+            ],
             ['class' => 'yii\grid\ActionColumn',
             'template' => '{view}  {update} '],
         ],

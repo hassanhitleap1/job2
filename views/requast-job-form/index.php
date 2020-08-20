@@ -64,7 +64,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 'format' => 'html',
             ],
-            'phone',
+         
+            [
+                'attribute' => 'phone',
+                'value' => function ($searchModel) {
+                    return '<a href="tel:'.$searchModel->phone.'">'.$searchModel->phone.'</a>';
+                },
+                'format' => 'html',
+            ],
+
+            
             [
                 'attribute' => 'area',
                 'value' => function ($searchModel) {
