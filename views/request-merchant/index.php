@@ -32,6 +32,7 @@ $message=($dataModel==null)?'':$dataModel->text;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'options'=>['style'=>"overflow-x: auto"],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

@@ -21,6 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'options'=>['style'=>"overflow-x: auto"],
         'rowOptions'=>function($searchModel){
             
             if(RequastJobForm::NOT_INTERVIEWED==0){

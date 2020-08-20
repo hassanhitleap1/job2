@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'options'=>['style'=>"overflow-x: auto"],
         'rowOptions'=>function($searchModel){
             $deff = Carbon::parse(Carbon::now("Asia/Amman"))
                ->floatDiffInDays($searchModel->smssend->updated_at, false);

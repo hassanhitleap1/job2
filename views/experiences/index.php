@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'options'=>['style'=>"overflow-x: auto"],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

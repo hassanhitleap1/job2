@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'options'=>['style'=>"overflow-x: auto"],
         'rowOptions'=>function($searchModel){
             
             if(RequastJobForm::NOT_INTERVIEWED==0){
@@ -165,6 +166,7 @@ $this->params['breadcrumbs'][] = $this->title;
              [
             'class' => 'yii\grid\ActionColumn',
             'template' => '{view}  {Cv}{delete} {update} {sendwhatsapp} {msgwhatsapp}{action_user} {forgot-password}{vedio}',  // the default buttons + your custom button
+           
             'buttons' => [
                   'view' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
