@@ -218,6 +218,9 @@ a.desc:after {
 #model{
     width: 100% !important;
 }
+#modelContent > .container{
+    width: auto;
+}
 .heddin{
     display: none;
 }
