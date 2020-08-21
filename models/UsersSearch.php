@@ -5,7 +5,7 @@ namespace app\models;
 
 use yii\data\ActiveDataProvider;
 use app\models\Users;
-
+use Yii;
 
 /**
  * RequastJobSearch represents the model behind the search form of `app\models\RequastJob`.
@@ -19,7 +19,7 @@ class UsersSearch extends Users
     public function rules()
     {
         return [
-            [['id', 'agree', 'phone', 'name_of_jobs_id','expected_salary',"gender", "year_of_experience", "action_user","first_payment"], 'integer'],
+            [['id', 'agree', 'phone', 'name_of_jobs_id','favorite','expected_salary',"gender", "year_of_experience", "action_user","first_payment"], 'integer'],
             [['name', 'certificates', 'is_upload','experience','area' ,'nationality', 'governorate','category_id','subscribe_date','note','priorities'], 'safe'],
         ];
     }
@@ -95,6 +95,18 @@ class UsersSearch extends Users
                 $query->andWhere(['not in', 'user.id', $subQuery]);
             }
         }
+
+
+        if($this->favorite != null){
+            $subQuery = FavoriteUsers::find()->select('user_id')->where(['merchant_id'=>Yii::$app->user->identity->id]);
+            if($this->favorite==1){
+                $query->andWhere(['in', 'user.id', $subQuery]);
+            }else{
+                $query->andWhere(['not in', 'user.id', $subQuery]); 
+            }
+        }
+
+
         $query->orderBy([
             'created_at' => SORT_DESC //specify sort order ASC for ascending DESC for descending      
         ]);

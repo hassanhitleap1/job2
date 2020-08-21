@@ -256,5 +256,7 @@ return [
     "Plz_Select_Degree"=>"ارجو اختيارالدرجه العلمية",
     "Year_Of_Experience_Example"=>"2",
     "Is_Upload"=>"هل مرفوع",
+    "Favorite"=>"المفضلين",
+    "UnFavorite"=>"غير مفضلين",
 
 ];

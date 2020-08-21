@@ -2,7 +2,6 @@
 
 use app\models\RequastJobForm;
 use app\models\User;
-use app\models\VedioUser;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;

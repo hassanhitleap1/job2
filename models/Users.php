@@ -36,6 +36,7 @@ class Users extends \yii\db\ActiveRecord
     public $file;
     public $name_of_jobs_id;
     public $is_upload;
+    public $favorite;
 
     /**
      * {@inheritdoc}
@@ -85,6 +86,7 @@ class Users extends \yii\db\ActiveRecord
             'action_user' => Yii::t('app', 'Action_User'),
             'name_of_jobs_id'=> Yii::t('app', 'Name_Of_Jobs'),
             'is_upload'=>Yii::t('app', 'Is_Upload'),
+            "favorite"=>Yii::t('app', 'Favorite'),
 
         ];
     }
@@ -117,6 +119,12 @@ class Users extends \yii\db\ActiveRecord
     {
         return $this->hasOne(VedioUser::className(), ['user_id' => 'id']);
     }
+
+    public function getFavorite()
+    {
+        return $this->hasOne(FavoriteUsers::className(), ['user_id' => 'id'])->andWhere(['merchant_id'=>Yii::$app->user->identity->id]);
+    }
+
 
     /**
      * @return \yii\db\ActiveQuery

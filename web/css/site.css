@@ -219,7 +219,7 @@ a.desc:after {
     width: 100% !important;
 }
 #modelContent > .container{
-    width: auto;
+    width: 100% !important;  
 }
 .heddin{
     display: none;
@@ -266,3 +266,14 @@ a.desc:after {
 .audio, canvas, progress, video{
         height: 400px;
 }
+
+.glyphicon.glyphicon-star-empty {
+    font-size: 25px;
+      color:#505050;
+}
+
+.glyphicon.glyphicon-star{
+    font-size: 25px;
+    color:yellow;
+}
+  

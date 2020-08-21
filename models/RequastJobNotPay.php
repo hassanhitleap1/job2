@@ -123,6 +123,11 @@ class RequastJobNotPay extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getFavorite()
+    {
+        return $this->hasOne(FavoriteUsers::className(), ['user_id' => 'id'])->andWhere(['merchant_id'=>Yii::$app->user->identity->id]);
+    }
+
 
 
     public function getVedio()

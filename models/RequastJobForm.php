@@ -49,6 +49,10 @@ class RequastJobForm extends \yii\db\ActiveRecord
         return $this->hasOne(VedioUser::className(), ['user_id' => 'id']);
     }
 
+    public function getFavorite()
+    {
+        return $this->hasOne(FavoriteUsers::className(), ['user_id' => 'id'])->andWhere(['merchant_id'=>Yii::$app->user->identity->id]);
+    }
     
     /**
      * @inheritdoc

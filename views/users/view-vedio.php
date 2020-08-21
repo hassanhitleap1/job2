@@ -10,6 +10,9 @@ $this->title = $model->user->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Vedio_Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+
+
+
 ?>
 
 <link rel="stylesheet" href="dist/demo.css" />
@@ -30,8 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container">
         <div class="panel panel-default">
-                <div class="panel-heading">
-                        <h5> <?= Html::encode($this->title) ?></h5>
+                <div class="panel-heading">        
+                        <h5> <?= Html::encode($this->title) ?><i class="star <?=($model->user->favorite != null)?'glyphicon glyphicon-star':'glyphicon glyphicon-star-empty'?>" user_id="<?=$model->user->id?>"></i></h5>
                 </div>
                 <div class="panel-body">
 
@@ -47,5 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 </div>
         </div>
+        
+        
 </div>
 <script src="dist/demo.js" crossorigin="anonymous"></script>

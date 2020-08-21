@@ -355,6 +355,25 @@ $(document).on("click", "#save-note-affiliated", function (e) {
 
 
 
+$(document).on("click", ".star.glyphicon", function (e) {
+
+    var url = SiteUrl +"/index.php?r=favorite-users/save";
+    _this=this;
+    data = {
+        "user_id": $(this).attr("user_id") ,
+    }
+    $.ajax({
+        type: "GET",
+        url: url,
+        data: data,
+        success: function (response) {
+            $(_this).toggleClass("glyphicon-star glyphicon-star-empty");
+        }
+    });
+
+ 
+  });
+
 // encpting hrml using js
 $(function(){
     function encrypt(input){
