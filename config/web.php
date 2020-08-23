@@ -17,6 +17,9 @@ $config = [
         'noty' => [
             'class' => 'lo\modules\noty\Module',
         ],
+        'api' => [
+            'class' => 'app\modules\api\Module',
+        ],
     ],
     'components' => [
         'smscomponent' => [
