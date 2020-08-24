@@ -124,3 +124,6 @@ CREATE TABLE `favorite_users` ( `id` INT NOT NULL AUTO_INCREMENT , `user_id` INT
 
 CREATE TABLE `rate_users` ( `id` INT NOT NULL AUTO_INCREMENT , `user_id` INT NOT NULL , `merchant_id` INT NOT NULL , `rate` TINYINT NOT NULL , `date` INT NOT NULL , PRIMARY KEY (`id`), INDEX `rate_user_index` (`user_id`, `merchant_id`)) ENGINE = InnoDB;
 ALTER TABLE `rate_users` CHANGE `date` `date` DATETIME NOT NULL;
+
+ALTER TABLE `user` ADD `access_token` VARCHAR(500) NULL DEFAULT NULL AFTER `address`;
+ALTER TABLE `user` ADD `expire_at` INT NOT NULL AFTER `access_token`;

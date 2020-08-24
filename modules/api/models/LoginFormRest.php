@@ -23,10 +23,8 @@ class LoginFormRest extends  Model
         return [
             // username and password are both required
             [['username', 'password'], 'required'],
-            // rememberMe must be a boolean value
-           // ['rememberMe', 'boolean'],
-            // password is validated by validatePassword()
-           // ['password', 'validatePassword'],
+         
+           ['password', 'validatePassword'],
         ];
     }
 
@@ -37,67 +35,67 @@ class LoginFormRest extends  Model
     //  * @param string $attribute the attribute currently being validated
     //  * @param array $params the additional name-value pairs given in the rule
     //  */
-    // public function validatePassword($attribute, $params)
-    // {
-    //     if (!$this->hasErrors()) {
-    //         $user = $this->getUser();
+    public function validatePassword($attribute, $params)
+    {
+        if (!$this->hasErrors()) {
+            $user = $this->getUser();
+            if (!$user || !$user->validatePassword($this->password)) {
+                $this->addError($attribute, 'Incorrect username or password.');
+            }
+        }
+    }
 
-    //         if (!$user || !$user->validatePassword($this->password)) {
-    //             $this->addError($attribute, 'Incorrect username or password.');
-    //         }
-    //     }
-    // }
-
-    // /**
-    //  * Logs in a user using the provided username and password.
-    //  * @return bool whether the user is logged in successfully
-    //  */
-    // public function login()
-    // {
-    //     if ($this->validate()) {
-    //         return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
-    //     }
-    //     return false;
-    // }
-    // /**
-    //  * Logs in a user using the provided username and password.
-    //  * @return bool whether the user is logged in successfully
-    //  */
-    // public function login_form($user)
-    // {
-        
-    //     return Yii::$app->user->login($user, $this->rememberMe ? 3600 * 24 * 30 : 0);
-       
-    // }
-    // /**
-    //  * Finds user by [[username]]
-    //  *
-    //  * @return User|null
-    //  */
-    // public function getUser()
-    // {
-    //     if ($this->_user === null) {
-    //         if(is_numeric($this->username)){
-    //             $this->_user = User::findByPhone($this->username);
-    //         }else{
-    //             $this->_user = User::findByUsername($this->username);
-    //             if(  $this->_user === null ){
-    //                 $this->_user = User::findByEmail($this->username);
-    //             }
-    //         }
-    //     }
-
-    //     return $this->_user;
-    // }
-
-    // public function attributeLabels()
-    // {
-    //     return [
-    //         'Username' => Yii::t('app', 'Username'),
-    //         'password' => Yii::t('app', 'Password'),
-    //         'RememberMe' => Yii::t('app', 'Remember_Me'),
+    /**
+     * Logs in a user using the provided username and password.
+     * @return bool whether the user is logged in successfully
+     */
+    public function login()
+    {
+        if ($this->getUser()) {
+            
+            $access_token = $this->_user->generateAccessToken();
+            $this->_user->expire_at = time() + 3600*24*30;
+            $this->_user->save();
+            Yii::$app->user->login($this->_user, 3600*24*30);
+            return $access_token;
+        }
+    
+    }
  
-    //     ];
-    // }
+
+
+    
+
+    /**
+     * Finds user by [[username]]
+     *
+     * @return User|null
+     */
+    public function getUser()
+    {
+        if ($this->_user === null) {
+            if(is_numeric($this->username)){
+                $this->_user = User::findByPhone($this->username);
+            }else{
+                $this->_user = User::findByUsername($this->username);
+                if(  $this->_user === null ){
+                    $this->_user = User::findByEmail($this->username);
+                }
+            }
+        }
+
+        return $this->_user;
+    }
+
+
+
+    public function attributeLabels()
+    {
+        return [
+            'username' => Yii::t('app', 'Username'),
+            'password' => Yii::t('app', 'Password'),
+            
+        ];
+    }
 
 }
