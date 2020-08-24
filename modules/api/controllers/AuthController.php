@@ -8,7 +8,7 @@ class AuthController extends \yii\rest\Controller
 
     public function actionLogin()
     {
-        
+
         return [];
     }
 
