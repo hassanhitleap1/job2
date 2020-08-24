@@ -120,4 +120,7 @@ ALTER TABLE `video_vimo` CHANGE `specialtie_id` `name_of_jobs_id` INT(11) NULL D
 ALTER TABLE `vedio_user` CHANGE `title` `title` VARCHAR(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL, CHANGE `from` `from` SMALLINT(6) NULL DEFAULT NULL;
 
 
-CREATE TABLE `job`.`favorite_users` ( `id` INT NOT NULL AUTO_INCREMENT , `user_id` INT NOT NULL , `merchant_id` INT NOT NULL , `date` DATETIME NOT NULL , PRIMARY KEY (`id`), INDEX `favorite_index_index` (`user_id`, `merchant_id`)) ENGINE = InnoDB;
+CREATE TABLE `favorite_users` ( `id` INT NOT NULL AUTO_INCREMENT , `user_id` INT NOT NULL , `merchant_id` INT NOT NULL , `date` DATETIME NOT NULL , PRIMARY KEY (`id`), INDEX `favorite_index_index` (`user_id`, `merchant_id`)) ENGINE = InnoDB;
+
+CREATE TABLE `rate_users` ( `id` INT NOT NULL AUTO_INCREMENT , `user_id` INT NOT NULL , `merchant_id` INT NOT NULL , `rate` TINYINT NOT NULL , `date` INT NOT NULL , PRIMARY KEY (`id`), INDEX `rate_user_index` (`user_id`, `merchant_id`)) ENGINE = InnoDB;
+ALTER TABLE `rate_users` CHANGE `date` `date` DATETIME NOT NULL;

@@ -301,7 +301,24 @@ function diff_time(date){
 }
 
 
+$(document).on("click", "input[type=radio][name=rating]", function (e) {
+    var url = SiteUrl +"/index.php?r=rate-users/save";
+    data = {
+        "user_id": $(this).attr("user_id"),
+        "rate":this.value,
+    }
 
+    $.ajax({
+        type: "GET",
+        url: url,
+        data: data,
+        success: function (response) {
+            
+        }
+    });
+
+    console.log($(this).attr("user_id"))
+})
 
 $(document).on("click", "input[type=radio][name=action_user]", function (e) {
     var url = SiteUrl +"/index.php?r=requast-job-form/change-action&id=" + $(this).attr("id_data");
