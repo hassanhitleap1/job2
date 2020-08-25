@@ -9,7 +9,7 @@ use sizeg\jwt\JwtHttpBearerAuth;
 
 class AuthController extends \yii\rest\Controller
 {
-
+    use ApiResponser;
       /**
      * @inheritdoc
      */
