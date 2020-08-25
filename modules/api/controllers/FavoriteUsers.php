@@ -4,7 +4,10 @@
 namespace app\modules\api\controllers;
 
 
-class FavoriteUsers
+class FavoriteUsers extends   \yii\rest\Controller
 {
+        public function actionAddToFavorite(){
+
+        }
 
 }
