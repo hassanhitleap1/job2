@@ -94,6 +94,7 @@ class User extends ActiveRecord implements IdentityInterface
         if (!$user) {
             return false;
         }
+        return $user;
         if ($user->expire_at < time()) {
             throw new UnauthorizedHttpException('the access - token expired ', -1);
         } else {

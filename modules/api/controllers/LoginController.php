@@ -2,34 +2,15 @@
 
 namespace app\modules\api\controllers;
 
+use Yii;
 use app\modules\api\models\LoginFormRest;
 use app\modules\traits\ApiResponser;
-use Yii;
-use sizeg\jwt\Jwt;
-use sizeg\jwt\JwtHttpBearerAuth;
 
-class AuthController extends \yii\rest\Controller
+class LoginController extends \yii\rest\Controller
 {
     use ApiResponser;
-      /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        $behaviors = parent::behaviors();
-        $behaviors['authenticator'] = [
-            'class' => JwtHttpBearerAuth::class,
-            'optional' => [
-                'login',
-            ],
-        ];
 
-        return $behaviors;
-    }
-
-
-
-    public function actionLogin()
+    public function actionIndex()
     {
 
         $model= new LoginFormRest();
