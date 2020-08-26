@@ -18,7 +18,6 @@ class RequatJobController
 {
     public function actionIndex()
     {
-        $this->layout = "maintheme";
 
         $model = new RequastJobVisitor();
         $model->scenario  = RequastJobVisitor::CREATE;

@@ -14,5 +14,6 @@ class UsersController
         public function  actionGetInfoUser(){}
         public function actionMoreInfo(){
 
+            
         }
 }
