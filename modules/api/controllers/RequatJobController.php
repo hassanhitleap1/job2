@@ -14,7 +14,7 @@ use app\models\RequastJobVisitor;
 use app\models\User;
 use Carbon\Carbon;
 
-class MyRequestController
+class RequatJobController
 {
     public function actionIndex()
     {
