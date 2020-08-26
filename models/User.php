@@ -89,12 +89,10 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-//        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
         $user = static::find()->where(['access_token' => $token, 'status' => self::STATUS_ACTIVE])->one();
         if (!$user) {
-            return false;
+            throw new UnauthorizedHttpException('invalid  token  ', 405);
         }
-        return $user;
         if ($user->expire_at < time()) {
             throw new UnauthorizedHttpException('the access - token expired ', -1);
         } else {

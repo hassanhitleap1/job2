@@ -3,25 +3,37 @@
 
 namespace app\modules\api\controllers;
 
-
+use app\models\User;
 use app\models\VedioUser;
+use app\modules\traits\ApiResponser;
+use Yii;
 use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
 
-class UploadVedioController
+class UploadVedioController extends  \yii\rest\Controller
 {
+    public $user;
+    use ApiResponser;
+
+    public function init()
+    {
+        $access_token=Yii::$app->request->headers['authorization'];
+        $this->user=User::findIdentityByAccessToken($access_token);
+    }
+
+
     public  function actionIndex(){
-        $model =  VedioUser::find()->where(['user_id'=>Yii::$app->user->identity->id])->one();
+        $model =  VedioUser::find()->where(['user_id'=>$this->user->id])->one();
 
         if($model == null){
             $model =new VedioUser();
         }
 
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->getRequest()->getBodyParams(), '')) {
             $model->file = UploadedFile::getInstance($model, 'file');
             if ($model->validate()) {
 
-                $id = Yii::$app->user->identity->id;
+                $id = $this->user->id;
                 $folder_path = "upload_vedio/$id";
                 FileHelper::removeDirectory($folder_path);
                 FileHelper::createDirectory($folder_path, $mode = 0775, $recursive = true);
@@ -32,10 +44,13 @@ class UploadVedioController
                 $model->file->saveAs($path);
                 $model->path = $path;
                 $model->save(false);
-                Yii::$app->session->set('message', Yii::t('app', 'Succ_Mess_Vedio'));
+                return $this->success_responce(["model"=>$model],Yii::t('app', 'Succ_Mess_Vedio'));
+  
+            }else{
+                return $this->errors_responce($model->errors);
             }
 
-            return $this->render('index', ['model' => $model]);
+           
         }
 
     }
