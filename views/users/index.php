@@ -86,7 +86,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'html',
 
             ],
-            'year_of_experience',
+
+            [
+                'attribute' => 'year_of_experience',
+                'value' =>  function($searchModel){
+                    if($searchModel->favoritel != null){
+                        return  $searchModel['year_of_experience'].' <span class="star glyphicon glyphicon-star" user_id="'.$searchModel->id.'"></span>';
+                    }else{
+                        return  $searchModel['year_of_experience'].'  <span class="star glyphicon glyphicon-star-empty"  user_id="'.$searchModel->id.'"></span>';
+                    }
+                  
+                },
+                'format' => 'html',
+
+            ],
+        
             [
                 'attribute' => 'priorities',
                 'value' => 'priorities',
