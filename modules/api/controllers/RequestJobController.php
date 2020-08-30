@@ -3,7 +3,7 @@
 
 namespace app\modules\api\controllers;
 
-
+use Yii;
 use app\models\CountSendSms;
 use app\models\Courses;
 use app\models\EducationalAttainment;
@@ -14,6 +14,7 @@ use app\models\RequastJobVisitor;
 use app\models\User;
 use app\modules\traits\ApiResponser;
 use Carbon\Carbon;
+use Exception;
 
 class RequestJobController extends \yii\rest\Controller
 {
@@ -21,7 +22,7 @@ class RequestJobController extends \yii\rest\Controller
 
     public function actionIndex()
     {
-        $this->layout = "maintheme";
+        
 
         $model = new RequastJobVisitor();
         $model->scenario  = RequastJobVisitor::CREATE;
@@ -31,9 +32,9 @@ class RequestJobController extends \yii\rest\Controller
         $modelsCourses= [new Courses];
         $modelsExperiences= [new Experiences];
         $modelsEducationalAttainment= [new EducationalAttainment];
+        
 
-
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->getRequest()->getBodyParams(), '')) {
             //_________________________________________________________________________
             $modelsCourses = Model::createMultiple(Courses::classname(),$modelsCourses );
             Model::loadMultiple($modelsCourses, Yii::$app->request->post());
@@ -53,6 +54,7 @@ class RequestJobController extends \yii\rest\Controller
             $model->verification_email=1;
             $model->subscribe_date=null;
             $now= Carbon::now("Asia/Amman")->toDateTimeString();
+           
             // validate all models
             $valid = $model->validate() &&
                 Model::validateMultiple($modelsEducationalAttainment) &&
@@ -196,31 +198,19 @@ class RequestJobController extends \yii\rest\Controller
                         $model_login = new LoginForm();
                         $user = User::findByPhone($model->phone);
                         $model_login->login_form($user);
-
+                        return $this->success_responce(["token"=>$model->login()]);
                         return $this->goHome();
                     }
                 } catch (Exception $e) {
                     $transaction->rollBack();
-                    echo "somthink";
-                    echo $e;
-                    exit;
-                    return $this->render('index', [
-                        'model' => $model,
-                        'modelsCourses' => (empty($modelsCourses)) ? [new Courses] : $modelsCourses,
-                        'modelsExperiences' => (empty($modelsExperiences)) ? [new Experiences] : $modelsExperiences,
-                        'modelsEducationalAttainment' => (empty($modelsEducationalAttainment)) ? [new EducationalAttainment] : $modelsEducationalAttainment,
-                    ]);
+                  
+                    return $this->errors_responce($model->errors);
                 }
 
             }
         }
 
-        return $this->render('index', [
-            'model' => $model,
-            'modelsCourses' => (empty($modelsCourses)) ? [new Courses] : $modelsCourses,
-            'modelsExperiences' => (empty($modelsExperiences)) ? [new Experiences] : $modelsExperiences,
-            'modelsEducationalAttainment' => (empty($modelsEducationalAttainment)) ? [new EducationalAttainment] : $modelsEducationalAttainment,
-        ]);
+        return $this->errors_responce($model->errors);
 
 
 
