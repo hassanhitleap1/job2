@@ -19,7 +19,6 @@ class LoginController extends \yii\rest\Controller
                 return $this->success_responce(["token"=>$model->login()]);
             }else{
                return $this->errors_responce($model->errors);
-            
             }
            
         } 

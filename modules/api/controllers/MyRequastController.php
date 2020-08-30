@@ -7,43 +7,42 @@ namespace app\modules\api\controllers;
 use app\models\Courses;
 use app\models\EducationalAttainment;
 use app\models\Experiences;
+use app\models\Merchant;
 use app\models\Model;
 use app\models\RequastJobVisitor;
+use app\models\User;
+use app\modules\traits\ApiResponser;
 use Carbon\Carbon;
 use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\HttpBasicAuth;
 use yii\filters\auth\HttpBearerAuth;
 use yii\filters\auth\QueryParamAuth;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class MyRequastController extends Controller
 {
 
-    public function behaviors()
+    public $user;
+    use ApiResponser;
+
+    public function init()
     {
-        $behaviors = parent::behaviors();
-        $behaviors['authenticator'] = [
-            'class' => CompositeAuth::className(),
-            'authMethods' => [
-                HttpBasicAuth::className(),
-                HttpBearerAuth::className(),
-                QueryParamAuth::className(),
-            ],
-        ];
-        return $behaviors;
+        $access_token=Yii::$app->request->headers['authorization'];
+        $this->user=RequastJobVisitor::findIdentityByAccessToken($access_token);
     }
+
+
 
 
     public function actionIndex(){
 
-        $model = $this->findModel(Yii::$app->user->identity->id);
+        $model = $this->user;
         $model->scenario  = RequastJobVisitor::UPDATE;
-
         $modelsCourses= $model->courses;
         $modelsExperiences= $model->experiences;
         $modelsEducationalAttainment= $model->educationalAttainment;
         $experience='';
-
         $certificate='';
         $priorities='';
         $now = Carbon::now("Asia/Amman")->toDateTimeString();
@@ -220,23 +219,33 @@ class MyRequastController extends Controller
                 } catch (Exception $e) {
                     $transaction->rollBack();
 
-                    return $this->render('index', [
-                        'model' => $model,
-                        'modelsCourses' => (empty($modelsCourses)) ? [new Courses] : $modelsCourses,
-                        'modelsExperiences' => (empty($modelsExperiences)) ? [new Experiences] : $modelsExperiences,
-                        'modelsEducationalAttainment' => (empty($modelsEducationalAttainment)) ? [new EducationalAttainment] : $modelsEducationalAttainment,
-                    ]);
+                    return $this->errors_responce($model->errors);
                 }
             }
         }
+        return $this->errors_responce($model->errors);
+
+    }
 
 
-        return $this->render('index', [
-            'model' => $model,
-            'modelsCourses' => (empty($modelsCourses)) ? [new Courses] : $modelsCourses,
-            'modelsExperiences' => (empty($modelsExperiences)) ? [new Experiences] : $modelsExperiences,
-            'modelsEducationalAttainment' => (empty($modelsEducationalAttainment)) ? [new EducationalAttainment] : $modelsEducationalAttainment,
-        ]);
+    public function actionGetAll(){
+        $model = $this->user;
+        $data=['courses'=>$model->courses,'experiences'=> $model->experiences,'educationalAttainment'=>$model->educationalAttainment];
+        return $this->success_responce(["data"=>$data]);
+    }
+    /**
+     * Finds the Merchant model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Merchant the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = RequastJobVisitor::findOne($id)) !== null) {
+            return $model;
+        }
 
+        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
 }
