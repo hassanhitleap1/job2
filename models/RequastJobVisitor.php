@@ -4,6 +4,7 @@ namespace app\models;
 
 use Carbon\Carbon;
 use Yii;
+use yii\web\UnauthorizedHttpException;
 
 /**
  */
@@ -20,6 +21,22 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
 
 
 
+    /**
+     * {@inheritdoc}
+     * @param \Lcobucci\JWT\Token $token
+     */
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        $user = static::find()->where(['access_token' => $token, 'status' => self::STATUS_ACTIVE])->one();
+        if (!$user) {
+            throw new UnauthorizedHttpException('invalid  token  ', 405);
+        }
+        if ($user->expire_at < time()) {
+            throw new UnauthorizedHttpException('the access - token expired ', -1);
+        } else {
+            return $user;
+        }
+    }
     /**
      * @inheritdoc
      */
