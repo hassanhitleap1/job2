@@ -258,5 +258,6 @@ return [
     "Is_Upload"=>"هل مرفوع",
     "Favorite"=>"المفضلين",
     "UnFavorite"=>"غير مفضلين",
+    "Rate_User"=>"تقيم الشخص",
 
 ];

@@ -153,6 +153,11 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->hasOne(FavoriteUsers::className(), ['user_id' => 'id'])->andWhere(['merchant_id'=>Yii::$app->user->identity->id]);
     }
 
+    public function getRateUsers()
+    {
+        return $this->hasMany(RateUsers::className(), ['user_id' => 'id'])->average('rate');
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */

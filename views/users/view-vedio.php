@@ -33,9 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container">
         <div class="panel panel-default">
-                <div class="panel-heading">        
-                        <h5> <?= Html::encode($this->title) ?><i class="star <?=($model->user->favorite != null)?'glyphicon glyphicon-star':'glyphicon glyphicon-star-empty'?>" user_id="<?=$model->user->id?>"></i></h5>
-                        
+                <div class="panel-heading">   
+                        <h5> <?= Html::encode($this->title) ?><i class="star <?=($model->user->favorite != null)?'glyphicon glyphicon-star':'glyphicon glyphicon-star-empty'?>" user_id="<?=$model->user->id?>"></i></h5> 
                         
                 </div>
                 <div class="panel-body">
@@ -143,7 +142,29 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                           </div>
                         </div>
-                    
+                        <div  style="padding-top: 60px;padding-right: 53px; font-size: 18px;">
+                            <?=  Yii::t('app', 'Rate_User');?>
+                        </div>
+                        <div class="col-lg-12 col-offset-6">
+                         
+                          <?php if(is_null($model->user->rateUsers )):?>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                          <?php else:?>
+                            <?php for($i=0; $i< (int)$model->user->rateUsers;$i++):?>
+                              <span class="glyphicon glyphicon-star"></span>
+                            <?php endfor;?>
+                            <?php for($i=0; $i < (5-(int)$model->user->rateUsers);$i++):?>
+                              <span class="glyphicon glyphicon-star-empty"></span>
+                            <?php endfor;?>
+                          
+                          <?php endif;?>  
+                            
+                        </div>
+                          
                       </div>
                       <div class="col-md-8">
                         <video controls crossorigin playsinline autoplay controlsList="nodownload" data-poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg" id="player" width="100%" height="400px">
