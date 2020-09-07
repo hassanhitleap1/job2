@@ -177,17 +177,6 @@ class SchoolsController extends BaseController
             $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"terms-conditions"])->one();
             $data[]=['key'=>"terms-conditions",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
 
-            $data2[]=['school_key' => $model->school_key,
-                'phone' => $model->phone,
-                'email' => $model->email,
-                'facebook' =>$model->facebook,
-                'youtube' => $model->youtube,
-                'twitter' => $model->twitter,
-                'address' => $model->address,
-                'location' => $model->location,
-                'created_at'=>$date,
-                'updated_at'=>$date
-            ];
             $conect_us= new ConnectUs();
             $conect_us->school_key = $model->school_key;
             $conect_us->phone = $model->phone;
@@ -201,10 +190,10 @@ class SchoolsController extends BaseController
             $conect_us->updated_at = $date;
             $conect_us->save();
 
-                // Yii::$app->db
-                //     ->createCommand()
-                //     ->batchInsert('pages', ['key', 'title', 'text', 'school_key', 'created_at', 'updated_at'], $data)
-                //     ->execute();
+                Yii::$app->db
+                    ->createCommand()
+                    ->batchInsert('pages', ['key', 'title', 'text', 'school_key', 'created_at', 'updated_at'], $data)
+                    ->execute();
                     
             
            
