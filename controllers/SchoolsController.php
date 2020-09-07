@@ -96,8 +96,6 @@ class SchoolsController extends BaseController
     {
         $model = new Schools();
         if ($model->load(Yii::$app->request->post()) ) {
-
-            // $next_ID=0;
             $insert_id  = (new \yii\db\Query())
                 ->select('id')
                 ->from('schools')
@@ -105,11 +103,13 @@ class SchoolsController extends BaseController
                     'id' => SORT_DESC
                 ])->one()['id'];
 
+
             if($insert_id==null){
                 $insert_id=0;
             }else {
                 $insert_id ++;
             }
+
 
             $file = UploadedFile::getInstance($model, 'logo');
             $images_school = UploadedFile::getInstances($model, 'images_school');
@@ -140,50 +140,63 @@ class SchoolsController extends BaseController
                     $i++;
                 }
             }
-            if(Yii::$app->params['school_key'] != "jaras"){
-                $date=Carbon::now('Amman/jordan');
-                $model=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"about"])->one();
-                $data[]=['key'=>"about",'title'=>$model->title,'text'=>$model->text,'school_key'=>Yii::$app->params['school_key'],'created_at'=>$date,'updated_at'=>$date];
-                $model=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-vision"])->one();
-                $data[]=['key'=>"our-vision",'title'=>$model->title,'text'=>$model->text,'school_key'=>Yii::$app->params['school_key'],'created_at'=>$date,'updated_at'=>$date];
-                $model=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-message"])->one();
-                $data[]=['key'=>"our-message",'title'=>$model->title,'text'=>$model->text,'school_key'=>Yii::$app->params['school_key'],'created_at'=>$date,'updated_at'=>$date];
-                $model=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-goals"])->one();
-                $data[]=['key'=>"our-goals",'title'=>$model->title,'text'=>$model->text,'school_key'=>Yii::$app->params['school_key'],'created_at'=>$date,'updated_at'=>$date];
-                $model=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"growth-strategies"])->one();
-                $data[]=['key'=>"growth-strategies",'title'=>$model->title,'text'=>$model->text,'school_key'=>Yii::$app->params['school_key'],'created_at'=>$date,'updated_at'=>$date];
-                $model=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"rate-us"])->one();
-                $data[]=['key'=>"rate-us",'title'=>$model->title,'text'=>$model->text,'school_key'=>Yii::$app->params['school_key'],'created_at'=>$date,'updated_at'=>$date];
-                $model=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-responsibility"])->one();
-                $data[]=['key'=>"our-responsibility",'title'=>$model->title,'text'=>$model->text,'school_key'=>Yii::$app->params['school_key'],'created_at'=>$date,'updated_at'=>$date];
-                $model=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"privacy-policy"])->one();
-                $data[]=['key'=>"privacy-policy",'title'=>$model->title,'text'=>$model->text,'school_key'=>Yii::$app->params['school_key'],'created_at'=>$date,'updated_at'=>$date];
-                $model=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"terms-conditions"])->one();
-                $data[]=['key'=>"terms-conditions",'title'=>$model->title,'text'=>$model->text,'school_key'=>Yii::$app->params['school_key'],'created_at'=>$date,'updated_at'=>$date];
 
-                $data2=['school_key' => Yii::$app->params['school_key'],
-                    'phone' => " ",
-                    'email' => "  ",
-                    'facebook' => " ",
-                    'youtube' => "  ",
-                    'twitter' => "  ",
-                    'address' => "  ",
-                    'location' => "  ",
-                    'created_at'=>$date,
-                    'updated_at'=>$date
-                ];
+            $date=Carbon::now('Asia/Amman');
+            $data2[]=[
+                'school_key'=>$model->school_key,
+                'phone'=>$model->phone,
+                'email'=>$model->email,
+                'facebook'=>$model->facebook,
+                "youtube"=>$model->youtube,
+                "twitter"=>$model->twitter,
+                "address"=>$model->address,
+                "location"=>$model->location,
+                'created_at'=>$date,
+                'updated_at'=>$date
+            ];
 
-                Yii::$app->db
-                    ->createCommand()
-                    ->batchInsert('pages', ['key', 'title', 'text', 'school_key', 'created_at', 'updated_at'], $data)
-                    ->execute();
+            $page=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"about"])->one();
+            $data[]=['key'=>"about",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $page=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-vision"])->one();
+            $data[]=['key'=>"our-vision",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $page=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-message"])->one();
+            $data[]=['key'=>"our-message",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $page=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-goals"])->one();
+            $data[]=['key'=>"our-goals",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $page=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"growth-strategies"])->one();
+            $data[]=['key'=>"growth-strategies",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $page=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"rate-us"])->one();
+            $data[]=['key'=>"rate-us",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $page=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-responsibility"])->one();
+            $data[]=['key'=>"our-responsibility",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $page=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"privacy-policy"])->one();
+            $data[]=['key'=>"privacy-policy",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $page=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"terms-conditions"])->one();
+            $data[]=['key'=>"terms-conditions",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
 
-                Yii::$app->db
-                    ->createCommand()
-                    ->batchInsert('pages', ['connect_us', 'phone', 'email', 'facebook', "youtube","twitter","address","location",'created_at', 'updated_at'], $data2)
-                    ->execute();
+            $data2=['school_key' => $model->school_key,
+                'phone' => " ",
+                'email' => "  ",
+                'facebook' => " ",
+                'youtube' => "  ",
+                'twitter' => "  ",
+                'address' => "  ",
+                'location' => "  ",
+                'created_at'=>$date,
+                'updated_at'=>$date
+            ];
 
-            }
+            Yii::$app->db
+                ->createCommand()
+                ->batchInsert('pages', ['key', 'title', 'text', 'school_key', 'created_at', 'updated_at'], $data)
+                ->execute();
+
+            Yii::$app->db
+                ->createCommand()
+                ->batchInsert('connect_us', ['connect_us', 'phone', 'email', 'facebook', "youtube","twitter","address","location",'created_at', 'updated_at'], $data2)
+                ->execute();
+
+
 
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);

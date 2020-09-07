@@ -31,6 +31,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
                   
                     'name',
+                    'phone',
+                    'email',
+                    'facebook',
+                    'youtube',
+                    'twitter',
+                    'address',
+                    'location',
                     'details',
                     'director_word',
                     'discounts_form',
