@@ -53,7 +53,34 @@ if (!$model->isNewRecord) {
             <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-3">
+            <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'facebook')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'youtube')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
+    <div class="row">
 
+        <div class="col-md-6">
+            <?= $form->field($model, 'twitter')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <?= $form->field($model, 'location')->textarea(['rows' => 6]) ?>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-6">
             <?= $form->field($model, 'details')->widget(Pell::className(), []); ?>

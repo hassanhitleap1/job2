@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\ImagesSchool;
+use Carbon\Carbon;
 use Yii;
 use app\models\Schools;
 use app\models\SchoolsSearch;
@@ -98,51 +99,95 @@ class SchoolsController extends BaseController
 
             // $next_ID=0;
             $insert_id  = (new \yii\db\Query())
-            ->select('id')
-            ->from('schools')
-            ->orderBy([
-                'id' => SORT_DESC 
-            ])->one()['id'];
-                
+                ->select('id')
+                ->from('schools')
+                ->orderBy([
+                    'id' => SORT_DESC
+                ])->one()['id'];
+
             if($insert_id==null){
                 $insert_id=0;
             }else {
                 $insert_id ++;
             }
-            
+
             $file = UploadedFile::getInstance($model, 'logo');
             $images_school = UploadedFile::getInstances($model, 'images_school');
-            
+
             if($model->validate()){
                 if (!is_null($file)) {
                     $folder_path = "schools/$insert_id";
                     FileHelper::createDirectory($folder_path, $mode = 0775, $recursive = true);
                     $logo = "$folder_path/logo" . "." . $file->extension;
                     $model->path_logo= $logo;
-                   $file->saveAs($logo);
+                    $file->saveAs($logo);
                     $model->logo = $logo;
                 }
             }
 
-                if (!is_null($images_school)) {
-                    
-                    $folder_path = "schools/$insert_id"; 
-                    $i = 1;
-                    FileHelper::createDirectory("$folder_path/images", $mode = 0775, $recursive = true);
-                    foreach ($images_school as $image_school) {
-                        $modelImagesSchool = new  ImagesSchool();
-                        $file_path = "$folder_path/images/$i" . "." . $image_school->extension;
-                        $modelImagesSchool->school_id = $insert_id;
-                        $modelImagesSchool->path = $file_path;
-                        $image_school->saveAs($file_path);
-                        $modelImagesSchool->save(false);
-                        $i++;
-                    }
+            if (!is_null($images_school)) {
+
+                $folder_path = "schools/$insert_id";
+                $i = 1;
+                FileHelper::createDirectory("$folder_path/images", $mode = 0775, $recursive = true);
+                foreach ($images_school as $image_school) {
+                    $modelImagesSchool = new  ImagesSchool();
+                    $file_path = "$folder_path/images/$i" . "." . $image_school->extension;
+                    $modelImagesSchool->school_id = $insert_id;
+                    $modelImagesSchool->path = $file_path;
+                    $image_school->saveAs($file_path);
+                    $modelImagesSchool->save(false);
+                    $i++;
                 }
-               
-                $model->save();
-                return $this->redirect(['view', 'id' => $model->id]);
-        
+            }
+            if(Yii::$app->params['school_key'] != "jaras"){
+                $date=Carbon::now('Amman/jordan');
+                $model=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"about"])->one();
+                $data[]=['key'=>"about",'title'=>$model->title,'text'=>$model->text,'school_key'=>Yii::$app->params['school_key'],'created_at'=>$date,'updated_at'=>$date];
+                $model=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-vision"])->one();
+                $data[]=['key'=>"our-vision",'title'=>$model->title,'text'=>$model->text,'school_key'=>Yii::$app->params['school_key'],'created_at'=>$date,'updated_at'=>$date];
+                $model=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-message"])->one();
+                $data[]=['key'=>"our-message",'title'=>$model->title,'text'=>$model->text,'school_key'=>Yii::$app->params['school_key'],'created_at'=>$date,'updated_at'=>$date];
+                $model=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-goals"])->one();
+                $data[]=['key'=>"our-goals",'title'=>$model->title,'text'=>$model->text,'school_key'=>Yii::$app->params['school_key'],'created_at'=>$date,'updated_at'=>$date];
+                $model=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"growth-strategies"])->one();
+                $data[]=['key'=>"growth-strategies",'title'=>$model->title,'text'=>$model->text,'school_key'=>Yii::$app->params['school_key'],'created_at'=>$date,'updated_at'=>$date];
+                $model=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"rate-us"])->one();
+                $data[]=['key'=>"rate-us",'title'=>$model->title,'text'=>$model->text,'school_key'=>Yii::$app->params['school_key'],'created_at'=>$date,'updated_at'=>$date];
+                $model=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-responsibility"])->one();
+                $data[]=['key'=>"our-responsibility",'title'=>$model->title,'text'=>$model->text,'school_key'=>Yii::$app->params['school_key'],'created_at'=>$date,'updated_at'=>$date];
+                $model=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"privacy-policy"])->one();
+                $data[]=['key'=>"privacy-policy",'title'=>$model->title,'text'=>$model->text,'school_key'=>Yii::$app->params['school_key'],'created_at'=>$date,'updated_at'=>$date];
+                $model=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"terms-conditions"])->one();
+                $data[]=['key'=>"terms-conditions",'title'=>$model->title,'text'=>$model->text,'school_key'=>Yii::$app->params['school_key'],'created_at'=>$date,'updated_at'=>$date];
+
+                $data2=['school_key' => Yii::$app->params['school_key'],
+                    'phone' => " ",
+                    'email' => "  ",
+                    'facebook' => " ",
+                    'youtube' => "  ",
+                    'twitter' => "  ",
+                    'address' => "  ",
+                    'location' => "  ",
+                    'created_at'=>$date,
+                    'updated_at'=>$date
+                ];
+
+                Yii::$app->db
+                    ->createCommand()
+                    ->batchInsert('pages', ['key', 'title', 'text', 'school_key', 'created_at', 'updated_at'], $data)
+                    ->execute();
+
+                Yii::$app->db
+                    ->createCommand()
+                    ->batchInsert('pages', ['connect_us', 'phone', 'email', 'facebook', "youtube","twitter","address","location",'created_at', 'updated_at'], $data2)
+                    ->execute();
+
+            }
+
+            $model->save();
+            return $this->redirect(['view', 'id' => $model->id]);
+
         }
 
         return $this->render('create', [
@@ -162,7 +207,7 @@ class SchoolsController extends BaseController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
-        
+
             $insert_id  = $model->id;
             $file = UploadedFile::getInstance($model, 'logo');
             $images_school = UploadedFile::getInstances($model, 'images_school');
@@ -178,31 +223,31 @@ class SchoolsController extends BaseController
                 }
 
 
-             
 
-                 if (!is_null($images_school)) {
-                
+
+                if (!is_null($images_school)) {
+
                     $folder_path = "schools/$insert_id";
                     ImagesSchool::deleteAll(['school_id' => $insert_id]);
                     $i = 1;
                     FileHelper::removeDirectory("$folder_path/images");
                     FileHelper::createDirectory("$folder_path/images", $mode = 0775, $recursive = true);
-                     foreach ($images_school as $image_school) {
+                    foreach ($images_school as $image_school) {
                         $modelImagesSchool = new  ImagesSchool();
                         $file_path = "$folder_path/images/$i" . "." . $image_school->extension;
                         $modelImagesSchool->school_id = $insert_id;
                         $modelImagesSchool->path = $file_path;
                         $image_school->saveAs($file_path);
                         $modelImagesSchool->save(false);
-                         $i++;
-                     }
-                    
-                    
-                 }
+                        $i++;
+                    }
+
+
+                }
             }
 
-        
-         
+
+
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
