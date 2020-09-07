@@ -2,12 +2,15 @@
 
 namespace app\controllers;
 
+use app\models\ConnectUs;
 use app\models\ImagesSchool;
+use app\models\Pages;
 use Carbon\Carbon;
 use Yii;
 use app\models\Schools;
 use app\models\SchoolsSearch;
 use app\models\User;
+use Twilio\TwiML\Voice\Connect;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -155,47 +158,56 @@ class SchoolsController extends BaseController
                 'updated_at'=>$date
             ];
 
-            $page=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"about"])->one();
+            $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"about"])->one();
             $data[]=['key'=>"about",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
-            $page=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-vision"])->one();
+            $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-vision"])->one();
             $data[]=['key'=>"our-vision",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
-            $page=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-message"])->one();
+            $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-message"])->one();
             $data[]=['key'=>"our-message",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
-            $page=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-goals"])->one();
+            $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-goals"])->one();
             $data[]=['key'=>"our-goals",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
-            $page=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"growth-strategies"])->one();
+            $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"growth-strategies"])->one();
             $data[]=['key'=>"growth-strategies",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
-            $page=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"rate-us"])->one();
+            $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"rate-us"])->one();
             $data[]=['key'=>"rate-us",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
-            $page=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-responsibility"])->one();
+            $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-responsibility"])->one();
             $data[]=['key'=>"our-responsibility",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
-            $page=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"privacy-policy"])->one();
+            $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"privacy-policy"])->one();
             $data[]=['key'=>"privacy-policy",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
-            $page=Schools::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"terms-conditions"])->one();
+            $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"terms-conditions"])->one();
             $data[]=['key'=>"terms-conditions",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
 
-            $data2=['school_key' => $model->school_key,
-                'phone' => " ",
-                'email' => "  ",
-                'facebook' => " ",
-                'youtube' => "  ",
-                'twitter' => "  ",
-                'address' => "  ",
-                'location' => "  ",
+            $data2[]=['school_key' => $model->school_key,
+                'phone' => $model->phone,
+                'email' => $model->email,
+                'facebook' =>$model->facebook,
+                'youtube' => $model->youtube,
+                'twitter' => $model->twitter,
+                'address' => $model->address,
+                'location' => $model->location,
                 'created_at'=>$date,
                 'updated_at'=>$date
             ];
+            $conect_us= new ConnectUs();
+            $conect_us->school_key = $model->school_key;
+            $conect_us->phone = $model->phone;
+            $conect_us->email = $model->email;
+            $conect_us->facebook = $model->facebook;
+            $conect_us->youtube = $model->youtube;
+            $conect_us->twitter = $model->twitter; 
+            $conect_us->address = $model->address;
+            $conect_us->location = $model->location;
+            $conect_us->created_at = $date;
+            $conect_us->updated_at = $date;
+            $conect_us->save();
 
-            Yii::$app->db
-                ->createCommand()
-                ->batchInsert('pages', ['key', 'title', 'text', 'school_key', 'created_at', 'updated_at'], $data)
-                ->execute();
-
-            Yii::$app->db
-                ->createCommand()
-                ->batchInsert('connect_us', ['connect_us', 'phone', 'email', 'facebook', "youtube","twitter","address","location",'created_at', 'updated_at'], $data2)
-                ->execute();
-
+                // Yii::$app->db
+                //     ->createCommand()
+                //     ->batchInsert('pages', ['key', 'title', 'text', 'school_key', 'created_at', 'updated_at'], $data)
+                //     ->execute();
+                    
+            
+           
 
 
             $model->save();

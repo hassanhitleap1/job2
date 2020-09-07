@@ -31,13 +31,14 @@ class Schools extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['name','school_key','phone','email','facebook','youtube','twitter','address'], 'required'],
             [['logo'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg '],
             // [['created_at', 'updated_at'], 'safe'],
-            [['name'], 'string', 'max' => 200],
-            [['details', 'director_word', 'discounts_form', 'map', 'contact_information'], 'string']
+            [['name','school_key','phone','email','facebook','youtube','twitter','address'], 'string', 'max' => 200],
+            [['details', 'director_word', 'discounts_form', 'map', 'contact_information','location'], 'string']
         ];
     }
+  
 
     /**
      * {@inheritdoc}
