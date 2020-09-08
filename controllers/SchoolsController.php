@@ -159,23 +159,37 @@ class SchoolsController extends BaseController
             ];
 
             $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"about"])->one();
-            $data[]=['key'=>"about",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $data[]=['key'=>"about",'title'=>$page->title,'text'=>$page->text,
+                'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
             $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-vision"])->one();
-            $data[]=['key'=>"our-vision",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $data[]=['key'=>"our-vision",'title'=>$page->title,'text'=>$page->text,
+                'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
             $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-message"])->one();
-            $data[]=['key'=>"our-message",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $data[]=['key'=>"our-message",'title'=>$page->title,'text'=>$page->text,
+                'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
             $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-goals"])->one();
-            $data[]=['key'=>"our-goals",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $data[]=['key'=>"our-goals",'title'=>$page->title,'text'=>$page->text,
+                'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
             $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"growth-strategies"])->one();
-            $data[]=['key'=>"growth-strategies",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $data[]=['key'=>"growth-strategies",'title'=>$page->title,'text'=>$page->text,
+                'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
             $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"rate-us"])->one();
-            $data[]=['key'=>"rate-us",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $data[]=['key'=>"rate-us",'title'=>$page->title,'text'=>$page->text,
+                'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
             $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-responsibility"])->one();
-            $data[]=['key'=>"our-responsibility",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $data[]=['key'=>"our-responsibility",'title'=>$page->title,'text'=>$page->text,
+                'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
             $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"privacy-policy"])->one();
-            $data[]=['key'=>"privacy-policy",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $data[]=['key'=>"privacy-policy",'title'=>$page->title,'text'=>$page->text,
+                'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
             $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"terms-conditions"])->one();
-            $data[]=['key'=>"terms-conditions",'title'=>$page->title,'text'=>$page->text,'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $data[]=['key'=>"terms-conditions",'title'=>$page->title,'text'=>$page->text,
+                'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+
+            Yii::$app->db
+                ->createCommand()
+                ->batchInsert('pages', ['key', 'title', 'text', 'school_key', 'created_at', 'updated_at'], $data)
+                ->execute();
 
             $conect_us= new ConnectUs();
             $conect_us->school_key = $model->school_key;
@@ -190,10 +204,7 @@ class SchoolsController extends BaseController
             $conect_us->updated_at = $date;
             $conect_us->save();
 
-                Yii::$app->db
-                    ->createCommand()
-                    ->batchInsert('pages', ['key', 'title', 'text', 'school_key', 'created_at', 'updated_at'], $data)
-                    ->execute();
+
                     
             
            
