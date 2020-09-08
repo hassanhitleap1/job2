@@ -186,6 +186,11 @@ class SchoolsController extends BaseController
             $data[]=['key'=>"terms-conditions",'title'=>$page->title,'text'=>$page->text,
                 'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
 
+//            Yii::$app->db->createCommand()->batchInsert('user', ['name', 'age'], [
+//                ['Tom', 30],
+//                ['Jane', 20],
+//                ['Linda', 25],
+//            ])->execute();
             Yii::$app->db
                 ->createCommand()
                 ->batchInsert('pages', ['key', 'title', 'text', 'school_key', 'created_at', 'updated_at'], $data)
