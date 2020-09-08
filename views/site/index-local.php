@@ -30,7 +30,8 @@ $this->title = 'home';
                         <?= Html::img($model->path_logo, ['class' => "img-rounded img-responsive center-block"]); ?>
                     </div>
                     <div class="panel-footer">
-                        <?= Html::a(Yii::t('app', 'More_Details'), ['/school/single-page', 'id' => $model->id], ['class' => 'btn btn-primary btn-sm btn-block']) ?>
+                    <a href="<?=$model->url?>" class="btn btn-primary btn-sm btn-block"><?=Yii::t('app', 'More_Details')?></a>
+
                     </div>
                 </div>
             </div>
