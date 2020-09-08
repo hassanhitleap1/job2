@@ -49,11 +49,14 @@ if (!$model->isNewRecord) {
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <?= $form->field($model, 'school_key')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
         </div>
     </div>
     <div class="row">

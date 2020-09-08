@@ -127,3 +127,6 @@ ALTER TABLE `rate_users` CHANGE `date` `date` DATETIME NOT NULL;
 
 ALTER TABLE `user` ADD `access_token` VARCHAR(500) NULL DEFAULT NULL AFTER `address`;
 ALTER TABLE `user` ADD `expire_at` INT NOT NULL AFTER `access_token`;
+
+ALTER TABLE `schools` ADD `url` VARCHAR(250) NOT NULL AFTER `phone`;
+ALTER TABLE `pages` DROP INDEX `key`;

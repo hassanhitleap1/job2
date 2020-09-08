@@ -31,7 +31,7 @@ class Schools extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name','school_key','phone','email','facebook','youtube','twitter','address'], 'required'],
+            [['name','school_key','phone','email','url','facebook','youtube','twitter','address'], 'required'],
             [['logo'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg '],
             // [['created_at', 'updated_at'], 'safe'],
             [['name','school_key','phone','email','facebook','youtube','twitter','address'], 'string', 'max' => 200],

@@ -157,44 +157,40 @@ class SchoolsController extends BaseController
                 'created_at'=>$date,
                 'updated_at'=>$date
             ];
-
+            $data=[];
             $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"about"])->one();
-            $data[]=['key'=>"about",'title'=>$page->title,'text'=>$page->text,
-                'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $data[]=["about",$page->title,$page->text,$model->school_key,$date,$date];
+            // ***************************************************************
             $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-vision"])->one();
-            $data[]=['key'=>"our-vision",'title'=>$page->title,'text'=>$page->text,
-                'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+           $data[]=["our-vision",$page->title,$page->text,$model->school_key,$date,$date];
+             // ***************************************************************
             $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-message"])->one();
-            $data[]=['key'=>"our-message",'title'=>$page->title,'text'=>$page->text,
-                'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+           $data[]=["our-message",$page->title,$page->text,$model->school_key,$date,$date];
+             // ***************************************************************
             $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-goals"])->one();
-            $data[]=['key'=>"our-goals",'title'=>$page->title,'text'=>$page->text,
-                'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $data[]=["our-goals",$page->title,$page->text,$model->school_key,$date,$date];
+                // ***************************************************************
             $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"growth-strategies"])->one();
-            $data[]=['key'=>"growth-strategies",'title'=>$page->title,'text'=>$page->text,
-                'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
-            $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"rate-us"])->one();
-            $data[]=['key'=>"rate-us",'title'=>$page->title,'text'=>$page->text,
-                'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
-            $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-responsibility"])->one();
-            $data[]=['key'=>"our-responsibility",'title'=>$page->title,'text'=>$page->text,
-                'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
-            $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"privacy-policy"])->one();
-            $data[]=['key'=>"privacy-policy",'title'=>$page->title,'text'=>$page->text,
-                'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
-            $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"terms-conditions"])->one();
-            $data[]=['key'=>"terms-conditions",'title'=>$page->title,'text'=>$page->text,
-                'school_key'=>$model->school_key,'created_at'=>$date,'updated_at'=>$date];
+            $data[]=["growth-strategies",$page->title,$page->text,$model->school_key,$date,$date];
 
-//            Yii::$app->db->createCommand()->batchInsert('user', ['name', 'age'], [
-//                ['Tom', 30],
-//                ['Jane', 20],
-//                ['Linda', 25],
-//            ])->execute();
-            Yii::$app->db
-                ->createCommand()
-                ->batchInsert('pages', ['key', 'title', 'text', 'school_key', 'created_at', 'updated_at'], $data)
-                ->execute();
+             // ***************************************************************   
+            $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"rate-us"])->one();
+        
+                $data[]=["rate-us",$page->title,$page->text,$model->school_key,$date,$date];   
+                // ***************************************************************
+            $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"our-responsibility"])->one();
+                $data[]=["our-responsibility",$page->title,$page->text,$model->school_key,$date,$date];
+                // ***************************************************************
+            $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"privacy-policy"])->one();
+                $data[]=["privacy-policy",$page->title,$page->text,$model->school_key,$date,$date];
+                // ***************************************************************
+            $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"terms-conditions"])->one();
+            $data[]=["terms-conditions",$page->title,$page->text,$model->school_key,$date,$date];
+         
+           Yii::$app->db->createCommand()->batchInsert('pages', 
+                ['key', 'title', 'text', 'school_key', 'created_at', 'updated_at'],
+                $data )->execute();
+           
 
             $conect_us= new ConnectUs();
             $conect_us->school_key = $model->school_key;
