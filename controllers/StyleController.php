@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\StyleForm;
 use Yii;
 use app\models\ActionAdmin;
 use app\models\ActionAdminSearch;
@@ -49,13 +50,16 @@ class StyleController extends BaseController
      */
     public function actionIndex()
     {
-        $model = new StyleForm;
+        $model = new StyleForm();
         if ($model->load(Yii::$app->request->post())) {
+
             if ($model->validate()) {
                 $file_path_js = "js/custom.js";
                 $file_path_style="css/custom.css";
-                $productjson = json_encode($model->js);
                 echo $file= Yii::getAlias('@web/'.$file_path_js);
+                echo $model->js;
+               // file_put_contents($file, "dsd");
+                exit;
                 $fp = fopen($file, 'w+');
                 fwrite($fp, $productjson);
                 fclose($fp);
