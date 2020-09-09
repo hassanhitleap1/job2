@@ -56,18 +56,18 @@ class StyleController extends BaseController
             if ($model->validate()) {
                 $file_path_js = "js/custom.js";
                 $file_path_style="css/custom.css";
-                echo $file= Yii::getAlias('@web/'.$file_path_js);
-                echo $model->js;
-               // file_put_contents($file, "dsd");
-                exit;
-                $fp = fopen($file, 'w+');
-                fwrite($fp, $productjson);
-                fclose($fp);
-                $productjson = json_encode($model->style);
-                echo $file= Yii::getAlias('@web/'.$file_path_style);
-                $fp = fopen($file, 'w+');
-                fwrite($fp, $productjson);
-                fclose($fp);
+                $file= Yii::getAlias("@webroot/$file_path_js");
+                $a = fopen($file, 'w');
+                fwrite($a, $model->js);
+                fclose($a);
+                chmod($file, 0755);
+
+
+                $file= Yii::getAlias("@webroot/$file_path_style");
+                $a = fopen($file, 'w');
+                fwrite($a, $model->style);
+                fclose($a);
+                chmod($file, 0755);
                 
                 
 //                FileHelper::removeDirectory($folder_path);
