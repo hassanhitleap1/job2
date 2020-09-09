@@ -7,6 +7,7 @@ use Yii;
 use app\models\ActionAdmin;
 use app\models\ActionAdminSearch;
 use app\models\User;
+use Exception;
 use yii\helpers\FileHelper;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -50,37 +51,50 @@ class StyleController extends BaseController
      */
     public function actionIndex()
     {
+        $file_path_js = "js/custom.js";
+        $file_path_style="css/custom.css";
+        $filejs= Yii::getAlias("@webroot/$file_path_js");
+        $filecss= Yii::getAlias("@webroot/$file_path_style");
+        $fopenjs='';
+        $fopencss='';
+        try{
+            $fopenjs = fopen($filejs, "r");
+            fread($fopenjs,filesize($file_path_js));
+            fclose($fopenjs);
+        }catch(\Exception $e ){
+            
+        }
+
+        try{
+            $fopencss= fopen($filejs, "r");
+            fread($fopencss,filesize($file_path_style));
+            fclose($fopencss);
+        }catch(\Exception $e ){
+
+        }
+    
         $model = new StyleForm();
         if ($model->load(Yii::$app->request->post())) {
-
+            echo $model->js;
+            exit;
             if ($model->validate()) {
-                $file_path_js = "js/custom.js";
-                $file_path_style="css/custom.css";
-                $file= Yii::getAlias("@webroot/$file_path_js");
-                $a = fopen($file, 'w');
+                $a = fopen($filejs, 'w');
                 fwrite($a, $model->js);
                 fclose($a);
-                chmod($file, 0755);
-
-
-                $file= Yii::getAlias("@webroot/$file_path_style");
-                $a = fopen($file, 'w');
+                chmod($filejs, 0755);
+                $a = fopen($filecss, 'w');
                 fwrite($a, $model->style);
                 fclose($a);
-                chmod($file, 0755);
+                chmod($filecss, 0755);
                 
-                
-//                FileHelper::removeDirectory($folder_path);
-//                FileHelper::createDirectory($folder_path, $mode = 0775, $recursive = true);
+        
             }
-
-            return $this->render('index', [
-                'model' => $model,
-            ]);
         }
 
         return $this->render('index', [
             'model' => $model,
+            'fopenjs'=>$fopenjs,
+            'fopencss'=>$fopencss
         ]);
     }
 
