@@ -11,7 +11,9 @@ nbproject
 
 # windows thumbnail cache
 Thumbs.db
-
+/config/db.php
+/web/js/custom.js
+/web/css/custom.css
 # composer vendor dir
 /vendor
 /web/cv_form
@@ -20,6 +22,7 @@ Thumbs.db
 /web/schools
 /web/contracts
 /config/db.php
+/w
 
 # composer itself is not needed
 composer.phar

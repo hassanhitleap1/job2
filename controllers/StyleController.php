@@ -58,36 +58,22 @@ class StyleController extends BaseController
         $fopenjs='';
         $fopencss='';
         try{
-            $fopenjs = fopen($filejs, "r");
-            fread($fopenjs,filesize($file_path_js));
-            fclose($fopenjs);
+            $fopenjs = readfile($filejs);
+            $fopencss= readfile($filecss);
         }catch(\Exception $e ){
-            
         }
 
-        try{
-            $fopencss= fopen($filejs, "r");
-            fread($fopencss,filesize($file_path_style));
-            fclose($fopencss);
-        }catch(\Exception $e ){
-
-        }
-    
         $model = new StyleForm();
         if ($model->load(Yii::$app->request->post())) {
-            echo $model->js;
-            exit;
             if ($model->validate()) {
                 $a = fopen($filejs, 'w');
                 fwrite($a, $model->js);
                 fclose($a);
-                chmod($filejs, 0755);
+//                chmod($filejs, 0755);
                 $a = fopen($filecss, 'w');
                 fwrite($a, $model->style);
                 fclose($a);
-                chmod($filecss, 0755);
-                
-        
+//                chmod($filecss, 0755);
             }
         }
 
