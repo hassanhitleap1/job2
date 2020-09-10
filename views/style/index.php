@@ -19,14 +19,12 @@ use yii\widgets\ActiveForm;
         'options' => ['placeholder' => 'Edit your blog content here...','value'=>$fopenjs]
     ]);
     ?>
-    <?=
-    $form->field($model, 'css')->widget(Summernote::class, [
-        'options' => ['placeholder' => 'Edit your blog content here...','value'=>$fopencss]
-    ]);
-    ?>
+    <?= $form->field($model, 'style')->textarea(['rows' => '6','cols'=>'6']) ?>
+ 
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+
     </div>
 
     <?php ActiveForm::end(); ?>
