@@ -86,30 +86,30 @@ $this->params['breadcrumbs'][] = $this->title;
                         },//substr(, 0, 15),
                         
                     ],            
-                    [
-                        'attribute'=>'details',
-                        'value'=>function($searchModel){
-                            return substr($searchModel->discounts_form,0, 15);
-                        },
-                    ],  
-                    [
-                        'attribute'=>'details',
-                        'value'=>function($searchModel){
-                            return substr($searchModel->map,0, 15);
-                        },
-                    ],  
-                    [
-                        'attribute'=>'details',
-                        'value'=>function($searchModel){
-                            return substr($searchModel->brochure,0, 15);
-                        },
-                    ],  
-                    [
-                        'attribute'=>'details',
-                        'value'=>function($searchModel){
-                            return substr($searchModel->contact_information,0, 15);
-                        },
-                    ],  
+                    // [
+                    //     'attribute'=>'details',
+                    //     'value'=>function($searchModel){
+                    //         return substr($searchModel->discounts_form,0, 15);
+                    //     },
+                    // ],  
+                    // [
+                    //     'attribute'=>'details',
+                    //     'value'=>function($searchModel){
+                    //         return substr($searchModel->map,0, 15);
+                    //     },
+                    // ],  
+                    // [
+                    //     'attribute'=>'details',
+                    //     'value'=>function($searchModel){
+                    //         return substr($searchModel->brochure,0, 15);
+                    //     },
+                    // ],  
+                    // [
+                    //     'attribute'=>'details',
+                    //     'value'=>function($searchModel){
+                    //         return substr($searchModel->contact_information,0, 15);
+                    //     },
+                    // ],  
                     'path_logo',
 
                     ['class' => 'yii\grid\ActionColumn'],
