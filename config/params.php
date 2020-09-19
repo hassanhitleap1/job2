@@ -6,6 +6,7 @@ return [
     'senderEmail' => 'noreply@example.com',
     'senderName' => 'Example.com mailer',
     "school_key"=>"jaras",
+    "school_id"=>"0",
     'supportEmail'=>'hr@job-jaras.com',
     'languages'=>[
         'ar'=>'Arabic',

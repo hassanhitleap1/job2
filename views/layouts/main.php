@@ -101,6 +101,7 @@ AppAsset::register($this);
                 $menuItems[] = [
                     'label' =>Yii::t('app', 'Merchants') ,
                     'items' => [
+                        ['label' => Yii::t('app', 'UserMerchants'), 'url' => ['/user-marchent/index']],
                         ['label' => Yii::t('app', 'Merchants'), 'url' => ['/merchant/index']],
                         ['label' => Yii::t('app', 'Request_Merchant'), 'url' => ['/request-merchant/index']]
                     ],
