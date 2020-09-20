@@ -89,6 +89,7 @@ class UserMarchent extends \yii\db\ActiveRecord
     public function beforeSave($insert)
     {
         $date= Carbon::now("Asia/Amman");
+        
 
         if (parent::beforeSave($insert)) {
             // Place your custom code here
@@ -98,6 +99,7 @@ class UserMarchent extends \yii\db\ActiveRecord
                 $this->type=User::MERCHANT_USER;
                 $this->password_hash=\Yii::$app->security->generatePasswordHash(123456789);
                 $this->school_id= Yii::$app->params['school_id'] ;;
+                $this->expire_at=$date->toDateTimeString();
             } else {
                 $this->updated_at = $date;
             }

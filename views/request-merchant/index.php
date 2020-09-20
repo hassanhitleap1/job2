@@ -41,7 +41,7 @@ $message=($dataModel==null)?'':$dataModel->text;
             [
                 'attribute' => 'phone',
                 'value' => function ($searchModel) {
-                    return '<a href="tel:'.$searchModel->user0->phone.'">'.$searchModel->user0->phone.'</a>';
+                    return '<a href="tel:'.$searchModel['user0']['phone'].'">'.$searchModel['user0']['phone'].'</a>';
                 },
                 'format' => 'html',
             ],
