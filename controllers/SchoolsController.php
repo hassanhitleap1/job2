@@ -106,26 +106,24 @@ class SchoolsController extends BaseController
                     'id' => SORT_DESC
                 ])->one()['id'];
 
-
+             
             if($insert_id==null){
-                $insert_id=0;
+                $insert_id=1;
             }else {
                 $insert_id ++;
             }
-
+          
 
             $file = UploadedFile::getInstance($model, 'logo');
             $images_school = UploadedFile::getInstances($model, 'images_school');
 
-            if($model->validate()){
-                if (!is_null($file)) {
-                    $folder_path = "schools/$insert_id";
-                    FileHelper::createDirectory($folder_path, $mode = 0775, $recursive = true);
-                    $logo = "$folder_path/logo" . "." . $file->extension;
-                    $model->path_logo= $logo;
-                    $file->saveAs($logo);
-                    $model->logo = $logo;
-                }
+            if (!is_null($file)) {
+                $folder_path = "schools/$insert_id";
+                FileHelper::createDirectory($folder_path, $mode = 0775, $recursive = true);
+                $logo = "$folder_path/logo" . "." . $file->extension;
+                $model->path_logo= $logo;
+                $file->saveAs($logo);
+                $model->logo = $logo;
             }
 
             if (!is_null($images_school)) {
@@ -146,17 +144,19 @@ class SchoolsController extends BaseController
 
             $date=Carbon::now('Asia/Amman');
             $data2[]=[
-                'school_key'=>$model->school_key,
-                'phone'=>$model->phone,
-                'email'=>$model->email,
-                'facebook'=>$model->facebook,
-                "youtube"=>$model->youtube,
-                "twitter"=>$model->twitter,
-                "address"=>$model->address,
-                "location"=>$model->location,
+                'school_key'=>$model['school_key'],
+                'phone'=>$model['phone'],
+                'email'=>$model['email'],
+                'facebook'=>$model['facebook'],
+                "youtube"=>$model['youtube'],
+                "twitter"=>$model['twitter'],
+                "address"=>$model['address'],
+                "location"=>$model['location'],
                 'created_at'=>$date,
                 'updated_at'=>$date
             ];
+
+            
             $data=[];
             $page=Pages::find()->where(["school_key"=>"jaras"])->andWhere(['key'=>"about"])->one();
             $data[]=["about",$page->title,$page->text,$model->school_key,$date,$date];
@@ -206,13 +206,15 @@ class SchoolsController extends BaseController
             $conect_us->save();
 
 
-                    
-            
-           
-
-
-            $model->save();
-            return $this->redirect(['view', 'id' => $model->id]);
+            if($model->save()){
+                return $this->redirect(['view', 'id' => $model->id]);
+            }else{
+               
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
+          
 
         }
 
