@@ -370,7 +370,13 @@ $(document).on("click", "#save-note-affiliated", function (e) {
     });
 });
 
+$(document).on("change","#userssearch-name_of_jobs_id",function(){
+    $(this).closest('form').submit();
+});
 
+$(document).on("change","#userssearch-favorite",function(){
+    $(this).closest('form').submit();
+});
 
 $(document).on("click", ".star.glyphicon", function (e) {
 
