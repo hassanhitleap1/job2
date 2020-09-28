@@ -130,3 +130,5 @@ ALTER TABLE `user` ADD `expire_at` INT NOT NULL AFTER `access_token`;
 
 ALTER TABLE `schools` ADD `url` VARCHAR(250) NOT NULL AFTER `phone`;
 ALTER TABLE `pages` DROP INDEX `key`;
+
+ALTER TABLE `schools` CHANGE `facebook` `facebook` VARCHAR(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL, CHANGE `email` `email` VARCHAR(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL, CHANGE `youtube` `youtube` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL, CHANGE `twitter` `twitter` VARCHAR(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL, CHANGE `address` `address` VARCHAR(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL, CHANGE `location` `location` LONGTEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
