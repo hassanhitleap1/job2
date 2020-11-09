@@ -59,27 +59,3 @@ $this->title = 'home';
 	</div>
 </div>
 
-<div class="container">
-	<div class="row">
-		<?php foreach ($models as $model) : ?>
-			<div class="col-md-3 col-sm-4 ">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<?= Yii::t('app', 'School') . ' ' . $model->name ?>
-					</div>
-					<div class="panel-body">
-						<?= Html::img($model->path_logo, ['class' => "img-rounded img-responsive center-block"]); ?>
-					</div>
-					<div class="panel-footer">
-						<a href="<?=$model->url?>" class="btn btn-primary btn-sm btn-block"><?=Yii::t('app', 'More_Details')?></a>
-					</div>
-				</div>
-			</div>
-		<?php endforeach; ?>
-	</div>
-	<?=
-		LinkPager::widget([
-			'pagination' => $pages,
-		]);
-	?>
-</div>
