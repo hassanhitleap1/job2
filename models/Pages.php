@@ -36,7 +36,7 @@ class Pages extends \yii\db\ActiveRecord
             // [['created_at', 'updated_at'], 'safe'],
             [['key'], 'string', 'max' => 50],
             [['title'], 'string', 'max' => 500],
-            [['key'], 'unique'],
+            // [['key'], 'unique'],
         ];
     }
 

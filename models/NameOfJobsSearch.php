@@ -62,7 +62,9 @@ class NameOfJobsSearch extends NameOfJobs
         ]);
 
         $query->andFilterWhere(['like', 'name_ar', $this->name_ar]);
-
+        $query->orderBy([
+            'name_ar' => SORT_ASC//specify sort order ASC for ascending DESC for descending      
+        ]);
         return $dataProvider;
     }
 }

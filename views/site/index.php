@@ -20,21 +20,22 @@ $this->title = 'home';
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="https://jctechs.co.uk/images/resume.jpg" alt="Los Angeles">
+			<?= Html::img('/images/1.jpg',['class'=>"center"]);?>
 				<div class="carousel-caption">
 					<?= Html::a("<h2>" . Yii::t('app', 'Requast_Job') . "</h2>", ['/requat-job/index'], ['class' => 'text-requst']) ?>
 				</div>
 			</div>
 
 			<div class="item">
-				<img src="https://www.saintpats.org/school/wp-content/uploads/2017/08/slider-test-teacher.jpg" alt="Chicago">
+				<?= Html::img('images/2.jpg',['class'=>"center"]);?>
+
 				<div class="carousel-caption">
 					<?= Html::a("<h2>" . Yii::t('app', 'Requast_Job') . "</h2>", ['/requat-job/index'], ['class' => 'text-requst']) ?>
 				</div>
 			</div>
 
 			<div class="item">
-				<img src="https://p18cdn4static.sharpschool.com/UserFiles/Servers/Server_591111/Image/Homepage/Hero%20Slider/IMG_9729%20-%20Cleared%20for%20Use%20-%20cropped.jpg" alt="New York">
+			<?= Html::img('images/3.jpg',['class'=>"center"]);?>
 				<div class="carousel-caption">
 					<?= Html::a("<h2>" . Yii::t('app', 'Requast_Job') . "</h2>", ['/requat-job/index'], ['class' => 'text-requst']) ?>
 				</div>
@@ -54,7 +55,7 @@ $this->title = 'home';
 </div>
 <div class="container">
 	<div class="row">
-		<iframe class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="existing-iframe-example" width="50%" height="360" src="https://www.youtube.com/embed/fvCkdppB6SY?autoplay=1&enablejsapi=1" allow="accelerometer; autoplay; encrypted-media; 
+		<iframe class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="existing-iframe-example" width="50%" height="360" src="https://www.youtube.com/embed/fvCkdppB6SY?autoplay=1&enablejsapi=1" allow="accelerometer; encrypted-media; 
             gyroscope; picture-in-picture" frameborder="0" style="border: solid 4px #37474F"></iframe>
 	</div>
 </div>
