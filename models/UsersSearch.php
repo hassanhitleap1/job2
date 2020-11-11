@@ -19,8 +19,8 @@ class UsersSearch extends Users
     public function rules()
     {
         return [
-            [['id', 'agree', 'phone', 'name_of_jobs_id','favorite','expected_salary',"gender", "year_of_experience", "action_user","first_payment"], 'integer'],
-            [['name', 'certificates', 'is_upload','experience','area' ,'nationality', 'governorate','category_id','subscribe_date','note','priorities'], 'safe'],
+            [['id', 'agree', 'phone', 'name_of_jobs_id','favorite','area','expected_salary',"gender", "year_of_experience", "action_user","first_payment"], 'integer'],
+            [['name', 'certificates', 'is_upload','experience' ,'nationality', 'governorate','category_id','subscribe_date','note','priorities'], 'safe'],
         ];
     }
 
@@ -60,7 +60,7 @@ class UsersSearch extends Users
        // $query->joinWith('specialtie');
         $query->joinWith('nameOfjob');
         //$query->leftJoin('vedio_user', 'vedio_user.user_id = user.id');
-
+       $area=(isset($_GET['area']))?$_GET['area']:null;
         
         // grid filtering conditions
         $query->andFilterWhere([
@@ -69,6 +69,7 @@ class UsersSearch extends Users
             'phone' => $this->phone,
             "gender"=>$this->gender,
             "action_user"=> $this->action_user,
+            "area"=>$area,
             "year_of_experience"=>$this->year_of_experience,
             "first_payment"=>$this->first_payment,
             'expected_salary' => $this->expected_salary,
@@ -78,7 +79,7 @@ class UsersSearch extends Users
             ->andFilterWhere(['like', 'certificates', $this->certificates])
             ->andFilterWhere(['like', 'experience', $this->experience])
             ->andFilterWhere(['like', 'priorities', $this->priorities])
-            ->andFilterWhere(['like', 'area.name_ar', $this->area])
+            // ->andFilterWhere(['like', 'area.name_ar', $this->area])
             ->andFilterWhere(['=', 'vedio_user.name_of_jobs_id', $this->name_of_jobs_id])
             ->andFilterWhere(['like', 'nationality.name_ar', $this->nationality])
             ->andFilterWhere(['like', 'governorate.name_ar', $this->governorate])

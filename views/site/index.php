@@ -20,7 +20,7 @@ $this->title = 'home';
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-			<?= Html::img('/images/1.jpg',['class'=>"center"]);?>
+			<?= Html::img('images/1.jpg',['class'=>"center"]);?>
 				<div class="carousel-caption">
 					<?= Html::a("<h2>" . Yii::t('app', 'Requast_Job') . "</h2>", ['/requat-job/index'], ['class' => 'text-requst']) ?>
 				</div>

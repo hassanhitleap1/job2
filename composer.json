@@ -36,7 +36,8 @@
         "vimeo/vimeo-api": "^3.0",
         "kartik-v/yii2-widget-select2": "@dev",
         "sizeg/yii2-jwt": "v2.0.1.1",
-        "kartik-v/yii2-editors": "@dev"
+        "kartik-v/yii2-editors": "@dev",
+        "2amigos/yii2-multi-select-widget": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

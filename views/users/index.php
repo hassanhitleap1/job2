@@ -1,11 +1,14 @@
 <?php
 
+use app\models\Area;
 use app\models\RequastJobForm;
 use app\models\User;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
+use kartik\select2\Select2;
+use yii\helpers\ArrayHelper;
 
 $this->title = Yii::t('app', 'Requast_Job_Form');
 $this->params['breadcrumbs'][] = $this->title;
@@ -61,6 +64,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $searchModel->area0['name_ar'];
                 },
 
+                'filter' =>Select2::widget([
+                    'name' => 'area',
+                    "value"=>(isset($_GET['area']))?$_GET['area']:null,
+                    'data' => ArrayHelper::map(Area::find()->where(['<>', 'id', 1])->all(), 'id', 'name_ar'),
+                    'options' => [
+                        'placeholder' => 'Select provinces ...',
+                        'multiple' => false
+                    ],
+                ]),
+
+                'format' => 'html',
             ],
             [
                 'attribute' => 'nationality',
