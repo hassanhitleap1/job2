@@ -259,5 +259,10 @@ return [
     "Favorite"=>"المفضلين",
     "UnFavorite"=>"غير مفضلين",
     "Rate_User"=>"تقيم الشخص",
+    "Posts"=>"الاعلانات",
+    "Create_Post"=>"انشاء اعلان",
+    "Show_Number"=>"عرض الرقم",
+    "Accept"=>"الموافقة",
+    
 
 ];

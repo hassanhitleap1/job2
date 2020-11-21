@@ -63,7 +63,7 @@ AppAsset::register($this);
                 $menuItems[] = [
                     'label' =>Yii::t('app', 'Additional') ,
                     'items' => [
-
+                        ['label' => Yii::t('app', 'Posts'), 'url' => ['/posts/index']],
                         ['label' => Yii::t('app', 'Admins'), 'url' => ['/admin/index']],
                         ['label' => Yii::t('app', 'Action_Admins'), 'url' => ['/action-admin/index']],
                         ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories/index']],

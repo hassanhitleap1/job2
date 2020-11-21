@@ -132,3 +132,9 @@ ALTER TABLE `schools` ADD `url` VARCHAR(250) NOT NULL AFTER `phone`;
 ALTER TABLE `pages` DROP INDEX `key`;
 
 ALTER TABLE `schools` CHANGE `facebook` `facebook` VARCHAR(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL, CHANGE `email` `email` VARCHAR(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL, CHANGE `youtube` `youtube` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL, CHANGE `twitter` `twitter` VARCHAR(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL, CHANGE `address` `address` VARCHAR(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL, CHANGE `location` `location` LONGTEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+
+
+
+CREATE TABLE `posts` ( `id` INT NOT NULL AUTO_INCREMENT , `title` VARCHAR(400) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `body` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `category_id` INT NOT NULL DEFAULT '-1' , `accept` TINYINT NOT NULL DEFAULT '1' , `area_id` INT NOT NULL DEFAULT '-1' , `show_number` TINYINT NOT NULL DEFAULT '1' , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+ALTER TABLE `posts` ADD `user_id` INT NOT NULL AFTER `show_number`;
