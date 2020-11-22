@@ -106,6 +106,16 @@ class Posts extends \yii\db\ActiveRecord
         return $this->hasOne(Area::className(), ['id' => 'area_id']);
     }
 
+
+       /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(Users::className(), ['id' => 'user_id']);
+    }
+
+
       /**
      * @return \yii\db\ActiveQuery
      */
