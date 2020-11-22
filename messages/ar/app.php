@@ -263,6 +263,6 @@ return [
     "Create_Post"=>"انشاء اعلان",
     "Show_Number"=>"عرض الرقم",
     "Accept"=>"الموافقة",
-    
+    "SignUpAdvertiser"=>"حساب معلن",
 
 ];

@@ -11,20 +11,20 @@ use app\models\User;
  */
 class SignupForm extends Model
 {
-    public $username;
+    public $phone;
     public $email;
     public $password;
     public $conf_password;
+    public $rememberMe = true;
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            ['username', 'trim'],
-            ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This username has already been taken.'],
-            ['username', 'string', 'min' => 2, 'max' => 255],
+            ['phone', 'trim'],
+            ['phone', 'required'],
+            ['phone', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This phone has already been taken.'],
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
@@ -74,4 +74,39 @@ class SignupForm extends Model
             ->setSubject('Account registration at ' . Yii::$app->name)
             ->send();
     }
+
+
+    /**
+     * Signs user up.
+     *
+     * @return bool whether the creating new account was successful and email was sent
+     */
+    public function signup_advertiser()
+    {
+        if (!$this->validate()) {
+            return null;
+        }
+        
+        $user = new User();
+        $user->phone = $this->phone;
+        $user->email = $this->email;
+        $user->status=User::STATUS_ACTIVE;
+        $user->type=User::Advertiser;
+        $user->setPassword($this->password);
+        $user->generateAuthKey();
+        $user->generateEmailVerificationToken();
+        return $user->save() && $this->sendEmail($user);
+    }
+
+
+
+      /**
+     * Logs in a user using the provided username and password.
+     * @return bool whether the user is logged in successfully
+     */
+    public function login($user)
+    {
+        return Yii::$app->user->login($user, $this->rememberMe ? 3600 * 24 * 30 : 0);
+    }
+
 }

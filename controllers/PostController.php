@@ -14,8 +14,22 @@ use yii\web\NotFoundHttpException;
 class PostController extends Controller
 {
 
+    public function actionIndex()
+    {
+         
+        $model = new Posts();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $session = Yii::$app->session;
+            $session->set('post', $model);
+            return $this->redirect(['index']);
+        }
 
+        return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
 
+   
 
     /**
      * Displays a single Posts model.

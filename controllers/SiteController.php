@@ -100,6 +100,29 @@ class SiteController extends Controller
         ]);
     }
 
+
+    
+      /**
+     * Login action.
+     *
+     * @return Response|string
+     */
+    public function actionSignUpAdvertiser()
+    {  
+        $model = new SignupForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->signup_advertiser()) {
+            $user = User::findByPhone($model->phone);
+            $model->login($user);
+            return $this->redirect(['post/index']);
+        }
+
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
+    }
+
+
     /**
      * Login action.
      *

@@ -36,6 +36,7 @@ class User extends ActiveRecord implements IdentityInterface
     const FORM_APPLAY_USER=4;
     const NORMAL_USER_IGNORAE=5;
     const  NORMAL_ADMIN=6;
+    const  Advertiser=7;
     const MALE=1;
     const FEMALE=2;
     const PAY_SERVICE=1;
