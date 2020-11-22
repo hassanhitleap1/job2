@@ -33,7 +33,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             [
                 'attribute' => 'body',
-                'value' => 'body',
+                'value' => function($searchModel){
+                    return     substr( $searchModel->body, 0, 50)." <a>More</a>";
+                 },
                 'format' => 'raw',
             ],
             

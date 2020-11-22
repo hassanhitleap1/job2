@@ -19,6 +19,7 @@ use app\models\ContactForm;
 use app\models\Merchant;
 use app\models\SignupForm;
 use app\models\PasswordResetRequestForm;
+use app\models\Posts;
 use app\models\ResetPasswordForm;
 use app\models\User;
 use Google_Client;
@@ -81,7 +82,7 @@ class SiteController extends Controller
 //        $client->setApplicationName("Client_Library_Examples");
 //        $client->setDeveloperKey("YOUR_APP_KEY");
         $namepage="index-local";
-        $query =    Schools::find();
+        $query =    Posts::find();
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
         $models = $query->offset($pages->offset)
@@ -92,9 +93,8 @@ class SiteController extends Controller
             $this->layout = "maintheme";
             $namepage="index";
         }
-        $merchants= Merchant::find()->where(['type'=>User::MERCHANT_USER])->all();
+    
         return $this->render($namepage,[
-            'merchants' => $merchants,
             'models' => $models,
             'pages' => $pages,
         ]);
