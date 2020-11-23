@@ -5,6 +5,7 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Posts;
+use Yii;
 
 /**
  * PostsSearch represents the model behind the search form of `app\models\Posts`.
@@ -54,6 +55,10 @@ class PostsSearch extends Posts
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
             return $dataProvider;
+        }
+
+        if(User::is_admin_advertiser()){
+            $query->where(['id'=>Yii::$app->user->id]);   
         }
 
         // grid filtering conditions

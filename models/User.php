@@ -59,6 +59,59 @@ class User extends ActiveRecord implements IdentityInterface
             TimestampBehavior::className(),
         ];
     }
+
+    public static function is_normal_user(){
+        if(Yii::$app->user->identity->type==self::NORMAL_USER){
+            return true;
+        }
+        return false;
+    }
+
+    public static function is_merchant(){
+        if(Yii::$app->user->identity->type==self::MERCHANT_USER){
+            return true;
+        }
+        return false;
+    }
+    
+    public static function is_admin_advertiser(){
+        if(Yii::$app->user->identity->type==self::Advertiser){
+            return true;
+        }
+        return false;
+    }
+
+    public static function is_form_aplay_user(){
+        if(Yii::$app->user->identity->type==self::FORM_APPLAY_USER){
+            return true;
+        }
+        return false;
+    }
+
+    public static function is_normal_user_ignorae(){
+        if(Yii::$app->user->identity->type==self::NORMAL_USER_IGNORAE){
+            return true;
+        }
+        return false;
+    }
+
+
+    public static function is_normal_admin(){
+        if(Yii::$app->user->identity->type==self::NORMAL_ADMIN){
+            return true;
+        }
+        return false;
+    }
+
+
+    public static function is_admin_user(){
+        if(Yii::$app->user->identity->type==self::ADMIN_USER){
+            return true;
+        }
+        return false;
+    }
+
+
     /**
      * {@inheritdoc}
      */
