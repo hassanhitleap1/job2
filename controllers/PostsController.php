@@ -16,13 +16,20 @@ class PostsController extends BaseController
 {
 
 
+    public $allow=[
+        User::ADMIN_USER ,
+        User::NORMAL_ADMIN,
+        User::MERCHANT_USER,
+        User::Advertiser
+    ];
+
      /**
      * init controller
      */
     public function init()
     {
         if (!Yii::$app->user->isGuest) {
-            if (Yii::$app->user->identity->type != User::ADMIN_USER) {
+            if (!in_array(Yii::$app->user->identity->type, $this->allow)) {
                 throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
             }
         }
