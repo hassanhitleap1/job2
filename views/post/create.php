@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-
+use app\widgets\Alert;
 /* @var $this yii\web\View */
 /* @var $model app\models\Posts */
 
@@ -12,9 +12,15 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <?php  $content= Html::a(Yii:t('Must_Be_Login'), ['site/login']); ?> 
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+    <?=  Must_Be_Login::widget([
+            'options' => [
+                'class' => 'alert-info',
+            ],
+            'body' => $content,
+        ]);
+    
+  
 
 </div>
