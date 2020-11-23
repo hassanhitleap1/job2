@@ -284,3 +284,23 @@ a.desc:after {
     width: 100%;
     height: 290px;
   }
+
+  /* Styles for wrapping the search box */
+
+.main {
+    width: 100%;
+    margin: 50px auto;
+}
+
+/* Bootstrap 3 text input with search icon */
+
+.has-search .form-control-feedback {
+    right: initial;
+    left: 0;
+    color: #ccc;
+}
+
+.has-search .form-control {
+    padding-right: 12px;
+    padding-left: 34px;
+}

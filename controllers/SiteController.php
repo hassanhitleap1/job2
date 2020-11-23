@@ -109,6 +109,7 @@ class SiteController extends Controller
      */
     public function actionSignUpAdvertiser()
     {  
+        $this->layout = "maintheme";
         $model = new SignupForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->signup_advertiser()) {

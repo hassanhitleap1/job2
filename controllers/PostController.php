@@ -16,17 +16,10 @@ class PostController extends Controller
 
     public function actionIndex()
     {
-         
-        $model = new Posts();
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $session = Yii::$app->session;
-            $session->set('post', $model);
-            return $this->redirect(['index']);
-        }
+        $this->layout = "maintheme"; 
+       
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        return $this->render('create');
     }
 
    

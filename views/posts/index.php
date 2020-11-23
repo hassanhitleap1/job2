@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Posts;
+use app\models\User;
 use Carbon\Carbon;
 use yii\helpers\Html;
 use yii\grid\GridView;
@@ -99,9 +100,43 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
         ],
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view}  {delete} {update}',  // the default buttons + your custom button
+               
+                'buttons' => [
+                      'view' => function ($url, $model) {
+                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
+                                        'title' => Yii::t('app', 'lead-view'),
+                                        'class' => ''
+                            ]);
+                        },
+    
+                        'update' => function ($url, $model) {
+                            if(User::is_admin_user()){
+                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
+                                        'title' => Yii::t('app', 'lead-update'),
+                                        'class' => ''
+                            ]);
+                            }
+                        },
+                        'delete' => function ($url, $model) {
+                            return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
+                                        'title' => Yii::t('app', 'lead-delete'),
+                                        'class' => '',
+                                        'data' => [
+                                            'confirm' => 'are you sure to delete it.',
+                                            'method' => 'post',
+                                        ],
+                            ]);
+                        },
+                
+                  
+                ]
+                ],
+               
+            ],
+        ]); ?>
 
     <?php Pjax::end(); ?>
 
