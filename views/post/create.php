@@ -12,15 +12,12 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php  $content= Html::a(Yii:t('Must_Be_Login'), ['site/login']); ?> 
-
-    <?=  Must_Be_Login::widget([
-            'options' => [
-                'class' => 'alert-info',
-            ],
-            'body' => $content,
-        ]);
+    <?php $content= Html::a(Yii::t('app','Must_Be_Login'), ['site/login']); ?> 
+   
     
+    <div class="alert alert-info">
+            <strong>Info!</strong> <?php echo $content?>
+    </div>
   
 
 </div>

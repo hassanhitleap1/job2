@@ -265,5 +265,6 @@ return [
     "Accept"=>"الموافقة",
     "SignUpAdvertiser"=>"حساب معلن",
     "Must_Be_Login"=>"يجب عليك تسجيل الدخول",
+    "My_Adv"=>"اعلاناتي",
 
 ];

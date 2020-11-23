@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
        <div class="panel-footer">
            <div class="row">
             <div class="col-md-3">
-                     <?php echo Html::a(Yii::t('app','Create_Requast_Job'), ['site/forget-password'])?>
+                     <?php echo Html::a(Yii::t('app','Create_Requast_Job'), ['site/requat-job'])?>
                </div>
              <div class="col-md-3">
                     <?php echo Html::a(Yii::t('app','SignUpAdvertiser'), ['site/sign-up-advertiser'])?> 

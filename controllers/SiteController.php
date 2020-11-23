@@ -114,7 +114,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->signup_advertiser()) {
             $user = User::findByPhone($model->phone);
             $model->login($user);
-            return $this->redirect(['post/index']);
+            return $this->redirect(['posts/index']);
         }
 
         return $this->render('signup', [

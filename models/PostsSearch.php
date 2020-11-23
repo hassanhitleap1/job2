@@ -58,7 +58,7 @@ class PostsSearch extends Posts
         }
 
         if(User::is_admin_advertiser()){
-            $query->where(['id'=>Yii::$app->user->id]);   
+            $query->where(['user_id'=>Yii::$app->user->id]);   
         }
 
         // grid filtering conditions
