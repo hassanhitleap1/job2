@@ -3,31 +3,29 @@
 /* @var $this yii\web\View */
 
 use Carbon\Carbon;
-use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 $now = Carbon::now("Asia/Amman");
 $this->title = 'home';
 ?>
-<div class="container" style="margin-top: 10px;">
-<div class="jumbotron">
-        <h1>البحث عن وظيفة</h1>
-				<p class="lead">
-					<div class="main">
-						<!-- Actual search box -->
-						<div class="form-group has-feedback has-search">
-							<span class="glyphicon glyphicon-search form-control-feedback"></span>
-							<input type="text" class="form-control input-lg" name="search" id="search" placeholder="بحث">
-						</div>
-					</div>
-				</p>
-				<p>
-					<button class="btn btn-success"  id="serach-post" >بحث</button>
-				</p>
-
-    </div>
-</div>
 <div class="container">
+	<div class="row">
+    
+            <div class="col-md-10">
+                <div class="lead">
+                    <div class="form-group has-feedback has-search">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        <input type="text" id="search" class="form-control" name="search" value="<?= isset($_GET['search'])? $_GET['search']: '' ?> "  placeholder="بحث">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-success" id="serach-post" >بحث</button>
+            </div>
+        
+    </div>
+
+
 	<div class="row">
 		<?php foreach($models as  $key=>$model) :?>
 			<a  href="/index.php?r=post/view&id=<?=$model->id?>">
@@ -79,5 +77,6 @@ $this->title = 'home';
 			'pagination' => $pages,
 		]);?>
 	</div>
-</div>
+
+    </div>   
 

@@ -374,6 +374,9 @@ $(document).on("change","#userssearch-name_of_jobs_id",function(){
     $(this).closest('form').submit();
 });
 
+
+
+
 $(document).on("change","#userssearch-favorite",function(){
     $(this).closest('form').submit();
 });
@@ -437,4 +440,21 @@ $(function(){
 
 $("#model").on('hidden.bs.modal', function(){
     $("#modelContent").html('')
+});
+
+
+$(document).on("click","#serach-post",function(e){
+    search_global_posts();
+});
+
+function search_global_posts(){
+    var serach=$("#search").val();
+    var url = SiteUrl +`/index.php?r=post/index&search=${serach}`;
+    location.replace(url)
+}
+
+$(document).on('keypress',function(e) {
+    if(e.which == 13 && $('#serach-post').length) {
+        search_global_posts();
+    }
 });

@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Posts;
 use yii\base\Controller;
+use yii\data\Pagination;
 use yii\web\NotFoundHttpException;
 
 
@@ -17,12 +18,32 @@ class PostController extends Controller
     public function actionIndex()
     {
         $this->layout = "maintheme"; 
-       
 
-        return $this->render('create');
+        $query =    Posts::find();
+
+        if(isset($_GET['search']) && $_GET['search'] !=''){
+            $query->orwhere(['like', 'title', $_GET['search'] . '%', false]);
+            $query->orwhere(['like', 'body', $_GET['search'] . '%', false]);
+        }
+
+        
+
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count()]);
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('index',['models'=>$models,'pages'=>$pages]);
     }
 
    
+    public function actionCreate()
+    {
+        $this->layout = "maintheme"; 
+        return $this->render('create');
+    }
+
 
     /**
      * Displays a single Posts model.
