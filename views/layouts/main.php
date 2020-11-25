@@ -69,6 +69,8 @@ AppAsset::register($this);
                         ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories/index']],
                         ['label' => Yii::t('app', 'Governorate'), 'url' => ['/governorate/index']],
                         ['label' => Yii::t('app', 'Nationality'), 'url' => ['/nationality/index']],
+                        ['label' => Yii::t('app', 'Countries'), 'url' => ['/countries/index']],
+                        ['label' => Yii::t('app', 'Regions'), 'url' => ['/regions/index']],
                         ['label' => Yii::t('app', 'Area'), 'url' => ['/area/index']],
                         ['label' => Yii::t('app', 'Pages'), 'url' => ['/pages/index']],
                         ['label' => Yii::t('app', 'Payments'), 'url' => ['/manual-payment-user/index']],
