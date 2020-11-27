@@ -24,6 +24,7 @@ class ThemeAsset extends AssetBundle
     ];
     public $js = [
         'js/main.js',
+        'js/sweetalert2/main.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

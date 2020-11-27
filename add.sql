@@ -144,3 +144,6 @@ CREATE TABLE `job`.`regions` ( `id` INT NOT NULL AUTO_INCREMENT , `name_en` VARC
 
 
 ALTER TABLE `posts` ADD `country_id` INT NOT NULL DEFAULT '-1' AFTER `updated_at`, ADD `region_id` INT NOT NULL DEFAULT '-1' AFTER `country_id`;
+
+
+CREATE TABLE `post_apply` ( `id` BIGINT NOT NULL AUTO_INCREMENT , `post_id` INT NOT NULL , `user_id` INT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;

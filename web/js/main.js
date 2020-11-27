@@ -459,3 +459,59 @@ $(document).on('keypress',function(e) {
         search_global_posts();
     }
 });
+
+
+
+
+$(document).on("click","#apply",function(e){
+    Swal.fire({
+        title: 'هل انت متأكد ?',
+        text: 'هل انت متأكد من التقديم لهذه الوظيفة!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'نعم اريد!',
+        cancelButtonText: 'لا أريد'
+      }).then((result) => {
+        if (result.value) {
+            var postid=$("#apply").attr("post-id");
+            var url = SiteUrl +`/index.php?r=applay/index&id=${postid}`;
+            var data={
+                id:postid
+            };
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function (response) {
+                   
+                    if(response.code==401){
+                        const login_url=`${SiteUrl}/index.php?r=site/login`;
+                        Swal.fire(
+                            "<a href='"+login_url+"'>"+response.massage+"</a>",
+                            "<a href='"+login_url+"'>الذهاب لتسجيل الدخول</a>",
+                            'error'
+                          );
+                    }else if(response.code==402){
+                       
+                        Swal.fire(
+                            response.massage,
+                            response.massage,
+                            'error'
+                          );
+                    }else{
+                        Swal.fire(
+                            response.massage,
+                            response.massage,
+                            'success'
+                          )
+                    }
+
+
+                }
+            });
+
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+         
+        }
+      })
+});
+
