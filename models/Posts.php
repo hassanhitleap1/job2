@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\models\Countries\Countries;
 use Carbon\Carbon;
 use Yii;
 
@@ -59,6 +60,8 @@ class Posts extends \yii\db\ActiveRecord
             'accept' => Yii::t('app', 'Accept'),
             'area_id' => Yii::t('app', 'Area'),
             "user_id"=>Yii::t('app', 'By_User'),
+            "region_id"=>Yii::t('app', 'Region'),
+            "country_id"=>Yii::t('app', 'Country'),
             'show_number' => Yii::t('app', 'Show_Number'),
             'created_at' => Yii::t('app', 'Created_At'),
             'updated_at' => Yii::t('app', 'Updated_At'),
@@ -113,6 +116,18 @@ class Posts extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(Users::className(), ['id' => 'user_id']);
+    }
+
+    
+    public function getCountry()
+    {
+        return $this->hasOne(Countries::className(), ['id' => 'country_id']);
+    }
+
+    
+    public function getRegion()
+    {
+        return $this->hasOne(Countries::className(), ['id' => 'region_id']);
     }
 
 

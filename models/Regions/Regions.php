@@ -2,7 +2,9 @@
 
 namespace app\models\Regions;
 
+use app\models\Countries\Countries;
 use app\models\Regions\RegionsQuery;
+use Carbon\Carbon;
 use Yii;
 
 /**
@@ -31,9 +33,8 @@ class Regions extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name_en', 'name_ar', 'country_id', 'created_at', 'updated_at'], 'required'],
+            [['name_en', 'name_ar', 'country_id'], 'required'],
             [['country_id'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
             [['name_en', 'name_ar'], 'string', 'max' => 100],
         ];
     }
@@ -53,6 +54,13 @@ class Regions extends \yii\db\ActiveRecord
         ];
     }
 
+
+    public function getCountry()
+    {
+        return $this->hasOne(Countries::className(), ['id' => 'country_id']);
+    }
+
+   
     /**
      * {@inheritdoc}
      * @return RegionsQuery the active query used by this AR class.
@@ -61,4 +69,27 @@ class Regions extends \yii\db\ActiveRecord
     {
         return new RegionsQuery(get_called_class());
     }
+
+
+     /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        $today=Carbon::now("Asia/Amman");
+        if (parent::beforeSave($insert)) {
+            // Place your custom code here
+            if ($this->isNewRecord) {
+                $this->created_at = $today;
+                $this->updated_at = $today;
+            } else {
+                $this->updated_at =$today;
+            }
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

@@ -65,6 +65,18 @@ $this->params['breadcrumbs'][] = $this->title;
             
         
             [
+                'attribute' => 'country_id',
+                'value' => 'country.name_ar',
+
+            ],
+        
+            [
+                'attribute' => 'region_id',
+                'value' => 'region.name_ar',
+
+            ],
+        
+            [
                 'attribute' => 'area_id',
                 'value' => 'area.name_ar',
 

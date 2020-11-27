@@ -2,6 +2,9 @@
 
 use app\models\Area;
 use app\models\Categories;
+use app\models\Countries\Countries;
+use app\models\Regions\Regions;
+use app\models\User;
 use coderius\pell\Pell;
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
@@ -17,17 +20,35 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-3">
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-md-3">
-        <?= $form->field($model, 'category_id')->widget(Select2::classname(), [
+        <div class="col-md-2">
+            <?= $form->field($model, 'category_id')->widget(Select2::classname(), [
                         'data' =>  ArrayHelper::map(Categories::find()->all(), 'id', 'name_ar'),
                         'language' => 'ar',
                         'options' => ['placeholder' =>Yii::t('app',"Plz_Select")],
                        
                     ]); ?>
         </div>
+        <div class="col-md-2">
+                <?= $form->field($model, 'country_id')->widget(Select2::classname(), [
+                        'data' =>  ArrayHelper::map(Countries::find()->all(), 'id', 'name_ar'),
+                        'language' => 'ar',
+                        'options' => ['placeholder' =>Yii::t('app',"Plz_Select")],
+                       
+                    ]); ?>
+        </div>
+
+        <div class="col-md-2">
+                <?= $form->field($model, 'region_id')->widget(Select2::classname(), [
+                        'data' =>  ArrayHelper::map(Regions::find()->all(), 'id', 'name_ar'),
+                        'language' => 'ar',
+                        'options' => ['placeholder' =>Yii::t('app',"Plz_Select")],
+                       
+                    ]); ?>
+        </div>
+
         <div class="col-md-3">
             <?= $form->field($model, 'area_id')->widget(Select2::classname(), [
                         'data' =>  ArrayHelper::map(Area::find()->all(), 'id', 'name_ar'),
@@ -41,23 +62,23 @@ use yii\widgets\ActiveForm;
     </div>           
 
     <div class="row">
-        <div class="col-md-11">
+        <div class="col-md-12">
             <?= $form->field($model, 'body')->widget(Pell::className(), []); ?>
         </div>
     </div>
     <div class="row">    
-        
+                
+    <div class="col-md-3"  <?=(!User::is_admin_user())? "style='display: none;'" :""?> >
+        <?= $form->field($model, 'show_number')->checkBox([
+                            'label' => Yii::t('app', 'Show_Number'), 'data-size' => 'small', 'class' => 'bs_switch', 'style' => 'margin-bottom:4px;', 'id' => 'active'
+                        ]) ?>
+        </div>
         <div class="col-md-3">
             <?= $form->field($model, 'accept')->checkBox([
                             'label' => Yii::t('app', 'Accept'), 'data-size' => 'small', 'class' => 'bs_switch', 'style' => 'margin-bottom:4px;', 'id' => 'active'
                         ]) ?>
         </div>
-        
-        <div class="col-md-3">
-        <?= $form->field($model, 'show_number')->checkBox([
-                            'label' => Yii::t('app', 'Show_Number'), 'data-size' => 'small', 'class' => 'bs_switch', 'style' => 'margin-bottom:4px;', 'id' => 'active'
-                        ]) ?>
-        </div>
+
     </div>       
 
    

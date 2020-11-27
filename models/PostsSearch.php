@@ -18,8 +18,8 @@ class PostsSearch extends Posts
     public function rules()
     {
         return [
-            [['id', 'category_id', 'accept', 'area_id', 'show_number'], 'integer'],
-            [['title', 'body', 'created_at', 'updated_at'], 'safe'],
+            [['id', 'category_id', 'accept', 'show_number'], 'integer'],
+            [['title', 'body', 'area_id','country_id','region_id','created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -60,19 +60,24 @@ class PostsSearch extends Posts
         if(User::is_admin_advertiser()){
             $query->where(['user_id'=>Yii::$app->user->id]);   
         }
+        $query->joinWith('country');  
+        $query->joinWith('region');
+        $query->joinWith('area');  
 
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'category_id' => $this->category_id,
             'accept' => $this->accept,
-            'area_id' => $this->area_id,
             'show_number' => $this->show_number,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
+        ->andFilterWhere(['like', 'countries.name_ar', $this->country_id])
+        ->andFilterWhere(['like', 'regions.name_ar', $this->region_id])
+        ->andFilterWhere(['like', 'area.name_ar', $this->area_id])
             ->andFilterWhere(['like', 'body', $this->body]);
 
             $query->orderBy([

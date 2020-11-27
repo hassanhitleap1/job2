@@ -266,5 +266,8 @@ return [
     "SignUpAdvertiser"=>"حساب معلن",
     "Must_Be_Login"=>"يجب عليك تسجيل الدخول",
     "My_Adv"=>"اعلاناتي",
+    "Country"=>"البلد",
+    "Region"=>"المحافظة أو المقاطعة",
+    "Plz_Select"=>"ارجو التحديد"
 
 ];

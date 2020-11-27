@@ -30,7 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'id',
             'name_en',
             'name_ar',
-            'country_id',
+            [
+                'attribute' => 'country_id',
+                'value' => 'country.name_ar',
+            ],
             // 'created_at',
             //'updated_at',
 
