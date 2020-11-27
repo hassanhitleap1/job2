@@ -57,6 +57,12 @@ $this->title = 'home';
 								$def=$date->diffInDays($now);  
 								echo  "ايام ". $def;
 							?>
+							<?php if(! is_null($model->country) ):?>
+									/
+									<?=$model['country']['name_ar']?>
+									/
+									<?=$model['region']['name_ar']?>
+								<?php endif;?>
 							</span>
 							<?php if($model->show_number): ?>
 							<a class="pull-left" href="tel:<?=$model['user']['phone']?>"><?=$model['user']['phone']?></a>

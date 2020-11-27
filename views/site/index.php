@@ -3,8 +3,7 @@
 /* @var $this yii\web\View */
 
 use Carbon\Carbon;
-use yii\helpers\Html;
-use yii\helpers\Url;
+
 use yii\widgets\LinkPager;
 $now = Carbon::now("Asia/Amman");
 $this->title = 'home';
@@ -54,12 +53,19 @@ $this->title = 'home';
 						</div>
 						<div class="panel-footer">
 							<span class="float-left">
-							<?php
-								$date = Carbon::parse($model->created_at);
-								$def=$date->diffInDays($now);  
-								echo  "ايام ". $def;
-							?>
+								<?php
+									$date = Carbon::parse($model->created_at);
+									$def=$date->diffInDays($now);  
+									echo  "ايام ". $def;
+								?>
+								<?php if(! is_null($model->country) ):?>
+									/
+									<?=$model['country']['name_ar']?>
+									/
+									<?=$model['region']['name_ar']?>
+								<?php endif;?>
 							</span>
+							
 							<?php if($model->show_number): ?>
 							<a class="pull-left" href="tel:<?=$model['user']['phone']?>"><?=$model['user']['phone']?></a>
 							<?php endif;?>

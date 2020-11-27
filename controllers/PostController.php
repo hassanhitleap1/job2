@@ -19,11 +19,15 @@ class PostController extends Controller
     {
         $this->layout = "maintheme"; 
 
-        $query =    Posts::find();
+        $query =    Posts::find()->where(['accept'=>Posts::Accept]);;
 
         if(isset($_GET['search']) && $_GET['search'] !=''){
-            $query->orwhere(['like', 'title', $_GET['search'] . '%', false]);
-            $query->orwhere(['like', 'body', $_GET['search'] . '%', false]);
+            $search= trim($_GET['search']);
+            if($search !=""){
+                $query->andFilterWhere(['like', 'title', $search]);
+                $query->orFilterWhere(['like', 'body', $search]);
+              //  $query->andWhere("(title like '$search' or body like '$search' )"); 
+            }
         }
 
         
@@ -32,6 +36,9 @@ class PostController extends Controller
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
         $models = $query->offset($pages->offset)
             ->limit($pages->limit)
+            ->orderBy([
+                'created_at' => SORT_DESC //specify sort order ASC for ascending DESC for descending      
+            ])
             ->all();
 
         return $this->render('index',['models'=>$models,'pages'=>$pages]);
@@ -53,6 +60,7 @@ class PostController extends Controller
      */
     public function actionView()
     {
+        $this->layout = "maintheme";
         $id=$_GET['id'];
         return $this->render('view', [
             'model' => $this->findModel($id),

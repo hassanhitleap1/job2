@@ -42,7 +42,7 @@ class Posts extends \yii\db\ActiveRecord
         return [
             [['title', 'body'], 'required'],
             [['body'], 'string'],
-            [['category_id', 'accept', 'area_id', 'show_number'], 'integer'],
+            [['category_id', 'accept', 'area_id', 'country_id','region_id','show_number'], 'integer'],
             [['title'], 'string', 'max' => 400],
         ];
     }

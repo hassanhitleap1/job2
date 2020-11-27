@@ -450,6 +450,7 @@ $(document).on("click","#serach-post",function(e){
 function search_global_posts(){
     var serach=$("#search").val();
     var url = SiteUrl +`/index.php?r=post/index&search=${serach}`;
+    url=encodeURI(url);
     location.replace(url)
 }
 

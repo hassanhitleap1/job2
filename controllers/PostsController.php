@@ -72,8 +72,15 @@ class PostsController extends BaseController
      */
     public function actionView($id)
     {
+        $model=$this->findModel($id);
+        if(!User::is_admin_user()){
+            if($model->user_id != Yii::$app->user->id ){
+                throw new NotFoundHttpException(Yii::t('app', 'can not be view'));
+            }
+           
+        }
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
@@ -129,6 +136,21 @@ class PostsController extends BaseController
         return $this->redirect(['index']);
     }
 
+    public function actionAccept($id)
+    {
+        $model = $this->findModel($id);
+        $model->accept=Posts::Accept;
+        $model->save();
+        return $this->redirect(['index']);
+    }
+
+    public function actionNonAccept($id)
+    {
+        $model = $this->findModel($id);
+        $model->accept=Posts::NonAccept;
+        $model->save();
+        return $this->redirect(['index']);
+    }
     /**
      * Finds the Posts model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

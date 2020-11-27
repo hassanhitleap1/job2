@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'body',
                 'value' => function($searchModel){
-                    return     substr( $searchModel->body, 0, 50)." <a>More</a>";
+                    return     substr( $searchModel->body, 0, 50).Html::a('المزيد',['posts/view','id'=>$searchModel->id]);
                  },
                 'format' => 'raw',
             ],
@@ -114,7 +114,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{view}  {delete} {update}',  // the default buttons + your custom button
+                'template' => '{view}  {delete} {update}{accept}{non-accept}',  // the default buttons + your custom button
                
                 'buttons' => [
                       'view' => function ($url, $model) {
@@ -132,6 +132,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             ]);
                             }
                         },
+                        
+                      
                         'delete' => function ($url, $model) {
                             return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
                                         'title' => Yii::t('app', 'lead-delete'),
@@ -143,6 +145,24 @@ $this->params['breadcrumbs'][] = $this->title;
                             ]);
                         },
                 
+                        'accept' => function ($url, $model) {
+                            if(User::is_admin_user() && $model->accept==Posts::NonAccept ){ 
+                                return Html::a('<span class="glyphicon  glyphicon-ok"></span>', $url, [
+                                            'title' => Yii::t('app', 'lead-update'),
+                                            'class' => ''
+                                ]);
+                            }
+                        },
+
+                        'non-accept' => function ($url, $model) {
+                            if(User::is_admin_user() && $model->accept==Posts::Accept){ 
+                                return Html::a('<span class="glyphicon  glyphicon-remove"></span>', $url, [
+                                            'title' => Yii::t('app', 'lead-update'),
+                                            'class' => ''
+                                ]);
+                            }
+                        },
+
                   
                 ]
                 ],

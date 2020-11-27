@@ -82,11 +82,14 @@ class SiteController extends Controller
 //        $client->setApplicationName("Client_Library_Examples");
 //        $client->setDeveloperKey("YOUR_APP_KEY");
         $namepage="index-local";
-        $query =    Posts::find();
+        $query =    Posts::find()->where(['accept'=>Posts::Accept]);
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
         $models = $query->offset($pages->offset)
             ->limit($pages->limit)
+            ->orderBy([
+                'created_at' => SORT_DESC //specify sort order ASC for ascending DESC for descending      
+            ])
             ->all();
 
         if (Yii::$app->user->isGuest) {

@@ -69,13 +69,14 @@ use yii\widgets\ActiveForm;
     <div class="row">    
                 
     <div class="col-md-3"  <?=(!User::is_admin_user())? "style='display: none;'" :""?> >
-        <?= $form->field($model, 'show_number')->checkBox([
-                            'label' => Yii::t('app', 'Show_Number'), 'data-size' => 'small', 'class' => 'bs_switch', 'style' => 'margin-bottom:4px;', 'id' => 'active'
+    <?= $form->field($model, 'accept')->checkBox([
+                            'label' => Yii::t('app', 'Accept'), 'data-size' => 'small', 'class' => 'bs_switch', 'style' => 'margin-bottom:4px;', 'id' => 'active'
                         ]) ?>
+        
         </div>
         <div class="col-md-3">
-            <?= $form->field($model, 'accept')->checkBox([
-                            'label' => Yii::t('app', 'Accept'), 'data-size' => 'small', 'class' => 'bs_switch', 'style' => 'margin-bottom:4px;', 'id' => 'active'
+        <?= $form->field($model, 'show_number')->checkBox([
+                            'label' => Yii::t('app', 'Show_Number'), 'data-size' => 'small', 'class' => 'bs_switch', 'style' => 'margin-bottom:4px;', 'id' => 'active'
                         ]) ?>
         </div>
 
