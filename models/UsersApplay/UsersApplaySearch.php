@@ -54,6 +54,7 @@ class UsersApplaySearch extends UsersApplay
            
         $query->where(['type' => User::FORM_APPLAY_USER]);
         $query->orwhere(['type' => User::NORMAL_USER]);
+        $query->orwhere(['type' => User::FORM_APPLAY_USER]);
     
         $query->joinWith('nationality0');
         $query->joinWith('governorate0');  
@@ -90,8 +91,18 @@ class UsersApplaySearch extends UsersApplay
             ->andFilterWhere(['>=', 'subscribe_date', $this->subscribe_date])
           ;
 
-          $subQuery = PostApply::find()->join('posts', 'posts.id = post_apply.post_id')->select('post_apply.user_id')
-            ->where(['user_id'=>Yii::$app->user->id]);
+          $subQueryApplay = PostApply::find()
+                    ->innerJoin('posts', 'posts.id = post_apply.post_id')
+                    ->select('post_apply.user_id')
+                    ->where(['posts.user_id'=>Yii::$app->user->id]);
+
+                    if($this->post_id != null){
+                        $subQueryApplay->andWhere(['post_apply.post_id'=>$this->post_id]);
+                    }
+
+        $query->andWhere(['in', 'user.id', $subQueryApplay]);
+
+
 
         if($this->is_upload != null){
             $subQuery = VedioUser::find()->select('user_id');
