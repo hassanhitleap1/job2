@@ -3,14 +3,15 @@
 /* @var $this yii\web\View */
 
 use Carbon\Carbon;
+use yii\bootstrap\Html;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 $now = Carbon::now("Asia/Amman");
 $this->title = 'home';
 ?>
 <div class="container">
+
 	<div class="row">
-    
             <div class="col-md-10">
                 <div class="lead">
                     <div class="form-group has-feedback has-search">

@@ -17,7 +17,10 @@ class PostController extends Controller
 
     public function actionIndex()
     {
-        $this->layout = "maintheme"; 
+       
+        if (Yii::$app->user->isGuest) {
+            $this->layout = "maintheme";
+        }
 
         $query =    Posts::find()->where(['accept'=>Posts::Accept]);;
 
@@ -47,7 +50,9 @@ class PostController extends Controller
    
     public function actionCreate()
     {
-        $this->layout = "maintheme"; 
+        if (Yii::$app->user->isGuest) {
+            $this->layout = "maintheme";
+        }
         return $this->render('create');
     }
 
@@ -60,7 +65,9 @@ class PostController extends Controller
      */
     public function actionView()
     {
-        $this->layout = "maintheme";
+        if (Yii::$app->user->isGuest) {
+            $this->layout = "maintheme";
+        }
         $id=$_GET['id'];
         return $this->render('view', [
             'model' => $this->findModel($id),

@@ -7,11 +7,12 @@ use app\models\ActionAdmin;
 use app\models\CountSendSms;
 use app\models\MessageJobUser;
 use app\models\RequastJobForm;
-use app\models\UsersSearch;
+use app\models\UserApplaySearch;
 use app\models\UserMessage;
 use app\models\RequastJob;
 use app\models\SendSmsModel;
 use app\models\User;
+use app\models\UsersApplay\UsersApplaySearch;
 use app\models\VedioUser;
 use Carbon\Carbon;
 use ConvertApi\ConvertApi;
@@ -25,7 +26,7 @@ use yii\web\UploadedFile;
 /**
  * RequastJobController implements the CRUD actions for RequastJob model.
  */
-class UsersController extends BaseController
+class UsersApplayController extends BaseController
 {
 
     public $allow=[
@@ -68,7 +69,8 @@ class UsersController extends BaseController
      */
     public function actionIndex()
     {
-        $searchModel = new UsersSearch();
+        
+        $searchModel = new UsersApplaySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

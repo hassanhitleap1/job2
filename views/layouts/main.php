@@ -148,6 +148,7 @@ AppAsset::register($this);
                 $menuItems[] = ['label' => Yii::t('app', 'Change_Password'), 'url' => ['/change-password/index']];
             }elseif (Yii::$app->user->identity->type == User::Advertiser){
                 $menuItems[] = ['label' => Yii::t('app', 'My_Adv'), 'url' => ['/posts/index']];
+                $menuItems[] = ['label' => Yii::t('app', 'Users'), 'url' => ['/users-applay/index']];
                 $menuItems[] = ['label' => Yii::t('app', 'Change_Password'), 'url' => ['/change-password/index']];
             }else{
                 $menuItems[] = ['label' => Yii::t('app', 'Upload_Vedio'), 'url' => ['/upload-vedio/index']];

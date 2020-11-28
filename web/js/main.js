@@ -374,6 +374,13 @@ $(document).on("change","#userssearch-name_of_jobs_id",function(){
     $(this).closest('form').submit();
 });
 
+$(document).on("change","#usersapplaysearch-post_id",function(){
+    $(this).closest('form').submit();
+});
+
+$(document).on("change","#usersapplaysearch-favorite",function(){
+    $(this).closest('form').submit();
+});
 
 
 
@@ -491,18 +498,22 @@ $(document).on("click","#apply",function(e){
                             'error'
                           );
                     }else if(response.code==402){
-                       
+                    
                         Swal.fire(
                             response.massage,
                             response.massage,
                             'error'
                           );
                     }else{
+
                         Swal.fire(
                             response.massage,
                             response.massage,
                             'success'
-                          )
+                          );
+
+                          $("#apply").removeClass('btn-success');
+
                     }
 
 

@@ -109,6 +109,11 @@ class Posts extends \yii\db\ActiveRecord
         return $this->hasOne(Area::className(), ['id' => 'area_id']);
     }
 
+    public function getApplayCount()
+    {
+        return $this->hasMany(PostApply::className(), ['post_id' => 'id'])
+        ->where(['user_id'=>Yii::$app->user->id])->count();
+    }
 
        /**
      * @return \yii\db\ActiveQuery

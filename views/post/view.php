@@ -11,7 +11,11 @@ $this->params['breadcrumbs'][] = $model->title;
 ?>
 
 <div class="container">
-	<div class="row">
+<div class="row">
+	<?= Html::a(Yii::t('app', 'Back'), ['index'], ['class' => 'btn btn-success  btn-left']) ?>
+</div>
+
+	<div class="row" style="padding-top: 10px;">
 		<div class="col-md-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -33,7 +37,13 @@ $this->params['breadcrumbs'][] = $model->title;
                         <?=$model['category']['name_ar']?>
                     </div>
                     <div class="col-md-4 float-left">
-						<button id="apply"  post-id="<?=$model->id;?>" class="btn btn-success pull-left"><?= Yii::t('app','Apply')?></button>
+						<button id="apply"  post-id="<?=$model->id;?>"   class="btn  <?= (Yii::$app->user->isGuest) 
+										?'btn-success' : 
+										($model->applayCount)
+										   ? '': 'btn-success'  ?>
+											pull-left">
+											<?= Yii::t('app','Apply')?>
+										</button>
                         <?php if($model->show_number): ?>
 							<a class="pull-left" style="margin-left: 5px;" href="tel:<?=$model['user']['phone']?>"><?=$model['user']['phone']?></a>
 						<?php endif;?>
