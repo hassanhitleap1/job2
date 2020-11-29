@@ -97,6 +97,7 @@ class SignupForm extends Model
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
+        $user->expire_at=Carbon::now("Asia/Amman");;
         return $user->save() && $this->sendEmail($user);
     }
 
