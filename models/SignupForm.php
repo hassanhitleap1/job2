@@ -46,17 +46,19 @@ class SignupForm extends Model
         if (!$this->validate()) {
             return null;
         }
+        $date=Carbon::now("Asia/Amman");
         
-        $user = new User();
+        $user = new Users();
         $user->username = $this->username;
         $user->email = $this->email;
         $user->status=User::STATUS_ACTIVE;
         $user->type=User::ADMIN_USER;
-        $user->setPassword($this->password);
-        $user->generateAuthKey();
-        $user->generateEmailVerificationToken();
-        $user->expire_at=Carbon::now("Asia/Amman");;
-        return $user->save() && $this->sendEmail($user);
+        $user->password_hash = Yii::$app->security->generatePasswordHash($this->password);
+        $user->auth_key = Yii::$app->security->generateRandomString();
+        $user->verification_token = Yii::$app->security->generateRandomString() . '_' . time();
+        $user->created_at=$date;
+        $user->updated_at=$date;
+        return $user->save(false) && $this->sendEmail($user);
     }
     /**
      * Sends confirmation email to user
@@ -88,17 +90,18 @@ class SignupForm extends Model
         if (!$this->validate()) {
             return null;
         }
-        
-        $user = new User();
+        $date=Carbon::now("Asia/Amman");;
+        $user = new Users();
         $user->phone = $this->phone;
         $user->email = $this->email;
         $user->status=User::STATUS_ACTIVE;
         $user->type=User::Advertiser;
-        $user->setPassword($this->password);
-        $user->generateAuthKey();
-        $user->generateEmailVerificationToken();
-        $user->expire_at=Carbon::now("Asia/Amman");;
-        return $user->save() && $this->sendEmail($user);
+        $user->password_hash = Yii::$app->security->generatePasswordHash($this->password);
+        $user->auth_key = Yii::$app->security->generateRandomString();
+        $user->verification_token = Yii::$app->security->generateRandomString() . '_' . time();
+        $user->created_at=$date;
+        $user->updated_at=$date;
+        return $user->save(false) && $this->sendEmail($user);
     }
 
 

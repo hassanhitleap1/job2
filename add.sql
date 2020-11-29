@@ -140,10 +140,14 @@ CREATE TABLE `posts` ( `id` INT NOT NULL AUTO_INCREMENT , `title` VARCHAR(400) C
 ALTER TABLE `posts` ADD `user_id` INT NOT NULL AFTER `show_number`;
 
 
-CREATE TABLE `job`.`regions` ( `id` INT NOT NULL AUTO_INCREMENT , `name_en` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `name_ar` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `country_id` INT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `regions` ( `id` INT NOT NULL AUTO_INCREMENT , `name_en` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `name_ar` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `country_id` INT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
 
 ALTER TABLE `posts` ADD `country_id` INT NOT NULL DEFAULT '-1' AFTER `updated_at`, ADD `region_id` INT NOT NULL DEFAULT '-1' AFTER `country_id`;
 
 
 CREATE TABLE `post_apply` ( `id` BIGINT NOT NULL AUTO_INCREMENT , `post_id` INT NOT NULL , `user_id` INT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `user` CHANGE `expire_at` `expire_at` INT(11) NULL DEFAULT NULL;
+
+ALTER TABLE `posts` CHANGE `country_id` `country_id` INT(11) NULL, CHANGE `region_id` `region_id` INT(11) NULL;
