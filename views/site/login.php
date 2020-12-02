@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="row">
                             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                 <div class="form-group">
-                                    <?= Html::submitButton(Yii::t('app', 'Login'), ['class' => 'btn btn-primary ', 'name' => 'login-button']) ?>
+                                    <?= Html::submitButton(Yii::t('app', 'Login'), ['class' => 'btn btn-primary btn-lg', 'name' => 'login-button']) ?>
                                 </div>
                             </div>
                         </div>
