@@ -17,6 +17,9 @@ class SignupForm extends Model
     public $password;
     public $conf_password;
     public $rememberMe = true;
+    public $name_company=null;
+    
+
     /**
      * {@inheritdoc}
      */
@@ -58,6 +61,8 @@ class SignupForm extends Model
         $user->verification_token = Yii::$app->security->generateRandomString() . '_' . time();
         $user->created_at=$date;
         $user->updated_at=$date;
+        $user->name_company=$this->name_company;
+       
         return $user->save(false) && $this->sendEmail($user);
     }
     /**
@@ -101,6 +106,7 @@ class SignupForm extends Model
         $user->verification_token = Yii::$app->security->generateRandomString() . '_' . time();
         $user->created_at=$date;
         $user->updated_at=$date;
+         $user->name_company=$this->name_company;
         return $user->save(false) && $this->sendEmail($user);
     }
 
