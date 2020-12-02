@@ -21,6 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= $form->field($model, 'phone')->textInput(['autofocus' => true])->label(Yii::t('app', 'Phone')) ?>
 
                     <?= $form->field($model, 'email')->label(Yii::t('app', 'Email')) ?>
+                    <?= $form->field($model, 'name_company')->label(Yii::t('app', 'Name_Company')) ?>
 
                     <?= $form->field($model, 'password')->passwordInput()->label(Yii::t('app', 'Password')) ?>
 
