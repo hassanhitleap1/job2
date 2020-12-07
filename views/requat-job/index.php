@@ -38,16 +38,23 @@ $this->title = Yii::t('app', 'Requast_Job');
                         ->label(Yii::t('app', 'Phone') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Phone_Example') . '"></span>') ?>
                 </div>
 
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <?= $form->field($model, 'password')->passwordInput()->label(Yii::t('app', 'Password')) ?>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <?= $form->field($model, 'confirm_pass')->passwordInput()->label(Yii::t('app', 'Conf_Password'))  ?>
                 </div>
+                 <div class="col-lg-2">
+                         <?= $form->field($model, "social_status")->dropDownList([0 => "متزوج", 1 => "اعزب"]); ?>
+                </div>
+                
+               
             </div>
             <div class="row">
                 <div class="col-md-2">
                     <?= $form->field($model, "gender")->dropDownList([1 => "ذكر", 2 => "انثى"]); ?>
+                    
+                    
                 </div>
                 <div class="col-lg-2">
                     <?= $form->field($model, 'agree')->textInput()->label(Yii::t('app', 'Agree') . '  <span type="button" class=" tooltip-helper glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="' . Yii::t('app', 'Agree_Example') . '"></span>')  ?>
