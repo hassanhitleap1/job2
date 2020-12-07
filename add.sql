@@ -151,3 +151,6 @@ CREATE TABLE `post_apply` ( `id` BIGINT NOT NULL AUTO_INCREMENT , `post_id` INT 
 ALTER TABLE `user` CHANGE `expire_at` `expire_at` INT(11) NULL DEFAULT NULL;
 
 ALTER TABLE `posts` CHANGE `country_id` `country_id` INT(11) NULL, CHANGE `region_id` `region_id` INT(11) NULL;
+
+ALTER TABLE `user` ADD `social_status` SMALLINT NOT NULL DEFAULT '0' AFTER `school_id`;
+
