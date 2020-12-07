@@ -68,6 +68,17 @@ class RequatJobController extends \yii\web\Controller
                 $transaction = \Yii::$app->db->beginTransaction();
                 $model->type = User::FORM_APPLAY_USER;
                 
+               $newId= RequastJobVisitor::find()->max('id') + 1;
+                
+                $file = UploadedFile::getInstance($model, 'cv');
+                  if (!is_null($file)) {
+                        $folder_path = "users_cv/$newId";
+                        FileHelper::createDirectory($folder_path, $mode = 0775, $recursive = true);
+                        $thumbnail_path = "$folder_path/index" . "." . $file->extension;
+                        $file->saveAs($thumbnail_path);
+                  
+                    }
+                
                 try {
                 
                     if ($flag = $model->save(false)) {
