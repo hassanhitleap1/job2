@@ -271,4 +271,5 @@ return [
     "Plz_Select"=>"ارجو التحديد",
     "Yor_Applayed"=>"لقد تقدمت لهذه الوظيفة",
     "Successfuly_Applay"=>"تم التقديم بنجاح",
+    "Social_Status"=>"الحالة الاجتماعية",
 ];
