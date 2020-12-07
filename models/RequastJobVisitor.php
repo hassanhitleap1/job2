@@ -151,7 +151,7 @@ class RequastJobVisitor extends \yii\db\ActiveRecord
             'work_permanently'=>Yii::t('app', 'Work_Permanently'),
             'communication_skills'=>Yii::t('app', 'Communication_Skills'),
             'email' => Yii::t('app', 'Email'),
-
+            'social_status'=>Yii::t('app', 'Social_Status'), 
 
         ];
     }
