@@ -91,6 +91,11 @@ $this->title = Yii::t('app', 'Requast_Job');
             <div class="row">
                 <?php include('courses.php') ?>
             </div>
+            
+            <div class="row">
+                 <?= $form->field($model, 'cv')->fileInput() ?>
+            </div>
+            
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
